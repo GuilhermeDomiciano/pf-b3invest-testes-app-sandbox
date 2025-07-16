@@ -1,0 +1,10 @@
+INPT_CPF_CNPJ: id=b3_document_field
+INPT_PASSWORD: xpath=//android.widget.EditText
+BTN_CONTINUE_DOCUMENT: id=b3_button_text
+BTN_CONTINUE_PASSWORD: id=b3_continue_button
+BTN_AGORA_NAO_TOUCH_ID: id=b3_skip_biometric_button
+BTN_ACTIVE_TOUCH_ID: id=b3_activate_biometric_button
+BTN_AGORA_NAO_NOTIFY: id=b3_skip_notifications_button
+BTN_ACTIVE_NOTIFY: id=b3_activate_notification_button
+TXT_HOME: xpath=//android.view.View[@content-desc="Home Page"]
+BTN_FORGOR_PASSWORD: id=b3_forgot_password_button

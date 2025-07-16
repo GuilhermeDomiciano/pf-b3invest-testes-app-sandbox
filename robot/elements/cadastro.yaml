@@ -1,0 +1,13 @@
+TXT_NO_ACCESS:  id=b3_no_access_title
+BTN_EMAIL_SELECT: id=email_selection_tile_2
+INPT_TOKEN_ONE: xpath=//android.widget.EditText[@resource-id="text_field_0"]/android.widget.EditText
+INPT_TOKEN_TWO: xpath=//android.widget.EditText[@resource-id="text_field_1"]/android.widget.EditText
+INPT_TOKEN_THREE: xpath=//android.widget.EditText[@resource-id="text_field_2"]/android.widget.EditText
+INPT_TOKEN_FOUR: xpath=//android.widget.EditText[@resource-id="text_field_3"]/android.widget.EditText
+INPT_TOKEN_FIVE: xpath=//android.widget.EditText[@resource-id="text_field_4"]/android.widget.EditText
+INPT_TOKEN_SIX: xpath=//android.widget.EditText[@resource-id="text_field_5"]/android.widget.EditText
+BTN_LOST_ACCESS: id=b3_continue_button
+BTN_HELP_CENTER: id=login_help_center_options_help_center
+INPT_CREATE_PASSWORD: xpath=//android.view.View[@content-desc="campo de nova senhaNova senha"]/android.widget.EditText
+INPT_CONFIRM_PASSWORD: xpath=//android.view.View[@content-desc="campo de confirmação de senhaConfirme a nova senha"]/android.widget.EditText
+BTN_CREATE_CONTINUE_PASSWORD: id=b3_continue_button
