@@ -39,7 +39,7 @@ Validar usuario sem investimento utilizando CNPJ
 
 Validar esqueci minha senha utilizando CPF
     [Documentation]    Validar esqueci minha senha utilizando CPF
-    [Tags]    acesso    esqueci_minha_senha    icaro
+    [Tags]    acesso    esqueci_minha_senha
 
     Document Login    DOCUMENT=${users['user_cc_cpf']['document']}
     Forgot Password User
@@ -58,3 +58,15 @@ Validar esqueci minha senha utilizando CNPJ
     Send Token User    TOKEN=${TOKEN}
     Create Password User    PASSWORD=${users['user_cc_cnpj']['password']}
     Should Be Home Page
+
+Validar acesso bloqueado quando usuario digitar varias vezes senha errada utilizando CPF
+    [Documentation]    Validar acesso bloqueado quando usuario digitar varias vezes senha errada utilizando CPF
+    [Tags]    acesso
+
+    Document Login    DOCUMENT=${users['user_cc_cnpj']['document']}
+
+Validar acesso bloqueado quando usuario digitar varias vezes senha errada utilizando CNPJ
+    [Documentation]    Validar acesso bloqueado quando usuario digitar varias vezes senha errada utilizando CNPJ
+    [Tags]    acesso
+
+    Document Login    DOCUMENT=${users['user_cc_cnpj']['document']}

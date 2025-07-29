@@ -35,11 +35,16 @@ Document Login
 Should Be Home Page
     [Documentation]    Should Be Home Page
 
-    Click Button No Accept Touch Id
-    Click Button No Accept Notify
+    No Accept Permissions
     # Validate Contains Text Home Page
 
 Forgot Password User
     [Documentation]    Forgot Password User
 
     Click Button Forgot Password
+
+No Accept Permissions
+    [Documentation]    No Accept Permissions
+
+    Click Button No Accept Touch Id
+    Click Button No Accept Notify
