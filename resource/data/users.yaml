@@ -2,10 +2,12 @@ users:
   user_sc_cpf_one:
     document: '00001425064'
     password: Bvmf@123
+    password_error: BVMF321
     email: b3-user-sc-cpf@mailsac.com
   user_sc_cnpj_one:
     document: '00000009000100'
     password: Bvmf@123
+    password_error: BVMF321
     email: b3-user-sc-cnpj@mailsac.com
   user_sc_cpf_two:
     document: '00000372064'
@@ -26,13 +28,14 @@ users:
   user_cc_cpf:
     document: '01077393644'
     password: Bvmf@123
+    password_error: Bvmf@321
     email: b3-user-cc-cpf@mailsac.com
   user_cc_cnpj:
     document: '53790663000113'
     password: Bvmf@123
+    password_error: Bvmf@321
     email: b3-user-cc-cnpj@mailsac.com
   user_no_access_cpf:
     document: '43843056803'
   user_no_access_cnpj:
     document: '59848864000100'
-

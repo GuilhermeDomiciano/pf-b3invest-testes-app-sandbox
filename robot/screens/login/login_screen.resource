@@ -10,7 +10,7 @@ Send Keys Document
     [Documentation]    Send Keys Document
     [Arguments]    ${DOCUMENT}
 
-    Wait Until Element Is Visible    locator=${INPT_CPF_CNPJ}    timeout=10
+    Wait Until Element Is Visible    locator=${INPT_CPF_CNPJ}    timeout=15
     Click Element    locator=${INPT_CPF_CNPJ}
     Input Text    locator=${INPT_CPF_CNPJ}    text=${DOCUMENT}
 

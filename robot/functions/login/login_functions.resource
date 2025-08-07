@@ -35,8 +35,7 @@ Document Login
 Should Be Home Page
     [Documentation]    Should Be Home Page
 
-    No Accept Permissions
-    # Validate Contains Text Home Page
+    Validate Contains Text Home Page
 
 Forgot Password User
     [Documentation]    Forgot Password User

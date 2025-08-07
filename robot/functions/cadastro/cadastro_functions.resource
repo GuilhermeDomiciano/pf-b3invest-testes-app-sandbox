@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation    Cadastro Functions
 
+Resource    ${EXECDIR}/resource/service/exclude_register_service.resource
+
 Resource    ${EXECDIR}/robot/screens/cadastro/cadastro_screen.resource
 
 *** Keywords ***
@@ -39,6 +41,14 @@ Create Password User
     [Documentation]    Create Password User
     [Arguments]    ${PASSWORD}
 
+    # Mudar os locators abaixos estão usando xpath
     Send Create Password    PASSWORD=${PASSWORD}
     Send Confirm Password    PASSWORD=${PASSWORD}
     Click Confirm Password
+
+Confirm Register User
+    [Documentation]    Confirm Register User
+    [Arguments]    ${EMAIL}    ${PASSWORD}
+
+    Validate Register User
+    Exclude Register User    EMAIL=${EMAIL}    PASSWORD=${PASSWORD}

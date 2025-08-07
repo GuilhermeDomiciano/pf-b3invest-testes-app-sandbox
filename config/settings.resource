@@ -14,7 +14,7 @@ ${PATH_VERSIONS}          ${EXECDIR}/app/
 
 # Local Appium
 ${APPIUM_SERVER_LOCAL}    http://127.0.0.1:4723
-${ANDROID_APP_LOCAL}      app-dev-release-login.apk
+${ANDROID_APP_LOCAL}      app-dev-release-home.apk
 ${IOS_APP_LOCAL}          Runner.app
 
 # Browserstack Appium

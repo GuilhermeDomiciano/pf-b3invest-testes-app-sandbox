@@ -23,6 +23,21 @@ Validar acesso utilizando CNPJ
     ...             PASSWORD=${users['user_cc_cnpj']['password']}
     Should Be Home Page
 
+Validar acesso bloqueado utilizando CPF
+    [Documentation]    Validar acesso utilizando CPF
+    [Tags]    acesso    regressivo
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password_error']}
+    Should Be Home Page
+
+Validar acesso bloqueado utilizando CNPJ
+    [Documentation]    Validar acesso utilizando CPF
+    [Tags]    acesso    regressivo
+
+    Simple Login    DOCUMENT=${users['user_cc_cnpj']['document']}
+    ...             PASSWORD=${users['user_cc_cnpj']['password_error']}
+
 Validar usuario sem investimento utilizando CPF
     [Documentation]    Validar usuário sem investimento utilizando CPF
     [Tags]    acesso    regressivo

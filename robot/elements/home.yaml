@@ -1,1 +1,6 @@
-TXT_USUARIO_LOGADO: id=user_log_b3
+BTN_TOGGLE_VISIBILITY: id=home_header_visibility_toggle
+TXT_HERITAGE_SUMMARY: xpath=//android.view.View[@content-desc="Seu patrimônio cresceu"]
+TXT_TITLE_MY_WALLET: id=my_wallet_header
+BTN_BAR_CHART: id=b3_bar_chart_toggle_button
+BTN_LINE_CHART: id=b3_line_chart_toggle_button
+ICN_OPEN_FINANCE: id=open_finance_icon

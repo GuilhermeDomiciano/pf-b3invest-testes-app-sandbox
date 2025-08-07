@@ -97,3 +97,9 @@ Click Confirm Password
 
     Wait Until Element Is Visible    locator=${BTN_CREATE_CONTINUE_PASSWORD}
     Click Element    locator=${BTN_CREATE_CONTINUE_PASSWORD}
+
+Validate Register User
+    [Documentation]    Validate Register User
+
+    # Mudar locator
+    Wait Until Element Is Visible    locator=${BTN_CREATE_CONTINUE_PASSWORD}

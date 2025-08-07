@@ -5,7 +5,11 @@ Resource    ${EXECDIR}/robot/screens/home/home_screen.resource
 
 *** Keywords ***
 Validate Home Login
-    [Documentation]    Validate User Login
+    [Documentation]    Validate Home Login
 
-    Validate Login User
-    Validate Saldo User
+    Validate Toggle Visibility
+    Validate Heritage Summary
+    Validate My Wallet
+    Click Graphic Bar
+    Click Graphic Line
+    Validate Open Finance

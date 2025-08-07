@@ -13,9 +13,11 @@ Resource     ${EXECDIR}/resource/core/core.resource
 
 # Service
 Resource     ${EXECDIR}/resource/service/mailsac_service.resource
+Resource     ${EXECDIR}/resource/service/exclude_register_service.resource
 
 # Utils
 Resource     ${EXECDIR}/resource/utils/json_utils.resource
+Resource     ${EXECDIR}/resource/utils/element_utils.resource
 
 # Data
 Variables    ${EXECDIR}/resource/data/users.yaml
