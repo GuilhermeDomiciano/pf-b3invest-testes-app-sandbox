@@ -13,3 +13,36 @@ Validate Home Login
     Click Graphic Bar
     Click Graphic Line
     Validate Open Finance
+
+Validate Button Customize Home Screen
+    [Documentation]    Validate Button Customize Home Screen
+
+    Click Customize Home Screen Button
+
+Hide My Wallet
+    [Documentation]    Hide My Wallet
+
+    Click Button My Wallet
+    Click Save Button
+
+Hide Asset Evoluation
+    [Documentation]    Hide Asset Evoluation
+     
+    Click Button Asset Evolution
+    Click Save Button
+
+Hide Open Finance
+    [Documentation]    Hide Open Finance
+
+    Click Button Open Finance
+    Click Save Button
+
+Hide Eventos
+    [Documentation]    Oculta a seção de Eventos na home
+    Click Element    ${BTN_EVENTS}
+    Log To Console    message= [B3] Eventos ocultados
+
+Hide Noticias
+    [Documentation]    Oculta a seção de Notícias na home
+    Click Element    ${BTN_NEWS}
+    Log To Console    message= [B3] Notícias ocultadas

@@ -13,6 +13,8 @@ Validar acesso utilizando CPF
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
     ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
     Should Be Home Page
 
 Validar acesso utilizando CNPJ
@@ -21,6 +23,8 @@ Validar acesso utilizando CNPJ
 
     Simple Login    DOCUMENT=${users['user_cc_cnpj']['document']}
     ...             PASSWORD=${users['user_cc_cnpj']['password']}
+    No Accept Permissions
+    Skip Profile
     Should Be Home Page
 
 Validar acesso bloqueado utilizando CPF

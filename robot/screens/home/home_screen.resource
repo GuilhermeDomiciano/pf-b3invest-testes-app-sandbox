@@ -43,6 +43,14 @@ Click Graphic Line
     Click Element    locator=${BTN_LINE_CHART}
     Log To Console    message=[B3] Validate Session Graphic Line\n
 
+Click Customize Home Screen Button
+    [Documentation]    Click Customize Home Screen Button
+
+    Scroll Element Into View In Page    locator=${BTN_CUSTOMIZE_SCREEN}
+    Wait Until Element Is Visible    locator=${BTN_CUSTOMIZE_SCREEN}
+    Click Element    locator=${BTN_CUSTOMIZE_SCREEN}
+    Log To Console    message= [B3] Validate Customize Home Screen Button\n
+
 Validate Open Finance
     [Documentation]    Validate Open Finance
 
@@ -50,3 +58,52 @@ Validate Open Finance
     Scroll Screen
     Wait Until Element Is Visible    locator=${ICN_OPEN_FINANCE}    timeout=10
     Log To Console    message=[B3] Validate Session Open Finance\n
+
+Click Button Customize Home Screen
+    [Documentation]    Click Button Customize Home Screen
+
+    Wait Until Element Is Visible        locator=${BTN_CUSTOMIZE_SCREEN}
+    Click Element    locator=${BTN_CUSTOMIZE_SCREEN}
+
+Click Button My Wallet
+    [Documentation]    Click Button Customize Home Screen
+
+    Wait Until Element Is Visible        locator=${STW_MY_WALLET}
+    Click Element    locator=${STW_MY_WALLET}
+
+Click Button Asset Evolution
+    [Documentation]    Click Button Asset Evolution
+
+    Wait Until Element Is Visible        locator=${STW_ASSET_EVOLUTION}
+    Click Element    locator=${STW_ASSET_EVOLUTION}
+    Log To Console    message= [B3] Hide Asset Evolution\n
+
+Click Button Open Finance
+    [Documentation]    Click Button Open Finance
+
+    Wait Until Element Is Visible        locator=${STW_MY_WALLET}
+    Click Element    locator=${STW_MY_WALLET}
+
+Click Button Events
+    [Documentation]    Click Button Events
+
+    Wait Until Element Is Visible        locator=${STW_MY_WALLET}
+    Click Element    locator=${STW_MY_WALLET}
+
+Click Button News
+    [Documentation]    Click Button News
+
+    Wait Until Element Is Visible        locator=${STW_MY_WALLET}
+    Click Element    locator=${STW_MY_WALLET}
+
+Click Save Button
+    [Documentation]    Click Button Customize Home Screen
+
+    Wait Until Element Is Visible        locator=${BTN_SAVE}
+    Click Element    locator=${BTN_SAVE}
+
+Click Default
+    [Documentation]    Click Button Customize Home Screen
+
+    Wait Until Element Is Visible        locator=${BTN_SAVE}
+    Click Element    locator=${BTN_SAVE}
