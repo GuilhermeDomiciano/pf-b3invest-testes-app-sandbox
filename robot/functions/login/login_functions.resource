@@ -47,3 +47,8 @@ No Accept Permissions
 
     Click Button No Accept Touch Id
     Click Button No Accept Notify
+
+Skip Profile
+    [Documentation]    Skip Profile
+
+    Click Button No Accept Discover Profile

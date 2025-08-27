@@ -45,6 +45,12 @@ Click Button No Accept Notify
     Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=10
     Click Element    locator=${BTN_AGORA_NAO_NOTIFY}
 
+Click Button No Accept Discover Profile
+    [Documentation]    Click Button No Accept Discover Profile
+
+    Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=10
+    Click Element    locator=${BTN_SKIP_PROFILE}
+
 Validate Contains Text Home Page
     [Documentation]    Validate Contains Text Home Page
 

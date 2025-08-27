@@ -11,8 +11,8 @@ ${UDID_LOCAL}                       emulator-5554
 
 ${AUTOMATION_NAME_IOS_LOCAL}        XCUITest
 ${PLATFORM_NAME_IOS_LOCAL}          iOS
-${DEVICE_NAME_IOS_LOCAL}            iPhone 15
-${PLATFORM_VERSION_LOCAL}           17.0
+${DEVICE_NAME_IOS_LOCAL}            iPhone 16 Pro
+${PLATFORM_VERSION_LOCAL}           18.6
 
 *** Keywords ***
 Open App Local Android
@@ -33,7 +33,7 @@ Open App Local Ios
     Open Application      remote_url=${APPIUM_SERVER_LOCAL}
     ...                   automationName=${AUTOMATION_NAME_IOS_LOCAL}
     ...                   platformName=${PLATFORM_NAME_IOS_LOCAL}
-    ...                   app=/Users/icarosilva/Downloads/${IOS_APP_LOCAL}
+    ...                   app=/Users/user/Documents/pf-b3invest-testes-app/app/iphonesimulator/${IOS_APP_LOCAL}
     ...                   deviceName=${DEVICE_NAME_IOS_LOCAL}
     ...                   platformVersion=${PLATFORM_VERSION_LOCAL}
     ...                   showXcodeLog=${True}
