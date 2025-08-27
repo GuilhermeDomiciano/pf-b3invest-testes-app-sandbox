@@ -9,6 +9,7 @@ Test Teardown    Close Application AppB3
 
 Test Tags    home
 
+
 *** Test Cases ***
 Validar secao resumo do patrimonio na home
     [Documentation]    Validar secao resumo do patrimonio na home
