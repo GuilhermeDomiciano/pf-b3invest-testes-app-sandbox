@@ -1,0 +1,50 @@
+# Localização
+BTN_WALLET_TOGGLE_VISIBILITY: accessibility_id=Icon button
+TITLE_WALLET_ALLOCATION: accessibility_id=Alocação
+TXT_WALLET_TITLE_MY_WALLET: accessibility_id=Minha carteira
+NAV_MY_WALLET: accessibility_id=Ir para carteira
+
+# Cabeçalho da Carteira
+BTN_WALLET_SETTINGS: id=wallet_settings_button
+BTN_WALLET_FILTER: id=wallet_filter_button
+
+# Resumo da Carteira
+TXT_WALLET_TOTAL_BALANCE: id=wallet_total_balance
+TXT_WALLET_BALANCE_VARIATION: id=wallet_balance_variation
+TXT_WALLET_PERCENTAGE_VARIATION: id=wallet_percentage_variation
+ICN_WALLET_VARIATION_ARROW: id=wallet_variation_arrow
+
+# Seção de Alocação
+BTN_WALLET_ALLOCATION_TOGGLE: id=allocation_toggle_button
+CHART_WALLET_ALLOCATION: id=wallet_allocation_chart
+LIST_WALLET_ALLOCATION_ITEMS: id=allocation_items_list
+
+# Allocation Filter Buttons
+BTN_WALLET_FILTER_PRODUTO: "accessibility_id=Produto\nProduto"
+BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe\nClasse"
+BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição\nInstituição"
+
+# Allocation Content Areas
+WALLET_ALLOCATION_CONTENT: id=allocation_content_area
+WALLET_PRODUTO_ALLOCATION_INDICATOR: id=produto_allocation_view
+WALLET_CLASSE_ALLOCATION_INDICATOR: id=classe_allocation_view
+WALLET_INSTITUICAO_ALLOCATION_INDICATOR: id=instituicao_allocation_view
+
+# Access All Products Button
+BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todas as instituições\nAcessar todas as instituições"
+TXT_WALLET_TITLE_ACESSO_RAPIDO: "accessibility_id=Acesso Rápido"
+
+# Wallet Action Buttons
+BTN_WALLET_EVOLUÇAO_PATRIMONIAL: "accessibility_id=Evolução patrimonial"
+BTN_WALLET_ANALISES_IA: "accessibility_id=Análises \ncom IA"
+BTN_WALLET_EXTRATO: accessibility_id=Extrato
+BTN_WALLET_DIVULGACAO_RESULTADOS: "accessibility_id=Divulgação de \nresultados"
+BTN_WALLET_GARANTIAS: "accessibility_id=Garantias"
+BTN_WALLET_OFERTAS_PUBLICAS: "accessibility_id=Ofertas públicas"
+
+# Container for horizontal scroll area
+WALLET_ACTIONS_CONTAINER: id=wallet_actions_horizontal_scroll
+
+# Assets Summary Section
+BTN_WALLET_BAR_CHART: id=b3_bar_chart_toggle_button
+BTN_WALLET_LINE_CHART: id=b3_line_chart_toggle_button
