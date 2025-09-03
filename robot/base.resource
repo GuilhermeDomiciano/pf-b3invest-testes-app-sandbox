@@ -26,6 +26,7 @@ Variables    ${EXECDIR}/resource/data/users.yaml
 Resource     ${EXECDIR}/robot/functions/login/login_functions.resource
 Resource     ${EXECDIR}/robot/functions/cadastro/cadastro_functions.resource
 Resource     ${EXECDIR}/robot/functions/home/home_functions.resource
+Resource     ${EXECDIR}/robot/functions/wallet/wallet_functions.resource
 
 *** Keywords ***
 Launch Application AppB3
