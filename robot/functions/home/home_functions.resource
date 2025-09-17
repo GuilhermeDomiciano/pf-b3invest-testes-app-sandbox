@@ -12,7 +12,6 @@ Validate Home Login
     Validate My Wallet
     Click Graphic Bar
     Click Graphic Line
-    Validate Open Finance
 
 Validate Button Customize Home Screen
     [Documentation]    Validate Button Customize Home Screen

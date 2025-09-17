@@ -12,11 +12,10 @@ Scroll Element Into View In Page
         Run Keyword If     ${el}     Exit For Loop
 
         IF    '${platformName}'=='android'
+            #Para rodar no play do python
             Swipe    ${659}    ${1643}    ${659}    ${800}
-            #Swipe      start_x=659  start_y=1643  end_x=659   end_y=800  duration=800ms
         ELSE
             Swipe    ${212}    ${442}    ${216}    ${55}
-            #Swipe      start_x=212  start_y=442  end_x=216   end_y=55  duration=800ms
         END
 
         ${counter}=    Set Variable    ${counter}+1
@@ -43,10 +42,8 @@ Scroll Screen
 
     IF    '${platformName}'=='android'
         Swipe    ${659}    ${1643}    ${659}    ${800}
-        #Swipe      start_x=659  start_y=1643  end_x=659   end_y=800  duration=800ms
     ELSE
         Swipe    ${212}    ${442}    ${216}    ${55}
-        #Swipe      start_x=212  start_y=442  end_x=216   end_y=55  duration=800ms
     END
 
 Scroll Horizontal
@@ -57,18 +54,16 @@ Scroll Horizontal
         IF    '${direction}'=='right'
             # Swipe from right to left (scroll right)
             Swipe    ${800}    ${1180}    ${200}    ${1180}
-            #Swipe    start_x=800    start_y=600    end_x=200    end_y=600    duration=800ms
         ELSE
             # Swipe from left to right (scroll left)
             Swipe    ${200}    ${1180}    ${800}    ${1180}
-            #Swipe    start_x=200    start_y=600    end_x=800    end_y=600    duration=800ms
         END
     ELSE
         IF    '${direction}'=='right'
             # iOS swipe coordinates
-            Swipe    start_x=300    start_y=400    end_x=50     end_y=400    duration=800ms
+            Swipe    ${800}    ${1180}    ${200}    ${1180}
         ELSE
-            Swipe    start_x=50     start_y=400    end_x=300    end_y=400    duration=800ms
+            Swipe    ${200}    ${1180}    ${800}    ${1180}
         END
     END
     

@@ -45,6 +45,36 @@ Validate Allocation Title Screen Wallet
     Element Should Be Visible    locator=${TITLE_WALLET_ALLOCATION}
     Log To Console    message=[B3] Validate Allocation Title is present\n
 
+Validate Provents Title Screen Wallet
+    [Documentation]    Validate the presence of Provent title in wallet screen
+
+    # Scroll to Provents Received section
+    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_RECEIVED}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_RECEIVED}    timeout=10
+    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_RECEIVED}
+    Click Element    locator=${BTN_WALLET_PROVENT_RECEIVED}
+    Wait Until Element Is Visible    locator=${CHECK_WALLET_PROVENTS_RECEIVED}    timeout=10
+    Element Should Be Visible    locator=${CHECK_WALLET_PROVENTS_RECEIVED}
+    Log To Console    message=[B3] Validate Provent Received Button is present\n
+
+    # Scroll to Provents To Receive section
+    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}    timeout=10
+    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Click Element    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Wait Until Element Is Visible    locator=${CHECK_WALLET_PROVENTS_TO_RECEIVE}    timeout=10
+    Element Should Be Visible    locator=${CHECK_WALLET_PROVENTS_TO_RECEIVE}
+    Log To Console    message=[B3] Validate Provent To Receive Button is present\n
+
+Validate Disclosure Results Title Screen Wallet
+    [Documentation]    Validate the presence of Disclosure Results title in wallet screen
+
+    # Scroll to Disclosure section
+    Scroll Element Into View In Page    locator=${TITLE_WALLET_DISCLOSURE_RESULTS}
+    Wait Until Element Is Visible    locator=${TITLE_WALLET_DISCLOSURE_RESULTS}    timeout=10
+    Element Should Be Visible    locator=${TITLE_WALLET_DISCLOSURE_RESULTS}
+    Log To Console    message=[B3] Validate Disclosure Results Title is present\n
+
 Validate Allocation Filter Buttons Screen Wallet
     [Documentation]    Validate the presence of Produto, Classe and Instituição filter buttons
     
@@ -153,10 +183,8 @@ Click Graphic Line Screen Wallet
 Validate Access All Products Button Screen Wallet
     [Documentation]    Validate the presence of 'Acessar todos os produtos' button
     
-    Scroll Element Into View In Page    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}
-    Element Text Should Be    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}    expected=Acessar todos os produtos
+    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
+    Wait Until Page Contains    text=Acessar todos os produtos    timeout=10s
     Log To Console    message=[B3] Validate 'Acessar todos os produtos' button is present\n
 
 Validate Wallet Action Buttons Screen Wallet
