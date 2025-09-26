@@ -22,7 +22,9 @@ LIST_WALLET_ALLOCATION_ITEMS: id=allocation_items_list
 # Allocation Filter Buttons
 BTN_WALLET_FILTER_PRODUTO: "accessibility_id=Produto\nProduto"
 BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe\nClasse"
+BTN_WALLET_ACCESS_ALL_CLASSES: "accessibility_id=Acessar todas as classes"
 BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição\nInstituição"
+BTN_WALLET_ACCESS_ALL_INSTITUTIONS: "accessibility_id=Acessar todas as instituições"
 
 # Allocation Content Areas
 WALLET_ALLOCATION_CONTENT: id=allocation_content_area
@@ -31,7 +33,8 @@ WALLET_CLASSE_ALLOCATION_INDICATOR: id=classe_allocation_view
 WALLET_INSTITUICAO_ALLOCATION_INDICATOR: id=instituicao_allocation_view
 
 # Access All Products Button
-BTN_WALLET_ACCESS_ALL_PRODUCTS: xpath=//android.widget.Button[@content-desc="Acessar todos os produtos Acessar todos os produtos"]
+#BTN_WALLET_ACCESS_ALL_PRODUCTS: xpath=//android.widget.Button[@content-desc="Acessar todos os produtos Acessar todos os produtos"]
+BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todos os produtos"
 TXT_WALLET_TITLE_ACESSO_RAPIDO: "accessibility_id=Acesso Rápido"
 
 # Wallet Action Buttons

@@ -3,9 +3,12 @@ Documentation    Home Screen
 
 Library          AppiumLibrary
 
-Resource    ${EXECDIR}/resource/utils/element_utils.resource
+Resource    ../../../resource/utils/element_utils.resource
 
-Variables    ${EXECDIR}/robot/elements/wallet.yaml
+Variables    ../../elements/wallet.yaml
+Variables    ../../elements/class.yaml
+Variables    ../../elements/institute.yaml
+Variables    ../../elements/product.yaml
 
 *** Keywords ***
 Navigate To My Wallet From Home Screen Wallet
@@ -22,6 +25,7 @@ Click Access All Products Button Screen Wallet
     
     Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
     Wait Until Page Contains Element    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}    timeout=10
+    
     Log To Console    message=[B3] Clicked 'Acessar todos os produtos' button\n
 
 Validate Toggle Visibility Screen Wallet
@@ -98,71 +102,37 @@ Validate Allocation Filter Buttons Screen Wallet
 
     Log To Console    message=[B3] Allocation filter buttons are present\n
 
-Validate Allocation Filter Functionality Screen Wallet
-    [Documentation]    Validate that allocation filters work correctly by checking content changes
-    
-    # Get initial allocation content
-    ${initial_content}=    Get Element Attribute    locator=${ALLOCATION_CONTENT}    attribute=content-desc
-    
-    # Test Produto filter
-    Click Element    locator=${BTN_FILTER_PRODUTO}
-    Sleep    2s    # Wait for content to load
-    ${produto_content}=    Get Element Attribute    locator=${ALLOCATION_CONTENT}    attribute=content-desc
-    Should Not Be Equal    ${initial_content}    ${produto_content}
-    Log To Console    message=[B3] Produto filter changed allocation content\n
-    
-    # Test Classe filter
-    Click Element    locator=${BTN_FILTER_CLASSE}
-    Sleep    2s
-    ${classe_content}=    Get Element Attribute    locator=${ALLOCATION_CONTENT}    attribute=content-desc
-    Should Not Be Equal    ${produto_content}    ${classe_content}
-    Log To Console    message=[B3] Classe filter changed allocation content\n
-    
-    # Test Instituição filter
-    Click Element    locator=${BTN_FILTER_INSTITUICAO}
-    Sleep    2s
-    ${instituicao_content}=    Get Element Attribute    locator=${ALLOCATION_CONTENT}    attribute=content-desc
-    Should Not Be Equal    ${classe_content}    ${instituicao_content}
-    Log To Console    message=[B3] Instituição filter changed allocation content\n
-
 Validate Specific Filter Content Screen Wallet
     [Documentation]    Validate specific content for each filter type
     [Arguments]    ${filter_type}
     
     IF    '${filter_type}' == 'produto'
-        Click Element    locator=${BTN_FILTER_PRODUTO}
-        Wait Until Element Is Visible    locator=${PRODUTO_ALLOCATION_INDICATOR}    timeout=10
-        Element Should Be Visible    locator=${PRODUTO_ALLOCATION_INDICATOR}
+        Wait Until Page Contains    text=Todos os produtos    timeout=10s
+        Element Should Be Visible    ${ALL_PRODUCTS_QUANTITY}
+        Wait Until Page Contains    text=em 30 dias    timeout=10s
+        Element Should Be Visible    ${ALL_PRODUCTS_ASSETS_COUNT}
+        Element Should Be Visible    ${ALL_PRODUCTS_INSTITUTIONS_COUNT}
+
         Log To Console    message=[B3] Produto allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'classe'
-        Click Element    locator=${BTN_FILTER_CLASSE}
-        Wait Until Element Is Visible    locator=${CLASSE_ALLOCATION_INDICATOR}    timeout=10
-        Element Should Be Visible    locator=${CLASSE_ALLOCATION_INDICATOR}
+        Wait Until Page Contains    text=Produtos por classe    timeout=10s
+        Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
+        Wait Until Page Contains    text=em 30 dias    timeout=10s
+        Element Should Be Visible    ${ALL_CLASSES_ASSETS_COUNT}
+        Element Should Be Visible    ${ALL_CLASSES_INSTITUTIONS_COUNT}
+
         Log To Console    message=[B3] Classe allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'instituicao'
-        Click Element    locator=${BTN_FILTER_INSTITUICAO}
-        Wait Until Element Is Visible    locator=${INSTITUICAO_ALLOCATION_INDICATOR}    timeout=10
-        Element Should Be Visible    locator=${INSTITUICAO_ALLOCATION_INDICATOR}
+        Wait Until Page Contains    text=Produtos por instituição    timeout=10s
+        Element Should Be Visible    ${ALL_INSTITUTIONS_QUANTITY}
+        Wait Until Page Contains    text=em 30 dias    timeout=10s
+        Element Should Be Visible    ${ALL_INSTITUTIONS_ASSETS_COUNT}
+        Element Should Be Visible    ${ALL_INSTITUTIONS_INSTITUTIONS_COUNT}
+
         Log To Console    message=[B3] Instituição allocation content is displayed\n
     END
-
-Complete Allocation Filter Validation Screen Wallet
-    [Documentation]    Complete validation of allocation filters and their functionality
-    
-    # First validate button presence
-    Validate Allocation Filter Buttons
-    
-    # Then validate functionality
-    Validate Allocation Filter Functionality
-    
-    # Validate specific content for each filter
-    Validate Specific Filter Content    produto
-    Validate Specific Filter Content    classe
-    Validate Specific Filter Content    instituicao
-    
-    Log To Console    message=[B3] Complete allocation filter validation completed\n
 
 Click Graphic Bar Screen Wallet
     [Documentation]    Click Graphic Bar
@@ -179,13 +149,6 @@ Click Graphic Line Screen Wallet
     Wait Until Element Is Visible    locator=${BTN_LINE_CHART}    timeout=10
     Click Element    locator=${BTN_LINE_CHART}
     Log To Console    message=[B3] Validate Session Graphic Line\n
-
-Validate Access All Products Button Screen Wallet
-    [Documentation]    Validate the presence of 'Acessar todos os produtos' button
-    
-    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
-    Wait Until Page Contains    text=Acessar todos os produtos    timeout=10s
-    Log To Console    message=[B3] Validate 'Acessar todos os produtos' button is present\n
 
 Validate Wallet Action Buttons Screen Wallet
     [Documentation]    Validate the presence of all wallet action buttons
@@ -241,3 +204,17 @@ Click Wallet Action Button Screen Wallet
     Wait Until Element Is Visible    locator=${button_locator}    timeout=10
     Click Element    locator=${button_locator}
     Log To Console    message=[B3] Clicked '${button_name}' button\n
+
+Click On Back Button Screen Wallet Filters
+    [Documentation]    Validate the back button functionality on the wallet screen filter classe
+
+    # Wait for back button to be visible
+    Wait Until Element Is Visible    ${BTN_WALLET_BACK}    timeout=10s
+    Element Should Be Visible        ${BTN_WALLET_BACK}
+    # Click the back button
+    Click Element                    ${BTN_WALLET_BACK}
+    # Validate navigation to previous screen (e.g., home)
+    Wait Until Element Is Visible    ${HOME_SCREEN_IDENTIFIER}    timeout=10s
+    Element Should Be Visible        ${HOME_SCREEN_IDENTIFIER}
+
+    Log    Back button on wallet screen filter classe validated successfully

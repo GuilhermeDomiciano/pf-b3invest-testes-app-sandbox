@@ -10,7 +10,7 @@ Test Tags    wallet
 
 *** Test Cases ***
 Navegar para Minha Carteira
-    [Documentation]    Navegar para Minha Carteira a partir da tela inicial
+    [Documentation]    Navigate to My Wallet from the home screen
     [Tags]    navegacao_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -20,7 +20,7 @@ Navegar para Minha Carteira
     Navigation To My Wallet
 
 Validar secao my wallet
-    [Documentation]    Validar secao my wallet na carteira
+    [Documentation]    Validate 'my wallet' section in the wallet
     [Tags]    resumo_patrimonio
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -31,7 +31,7 @@ Validar secao my wallet
     Validate My Wallet Section Screen Wallet
 
 Validate Toggle Visibility Screen Wallet
-    [Documentation]    Validar ocultação valores na secao minha carteira
+    [Documentation]    Validate value hiding in the 'my wallet' section
     [Tags]    resumo_patrimonio
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -41,19 +41,8 @@ Validate Toggle Visibility Screen Wallet
     Navigation To My Wallet
     Validate Toggle Visibility Section Screen Wallet
 
-Validate Allocation Section
-    [Documentation]    Validar seção de alocação da carteira
-    [Tags]    alocacao_patrimonio
-
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate My Allocation Filter Buttons Section Screen Wallet
-
 Validate Allocation Filters
-    [Documentation]    Validar filtros da seção de alocação (Produto, Classe, Instituição)
+    [Documentation]    Validate allocation section filters (Product, Class, Institution)
     [Tags]    alocacao_filtros
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -64,7 +53,7 @@ Validate Allocation Filters
     Validate My Allocation Filter Buttons Section Screen Wallet
 
 Validate Quick Access Section
-    [Documentation]    Validar seção de acesso rápido na carteira
+    [Documentation]    Validate quick access section in the wallet
     [Tags]    acesso_rapido
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -72,10 +61,10 @@ Validate Quick Access Section
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    Validate Access All Products Button Section Screen Wallet
+    wallet_functions.Validate Access All Products Button Section Screen Wallet
 
 Validate Wallet Action Buttons
-    [Documentation]    Validar botões de ação na área de scroll horizontal
+    [Documentation]    Validate action buttons in the horizontal scroll area
     [Tags]    acoes_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -86,7 +75,7 @@ Validate Wallet Action Buttons
     Validate Wallet Action Buttons Section Screen Wallet
 
 Validate Charts Toggle Bar
-    [Documentation]    Validar seleção do gráfico de barras
+    [Documentation]    Validate selection of bar chart
     [Tags]    graficos_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -97,7 +86,7 @@ Validate Charts Toggle Bar
     Click Graphic Bar Section Screen Wallet
 
 Validate Charts Toggle Line
-    [Documentation]    Validar seleção do gráfico de linhas
+    [Documentation]    Validate selection of line chart
     [Tags]    graficos_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -108,7 +97,7 @@ Validate Charts Toggle Line
     Click Graphic Line Section Screen Wallet
 
 Validate Provents Section
-    [Documentation]    Validar seção de proventos (recebidos e a receber)
+    [Documentation]    Validate provents section (received and to receive)
     [Tags]    proventos_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -119,7 +108,7 @@ Validate Provents Section
     Validate Provents Title Section Screen Wallet
 
 Validate Disclosure Results Section
-    [Documentation]    Validar seção de divulgação de resultados
+    [Documentation]    Validate disclosure results section
     [Tags]    divulgacao_resultados
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
