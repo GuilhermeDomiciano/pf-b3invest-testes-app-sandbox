@@ -1,7 +1,9 @@
 *** Settings ***
 Documentation    Element Utils
 
-Resource    ${EXECDIR}/robot/base.resource
+Library    OperatingSystem
+
+Resource    ${EXECDIR}/robot/base.resource   
 
 *** Keywords ***
 Scroll Element Into View In Page
@@ -101,3 +103,22 @@ Check If Button Is Not Checked
     ${status}=    Get Element Attribute    ${locator}    checked
     Should Be Equal    ${status}    false
     Log To Console    message= [B3] Button is not checked: ${locator}
+
+
+Enable TalkBack
+    [Documentation]    Enable TalkBack on Android Emulator
+
+    Run    adb shell settings put secure enabled_accessibility_services com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService
+    Run    adb shell settings put secure accessibility_enabled 1
+
+    # Bring app to foreground
+    Run    adb shell am start -n com.b3invest.app/com.b3invest.app.MainActivity
+
+Disable TalkBack
+    [Documentation]    Disable TalkBack on Android Emulator
+
+    Run    adb shell settings put secure accessibility_enabled 0
+    Run    adb shell settings put secure enabled_accessibility_services com.android.talkback/com.google.android.marvin.talkback.TalkBackService
+
+    ${el}=    Run Keyword And Return Status    Wait Until Element Is Visible    Allow    0.5
+        Run Keyword If     ${el}     Click Element    Allow

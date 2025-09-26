@@ -17,12 +17,7 @@ Validate My Wallet Section Screen Wallet
 Validate My Allocation Filter Buttons Section Screen Wallet
     [Documentation]    Validate Allocation Filter Buttons Screen Wallet
 
-    Validate Allocation Filter Buttons Screen Wallet
-
-Validate Access All Products Button Section Screen Wallet
-    [Documentation]    Validate Access All Products Button Screen Wallet
-
-    Validate Access All Products Button Screen Wallet  
+    Validate Allocation Filter Buttons Screen Wallet 
 
 Navigation To My Wallet
     [Documentation]    Navigate To My Wallet From Home Screen Wallet
@@ -33,6 +28,11 @@ Validate Wallet Action Buttons Section Screen Wallet
     [Documentation]    Validate Wallet Action Buttons Section Screen Wallet
 
     Validate Wallet Action Buttons Screen Wallet
+
+Validate Access All Products Button Section Screen Wallet
+    [Documentation]    Validate Access All Products Button Screen Wallet
+
+    Click On Access All Products Button Screen Wallet
 
 Click Graphic Bar Section Screen Wallet
     [Documentation]    Click Graphic Bar Screen Wallet
@@ -178,3 +178,18 @@ Scroll Down To Element
         Swipe By Percent    50    80    50    20    1000
         Sleep    1s
     END
+
+Validate Ballance Filters
+    [Documentation]    Valida o saldo exibido dentro da tela de todos os produtos
+
+    #Validate Access All Products Button Screen Wallet
+    Wait Until Element Is Visible    ${ALL_PRODUCTS_BALANCE}    timeout=10s
+    Element Should Be Visible        ${ALL_PRODUCTS_BALANCE}
+    ${balance}=    Get Text    ${ALL_PRODUCTS_BALANCE}
+    Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
+
+Validate All Contents Inside Filters
+    [Documentation]    Valida os conteúdos exibidos dentro dos filtros de produto, classe e instituição
+    [Arguments]    ${filter_type}
+
+    Validate Specific Filter Content Screen Wallet    ${filter_type}

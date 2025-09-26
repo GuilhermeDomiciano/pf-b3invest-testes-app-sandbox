@@ -17,7 +17,6 @@ Resource     ${EXECDIR}/resource/service/exclude_register_service.resource
 
 # Utils
 Resource     ${EXECDIR}/resource/utils/json_utils.resource
-Resource     ${EXECDIR}/resource/utils/element_utils.resource
 
 # Data
 Variables    ${EXECDIR}/resource/data/users.yaml
@@ -27,6 +26,9 @@ Resource     ${EXECDIR}/robot/functions/login/login_functions.resource
 Resource     ${EXECDIR}/robot/functions/cadastro/cadastro_functions.resource
 Resource     ${EXECDIR}/robot/functions/home/home_functions.resource
 Resource     ${EXECDIR}/robot/functions/wallet/wallet_functions.resource
+Resource     ${EXECDIR}/robot/functions/wallet/product_functions.resource
+Resource     ${EXECDIR}/robot/functions/wallet/class_functions.resource
+Resource     ${EXECDIR}/robot/functions/wallet/institution_functions.resource
 
 *** Keywords ***
 Launch Application AppB3
