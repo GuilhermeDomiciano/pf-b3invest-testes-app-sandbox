@@ -36,6 +36,7 @@ Send Token User
     Send Token Four   token=${token[3]}
     Send Token Five   token=${token[4]}
     Send Token Six    token=${token[5]}
+    Click Continue
 
 Create Password User
     [Documentation]    Create Password User
@@ -45,6 +46,7 @@ Create Password User
     Send Create Password    PASSWORD=${PASSWORD}
     Send Confirm Password    PASSWORD=${PASSWORD}
     Click Confirm Password
+    Confirm Password Change
 
 Confirm Register User
     [Documentation]    Confirm Register User

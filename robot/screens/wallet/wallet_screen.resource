@@ -14,8 +14,8 @@ Variables    ../../elements/product.yaml
 Navigate To My Wallet From Home Screen Wallet
     [Documentation]    Navigate from home screen to My Wallet screen using wallet button
     
-    Wait Until Element Is Visible    locator=${NAV_MY_WALLET}    timeout=10
-    Click Element    locator=${NAV_MY_WALLET}
+    Wait Until Element Is Visible    locator=${BTN_NAV_CARTEIRA}    timeout=10
+    Click Element    locator=${BTN_NAV_CARTEIRA}
     Sleep    2s    # Wait for navigation to complete
     Wait Until Page Contains Element    locator=${TITLE_WALLET_ALLOCATION}    timeout=15
     Log To Console    message=[B3] Navigated to My Wallet screen from Home\n
