@@ -172,3 +172,9 @@ app/
 logs/
 .DS_Store
 .pabotsuitenames
+allure-results/
+output/
+results/
+log.html
+report.html
+output.xml

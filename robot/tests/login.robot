@@ -65,6 +65,8 @@ Validar esqueci minha senha utilizando CPF
     ${TOKEN}=    Get Token Mailsac    EMAIL=${users['user_cc_cpf']['email']}
     Send Token User    TOKEN=${TOKEN}
     Create Password User    PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
     Should Be Home Page
 
 Validar esqueci minha senha utilizando CNPJ
@@ -76,6 +78,8 @@ Validar esqueci minha senha utilizando CNPJ
     ${TOKEN}=    Get Token Mailsac    EMAIL=${users['user_cc_cnpj']['email']}
     Send Token User    TOKEN=${TOKEN}
     Create Password User    PASSWORD=${users['user_cc_cnpj']['password']}
+    No Accept Permissions
+    Skip Profile
     Should Be Home Page
 
 Validar acesso bloqueado quando usuario digitar varias vezes senha errada utilizando CPF

@@ -6,6 +6,33 @@ Library          AppiumLibrary
 Variables    ${EXECDIR}/robot/elements/cadastro.yaml
 
 *** Keywords ***
+Validate Password Requirements Section
+    [Documentation]    Valida se todos os elementos de requisitos da senha estão visíveis na tela de criação de nova senha.
+    ...    Elementos validados:
+    ...    - ${TXT_PASSWORD_REQUIREMENTS_TITLE}
+    ...    - ${TXT_REQ_MIN_8_CHARS}
+    ...    - ${TXT_REQ_UPPERCASE}
+    ...    - ${TXT_REQ_SPECIAL_CHAR}
+    ...    - ${TXT_REQ_LOWERCASE}
+    ...    - ${TXT_REQ_NUMBER}
+    ...    - ${TXT_REQ_NO_SPACES}
+    Wait Until Element Is Visible    locator=${TXT_PASSWORD_REQUIREMENTS_TITLE}    timeout=15
+    Wait Until Element Is Visible    locator=${TXT_REQ_MIN_8_CHARS}    timeout=5
+    Wait Until Element Is Visible    locator=${TXT_REQ_UPPERCASE}    timeout=5
+    Wait Until Element Is Visible    locator=${TXT_REQ_SPECIAL_CHAR}    timeout=5
+    Wait Until Element Is Visible    locator=${TXT_REQ_LOWERCASE}    timeout=5
+    Wait Until Element Is Visible    locator=${TXT_REQ_NUMBER}    timeout=5
+    Wait Until Element Is Visible    locator=${TXT_REQ_NO_SPACES}    timeout=5
+
+Validate Password Requirements Section (Loop)
+    [Documentation]    Alternativa usando loop para validar todos os elementos de requisitos de senha.
+    ...    Facilita manutenção caso novos requisitos sejam adicionados no YAML.
+    @{REQ_ITEMS}=    Create List    ${TXT_REQ_MIN_8_CHARS}    ${TXT_REQ_UPPERCASE}    ${TXT_REQ_SPECIAL_CHAR}    ${TXT_REQ_LOWERCASE}    ${TXT_REQ_NUMBER}    ${TXT_REQ_NO_SPACES}
+    Wait Until Element Is Visible    locator=${TXT_PASSWORD_REQUIREMENTS_TITLE}    timeout=15
+    FOR    ${item}    IN    @{REQ_ITEMS}
+        Wait Until Element Is Visible    locator=${item}    timeout=5
+    END
+
 Validate Contains Message No Access
     [Documentation]    Validate Contains Message No Access
 
@@ -76,6 +103,12 @@ Send Token Six
     Click Element    locator=${INPT_TOKEN_SIX}
     Input Text    locator=${INPT_TOKEN_SIX}    text=${token}
 
+Click Continue
+    [Documentation]    Click Continue
+
+    Wait Until Element Is Visible    locator=${BTN_CONTINUE_OTP}
+    Click Element    locator=${BTN_CONTINUE_OTP}
+
 Send Create Password
     [Documentation]    Send Create Password
     [Arguments]    ${PASSWORD}
@@ -88,9 +121,9 @@ Send Confirm Password
     [Documentation]    Send Confirm Password
     [Arguments]    ${PASSWORD}
 
-    Wait Until Element Is Visible    locator=${INPT_CONFIRM_PASSWORD}    timeout=15
-    Click Element    locator=${INPT_CONFIRM_PASSWORD}
-    Input Text    locator=${INPT_CONFIRM_PASSWORD}    text=${PASSWORD}
+    # Wait Until Element Is Visible    locator=${INPT_CONFIRM_PASSWORD}    timeout=15
+    Click Element    locator=${BTN_CONTINUE_CREATE_PASSWORD}
+    # Input Text    locator=${INPT_CONFIRM_PASSWORD}    text=${PASSWORD}
 
 Click Confirm Password
     [Documentation]    Click Confirm Password
@@ -103,3 +136,9 @@ Validate Register User
 
     # Mudar locator
     Wait Until Element Is Visible    locator=${BTN_CREATE_CONTINUE_PASSWORD}
+
+Confirm Password Change
+    [Documentation]    Confirm Password Change
+    Wait Until Element Is Visible    locator=${TXT_NOVA_SENHA_CRIADA}    timeout=15
+    Wait Until Element Is Visible    locator=${TXT_SENHA_ATUALIZADA}    timeout=15
+    Click Element   locator=${BTN_ACESSAR}

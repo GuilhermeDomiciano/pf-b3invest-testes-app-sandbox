@@ -4,7 +4,6 @@ TITLE_WALLET_ALLOCATION: accessibility_id=Alocação
 TXT_WALLET_TITLE_MY_WALLET: accessibility_id=Minha carteira
 NAV_MY_WALLET: accessibility_id=Ir para carteira
 
-# Cabeçalho da Carteira
 BTN_WALLET_SETTINGS: id=wallet_settings_button
 BTN_WALLET_FILTER: id=wallet_filter_button
 
@@ -48,11 +47,11 @@ BTN_WALLET_OFERTAS_PUBLICAS: "accessibility_id=Ofertas públicas"
 # Container for horizontal scroll area
 WALLET_ACTIONS_CONTAINER: id=wallet_actions_horizontal_scroll
 
-# Assets Summary Section
+
 BTN_WALLET_BAR_CHART: id=b3_bar_chart_toggle_button
 BTN_WALLET_LINE_CHART: id=b3_line_chart_toggle_button
 
-# Provents Section
+
 TITLE_WALLET_PROVENT: accessibility_id=Proventos
 BTN_WALLET_PROVENT_RECEIVED: "accessibility_id=Recebidos\nRecebidos"
 BTN_WALLET_PROVENT_TO_RECEIVE: "accessibility_id=A receber\nA receber"
@@ -62,3 +61,37 @@ CHECK_WALLET_PROVENTS_TO_RECEIVE: "accessibility_id=nos próximos 12 meses"
 # Disclosure results section
 TITLE_WALLET_DISCLOSURE_RESULTS: "accessibility_id=Divulgação de resultados"
 TITLE_WALLET_NEWS_RESULTS: "accessibility_id=Teleconferência de resultados\n1º quarter de 2025"
+
+BTN_NAV_INICIO: id=b3_bottom_nav_bar_item_Início
+BTN_NAV_CARTEIRA: id=b3_bottom_nav_bar_item_Carteira  
+BTN_NAV_PROVENTOS: id=b3_bottom_nav_bar_item_Proventos
+BTN_NAV_BOLSA: id=b3_bottom_nav_bar_item_Bolsa
+BTN_NAV_MENU: id=b3_bottom_nav_bar_item_Menu
+
+TXT_MINHA_CARTEIRA_TITLE: accessibility_id=Minha carteira
+TXT_LAST_UPDATE_DATE: accessibility_id=Atualizado em 19 de maio
+TXT_BALANCE_VALUE: accessibility_id=R$ 0,00
+TXT_VARIATION_PERCENTAGE: accessibility_id=(0%)
+TXT_PERIOD_30_DAYS: accessibility_id=em 30 dias
+
+TXT_ALOCACAO_TITLE: accessibility_id=Alocação
+BTN_FILTER_PRODUTO: accessibility_id=Produto Produto
+BTN_FILTER_CLASSE: accessibility_id=Classe Classe  
+BTN_FILTER_INSTITUICAO: accessibility_id=Instituição Instituição
+
+TXT_CATEGORY_ACOES: accessibility_id=Ações
+BTN_GO_TO_ACOES: accessibility_id=Ir para a página de Ações
+TXT_CATEGORY_DEBENTURES: accessibility_id=Debentures
+BTN_GO_TO_DEBENTURES: accessibility_id=Ir para a página de Debentures
+
+
+BTN_NUMBER_INDICATOR: accessibility_id=3
+
+
+TXT_PORTFOLIO_DETAILS: "accessibility_id=39% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 32% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 18% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 11% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias"
+
+ANDROID_CONTENT_FRAME: id=android:id/content
+
+
+TXT_RENDA_FIXA_PATH: //android.widget.ImageView[@content-desc="Renda Fixa 3 produtos em renda fixa"]
+TXT_RENDA_FIXA: accessibility_id=Renda Fixa\n3 produtos em renda fixa

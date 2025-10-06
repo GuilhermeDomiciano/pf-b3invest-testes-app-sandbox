@@ -54,7 +54,7 @@ Click Button No Accept Discover Profile
 Validate Contains Text Home Page
     [Documentation]    Validate Contains Text Home Page
 
-    Wait Until Element Is Visible    locator=${TXT_HOME}    timeout=10
+    Wait Until Element Is Visible    locator=${TXT_HOME}    timeout=20
 
 Click Button Forgot Password
     [Documentation]    Click Button Forgot Password

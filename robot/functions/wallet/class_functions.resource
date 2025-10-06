@@ -2,6 +2,7 @@
 Documentation    Wallet Functions
 
 Resource    ${EXECDIR}/robot/screens/wallet/class_screen.resource
+Variables    ../../elements/wallet.yaml
 
 *** Keywords ***
 Validate Back Button Screen Wallet Filter Classes
@@ -20,6 +21,7 @@ Validate Products Inside Class Filter
 
     Click On Classe Button Screen Wallet
     Wait Until Page Contains    text=Renda Variável    timeout=10s
+    Scroll Element Into View In Page    locator=id=b3i_navigation_Renda Fixa 
     Wait Until Page Contains    text=Renda Fixa    timeout=10s
 
     Scroll Element Into View In Page    locator=accessibility_id=Internacional
@@ -30,6 +32,7 @@ Validate Arrow Inside Filter Classes
 
     Click On Classe Button Screen Wallet
     Wait Until Page Contains Element    locator=id=b3i_navigation_Renda Variável    timeout=10s
+    Scroll Element Into View In Page    locator=id=b3i_navigation_Renda Fixa 
     Wait Until Page Contains Element    locator=id=b3i_navigation_Renda Fixa    timeout=10s
 
     Scroll Element Into View In Page    locator=id=b3i_navigation_Internacional
