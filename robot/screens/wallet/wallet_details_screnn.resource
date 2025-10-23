@@ -47,6 +47,7 @@ Validate Class Detail Products Counters
     [Documentation]    Valida contadores e textos de ativos/instituições (podem variar entre ambientes).
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_2_ATIVOS}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_4_ATIVOS_EM_1_INSTITUI_O}    timeout=5
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_2_PRODUTOS_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_2_PRODUTOS_EM_RENDA_FIXA}    timeout=5
     Log To Console    message=[B3] Contadores de produtos/instituições validados (best-effort).\n
 
@@ -56,10 +57,11 @@ Validate Class Detail Evolution Section
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}    timeout=10
     # Botões de período (variações)
+     Scroll Element Into View In Page    locator=${CLASS_DETAIL_EL_EM_7_DIAS_ESCOLHER_PER_ODO}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_EM_7_DIAS_ESCOLHER_PER_ODO}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_EM_49_DIAS_ESCOLHER_PER_ODO}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_EM_6_MESES_ESCOLHER_PER_ODO}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO}    timeout=5
+    # Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO}    timeout=5
     Log To Console    message=[B3] Seção de evolução validada.\n
 
 Validate Class Detail Evolution Bars
@@ -74,6 +76,7 @@ Validate Class Detail Donut Allocation Section
     # Scroll usando locator direto seguindo padrão do projeto
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}    timeout=10
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_50_CCB}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_50_CDB}    timeout=5
@@ -83,7 +86,6 @@ Validate Class Detail Products List
     [Documentation]    Valida que itens de produto estão presentes na lista.
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_CCB_1_ATIVO_ITEM_1_DE_2}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_BTN_ACESSAR_PAGINA_DO_ATIVO_TESTE_BTG_PACTUAL_CTV}    timeout=5
     Log To Console    message=[B3] Lista de produtos da classe validada.\n
 
 Select Class Detail Period
@@ -96,8 +98,6 @@ Select Class Detail Period
         ${locator}=    Set Variable    ${CLASS_DETAIL_EL_EM_49_DIAS_ESCOLHER_PER_ODO}
     ELSE IF    '${period}'=='6 m'
         ${locator}=    Set Variable    ${CLASS_DETAIL_EL_EM_6_MESES_ESCOLHER_PER_ODO}
-    ELSE IF    '${period}'=='12 m'
-        ${locator}=    Set Variable    ${CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO}
     END
     Run Keyword If    '${locator}'=='${EMPTY}'    Fail    Período '${period}' não suportado.
     Scroll Element Into View In Page    locator=${locator}

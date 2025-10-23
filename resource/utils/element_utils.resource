@@ -21,7 +21,6 @@ Scroll Element Into View In Page
         END
 
         ${counter}=    Set Variable    ${counter}+1
-        #Scroll Screen
     END
 
 Scroll Until Element Not Found

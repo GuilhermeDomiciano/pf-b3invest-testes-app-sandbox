@@ -134,19 +134,19 @@ Select All Then Clear Institution Filters
     Log    Cenário de limpar e aplicar novamente concluído.
 
 
-# Validate Elementes In Class Detail Screen
-#     [Documentation]    WD-001 - Navega até a tela de detalhe de classe e valida a existência do botão de voltar no topo.
-#     ...                Fluxo: Login simples -> Ignorar permissões -> Pular perfil -> Ir para carteira -> Abrir filtro Classe -> Abrir detalhe (primeira classe) -> Validar botão voltar.
-#     [Tags]    back_button_detail_class    smoke
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Validate Class Detail Overview
-#     Validate Class Detail Products Counters Wrapper
-#     Validate Class Detail Products List Wrapper
-#     Validate Class Detail Evolution    
-#     Select Class Detail Period Wrapper
-#     Validate Class Detail Donut Allocation
+Validate Elementes In Class Detail Screen
+    [Documentation]    WD-001 - Navega até a tela de detalhe de classe e valida a existência do botão de voltar no topo.
+    ...                Fluxo: Login simples -> Ignorar permissões -> Pular perfil -> Ir para carteira -> Abrir filtro Classe -> Abrir detalhe (primeira classe) -> Validar botão voltar.
+    [Tags]    back_button_detail_class    smoke
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Validate Class Detail Overview
+    Validate Class Detail Products Counters Wrapper
+    Validate Class Detail Products List Wrapper
+    Validate Class Detail Evolution    
+    Select Class Detail Period Wrapper
+    Validate Class Detail Donut Allocation

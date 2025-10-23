@@ -1,8 +1,16 @@
-BTN_TOGGLE_VISIBILITY: id=home_header_visibility_toggle
-TXT_HERITAGE_SUMMARY: xpath=//android.view.View[@content-desc="Seu patrimônio"]
+BTN_TOGGLE_VISIBILITY: id=b3_toggle_show_hide_values
+# TXT_HERITAGE_SUMMARY: xpath=//android.view.View[@content-desc="Seu patrimônio"]
+TXT_HERITAGE_SUMMARY: xpath=//*[@content-desc="Seu patrimônio não sofreu alterações nos últimos 30 dias."] | //*[@content-desc="Seu patrimônio reduziu"] |  //*[@content-desc="Seu patrimônio cresceu"] | //*[@accessibility_id="Seu patrimônio não sofreu alterações nos últimos 30 dias."] | //*[@accessibility_id="Seu patrimônio reduziu"] | //*[@accessibility_id="Seu patrimônio cresceu"]
+# //*[@content-desc="Seu patrimônio reduziu"] | 
 TXT_TITLE_MY_WALLET: id=my_wallet_header
-BTN_BAR_CHART: id=b3_bar_chart_toggle_button
-BTN_LINE_CHART: accessibility_id=Exibir gráfico de linhas
+# Botões de gráfico (elementos com NAF=true requerem XPath com resource-id)
+TEXT_VALUE_RESULT: id=b3_total_asset_value
+BTN_BAR_CHART: "xpath=//android.view.View[@resource-id='b3_bar_chart_button']"
+BTN_LINE_CHART: "xpath=//android.view.View[@bounds='[778,1017][904,1120]']"
+# Fallbacks alternativos caso precisar
+# BTN_BAR_CHART_BY_BOUNDS: "xpath=//android.view.View[@bounds='[778,1017][904,1120]']"
+# BTN_BAR_CHART_BY_INDEX: "xpath=(//android.view.View[@clickable='true'])[5]"
+# BTN_LINE_CHART:  xpath=//*[@resource-id=b3_line_chart_button] | //*[id=b3_line_chart_button]
 ICN_OPEN_FINANCE: id=open_finance_icon
 BTN_CUSTOMIZE_SCREEN: "accessibility_id=Personalizar tela inicial"
 BTN_SAVE: "accessibility_id=Salvar"

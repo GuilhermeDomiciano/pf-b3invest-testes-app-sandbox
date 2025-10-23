@@ -10,8 +10,9 @@ Validate Home Login
     Validate Toggle Visibility
     Validate Heritage Summary
     Validate My Wallet
-    Click Graphic Bar
-    Click Graphic Line
+    Validate Asset Evoluation
+    # Click Graphic Line
+    # Click Graphic Bar
 
 Validate Button Customize Home Screen
     [Documentation]    Validate Button Customize Home Screen

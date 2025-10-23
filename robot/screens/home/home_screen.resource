@@ -33,7 +33,16 @@ Click Graphic Bar
     Scroll Element Into View In Page    locator=${BTN_BAR_CHART}
     Scroll Screen
     Wait Until Element Is Visible    locator=${BTN_BAR_CHART}    timeout=10
+    Click Element    locator=${BTN_BAR_CHART}
     Log To Console    message=[B3] Validate Session Graphic Bar\n
+
+Validate Asset Evoluation
+    [Documentation]    Validate Asset Evoluation
+
+    Scroll Element Into View In Page    locator=${TEXT_VALUE_RESULT}
+    Scroll Screen
+    Wait Until Element Is Visible    locator=${TEXT_VALUE_RESULT}    timeout=10
+    Log To Console    message=[B3] Validate Session Asset Evolution\n
 
 Click Graphic Line
     [Documentation]    Click Graphic Line
@@ -48,6 +57,7 @@ Click Customize Home Screen Button
 
     Scroll Element Into View In Page    locator=${BTN_CUSTOMIZE_SCREEN}
     Wait Until Element Is Visible    locator=${BTN_CUSTOMIZE_SCREEN}
+    Scroll Screen
     Click Element    locator=${BTN_CUSTOMIZE_SCREEN}
     Log To Console    message= [B3] Validate Customize Home Screen Button\n
 
@@ -66,10 +76,11 @@ Click Button Customize Home Screen
     Click Element    locator=${BTN_CUSTOMIZE_SCREEN}
 
 Click Button My Wallet
-    [Documentation]    Click Button Customize Home Screen
-
-    Wait Until Element Is Visible        locator=${STW_MY_WALLET}
+    [Documentation]    Click Button My Wallet validando posição central
+    
+    Wait Until Element Is Visible    locator=${STW_MY_WALLET}    timeout=10
     Click Element    locator=${STW_MY_WALLET}
+    Log To Console    message=[B3] My Wallet button clicked after center validation\n
 
 Click Button Asset Evolution
     [Documentation]    Click Button Asset Evolution

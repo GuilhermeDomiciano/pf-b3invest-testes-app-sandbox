@@ -45,7 +45,7 @@ Validate Classes Screen Information
     institution_functions.Validate All Contents Inside Filters    classe
 
 Validate All Titles Inside Class Filter
-    [Documentation]    PFSAPP-251-CA06 - Validates that all expected product titles are present inside the class filter screen.
+    [Documentation]    PFSAPP-251-CA06,CA07 - Validates that all expected product titles are present inside the class filter screen.
     [Tags]    filtro_classe_titulos
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -53,10 +53,10 @@ Validate All Titles Inside Class Filter
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    Validate Products Inside Class Filter
+    Validate Products Inside Class Product And Navigate To Classes
 
 Validate Arrows Inside Class Filter
-    [Documentation]    PFSAPP-251-CA07 - Validate the presence of arrows inside the class filter screen
+    [Documentation]    PFSAPP-251-CA08 - Validate the presence of arrows inside the class filter screen
     [Tags]    filtro_classe_setas
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
@@ -64,5 +64,8 @@ Validate Arrows Inside Class Filter
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    Validate Arrow Inside Filter Classes
+    Validate Card Classes Product
+    # tentar o 11 aqui
+ 
+# falta item 12 10(nao existe foi mudado) cenario de erro. 
     

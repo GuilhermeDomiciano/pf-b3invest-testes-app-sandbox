@@ -21,6 +21,7 @@ Validate Ballance Filters
     #Validate Access All Products Button Screen Wallet
     Wait Until Element Is Visible    ${ALL_PRODUCTS_BALANCE}    timeout=10s
     Element Should Be Visible        ${ALL_PRODUCTS_BALANCE}
+    Element Should Be Visible        ${ALL_PRODUCTS_INSTITUTIONS_COUNT_FIXED}
     ${balance}=    Get Text    ${ALL_PRODUCTS_BALANCE}
     Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
 

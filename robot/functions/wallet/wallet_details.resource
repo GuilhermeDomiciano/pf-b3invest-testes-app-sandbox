@@ -30,8 +30,10 @@ Validate Class Detail Products List Wrapper
 
 Select Class Detail Period Wrapper
     [Documentation]    Seleciona período (7 d, 49 d, 6 m, 12 m) na seção de evolução.
-    [Arguments]    ${period}=7 d
-    Select Class Detail Period    ${period}
+    Select Class Detail Period    7 s   
+    Select Class Detail Period    6 m 
+    Select Class Detail Period    7 d
+    
 
 Open Class Detail Renda Fixa Wrapper
     [Documentation]    Abre a tela de detalhe da classe 'Renda Fixa'.

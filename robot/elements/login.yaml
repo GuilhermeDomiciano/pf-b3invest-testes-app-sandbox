@@ -1,5 +1,6 @@
 INPT_CPF_CNPJ: "id=b3_document_field"
 INPT_PASSWORD: "xpath=//android.widget.EditText"
+# INPT_PASSWORD: "id=b3_password_field"
 BTN_CONTINUE_DOCUMENT: "id=b3_button_text"
 BTN_CONTINUE_PASSWORD: "id=b3_continue_button"
 BTN_AGORA_NAO_TOUCH_ID: "id=b3_skip_biometric_button"
