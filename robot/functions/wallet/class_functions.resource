@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    Wallet Functions
 
-Library    String
 Resource    ${EXECDIR}/robot/screens/wallet/class_screen.resource
 
 *** Keywords ***
@@ -36,10 +35,15 @@ Validate Products Inside Class Product And Navigate To Classes
     Click Element    locator=${BTN_WALLET_BACK}
 
 Validate Card Classes Product
-    [Documentation]    Valida que existem dois cards e que o de cima tem valor maior que o de baixo.
+    [Documentation]    Valida os cards das classes na tela de todas as classes.
 
     Click On Classe Button Screen Wallet
+    Scroll Element Into View In Page    locator=${CARD_RENDA_FIXA}
+    Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA}   timeout=10s
+    Log To Console    message=[B3] Validate Card Classes in Wallet Screen\n
+
     Scroll Element Into View In Page    locator=${CARD_RENDA_FIXA_RESOURCE_ID}
+    Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA_RESOURCE_ID}   timeout=10s
     
 #     # Encontrar os dois cards
 #     @{cards}=    Get WebElements    ${CARD_RENDA_FIXA}
@@ -80,3 +84,4 @@ Validate Card Classes Product
 #     ${money_numeric}=    Convert To Number    ${money_clean}
     
 #     RETURN    ${money_numeric}
+

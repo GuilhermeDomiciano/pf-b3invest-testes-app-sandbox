@@ -102,14 +102,14 @@ Validate Provents Section
     Scroll Down To Element           ${TITLE_WALLET_PROVENT}
     Wait Until Element Is Visible    ${TITLE_WALLET_PROVENT}    timeout=10s
     Element Should Be Visible        ${TITLE_WALLET_PROVENT}
-    Element Should Be Visible        ${BTN_WALLET_PROVENT_RECEIVED}
-    Element Should Be Visible        ${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Element Should Be Visible        ${BTN_WALLET_PROVENT_RECEIVED_SELECTED}
+    Element Should Be Visible        ${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}
     
     # Testa alternância entre recebidos e a receber
-    Click Element                    ${BTN_WALLET_PROVENT_RECEIVED}
+    Click Element                    ${BTN_WALLET_PROVENT_RECEIVED_SELECTED}
     Wait Until Element Is Visible    ${CHECK_WALLET_PROVENTS_RECEIVED}    timeout=5s
     
-    Click Element                    ${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Click Element                    ${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}
     Wait Until Element Is Visible    ${CHECK_WALLET_PROVENTS_TO_RECEIVE}    timeout=5s
     Log    Seção de proventos validada com sucesso
 

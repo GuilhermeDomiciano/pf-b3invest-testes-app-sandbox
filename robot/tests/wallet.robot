@@ -116,4 +116,5 @@ Validate Disclosure Results Section
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    Validate Disclosure Results Title Section Screen Wallet
+    # TODO: difulgacao de resultados saiu do mvp validar quando voltar
+    # Validate Disclosure Results Title Section Screen Wallet
