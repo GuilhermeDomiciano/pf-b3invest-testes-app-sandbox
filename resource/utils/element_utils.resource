@@ -1,7 +1,9 @@
+
 *** Settings ***
 Documentation    Element Utils
 
 Library    OperatingSystem
+Library    regex_money_utils.py
 
 Resource    ${EXECDIR}/robot/base.resource   
 
@@ -121,3 +123,66 @@ Disable TalkBack
 
     ${el}=    Run Keyword And Return Status    Wait Until Element Is Visible    Allow    0.5
         Run Keyword If     ${el}     Click Element    Allow
+
+Pick Card To Check Order
+    [Documentation]    Pick Card To check order
+    [Arguments]    ${card_id}    ${scroll_needed}   ${card_order}=True
+    Scroll Element Into View In Page    locator=${scroll_needed}
+    Wait Until Element Is Visible     locator=${scroll_needed}   timeout=10s
+    Log To Console    message=[B3] Validate Card Classes in Wallet Screen\n
+    @{cards}=    Get WebElements    ${card_id}
+    ${card_count}=    Get Length    ${cards}
+    Should Be True    ${card_count} >= 1    Expected at least 1 card, found ${card_count}
+
+    # Extrair todos os valores em uma lista, ignorando elementos abaixo do scroll_needed
+    @{card_values}=    Create List
+    ${scroll_id}=    Get Element Attribute    ${scroll_needed}    resource-id
+    FOR    ${i}    IN RANGE    ${card_count}
+        ${card_element}=    Get Element Attribute    ${cards}[${i}]    resource-id
+        IF    '${card_element}' == '${scroll_id}'
+            BREAK
+        END
+        ${card_text}=    Get Element Attribute    ${cards}[${i}]    content-desc
+        ${card_value}=    Extract Card Money Value    ${card_text}
+        Log To Console    message=[B3] Card ${i+1}: R$ ${card_value}\n
+        Append To List    ${card_values}    ${card_value}
+    END
+
+    # Validar se a lista está ordenada
+    @{sorted_values}=    Copy List    ${card_values}
+    IF    ${card_order}
+        Sort List    ${sorted_values}
+        Reverse List    ${sorted_values}
+        Log To Console    message=Descendente
+    ELSE
+        Sort List    ${sorted_values}
+        Log To Console    message=Ascendente
+    END
+    Log To Console    message=[B3] Lista original extraída: ${card_values}\n
+    Log To Console    message=[B3] Lista ordenada esperada: ${sorted_values}\n
+    Should Be Equal    ${card_values}    ${sorted_values}    A lista de valores dos cards NÃO está ordenada conforme esperado na tela!
+
+    
+Extract Card Money Value
+    [Documentation]    Extrai valor monetário do texto do card (R$ X.XXX,XX)
+    [Arguments]    ${card_text}
+    
+    # Buscar padrão R$ seguido de números
+    # Extrai o valor monetário (R$ X.XXX,XX) e converte para float
+    # Captura valor no formato brasileiro: R$ X.XXX.XXX.XXX,XX
+    ${normalized}=    Replace String    ${card_text}    \n    ${SPACE}
+    ${normalized}=    Replace String    ${normalized}    \r    ${SPACE}
+    ${normalized}=    Replace String    ${normalized}    \t    ${SPACE}
+    ${normalized}=    Replace String    ${normalized}    \u00A0    ${SPACE}
+    Log To Console    message=[B3] Original card text: ${card_text}\n
+    Log To Console    message=[B3] Normalized card text: ${normalized}\n
+    @{money_matches}=    extrair_valor_monetario    ${normalized}
+    Log To Console    message=[B3] Money matches found: ${money_matches}\n
+    Should Not Be Empty    ${money_matches}    No money value found in card text: ${card_text}
+    ${money_text}=    Set Variable    ${money_matches}[0]
+    # Remove pontos de milhar e troca vírgula por ponto
+    ${money_clean}=    Replace String    ${money_text}    .    ${EMPTY}
+    ${money_clean}=    Replace String    ${money_clean}    ,    .
+    ${money_numeric}=    Convert To Number    ${money_clean}
+    
+    RETURN    ${money_numeric}
