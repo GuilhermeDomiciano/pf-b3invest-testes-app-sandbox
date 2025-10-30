@@ -1,4 +1,5 @@
 
+
 *** Settings ***
 Documentation    Element Utils
 
@@ -186,3 +187,29 @@ Extract Card Money Value
     ${money_numeric}=    Convert To Number    ${money_clean}
     
     RETURN    ${money_numeric}
+
+Disable Android Internet
+    [Documentation]    Desliga a internet (Wi-Fi e dados móveis) do Android via adb
+    Run    adb shell svc wifi disable
+    Run    adb shell svc data disable
+    Sleep   2s
+    Log To Console    message=[B3] Internet do Android desligada (Wi-Fi e dados móveis)
+
+Enable Android Internet
+    [Documentation]    Liga a internet (Wi-Fi e dados móveis) do Android via adb
+    Run    adb shell svc wifi enable
+    Run    adb shell svc data enable
+    Sleep   2s
+    Log To Console    message=[B3] Internet do Android ligada (Wi-Fi e dados móveis)
+
+Check Android Wifi Enabled
+    [Documentation]    Verifica se o Wi-Fi do Android está ativo via adb (retorna True/False)
+    ${output}=    Run    adb shell dumpsys wifi | grep 'Wi-Fi is' | grep 'enabled'
+    ${wifi_on}=    Run Keyword And Return Status    Should Contain    ${output}    enabled
+    RETURN    ${wifi_on}
+
+Restart Android Emulator
+    [Documentation]    Reinicia o emulador Android via adb
+    Run    adb reboot
+    Sleep    30s
+    Log To Console    message=[B3] Emulador Android reiniciado

@@ -21,7 +21,8 @@ Validate All Classes Button Screen Wallet
 
 Validate Products Inside Class Product And Navigate To Classes
     [Documentation]    Valida os títulos dos produtos dentro do filtro de classe: 'Renda Variável', 'Renda Fixa' e 'Internacional' e navega para as classes.
-
+    Wait Until Page Contains    text=Produtos por classe    timeout=10s
+    Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
     Click On Classe Button Screen Wallet
     Scroll Element Into View In Page    locator=${BTN_RENDA_FIXA}
     Wait Until Element Is Visible   locator=${BTN_RENDA_FIXA}   timeout=10s
@@ -53,3 +54,27 @@ Validate Card Order Classes Product
     Click On Classe Button Screen Wallet
     Sleep    2s
     Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${BTN_LOAD_MORE_3}   True
+
+Validate Error Api Class Screen
+    [Documentation]    Valida a mensagem de erro exibida quando a API falha ao carregar os dados da classe.
+    
+    Click On Classe Button Screen Wallet
+    Disable Android Internet
+    Wait Until Page Contains    text=Produtos por classe    timeout=10s
+    Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
+    Wait Until Element Is Visible    ${BTN_WALLET_BACK}    timeout=10s
+    Element Should Be Visible        ${BTN_WALLET_BACK}
+    Wait Until Element Is Visible    locator=${TXT_ERROR_API_CLASS_TITLE}    timeout=10s
+    Element Should Be Visible        locator=${TXT_ERROR_API_CLASS_TITLE}
+    Element Should Be Visible        locator=${TXT_ERROR_API_CLASS_SUB_TITLE}
+    Element Should Be Visible        locator=${BTN_RETRY_API_CLASS}
+    Enable Android Internet
+    Click Element    locator=${BTN_RETRY_API_CLASS}
+    Scroll Element Into View In Page    locator=${CARD_RENDA_FIXA}
+    Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA}   timeout=10s
+
+Check And Restart Emulator
+    [Documentation]    Valida Wi-Fi e reinicia o emulador
+    ${wifi_on}=    Check Android Wifi Enabled
+    Log To Console    message=[B3] Wi-Fi está ativo: ${wifi_on}
+    Restart Android Emulator

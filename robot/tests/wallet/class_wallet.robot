@@ -65,7 +65,6 @@ Validate Arrows Inside Class Filter
     Skip Profile
     Navigation To My Wallet
     Validate Card Classes Product
-    # tentar o 11 aqui
 
 Validate Order Of Class Cards
     [Documentation]    PFSAPP-251-CA11, CA12 - Validate the order of class cards in the wallet and buttons to load more products
@@ -78,5 +77,16 @@ Validate Order Of Class Cards
     Navigation To My Wallet
     Validate Card Order Classes Product
  
+Validate Error Api Class Screen
+    [Documentation]    PFSAPP-251 - Validate the error message displayed when the API fails to load class data
+    [Tags]    erro_api_classe
+    
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate Error Api Class Screen
+    #[Teardown]    Check And Restart Emulator
 # falta item 12 10(nao existe foi mudado) cenario de erro. 
     

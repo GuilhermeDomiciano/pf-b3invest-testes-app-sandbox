@@ -16,6 +16,7 @@ Simple Login
     Send Keys Document    DOCUMENT=${DOCUMENT}
     Click Button Continue Document
 
+    Wait Until Page Contains    text=Agora digite sua senha.   timeout=15s
     Send Keys Password    PASSWORD=${PASSWORD}
     Click Button Continue Password
 
