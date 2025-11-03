@@ -18,6 +18,7 @@ ALL_PRODUCTS_TEXT_MIXED: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\
 BTN_WALLET_BACK: "accessibility_id=Voltar"
 HOME_SCREEN_IDENTIFIER: "accessibility_id=Acesso Rápido"
 ALL_PRODUCTS_QUANTITY: "accessibility_id=Todos os produtos"
+# ALL_PRODUCTS_ASSETS_COUNT: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos na sua carteira$')]"
 ALL_PRODUCTS_ASSETS_COUNT: "accessibility_id=Valorizou R$ 123.456.789,00"
 ALL_PRODUCTS_INSTITUTIONS_COUNT: "accessibility_id=74 ativos em 5 instituições"
 BTN_LOAD_MORE: "accessibility_id=Carregar +8"
