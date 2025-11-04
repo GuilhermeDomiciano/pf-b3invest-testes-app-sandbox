@@ -29,7 +29,7 @@ Validate Institutions Screen Information TopBar
     Skip Profile
     Navigation To My Wallet
     Validate All Institutes Button Screen Wallet
-    institution_functions.Validate All Contents Inside Filters    instituicao
+    Validate All Contents Inside Filters    instituicao
 
 Validate Institutions Screen Information Body
     [Documentation]    PFSAPP-252-CA05, PFSAPP-252-CA06, PFSAPP-252-CA07- PFSAPP-252-CA11 - Validate the body screen and button load more inside the institutions screen

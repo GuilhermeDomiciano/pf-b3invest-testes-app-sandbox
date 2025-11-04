@@ -24,7 +24,7 @@ Validate Back Button In Class Detail Screen
     Validate Class Detail Overview
     Wait Until Element Is Visible    ${CLASS_DETAIL_BTN_VOLTAR}    timeout=10s
     Back Navigation From Class Detail
-    wallet_functions.Validate Ballance Filters
+    Validate Ballance Filters
     Log    Validação do botão voltar na tela de detalhe concluída
 
 Open Institution Filter Bottom Sheet (Draft)

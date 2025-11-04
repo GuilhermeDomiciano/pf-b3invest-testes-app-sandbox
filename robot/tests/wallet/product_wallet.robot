@@ -18,7 +18,7 @@ Validate Back Button Inside All Products
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    institution_functions.Validate Access All Products Button Section Screen Wallet
+    Validate Access All Products Institutions Button Section Screen Wallet
     Click On Back Button Screen Wallet Filters
 
 Validate Ballance Inside All Product Screen
@@ -30,8 +30,8 @@ Validate Ballance Inside All Product Screen
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    institution_functions.Validate Access All Products Button Section Screen Wallet
-    institution_functions.Validate Ballance Filters
+    Validate Access All Products Institutions Button Section Screen Wallet
+    Validate Ballance Filters Institutions
 
 Validate All Products Screen Information
     [Documentation]    PFSAPP-250-CA03, PFSAPP-250-CA04, PFSAPP-250-CA05, PFSAPP-250-CA06 and PFSAPP-250-CA07 - Validate the title 'All Products', the quantity of products in the wallet, the display of profitability over the last 30 days, and the display of the number of assets and institutions
@@ -42,8 +42,8 @@ Validate All Products Screen Information
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    institution_functions.Validate Access All Products Button Section Screen Wallet
-    institution_functions.Validate All Contents Inside Filters    produto
+    Validate Access All Products Institutions Button Section Screen Wallet
+    Validate All Contents Inside Filters    produto
 
 Validate Load More Button When Accessibility On
     [Documentation]    PFSAPP-250-CA10 - Validate the Load More button when accessibility is enabled
@@ -54,7 +54,7 @@ Validate Load More Button When Accessibility On
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    product_functions.Validate Access All Products Button Section Screen Wallet
+    Validate Access All Products Button Section Screen Product Wallet
     Enable TalkBack
     Validate Load More Button When Accessibility On
     Disable TalkBack

@@ -30,7 +30,7 @@ Validate Ballance Inside Classe Screen
     Skip Profile
     Navigation To My Wallet
     Validate All Classes Button Screen Wallet
-    institution_functions.Validate Ballance Filters
+    Validate Ballance Filters Institutions
 
 Validate Classes Screen Information
     [Documentation]    PFSAPP-251-CA03, PFSAPP-251-CA04 and PFSAPP-251-CA05 - Validate the title 'All Classes', the quantity of classes in the wallet, the display of profitability over the last 30 days, and the display of the number of assets and institutions
@@ -42,7 +42,7 @@ Validate Classes Screen Information
     Skip Profile
     Navigation To My Wallet
     Validate All Classes Button Screen Wallet
-    institution_functions.Validate All Contents Inside Filters    classe
+    Validate All Contents Inside Filters    classe
 
 Validate All Titles Inside Class Filter
     [Documentation]    PFSAPP-251-CA06,CA07 - Validates that all expected product titles are present inside the class filter screen.
@@ -53,6 +53,7 @@ Validate All Titles Inside Class Filter
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
     Validate Products Inside Class Product And Navigate To Classes
 
 Validate Arrows Inside Class Filter

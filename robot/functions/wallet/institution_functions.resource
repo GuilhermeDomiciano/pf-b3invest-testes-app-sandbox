@@ -10,12 +10,12 @@ Validate Back Button Screen Wallet Filter Institutions
     Click On Institution Button Screen Wallet
     Click On Back Button Screen Wallet Filters
 
-Validate Access All Products Button Section Screen Wallet
-    [Documentation]    Validate Access All Products Button Screen Wallet
+Validate Access All Products Institutions Button Section Screen Wallet
+    [Documentation]    Validate Access All Products Institutions Button Screen Wallet
 
     Click On Access All Products Button Screen Wallet  
 
-Validate Ballance Filters
+Validate Ballance Filters Institutions
     [Documentation]    Valida o saldo exibido dentro da tela de todos os produtos
 
     #Validate Access All Products Button Screen Wallet
@@ -29,12 +29,6 @@ Validate All Institutes Button Screen Wallet
     [Documentation]    Valida o botão de todas as instituições na tela de todos os produtos
 
     Click On Institution Button Screen Wallet
-
-Validate All Contents Inside Filters
-    [Documentation]    Valida os conteúdos exibidos dentro dos filtros de produto, classe e instituição
-    [Arguments]    ${filter_type}
-
-    Validate Specific Filter Content Screen Wallet    ${filter_type}
 
 Validate And Navigate To Institutions Products And Button Load More
     [Documentation]    Valida e navega para as duas primeiras instituições encontradas na tela, voltando pelo botão de voltar do topo
