@@ -213,3 +213,33 @@ Restart Android Emulator
     Run    adb reboot
     Sleep    30s
     Log To Console    message=[B3] Emulador Android reiniciado
+
+Find Elements Until Specific Element Found
+    [Documentation]    Faz log no terminal de todos os elementos (xpath/accessibility_id) encontrados até achar o elemento específico
+    [Arguments]    ${target_element}
+    @{elements}=    Get WebElements    xpath=//*
+    ${total}=    Get Length    ${elements}
+    ${target_desc}=    Get Element Attribute    ${target_element}    content-desc
+    ${matches_found}=    Set Variable    0
+    FOR    ${i}    IN RANGE    0    ${total}
+        ${desc}=    Get Element Attribute    ${elements}[${i}]    content-desc
+        ${resource_id}=    Get Element Attribute    ${elements}[${i}]    resource-id
+        Log To Console    message=[B3] Elemento ${i}: content-desc='${desc}' resource-id='${resource_id}'
+        IF    '${desc}' != '${EMPTY}' and '${desc}' != 'None'
+            Log To Console    message=[B3] Elemento diferente de null ${i}!
+            IF    '${desc}' == '${target_desc}'
+                Log To Console    message=[B3] Elemento alvo encontrado no índice ${i}!
+                IF   ${matches_found} > 0
+                    Log To Console    message=[B3] Valores monetários encontrados antes do elemento alvo: ${matches_found}\n
+                ELSE
+                    Fail    msg=[B3] TESTE FALHOU: Nenhum valor monetário encontrado antes do elemento alvo!
+                    Log To Console    message=[B3] Nenhum valor monetário encontrado antes do elemento alvo.\n
+                END
+                RETURN
+            ELSE 
+                ${is_monetary}=    Is Valor Monetario    ${desc}
+                ${matches_found}=    Evaluate    ${matches_found} + ${is_monetary}                
+            END
+        END
+    END
+    Log To Console    message=[B3] Elemento alvo não encontrado na tela!

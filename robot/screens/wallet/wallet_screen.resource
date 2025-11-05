@@ -113,6 +113,9 @@ Validate Specific Filter Content Screen Wallet
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_PRODUCTS_ASSETS_COUNT}
         Element Should Be Visible    ${ALL_PRODUCTS_INSTITUTIONS_COUNT}
+        Scroll Element Into View In Page    locator=${CARD_COMPONENT_PRODUCT}
+        Element Should Be Visible    ${CARD_COMPONENT_PRODUCT}
+        Element Should Be Visible    ${CARD_RENDA_FIXA_RESOURCE_ID}
 
         Log To Console    message=[B3] Produto allocation content is displayed\n
         
