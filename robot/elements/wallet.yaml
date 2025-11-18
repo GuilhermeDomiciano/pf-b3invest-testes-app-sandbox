@@ -19,10 +19,10 @@ CHART_WALLET_ALLOCATION: id=wallet_allocation_chart
 LIST_WALLET_ALLOCATION_ITEMS: id=allocation_items_list
 
 # Allocation Filter Buttons
-BTN_WALLET_FILTER_PRODUTO_SELECT: "accessibility_id=Produto, selecionado"
-BTN_WALLET_FILTER_PRODUTO_NOT_SELECTED: "accessibility_id=Produto, não selecionado"
-BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe, não selecionado"
-BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição, não selecionado"
+BTN_WALLET_FILTER_PRODUTO_SELECT: "accessibility_id=Produto, 1 de 3, selecionado"
+BTN_WALLET_FILTER_PRODUTO_NOT_SELECTED: "accessibility_id=Produto, 1 de 3, não selecionado"
+BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe, 2 de 3, não selecionado"
+BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição, 3 de 3, não selecionado"
 BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todos os produtos"
 BTN_WALLET_ACCESS_ALL_CLASSES: "accessibility_id=Acessar todas as classes"
 BTN_WALLET_ACCESS_ALL_INSTITUTIONS: "accessibility_id=Acessar todas as instituições"

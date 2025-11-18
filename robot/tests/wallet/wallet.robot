@@ -72,7 +72,7 @@ Validate Wallet Action Buttons
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
-    Validate Wallet Action Buttons Section Screen Wallet
+    # todo: saiu do MVP vai voltar. Validate Wallet Action Buttons Section Screen Wallet
 
 Validate Charts Toggle Bar
     [Documentation]    Validate selection of bar chart

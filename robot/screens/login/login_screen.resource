@@ -49,6 +49,7 @@ Click Button No Accept Discover Profile
     [Documentation]    Click Button No Accept Discover Profile 
     Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=10
     Run Keyword And Ignore Error  Click Element    locator=${BTN_SKIP_PROFILE}
+    Click Element    locator=${BTN_SHOW_VALUE}
 
 Validate Contains Text Home Page
     [Documentation]    Validate Contains Text Home Page

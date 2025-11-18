@@ -29,5 +29,5 @@ TXT_ERROR_API_CLASS_SUB_TITLE: "accessibility_id=Não foi possível carregar seu
 BTN_RETRY_API_CLASS: "accessibility_id=Tentar novamente"
 # PERIOD: "accessibility_id=Período: em 30 dias"
 
-ALL_PRODUCTS_QUANTITY: "xpath=//android.view.View[@content-desc='Todos os produtos']"
-PERIOD: "xpath=//android.view.View[@content-desc='Período: em 30 dias']"
+ALL_PRODUCTS_QUANTITY: "xpath=//android.view.View[@content-desc='Produtos']"
+PERIOD: "xpath=//android.view.View[@content-desc='em 30 dias']"

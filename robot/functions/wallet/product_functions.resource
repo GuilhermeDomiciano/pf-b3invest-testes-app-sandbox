@@ -35,7 +35,7 @@ Validate Ballance Filters Products
 
     Wait Until Element Is Visible    ${PERIOD}    timeout=10s
     Element Should Be Visible    ${PERIOD}
-    Find Elements Until Specific Element Found   ${PERIOD}
+    Find Elements Until Specific Element Found   ${PERIOD}     match_numbers_expected=2 
 
     Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
 

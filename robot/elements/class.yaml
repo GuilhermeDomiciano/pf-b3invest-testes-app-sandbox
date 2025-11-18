@@ -1,4 +1,4 @@
-ALL_CLASSES_QUANTITY: "accessibility_id=Produtos por classe"
+ALL_CLASSES_QUANTITY: "accessibility_id=Classes"
 
 # Valores fixos (originais - manter como fallback)
 ALL_CLASSES_ASSETS_COUNT_FIXED: "accessibility_id=R$ 2.560.006,04"

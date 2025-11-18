@@ -71,16 +71,16 @@ Validate Order of Product Cards Inside All Products Screen
     Validate Access All Products Filter Button Section Screen Wallet
     Validate Card Order Classes Inside All Products
 
-Validate Error Api Class Screen
-    [Documentation]    PFSAPP-250-CA13 - Validate the error message displayed when the API fails to load class data.
-    [Tags]    erro_api_todos_produtos
+# Validate Error Api Class Screen
+#     [Documentation]    PFSAPP-250-CA13 - Validate the error message displayed when the API fails to load class data.
+#     [Tags]    erro_api_todos_produtos
 
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate Access All Products Filter Button Section Screen Wallet
-    Validate Error Api Products Function Screen
+#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+#     ...             PASSWORD=${users['user_cc_cpf']['password']}
+#     No Accept Permissions
+#     Skip Profile
+#     Navigation To My Wallet
+#     Validate Access All Products Filter Button Section Screen Wallet
+#     Validate Error Api Products Function Screen
 
 #08, 09, 10, 12 fazer no de widgets

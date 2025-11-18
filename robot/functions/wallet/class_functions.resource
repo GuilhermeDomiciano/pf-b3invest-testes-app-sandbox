@@ -21,16 +21,20 @@ Validate All Classes Button Screen Wallet
 
 Validate Products Inside Class Product And Navigate To Classes
     [Documentation]    Valida os títulos dos produtos dentro do filtro de classe: 'Renda Variável', 'Renda Fixa' e 'Internacional' e navega para as classes.
-    Wait Until Page Contains    text=Produtos por classe    timeout=10s
+    Wait Until Page Contains    text=Classe    timeout=10s
     Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
     Scroll Element Into View In Page    locator=${BTN_RENDA_FIXA}
     Wait Until Element Is Visible   locator=${BTN_RENDA_FIXA}   timeout=10s
     Click Element    locator=${BTN_RENDA_FIXA}
+    Wait Until Element Is Visible   locator=${ALL_PRODUCTS_BALANCE}     timeout=10s
     Click Element    locator=${BTN_WALLET_BACK}
+    Scroll Element Into View Top In Page    locator=${PERIOD}
     Scroll Element Into View In Page    locator=${BTN_INTERNACIONAL}        
     Wait Until Element Is Visible    locator=${BTN_INTERNACIONAL}   timeout=10s
     Click Element    locator=${BTN_INTERNACIONAL}
+    Wait Until Element Is Visible   locator=${ALL_PRODUCTS_BALANCE}  timeout=10s
     Click Element    locator=${BTN_WALLET_BACK}
+    Scroll Element Into View Top In Page    locator=${PERIOD}
     Scroll Element Into View In Page    locator=${BTN_RENDA_VARIAVEL}
     Wait Until Element Is Visible     locator=${BTN_RENDA_VARIAVEL}   timeout=10s
     Click Element    locator=${BTN_RENDA_VARIAVEL}

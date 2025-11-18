@@ -16,7 +16,7 @@ Click On Institution Button Screen Wallet
 
     Wait Until Page Contains Element    locator=${BTN_WALLET_FILTER_INSTITUICAO}    timeout=10
     Click Element    locator=${BTN_WALLET_FILTER_INSTITUICAO}
-    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
+    Scroll Element Into View In Page    locator=${BTN_WALLET_ACCESS_ALL_INSTITUTIONS}
     Wait Until Page Contains    text=Acessar todas as instituições    timeout=10s
     Click Element    locator=${BTN_WALLET_ACCESS_ALL_INSTITUTIONS}
 

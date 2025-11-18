@@ -108,7 +108,7 @@ Validate Specific Filter Content Screen Wallet
     [Arguments]    ${filter_type}
     
     IF    '${filter_type}' == 'produto'
-        Wait Until Page Contains    text=Todos os produtos    timeout=10s
+        Wait Until Page Contains    text=Produtos    timeout=10s
         Element Should Be Visible    ${ALL_PRODUCTS_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_PRODUCTS_ASSETS_COUNT}
@@ -120,7 +120,7 @@ Validate Specific Filter Content Screen Wallet
         Log To Console    message=[B3] Produto allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'classe'
-        Wait Until Page Contains    text=Produtos por classe    timeout=10s
+        Wait Until Page Contains    text=Classe    timeout=10s
         Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_CLASSES_ASSETS_COUNT}
@@ -129,7 +129,7 @@ Validate Specific Filter Content Screen Wallet
         Log To Console    message=[B3] Classe allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'instituicao'
-        Wait Until Page Contains    text=Produtos por instituição    timeout=10s
+        Wait Until Page Contains    text=Instituições    timeout=10s
         Element Should Be Visible    ${ALL_INSTITUTIONS_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_INSTITUTIONS_ASSETS_COUNT}
@@ -218,7 +218,8 @@ Click On Back Button Screen Wallet Filters
     # Click the back button
     Click Element                    ${BTN_WALLET_BACK}
     # Validate navigation to previous screen (e.g., home)
-    Wait Until Element Is Visible    ${HOME_SCREEN_IDENTIFIER}    timeout=10s
-    Element Should Be Visible        ${HOME_SCREEN_IDENTIFIER}
+    Scroll Down To Element           ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}
+    Wait Until Element Is Visible    ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}    timeout=10s
+    Element Should Be Visible        ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}
 
     Log    Back button on wallet screen filter classe validated successfully

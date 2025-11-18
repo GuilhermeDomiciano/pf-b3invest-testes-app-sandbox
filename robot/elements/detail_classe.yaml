@@ -7,14 +7,17 @@ CLASS_DETAIL_EL_OCULTAR_VALORES: "id=b3_toggle_show_hide_values"
 CLASS_DETAIL_TXT_RENDA_FIXA: "accessibility_id=Renda Fixa"
 CLASS_DETAIL_TXT_0_39: "accessibility_id=0,39"
 CLASS_DETAIL_TXT_DA_CARTEIRA: "accessibility_id=da carteira"
-CLASS_DETAIL_TXT_2_ATIVOS: "accessibility_id=2 ativos"
+CLASS_DETAIL_TXT_2_ATIVOS: "xpath=//*[matches(@content-desc,'^[0-9]+ ativos$')]"
 CLASS_DETAIL_TXT_R_10_000_00: "accessibility_id=R$ 10.000,00"
 CLASS_DETAIL_TXT_DESVALORIZOU_R_1_495_000_12: "accessibility_id=Desvalorizou -R$ 1.504.934,12"
 CLASS_DETAIL_TXT_PER_ODO_EM_30_DIAS: "accessibility_id=Período: em 30 dias"
 CLASS_DETAIL_TXT_ATIVOS_EM_RENDA_FIXA: "accessibility_id=Ativos em renda fixa"
-CLASS_DETAIL_TXT_4_ATIVOS_EM_1_INSTITUI_O: "accessibility_id=4 ativos em 1 instituição"
+CLASS_DETAIL_TXT_ATIVOS_EM_INSTITUICAO: "xpath=//*[matches(@content-desc,'^[0-9]+ ativos em [0-9]+ instituições$')]"
+
+
 CLASS_DETAIL_TXT_INSTITUI_O_INSTITUI_O: "accessibility_id=Instituição\nInstituição"
-CLASS_DETAIL_TXT_PRODUTO_PRODUTO: "accessibility_id=Produto\nProduto"
+CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED: "accessibility_id=Produto, não selecionado"
+CLASS_DETAIL_TXT_PRODUTO_PRODUTO_SELECTED: "accessibility_id=Produto, selecionado"
 CLASS_DETAIL_TXT_TESTE_BTG_PACTUAL_CTVM_S_A: "accessibility_id=TESTE - BTG PACTUAL CTVM S/A"
 CLASS_DETAIL_TXT_CDB22002LVS: "accessibility_id=CDB22002LVS"
 CLASS_DETAIL_TXT_25_0_R_2_064_18: "accessibility_id=25.0%\nR$ 2.064,18"
@@ -22,12 +25,14 @@ CLASS_DETAIL_TXT_25_0_R_2_064_18: "accessibility_id=25.0%\nR$ 2.064,18"
 # ===== Novos elementos após scroll =====
 CLASS_DETAIL_TXT_2_PRODUTOS_EM_RENDA_FIXA: "accessibility_id=2 produtos em renda fixa"
 CLASS_DETAIL_EL_CCB_1_ATIVO_ITEM_1_DE_2: "id=b3_product_list_item_1"
-CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2: "id=b3_product_list_item_7"
+CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2: "xpath=//*[matches(@resource-id,'^b3_product_list_item_[0-9]+$')]"
 CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA: "accessibility_id=Evolução em renda fixa"
-CLASS_DETAIL_EL_VALOR_DE_EVOLU_O_R_990_000_00_R_990_000_00: "id=b3_total_asset_value"
+CLASS_DETAIL_CHART_VALUE: "id=b3_total_asset_value"
 CLASS_DETAIL_TXT_DESVALORIZOU_R_990_000_00: "accessibility_id=Desvalorizou R$ 990.000,00"
 CLASS_DETAIL_TXT_99: "accessibility_id=(-99%)"
 CLASS_DETAIL_TXT_EM_7_DIAS: "accessibility_id=em 7 dias"
+CLASS_DETAIL_TXT_EM_49_DIAS: "accessibility_id=em 49 dias"
+CLASS_DETAIL_TXT_EM_6_MESES: "accessibility_id=em 6 meses"
 CLASS_DETAIL_TXT_GR_FICO_DE_BARRAS_COM_A_EVOLU_O_DO_INVESTIMEN: "accessibility_id=Gráfico de barras com a evolução do investimento em 7 dias"
 CLASS_DETAIL_EL_11_MAI_2022: "id=b3_bar_chart_bar_0"
 CLASS_DETAIL_EL_12_MAI_2022: "id=b3_bar_chart_bar_1"
@@ -36,9 +41,9 @@ CLASS_DETAIL_EL_16_MAI_2022: "id=b3_bar_chart_bar_3"
 CLASS_DETAIL_EL_17_MAI_2022: "id=b3_bar_chart_bar_4"
 CLASS_DETAIL_EL_18_MAI_2022: "id=b3_bar_chart_bar_5"
 CLASS_DETAIL_EL_19_MAI_2022: "id=b3_bar_chart_bar_6"
-CLASS_DETAIL_EL_EM_7_DIAS_ESCOLHER_PER_ODO: "id=b3_period_selector_7 d"
-CLASS_DETAIL_EL_EM_49_DIAS_ESCOLHER_PER_ODO: "id=b3_period_selector_7 s"
-CLASS_DETAIL_EL_EM_6_MESES_ESCOLHER_PER_ODO: "id=b3_period_selector_6 m"
+CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO: "id=b3_period_selector_7 d"
+CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO: "id=b3_period_selector_7 s"
+CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO: "id=b3_period_selector_6 m"
 CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO: "id=b3_period_selector_12 m"
 
 # ===== Novos elementos após segundo scroll =====
@@ -63,33 +68,34 @@ CLASS_DETAIL_TXT_RENDA_VARIAVEL_PERCENTUAL: "xpath=//android.view.View[contains(
 CLASS_DETAIL_TXT_RENDA_VARIAVEL_VALOR_TOTAL: "xpath=//android.view.View[contains(@content-desc,'R$')][1]"  # Ajustar se houver id específico
 CLASS_DETAIL_TXT_RENDA_VARIAVEL_EVOLUCAO_30_DIAS: "xpath=//android.view.View[contains(@content-desc,'30 dias')]"  # Reutiliza padrão
 CLASS_DETAIL_TXT_ATIVOS_EM_RENDA_VARIAVEL: "accessibility_id=Ativos em renda variável"  # Confirmar label
+CLASS_DETAIL_TXT_ATIVOS_EM_INTERNACIONAL: "accessibility_id=Ativos em internacional" 
 CLASS_DETAIL_TXT_X_ATIVOS_Y_INSTITUICOES: "xpath=//android.view.View[contains(@content-desc,'ativos em') and contains(@content-desc,'instituição')]"  # Texto 'X ativos em Y instituições'
 CLASS_DETAIL_BTN_FILTRO_INSTITUICAO: "xpath=//android.view.View[contains(@content-desc,'Instituição')]"  # Ajustar se houver ID
 CLASS_DETAIL_BTN_FILTRO_PRODUTO: "xpath=//android.view.View[contains(@content-desc,'Produto')]"  # Ajustar se houver ID
 CLASS_DETAIL_INPT_BUSCA: "xpath=//android.widget.EditText"  # Caso único campo de busca na tela
-CLASS_DETAIL_TXT_CARREGAR_MAIS: "xpath=//android.view.View[contains(@content-desc,'Carregar mais')]"
+CLASS_DETAIL_TXT_CARREGAR_MAIS: "xpath=//android.widget.Button[@content-desc='Carregar mais 5 ativos']"
 CLASS_DETAIL_DONUT_RENDA_VARIAVEL: "xpath=//android.view.View[contains(@content-desc,'Alocação em renda variável') or contains(@content-desc,'Alocação')][1]"
 CLASS_DETAIL_PERCENTUAL_LIST_ITEMS: "xpath=//android.view.View[contains(@content-desc,'%') and contains(@content-desc,'R$')]|//android.view.View[contains(@content-desc,' %')]"  # Heurístico para itens com %
 
 # ===== Filtros Instituição (dump atual) =====
 # Chip (reutiliza accessibility_id já existente com quebra de linha)
-CLASS_FILTER_CHIP_INSTITUICAO: "accessibility_id=Instituição\nInstituição"
+CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED: "accessibility_id=Instituição, não selecionado"
+CLASS_FILTER_CHIP_INSTITUICAO_SELECTED: "accessibility_id=Instituição, selecionado"
 CLASS_FILTER_INST_TITLE: "accessibility_id=Selecione uma ou mais instituições"  # título sheet
 # CLASS_FILTER_INST_BTN_SELECT_ALL: "id=allocation_filters_select_all_checkbox"  # Selecionar todos
-CLASS_FILTER_INST_ITEM_1: "id=allocation_filters_checkbox_BTG_PACTUAL_CTVM_S/A"
-CLASS_FILTER_INST_ITEM_2: "id=allocation_filters_checkbox_Itaú"
+CLASS_FILTER_INST_ITEM_1: "id=allocation_filters_checkbox_BANCO_ALFA_DE_INVESTIMENTO_S/A"
+CLASS_FILTER_INST_ITEM_2: "id=allocation_filters_checkbox_BANCO_APLICAP_S/A_-_EM_LIQUIDACAO_EXTRAJ."
 CLASS_FILTER_INST_ITEM_3: "id=allocation_filters_checkbox_PARTICIPANTE_3013_-_SINACOR"
 CLASS_FILTER_INST_ITEM_4: "id=allocation_filters_checkbox_PNP1513A_-_PNP1513A_-_PNP1513A_-_PNP1513A_-_PNP1513A_-_PNP1513A_-_"  # nome extenso
 CLASS_FILTER_INST_ITEM_5: "id=allocation_filters_checkbox_TESTE_-_BCO_RIO_S/A"
 CLASS_FILTER_INST_ITEM_6: "id=allocation_filters_checkbox_TESTE_-_PI_DISTRIBUIDORA_DE_TITULOS_E_VALORES_MOBILIARIOS_S/A"
 CLASS_FILTER_INST_ITEM_7: "id=allocation_filters_checkbox_TESTE_-_PNP1512A"
-CLASS_FILTER_INST_ITEM_8: "id=allocation_filters_checkbox_XP"
-CLASS_FILTER_INST_BTN_APLICAR: "accessibility_id=Aplicar filtros"
+CLASS_FILTER_INST_ITEM_8: "xpath=//android.widget.Button[@content-desc='Limpar filtros\nLimpar filtros']"
+CLASS_FILTER_INST_BTN_APLICAR: "xpath=//android.widget.Button[@content-desc='Aplicar filtros']"
 CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros\nLimpar filtros"  # considerar xpath se instável
-CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BTG PACTUAL CTVM S/A\nBTG PACTUAL CTVM S/A"
-CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados\n2 selecionados"
+CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BANCO ALFA DE INVESTIMENTO S/A, não selecionado"
+CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, não selecionado"
 CLASS_FILTER_INST_BTN_SELECT_ALL: "accessibility_id=Selecionar todos\nSelecionar todos"
-
 
 CLASS_FILTER_PRODUCT_ITEM_1: "id=allocation_filters_checkbox_CCI_-_Cédula_de_Créditos_Imobiliarios"
 CLASS_FILTER_PRODUCT_ITEM_2: "id=allocation_filters_checkbox_DEB_-_Debêntures"
@@ -98,3 +104,19 @@ CLASS_FILTER_ONE_SELECTED_ITEM_PRODUCT: "accessibility_id=CCI - Cédula de Créd
 # ===== Placeholders Produto (aguardando dump) =====
 CLASS_FILTER_CHIP_PRODUTO: "xpath=//android.view.View[contains(@content-desc,'Produto') or contains(@content-desc,'produto')]"  # substituir por id/accessibility real
 CLASS_FILTER_PROD_PLACEHOLDER: "xpath=//android.view.View[contains(@content-desc,'Produto')]"  # título/área genérica até dump
+PERIODO: "xpath=//android.view.View[@content-desc='em 30 dias']"
+
+# ===== Acima gerados por IA =====
+TEXT_VALUE_RESULT_INVESTMENT:  "xpath=//*[matches(@content-desc,'^[A-Za-zÀ-ÿ\\s]+R\\$ [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2}$')]"
+TEXT_RENDA_FIXA_TITLE_CARD:  "xpath=//*[matches(@content-desc,'^Renda Fixa\n[0-9]+ produtos em renda fixa$')]"
+PETEXT_RENDA_FIXA_TITLE_CARD_FIND: "xpath=//android.view.View[@content-desc='Renda fixa']"
+CLASS_FILTER_INTERNACIONAL: "id=b3i_navigation_Internacional"
+CLASS_FILTER_RENDA_FIXA: "xpath=//android.view.View[contains(@content-desc,'Renda Fixa')]"
+CLASS_FILTER_RENDA_VARIAVEL: "id=b3i_navigation_Renda Variável"
+CARD_PRODUCT_SCREEN: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+ ativos, item [0-9]+ de [0-9]+$')]"
+TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^[0-9]+,[0-9]+%\\n[A-Za-z0-9À-ÿ\\s\\-\\.]+$')]"
+TIPE_PRODUCT_ALOCATION_OTHER: "xpath=//*[matches(@content-desc,'[0-9]+%\\nOutros')]"
+# CHART_LINE_BUTTON: "xpath=///*[matches(@content-desc,'b3_line_chart_button')]"
+# CHART_VOICE_OVER_CLOSE: "xpath=//android.view.View[contains(@content-desc,'close_chart_tag')]"
+CHART_VOICE_OVER_CLOSE: xpath=//*[@resource-id="close_chart_tag"]
+

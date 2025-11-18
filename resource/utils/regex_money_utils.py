@@ -7,34 +7,29 @@ def extrair_valor_monetario(texto):
     return re.findall(r'R\$\s*([\d\.,]+)', texto, re.DOTALL)
 
 def is_valor_monetario(texto):
-    """
-    Verifica se a string contém um valor monetário brasileiro válido.
-    
-    Args:
-        texto (str): String a ser verificada
-        
-    Returns:
-        int: 1 se for um valor monetário válido, 0 caso contrário
-        
-    Examples:
-        is_valor_monetario("R$ 1.234,56") -> 1
-        is_valor_monetario("R$ 10,00") -> 1
-        is_valor_monetario("R$ 1.000.000,99") -> 1
-        is_valor_monetario("Texto qualquer") -> 0
-        is_valor_monetario("123,45") -> 0
-    """
     if not texto or not isinstance(texto, str):
         return 0
-    
-    # Remove espaços não-quebráveis
-    texto_limpo = texto.replace('\xa0', ' ').strip()
-    
-    # Padrão para valor monetário brasileiro completo
-    # R$ seguido de valor com formato brasileiro (pontos para milhares, vírgula para decimais)
-    padrao_monetario = r'^R\$\s*[0-9]{1,3}(?:\.[0-9]{3})*(?:,[0-9]{2})?$'
-    
-    if re.match(padrao_monetario, texto_limpo):
+    texto_limpo = texto.replace('\xa0', ' ').replace('\n', ' ').strip()
+    padrao_monetario = r'R\$\s*[0-9]{1,3}(?:\.[0-9]{3})*(?:,[0-9]{2})?'
+    if re.search(padrao_monetario, texto_limpo):
         return 1
     else:
         return 0
 
+# Teste da função is_valor_monetario com diferentes cenários
+casos_teste = [
+    '0.18%\nR$ 212.281.586,93',
+    'R$ 1.234,56',
+    'Saldo: R$ 10,00 disponível',
+    'Total R$ 500',
+    'Texto sem valor monetário',
+    '123,45 sem R$',
+    'R$ 1.000.000,99 investido',
+    'Percentual: 5.5% e valor R$ 25.000,00'
+]
+
+print("=== Testes da função is_valor_monetario ===")
+for i, caso in enumerate(casos_teste, 1):
+    resultado = is_valor_monetario(caso)
+    print(f"Teste {i}: '{caso}' = {resultado}")
+#para rodar chamar no terminarl python3 resource/utils/regex_money_utils.py

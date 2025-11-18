@@ -58,7 +58,7 @@ Validate Error Api Institution Screen
     
     Click On Institution Button Screen Wallet
     Disable Android Internet
-    Wait Until Page Contains    text=Produtos por instituição   timeout=10s
+    Wait Until Page Contains    text=Instituições   timeout=10s
     Element Should Be Visible    ${ALL_INSTITUTIONS_QUANTITY}
     Wait Until Element Is Visible    ${BTN_WALLET_BACK}    timeout=10s
     Element Should Be Visible        ${BTN_WALLET_BACK}
