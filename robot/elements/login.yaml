@@ -1,5 +1,6 @@
 INPT_CPF_CNPJ: "id=b3_document_field"
 INPT_PASSWORD: "xpath=//android.widget.EditText"
+# INPT_PASSWORD: "id=b3_password_field"
 BTN_CONTINUE_DOCUMENT: "id=b3_button_text"
 BTN_CONTINUE_PASSWORD: "id=b3_continue_button"
 BTN_AGORA_NAO_TOUCH_ID: "id=b3_skip_biometric_button"
@@ -10,3 +11,5 @@ BTN_ACTIVE_NOTIFY: "id=b3_activate_notification_button"
 TXT_HOME: "id=my_wallet_header"
 BTN_FORGOR_PASSWORD: "id=b3_forgot_password_button"
 BTN_SKIP_PROFILE: "id=quiz_skip_button"
+BTN_SHOW_VALUE: "accessibility_id=Exibir valores"
+HIDE_VALUE: xpath=//*[@content-desc="valor oculto"]

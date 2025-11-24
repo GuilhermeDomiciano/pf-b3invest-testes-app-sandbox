@@ -14,10 +14,10 @@ Variables    ../../elements/product.yaml
 Click On Classe Button Screen Wallet
     [Documentation]    Click on the Classe filter button in the wallet allocation section
 
-    Wait Until Page Contains Element    locator=${BTN_WALLET_FILTER_CLASSE}    timeout=10
+    Wait Until Page Contains Element    locator=${BTN_WALLET_FILTER_CLASSE}    timeout=10s
     Click Element    locator=${BTN_WALLET_FILTER_CLASSE}
-    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
-    Wait Until Page Contains    text=Acessar todas as classes    timeout=10s
+    Scroll Element Into View In Page    locator=${BTN_WALLET_ACCESS_ALL_CLASSES}
+    Wait Until Page Contains Element    locator=${BTN_WALLET_ACCESS_ALL_CLASSES}  timeout=10s
     Click Element    locator=${BTN_WALLET_ACCESS_ALL_CLASSES}
 
     Log To Console    message=[B3] Clicked Classe filter button in wallet allocation section\n

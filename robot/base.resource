@@ -29,6 +29,7 @@ Resource     ${EXECDIR}/robot/functions/wallet/wallet_functions.resource
 Resource     ${EXECDIR}/robot/functions/wallet/product_functions.resource
 Resource     ${EXECDIR}/robot/functions/wallet/class_functions.resource
 Resource     ${EXECDIR}/robot/functions/wallet/institution_functions.resource
+Resource     ${EXECDIR}/robot/functions/wallet/wallet_details.resource
 
 *** Keywords ***
 Launch Application AppB3

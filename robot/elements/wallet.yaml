@@ -19,10 +19,12 @@ CHART_WALLET_ALLOCATION: id=wallet_allocation_chart
 LIST_WALLET_ALLOCATION_ITEMS: id=allocation_items_list
 
 # Allocation Filter Buttons
-BTN_WALLET_FILTER_PRODUTO: "accessibility_id=Produto\nProduto"
-BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe\nClasse"
+BTN_WALLET_FILTER_PRODUTO_SELECT: "accessibility_id=Produto, 1 de 3, selecionado"
+BTN_WALLET_FILTER_PRODUTO_NOT_SELECTED: "accessibility_id=Produto, 1 de 3, não selecionado"
+BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe, 2 de 3, não selecionado"
+BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição, 3 de 3, não selecionado"
+BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todos os produtos"
 BTN_WALLET_ACCESS_ALL_CLASSES: "accessibility_id=Acessar todas as classes"
-BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição\nInstituição"
 BTN_WALLET_ACCESS_ALL_INSTITUTIONS: "accessibility_id=Acessar todas as instituições"
 
 # Allocation Content Areas
@@ -48,15 +50,17 @@ BTN_WALLET_OFERTAS_PUBLICAS: "accessibility_id=Ofertas públicas"
 WALLET_ACTIONS_CONTAINER: id=wallet_actions_horizontal_scroll
 
 
-BTN_WALLET_BAR_CHART: id=b3_bar_chart_toggle_button
-BTN_WALLET_LINE_CHART: id=b3_line_chart_toggle_button
+BTN_WALLET_BAR_CHART: "xpath=//android.view.View[@resource-id='b3_bar_chart_button']"
+BTN_WALLET_LINE_CHART: "xpath=//android.view.View[@resource-id='b3_line_chart_button']"
 
 
 TITLE_WALLET_PROVENT: accessibility_id=Proventos
-BTN_WALLET_PROVENT_RECEIVED: "accessibility_id=Recebidos\nRecebidos"
-BTN_WALLET_PROVENT_TO_RECEIVE: "accessibility_id=A receber\nA receber"
+BTN_WALLET_PROVENT_RECEIVED_SELECTED: "accessibility_id=Recebidos, selecionado"
+BTN_WALLET_PROVENT_RECEIVED_NOT_SELECTED: "accessibility_id=Recebidos, não selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_SELECTED: "accessibility_id=A receber, selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED: "accessibility_id=A receber, não selecionado"
 CHECK_WALLET_PROVENTS_RECEIVED: "accessibility_id=nos últimos 12 meses"
-CHECK_WALLET_PROVENTS_TO_RECEIVE: "accessibility_id=nos próximos 12 meses"
+CHECK_WALLET_PROVENTS_TO_RECEIVE: "accessibility_id=A receber nos próximos 12 meses"
 
 # Disclosure results section
 TITLE_WALLET_DISCLOSURE_RESULTS: "accessibility_id=Divulgação de resultados"

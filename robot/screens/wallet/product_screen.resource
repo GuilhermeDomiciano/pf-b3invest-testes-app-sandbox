@@ -17,8 +17,14 @@ Click On Load More When TalkBack Enabled
 Click On Access All Products Button Screen Wallet
     [Documentation]    Validate the presence of 'Acessar todos os produtos' button
 
-    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
+    Scroll Element Into View In Page    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}
     Wait Until Page Contains    text=Acessar todos os produtos    timeout=10s
     Click Element    locator=${BTN_WALLET_ACCESS_ALL_PRODUCTS}
     Log To Console    message=[B3] Clicked 'Acessar todos os produtos' button\n
+
+Validate Error Api Products Function Screen
+    [Documentation]    Valida a mensagem de erro exibida quando a API falha ao carregar os dados da classe.
+
+    Validate Error Api Products Function 
+    
     

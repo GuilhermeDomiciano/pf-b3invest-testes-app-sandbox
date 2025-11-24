@@ -166,6 +166,8 @@ cython_debug/
 *.ipa
 *.exe
 *.dmg
+*.xml
+*.json
 
 # Artifact results and app
 app/

@@ -16,7 +16,7 @@ Navigate To My Wallet From Home Screen Wallet
     
     Wait Until Element Is Visible    locator=${BTN_NAV_CARTEIRA}    timeout=10
     Click Element    locator=${BTN_NAV_CARTEIRA}
-    Sleep    2s    # Wait for navigation to complete
+    # Sleep    2s    # Wait for navigation to complete
     Wait Until Page Contains Element    locator=${TITLE_WALLET_ALLOCATION}    timeout=15
     Log To Console    message=[B3] Navigated to My Wallet screen from Home\n
 
@@ -53,19 +53,20 @@ Validate Provents Title Screen Wallet
     [Documentation]    Validate the presence of Provent title in wallet screen
 
     # Scroll to Provents Received section
-    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_RECEIVED}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_RECEIVED}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_RECEIVED}
-    Click Element    locator=${BTN_WALLET_PROVENT_RECEIVED}
+    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_RECEIVED_SELECTED}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_RECEIVED_SELECTED}    timeout=10
+    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_RECEIVED_SELECTED}
+    Click Element    locator=${BTN_WALLET_PROVENT_RECEIVED_SELECTED}
     Wait Until Element Is Visible    locator=${CHECK_WALLET_PROVENTS_RECEIVED}    timeout=10
     Element Should Be Visible    locator=${CHECK_WALLET_PROVENTS_RECEIVED}
     Log To Console    message=[B3] Validate Provent Received Button is present\n
 
     # Scroll to Provents To Receive section
-    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
-    Click Element    locator=${BTN_WALLET_PROVENT_TO_RECEIVE}
+    Scroll Element Into View In Page    locator=${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}    timeout=10
+    Element Should Be Visible    locator=${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}
+    Click Element    locator=${BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED}
+    Scroll Element Into View In Page    locator=${CHECK_WALLET_PROVENTS_TO_RECEIVE}
     Wait Until Element Is Visible    locator=${CHECK_WALLET_PROVENTS_TO_RECEIVE}    timeout=10
     Element Should Be Visible    locator=${CHECK_WALLET_PROVENTS_TO_RECEIVE}
     Log To Console    message=[B3] Validate Provent To Receive Button is present\n
@@ -86,9 +87,9 @@ Validate Allocation Filter Buttons Screen Wallet
     Scroll Element Into View In Page    locator=${TITLE_WALLET_ALLOCATION}
 
     # Validate Produto button
-    Wait Until Element Is Visible    locator=${BTN_WALLET_FILTER_PRODUTO}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_FILTER_PRODUTO}
-    Click Element    locator=${BTN_WALLET_FILTER_PRODUTO}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_FILTER_PRODUTO_SELECT}    timeout=10
+    Element Should Be Visible    locator=${BTN_WALLET_FILTER_PRODUTO_SELECT}
+    Click Element    locator=${BTN_WALLET_FILTER_PRODUTO_SELECT}
 
     # Validate Classe button
     Wait Until Element Is Visible    locator=${BTN_WALLET_FILTER_CLASSE}    timeout=10
@@ -107,16 +108,19 @@ Validate Specific Filter Content Screen Wallet
     [Arguments]    ${filter_type}
     
     IF    '${filter_type}' == 'produto'
-        Wait Until Page Contains    text=Todos os produtos    timeout=10s
+        Wait Until Page Contains    text=Produtos    timeout=10s
         Element Should Be Visible    ${ALL_PRODUCTS_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_PRODUCTS_ASSETS_COUNT}
         Element Should Be Visible    ${ALL_PRODUCTS_INSTITUTIONS_COUNT}
+        Scroll Element Into View In Page    locator=${CARD_COMPONENT_PRODUCT}
+        Element Should Be Visible    ${CARD_COMPONENT_PRODUCT}
+        Element Should Be Visible    ${CARD_RENDA_FIXA_RESOURCE_ID}
 
         Log To Console    message=[B3] Produto allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'classe'
-        Wait Until Page Contains    text=Produtos por classe    timeout=10s
+        Wait Until Page Contains    text=Classe    timeout=10s
         Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_CLASSES_ASSETS_COUNT}
@@ -125,7 +129,7 @@ Validate Specific Filter Content Screen Wallet
         Log To Console    message=[B3] Classe allocation content is displayed\n
         
     ELSE IF    '${filter_type}' == 'instituicao'
-        Wait Until Page Contains    text=Produtos por instituição    timeout=10s
+        Wait Until Page Contains    text=Instituições    timeout=10s
         Element Should Be Visible    ${ALL_INSTITUTIONS_QUANTITY}
         Wait Until Page Contains    text=em 30 dias    timeout=10s
         Element Should Be Visible    ${ALL_INSTITUTIONS_ASSETS_COUNT}
@@ -152,15 +156,15 @@ Click Graphic Line Screen Wallet
 
 Validate Wallet Action Buttons Screen Wallet
     [Documentation]    Validate the presence of all wallet action buttons
-    
+    # TODO: Quando tiver os botoes validar todos aqui codigo comentando so validar ids dos botoes
     # First scroll to the buttons section
-    Scroll Element Into View In Page    locator=${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}
+    Scroll Element Into View In Page    locator=${TXT_WALLET_TITLE_ACESSO_RAPIDO}
     
     # Validate Análises com IA button
-    Scroll Horizontally Until Element Found    ${BTN_WALLET_ANALISES_IA}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_ANALISES_IA}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_ANALISES_IA}
-    Log To Console    message=[B3] 'Análises com IA' button is present\n
+    # Scroll Horizontally Until Element Found    ${BTN_WALLET_ANALISES_IA}
+    # Wait Until Element Is Visible    locator=${BTN_WALLET_ANALISES_IA}    timeout=10
+    # Element Should Be Visible    locator=${BTN_WALLET_ANALISES_IA}
+    # Log To Console    message=[B3] 'Análises com IA' button is present\n
     
     # Validate Extrato button
     Scroll Horizontally Until Element Found    ${BTN_WALLET_EXTRATO}
@@ -169,22 +173,22 @@ Validate Wallet Action Buttons Screen Wallet
     Log To Console    message=[B3] 'Extrato' button is present\n
     
     # Validate Divulgação de resultados button
-    Scroll Horizontally Until Element Found    ${BTN_WALLET_DIVULGACAO_RESULTADOS}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_DIVULGACAO_RESULTADOS}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_DIVULGACAO_RESULTADOS}
-    Log To Console    message=[B3] 'Divulgação de resultados' button is present\n
+    # Scroll Horizontally Until Element Found    ${BTN_WALLET_DIVULGACAO_RESULTADOS}
+    # Wait Until Element Is Visible    locator=${BTN_WALLET_DIVULGACAO_RESULTADOS}    timeout=10
+    # Element Should Be Visible    locator=${BTN_WALLET_DIVULGACAO_RESULTADOS}
+    # Log To Console    message=[B3] 'Divulgação de resultados' button is present\n
     
-    # Validate Garantias button
-    Scroll Horizontally Until Element Found    ${BTN_WALLET_GARANTIAS}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_GARANTIAS}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_GARANTIAS}
-    Log To Console    message=[B3] 'Garantias' button is present\n
+    # # Validate Garantias button
+    # Scroll Horizontally Until Element Found    ${BTN_WALLET_GARANTIAS}
+    # Wait Until Element Is Visible    locator=${BTN_WALLET_GARANTIAS}    timeout=10
+    # Element Should Be Visible    locator=${BTN_WALLET_GARANTIAS}
+    # Log To Console    message=[B3] 'Garantias' button is present\n
     
-    # Validate Ofertas públicas button
-    Scroll Horizontally Until Element Found    ${BTN_WALLET_OFERTAS_PUBLICAS}
-    Wait Until Element Is Visible    locator=${BTN_WALLET_OFERTAS_PUBLICAS}    timeout=10
-    Element Should Be Visible    locator=${BTN_WALLET_OFERTAS_PUBLICAS}
-    Log To Console    message=[B3] 'Ofertas públicas' button is present\n
+    # # Validate Ofertas públicas button
+    # Scroll Horizontally Until Element Found    ${BTN_WALLET_OFERTAS_PUBLICAS}
+    # Wait Until Element Is Visible    locator=${BTN_WALLET_OFERTAS_PUBLICAS}    timeout=10
+    # Element Should Be Visible    locator=${BTN_WALLET_OFERTAS_PUBLICAS}
+    # Log To Console    message=[B3] 'Ofertas públicas' button is present\n
 
 Validate Individual Wallet Button Screen Wallet
     [Documentation]    Validate a specific wallet action button
@@ -214,7 +218,8 @@ Click On Back Button Screen Wallet Filters
     # Click the back button
     Click Element                    ${BTN_WALLET_BACK}
     # Validate navigation to previous screen (e.g., home)
-    Wait Until Element Is Visible    ${HOME_SCREEN_IDENTIFIER}    timeout=10s
-    Element Should Be Visible        ${HOME_SCREEN_IDENTIFIER}
+    Scroll Down To Element           ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}
+    Wait Until Element Is Visible    ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}    timeout=10s
+    Element Should Be Visible        ${BTN_WALLET_EVOLUÇAO_PATRIMONIAL}
 
     Log    Back button on wallet screen filter classe validated successfully

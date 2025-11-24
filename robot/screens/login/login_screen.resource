@@ -36,20 +36,21 @@ Click Button Continue Password
 Click Button No Accept Touch Id
     [Documentation]    Click Button No Accept Touch Id
 
-    Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_TOUCH_ID}    timeout=10
-    Click Element    locator=${BTN_AGORA_NAO_TOUCH_ID}
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_TOUCH_ID}    timeout=10
+    Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_TOUCH_ID}
 
 Click Button No Accept Notify
     [Documentation]    Click Button No Accept Notify
 
-    Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=10
-    Click Element    locator=${BTN_AGORA_NAO_NOTIFY}
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=10
+    Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_NOTIFY}
 
 Click Button No Accept Discover Profile
-    [Documentation]    Click Button No Accept Discover Profile
-
-    Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=10
-    Click Element    locator=${BTN_SKIP_PROFILE}
+    [Documentation]    Click Button No Accept Discover Profile 
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=10
+    Run Keyword And Ignore Error  Click Element    locator=${BTN_SKIP_PROFILE}
+    Wait Until Element Is Visible    locator=${HIDE_VALUE}    timeout=10
+    Click Element    locator=${BTN_SHOW_VALUE}
 
 Validate Contains Text Home Page
     [Documentation]    Validate Contains Text Home Page
