@@ -25,6 +25,7 @@ Validate My Wallet
 
     Scroll Element Into View In Page    locator=${TXT_TITLE_MY_WALLET}
     Wait Until Element Is Visible    locator=${TXT_TITLE_MY_WALLET}    timeout=10
+    Wait Until Element Is Visible    locator=${TXT_TITLE_RECIVE_VALUE}    timeout=10
     Log To Console    message=[B3] Validate Session My Wallet\n
 
 Click Graphic Bar
@@ -118,3 +119,96 @@ Click Default
 
     Wait Until Element Is Visible        locator=${BTN_SAVE}
     Click Element    locator=${BTN_SAVE}
+
+Validate Home Screen Before Customization Screen   
+    [Documentation]    Validate Home Screen Before Customization Screen
+    [Arguments]    ${ID_CARD}   
+
+    Scroll Element Into View In Page    locator=${ID_CARD}
+    Wait Until Element Is Visible    locator=${ID_CARD}    timeout=10
+    Log To Console    message=[B3] Validate Home Screen Before Customization Screen\n
+
+Validate Home Screen After Customization Screen   
+    [Documentation]    Validate Home Screen After Customization Screen
+    [Arguments]    ${ID_CARD}   
+
+    Scroll Element Into View Top In Page     locator=${BTN_TOGGLE_VISIBILITY}
+    Scroll Until Element Not Found    locator_1=${ID_CARD}    locator_2=${BTN_CUSTOMIZE_SCREEN}
+ 
+Navigation To My Wallet From Card
+    [Documentation]    Navigate To My Wallet From Card
+
+    Scroll Element Into View In Page    locator=${TITLE_WALLET}
+    Wait Until Element Is Visible    locator=${TITLE_WALLET}    timeout=10
+    Click Element    locator=${TITLE_WALLET}
+    Wait Until Element Is Visible    locator=${MY_WALLET_LOCATION}    timeout=10
+    Wait Until Element Is Visible    locator=${BOTTOM_NAV_HOME}    timeout=10
+    Click Element    locator=${BOTTOM_NAV_HOME}
+    Log To Console    message=[B3] Navigation To My Wallet From Card\n
+
+Graphic Donut Section Screen Wallet
+    [Documentation]    Graphic Donut Section Screen Wallet
+
+    Scroll Element Into View In Page    locator=${DONUT_GRAFIG}
+    Wait Until Element Is Visible    locator=${DONUT_GRAFIG}    timeout=10
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EM_12_MESES}
+    Scroll Element Into View In Page    locator=${DONUT_GRAFIG}
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=10
+    Log To Console    message=[B3] Graphic Donut Section Screen Wallet\n
+
+Graphic Evolution Section Screen Wallet
+    [Documentation]    Graphic Evolution Section Screen Wallet
+
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_CHART_EM_12_MONTHS_CHOSE_PERIOD}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_12_MESES}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_CHART_YEAR}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_YEARS}    timeout=10
+     Click Element    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS}    timeout=10
+     Click Element    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS}    timeout=10
+     Click Element    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES}    timeout=10
+    Log To Console    message=[B3] Graphic Evolution Section Screen Wallet\n
+
+Navigation To My Wallet From Bottom Nav Bar
+    [Documentation]    Navigate To My Wallet From Bottom Nav Bar
+
+    Wait Until Element Is Visible    locator=${BOTTOM_NAV_WALLET}    timeout=10
+    Click Element    locator=${BOTTOM_NAV_WALLET}
+    Wait Until Element Is Visible    locator=${TITLE_WALLET}    timeout=10
+    Click Element    locator=${BTN_NAV_PROVENTOS}
+    Wait Until Element Is Visible    locator=${SCREEN_PROVENTS}    timeout=10
+    Click Element    locator=${BOTTOM_NAV_EXTRACT}
+    Wait Until Element Is Visible    locator=${SCREEN_EXTRACT}    timeout=10
+    Click Element    locator=${BTN_NAV_MENU}
+    Wait Until Element Is Visible    locator=${SCREEN_MENU}    timeout=10
+    Click Element    locator=${BOTTOM_NAV_HOME}
+    Log To Console    message=[B3] Navigation To My Wallet From Bottom Nav Bar\n
+
+Validate Events Section Screen Home
+    [Documentation]    Validate Events Section Screen Home
+
+    Scroll Element Into View In Page    locator=${TITLE_EVENTOS}
+    Wait Until Element Is Visible    locator=${TITLE_EVENTOS}    timeout=10
+    Click Element    locator=${TITLE_EVENTOS}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_BACK}    timeout=10
+    Scroll Element Into View In Page    locator=${EVENT_1_3}
+    Scroll Horizontal Long
+
+    Wait Until Element Is Visible    locator=${EVENT_2_3}    timeout=10
+    Scroll Horizontal Long
+    Wait Until Element Is Visible    locator=${EVENT_3_3}    timeout=10
+    Log To Console    message=[B3] Validate Events Section Screen Home\n    
+
+Validate News Section Screen Home
+    [Documentation]    Validate News Section Screen Home
+
+    Scroll Element Into View In Page    locator=${TITLE_NOTICIAS}
+    Wait Until Element Is Visible    locator=${TITLE_NOTICIAS}    timeout=10
+    Click Element    locator=${TITLE_NOTICIAS}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_BACK}    timeout=10
+    Click Element    locator=${BTN_WALLET_BACK}
+    Scroll Element Into View In Page    locator=${BTN_CUSTOMIZE_SCREEN}
+    Wait Until Element Is Visible    locator=${NEWS_IS_VISIBLE}    timeout=10
+    Log To Console    message=[B3] Validate News Section Screen Home\n

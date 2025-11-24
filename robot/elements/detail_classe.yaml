@@ -44,7 +44,8 @@ CLASS_DETAIL_EL_19_MAI_2022: "id=b3_bar_chart_bar_6"
 CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO: "id=b3_period_selector_7 d"
 CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO: "id=b3_period_selector_7 s"
 CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO: "id=b3_period_selector_6 m"
-CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO: "id=b3_period_selector_12 m"
+CLASS_DETAIL_CHART_EM_12_MESES_ESCOLHER_PERIODO: "id=b3_period_selector_12 m"
+CLASS_DETAIL_CHART_YEAR: "id=b3_period_selector_anos"
 
 # ===== Novos elementos após segundo scroll =====
 # CLASS_DETAIL_EL_EM_7_DIAS_ESCOLHER_PER_ODO_ALT: "id=b3_period_selector_7 d"

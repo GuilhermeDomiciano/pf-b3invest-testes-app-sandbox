@@ -12,3 +12,4 @@ TXT_HOME: "id=my_wallet_header"
 BTN_FORGOR_PASSWORD: "id=b3_forgot_password_button"
 BTN_SKIP_PROFILE: "id=quiz_skip_button"
 BTN_SHOW_VALUE: "accessibility_id=Exibir valores"
+HIDE_VALUE: xpath=//*[@content-desc="valor oculto"]

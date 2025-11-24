@@ -42,19 +42,40 @@ Scroll Element Into View Top In Page
     END
 
 Scroll Until Element Not Found
-    [Documentation]    Scrolls until an element with given Accessibility ID is NOT visible anymore.
+    [Documentation]    Faz scroll procurando por elementos. Se encontrar locator_1, o teste falha. Se encontrar locator_2, o teste passa.
     [Arguments]    ${locator_1}    ${locator_2}
 
+    Log To Console    message=[B3] Verificando presença de elementos na tela
+
     FOR    ${counter}    IN RANGE    0    15
+        Log To Console    message=[B3] Tentativa ${counter + 1}/15 - Verificando presença dos elementos
 
-        ${el}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator_1}    0.5
-        Run Keyword If     ${el}     Exit For Loop
-        ${el}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator_2}    0.5
-        Run Keyword If     ${el}     Exit For Loop
+        # Verifica se o primeiro elemento está visível (FALHA se encontrar)
+        ${el1_found}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator_1}    0.5
+        IF    ${el1_found}
+            Log To Console    message=[B3] ❌ FALHA: Elemento indesejado encontrado na tela: ${locator_1}
+            Fail    msg=Teste falhou: Elemento '${locator_1}' foi encontrado na tela, mas não deveria estar visível!
+        END
+
+        # Verifica se o segundo elemento está visível (SUCESSO se encontrar)
+        ${el2_found}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator_2}    0.5
+        IF    ${el2_found}
+            Log To Console    message=[B3] ✅ SUCESSO: Elemento de validação encontrado: ${locator_2}
+            Log To Console    message=[B3] Teste passou - elemento de validação está presente na tela
+            RETURN
+        END
+
+        # Se chegou até aqui, nenhum elemento foi encontrado nesta tentativa
+        Log To Console    message=[B3] ➡️ Nenhum elemento encontrado nesta tentativa - fazendo scroll para verificar mais conteúdo
+
+        # Faz scroll para verificar mais conteúdo da tela
         Scroll Screen
-
         ${counter}=    Set Variable    ${counter}+1
     END
+
+    # Se terminou o loop sem encontrar o elemento de validação, o teste passou
+    Log To Console    message=[B3] ✅ SUCESSO: Elemento indesejado '${locator_1}' não foi encontrado após ${15} tentativas de scroll!
+    Log To Console    message=[B3] Teste passou - elemento indesejado não está presente na tela
 
 Scroll Screen
     [Documentation]    Scroll Screen
@@ -133,6 +154,29 @@ Scroll Horizontal
     
     Sleep    1s
     Log To Console    message=[B3] Horizontal scroll ${direction} performed\n
+Scroll Horizontal Long
+    [Documentation]    Perform a longer horizontal swipe to navigate through more distant horizontal elements
+    [Arguments]    ${direction}=right
+    
+    IF    '${platformName}'=='android'
+        IF    '${direction}'=='right'
+            # Swipe from far right to far left (scroll right, mais longo)
+            Swipe    ${900}    ${1180}    ${0}    ${1180}
+        ELSE
+            # Swipe from far left to far right (scroll left, mais longo)
+            Swipe    ${0}    ${1180}    ${900}    ${1180}
+        END
+    ELSE
+        IF    '${direction}'=='right'
+            # iOS swipe coordinates (mais longo)
+            Swipe    ${900}    ${1180}    ${0}    ${1180}
+        ELSE
+            Swipe    ${0}    ${1180}    ${900}    ${1180}
+        END
+    END
+    
+    Sleep    1s
+    Log To Console    message=[B3] Horizontal LONG scroll ${direction} performed\n
 
 Scroll Horizontally Until Element Found
     [Documentation]    Scroll horizontally until a specific element is found

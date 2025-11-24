@@ -28,7 +28,9 @@ users:
   user_cc_cpf:
     # document: '01077393644'
     # document: '99410474051'
-    document: '98765432100'
+    # document: '83970000629'
+    # document: '98765432100'
+    document: '98880198050'
     password: Bvmf@123
     password_error: Bvmf@321
     email: b3-user-cc-cpf@mailsac.com
