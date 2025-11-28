@@ -7,9 +7,9 @@ Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
 Test Tags    wallet_details
-
+# 7 cenarios de teste relacionados a tela de detalhes da carteira
 *** Test Cases ***
-Validate Back Button In Class Detail Screen, Check Elements header And Title Start List And Name Filter
+Validate Back Button In Class Detail Screen, Check Elements header And Title Start List And Name Filter Renda Fixa
     [Documentation]    PFSAPP-254-CA01, PFSAPP-254-CA02, PFSAPP-254-CA03, PFSAPP-254-CA04.1
     [Tags]    back button, header page, title start list and name filter
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
@@ -19,13 +19,13 @@ Validate Back Button In Class Detail Screen, Check Elements header And Title Sta
     Navigation To My Wallet
     Validate All Classes Button Screen Wallet
     Open Class Detail Renda Fixa Wrapper
-    Validate Class Detail Overview
-    Validate Class Detail Products Counters Wrapper
+    Validate Class Detail Overview Renda Fixa
+    Validate Class Detail Products Counters Wrapper   screen=renda fixa
     Wait Until Element Is Visible    ${CLASS_DETAIL_BTN_VOLTAR}    timeout=10s
-    Back Navigation From Class Detail
+    Back Navigation From Class Detail Renda Fixa
     Log    Validação do botão voltar na tela de detalhe concluída
 
-Validate List Components In Class Detail Screen
+Validate List Components In Class Detail Screen Renda Fixa
     [Documentation]    PFSAPP-254-CA05
     [Tags]    back button, header page and title start list
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
@@ -35,7 +35,7 @@ Validate List Components In Class Detail Screen
     Navigation To My Wallet
     Validate All Classes Button Screen Wallet
     Open Class Detail Renda Fixa Wrapper
-    Validate Class Detail Card Ativos Components
+    Validate Class Detail Card Ativos Components Renda Fixa
 
 Validate Elementes Orders And Pagination In Class Detail Screen Renda Fixa
     [Documentation]    PFSAPP-254-CA06, PFSAPP-254-CA07
@@ -52,33 +52,7 @@ Validate Elementes Orders And Pagination In Class Detail Screen Renda Fixa
 
 #8, 9, 10 e caso de erro
 
-Validate Elementes Orders And Pagination In Class Detail Screen Internacional
-    [Documentation]    PFSAPP-254-CA06, PFSAPP-254-CA07
-    [Tags]    back button, header page and title start list
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate All Classes Button Screen Wallet
-    Open Class Detail Internacional Wrapper
-    Validate Class Detail Pagination Components    screen=internacional
-    Log    Validação dos componentes da lista de produtos na tela de detalhe concluída
-
-Validate Elementes Orders And Pagination In Class Detail Screen Renda Variável
-    [Documentation]    PFSAPP-254-CA06, PFSAPP-254-CA07
-    [Tags]    back button, header page and title start list
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate All Classes Button Screen Wallet
-    Open Class Detail Renda Variável Wrapper
-    Validate Class Detail Pagination Components    screen=renda variável
-    Log    Validação dos componentes da lista de produtos na tela de detalhe concluída
-
-Validate Card Products, Evolution And Donut
+Validate Card Products, Evolution And Donut Renda Fixa
     [Documentation]    PFSAPP-254-CA08, 09, 10
     [Tags]    Chart Evolution, chart Donut and Products cards
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
@@ -88,36 +62,38 @@ Validate Card Products, Evolution And Donut
     Navigation To My Wallet
     Validate All Classes Button Screen Wallet
     Open Class Detail Renda Fixa Wrapper
-    Validate Card Products, Evolution And Donut Components
+    Validate Card Products, Evolution And Donut Components Renda Fixa
     Log    Validação completa da tela de detalhe da classe concluída
+# TODO Parei aqui precisa testar a navegacao para os cards de ativos acima do grafico de evolucao.
+# #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
+# Open Institution Filter Bottom Sheet (Draft) Renda Fixa
+#     [Documentation]    PFSAPP-254-CA05
+#     [Tags]    back button, header page and title start list
+#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+#     ...             PASSWORD=${users['user_cc_cpf']['password']}
+#     No Accept Permissions
+#     Skip Profile
+#     Navigation To My Wallet
+#     Validate All Classes Button Screen Wallet
+#     Open Class Detail Renda Fixa Wrapper
+#     Open Institution Filter Wrapper
+#     Apply Institution Filters Wrapper
+#     Clear Institution Filters Wrapper
+#     Log    Bottom sheet Instituição aberto (placeholder)
 
-Open Institution Filter Bottom Sheet (Draft)
-    [Documentation]    PFSAPP-254-CA05
-    [Tags]    back button, header page and title start list
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate All Classes Button Screen Wallet
-    Open Class Detail Renda Fixa Wrapper
-    Open Institution Filter Wrapper
-    Apply Institution Filters Wrapper
-    Clear Institution Filters Wrapper
-    Log    Bottom sheet Instituição aberto (placeholder)
-
-Open Product Filter Bottom Sheet (Draft)
-    [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-    [Tags]    botao_voltar
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate All Classes Button Screen Wallet
-    Open Class Detail Renda Fixa Wrapper
-    Open Product Filter Wrapper
-    Log    Bottom sheet Produto aberto (placeholder)
+# #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
+# Open Product Filter Bottom Sheet (Draft) Renda Fixa
+#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
+#     [Tags]    botao_voltar
+#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+#     ...             PASSWORD=${users['user_cc_cpf']['password']}
+#     No Accept Permissions
+#     Skip Profile
+#     Navigation To My Wallet
+#     Validate All Classes Button Screen Wallet
+#     Open Class Detail Renda Fixa Wrapper
+#     Open Product Filter Wrapper
+#     Log    Bottom sheet Produto aberto (placeholder)
 
 # Apply Single Institution Filter
 #     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen

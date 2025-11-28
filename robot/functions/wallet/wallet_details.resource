@@ -7,23 +7,30 @@ Resource    ${EXECDIR}/robot/screens/wallet/wallet_details_screnn.resource
 Resource    ${EXECDIR}/robot/screens/wallet/wallet_screen.resource
 
 *** Keywords ***
-Validate Class Detail Overview
+Validate Class Detail Overview Renda Fixa
     [Documentation]    Wrapper para validar cabeçalho/overview da classe.
     Validate Class Detail Overview Section
     Validate Ballance Filters Products Renda Fixa
 
+Validate Class Detail Overview Internacional
+    [Documentation]    Wrapper para validar cabeçalho/overview da classe.
+    Validate Class Detail Overview Section
+    Validate Ballance Filters Products Internacional
+
+Validate Class Detail Overview Renda Variável
+    [Documentation]    Wrapper para validar cabeçalho/overview da classe.
+    Validate Class Detail Overview Section
+    Validate Ballance Filters Products Renda Variavel
+
 Validate Class Detail Products Counters Wrapper
     [Documentation]    Wrapper para validar contadores de produtos/instituições.
-    Validate Class Detail Products Counters
+    [Arguments]    ${screen}
+    Validate Class Detail Products Counters  screen=${screen}
 
 Validate Class Detail Evolution
     [Documentation]    Wrapper para validar seção de evolução e algumas barras.
     Validate Class Detail Evolution Section
     Validate Class Detail Evolution Bars
-
-Validate Class Detail Donut Allocation
-    [Documentation]    Wrapper para validar seção de alocação (gráfico donut).
-    Validate Class Detail Donut Allocation Section
 
 Validate Class Detail Products List Wrapper
     [Documentation]    Wrapper para validar itens principais da lista de produtos.
@@ -52,17 +59,25 @@ Validate Complete Class Detail
     [Documentation]    Executa validação completa agrupada da tela de detalhe de classe.
     Validate Full Class Detail Screen
 
-Validate Class Detail With Period
+Validate Complete Class Detail
     [Documentation]    Executa validação completa e depois seleciona um período específico.
     [Arguments]    ${period}=7_d
     Validate Full Class Detail Screen
     Select Class Detail Period    ${period}
 
-Back Navigation From Class Detail
+Back Navigation From Class Detail Renda Fixa
     [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.
-    Validate Class Detail Back Button Section
+    Validate Class Detail Back Button Section Renda Fixa
+    
+Back Navigation From Class Detail Internacional
+    [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.
+    Validate Class Detail Back Button Section Internacional
     
 
+Back Navigation From Class Detail Renda Variável
+    [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.
+    Validate Class Detail Back Button Section Renda Variável
+    
 Open Institution Filter Wrapper
     [Documentation]    Wrapper para abrir bottom sheet de filtro Instituição (placeholders).
     Open Institution Filter Bottom Sheet
@@ -131,17 +146,40 @@ Open Filter Two Item Selection Wrapper
     [Documentation]    Abre bottom sheet de filtro de Instituição e seleciona dois itens.
     Open Filter Two Item Selection
 
-Validate Class Detail Card Ativos Components
+Validate Class Detail Card Ativos Components Renda Fixa
     [Documentation]    Wrapper para validar componentes do card de ativos na tela de detalhe da classe.
-    Validate Class Detail Card Ativos Components Screen
+    Validate Class Detail Card Ativos Components Screen Renda Fixa
+
+Validate Class Detail Card Ativos Components Renda Variavel
+    [Documentation]    Wrapper para validar componentes do card de ativos na tela de detalhe da classe.
+    Validate Class Detail Card Ativos Components Screen Renda Variavel
+
+Validate Class Detail Card Ativos Components Internacional    
+    [Documentation]    Wrapper para validar componentes do card de ativos na tela de detalhe da classe.
+    Validate Class Detail Card Ativos Components Screen Internacional
 
 Validate Class Detail Pagination Components
     [Documentation]    Wrapper para validar componentes de paginação na tela de detalhe da classe.
     [Arguments]    ${screen}
     Validate Class Detail Pagination Components Screen    screen=${screen}
 
-Validate Card Products, Evolution And Donut Components
+Validate Card Products, Evolution And Donut Components Renda Fixa
     [Documentation]    Wrapper para validar cards de produtos, evolução, overview e paginação na tela de detalhe da classe.
     Validate Card Products
+    Validate Class Detail Overview Section Evolution Graphic Renda Fixa
     Validate Class Detail Evolution Section
-    Validate Class Detail Donut Allocation Section
+    Validate Class Detail Donut Allocation Section Renda Fixa
+
+Validate Card Products, Evolution And Donut Components Renda Variavel
+    [Documentation]    Wrapper para validar cards de produtos, evolução, overview e paginação na tela de detalhe da classe.
+    Validate Card Products
+    Validate Class Detail Overview Section Evolution Graphic Renda Variavel
+    Validate Class Detail Evolution Section
+    Validate Class Detail Donut Allocation Section Renda Variavel
+
+Validate Card Products, Evolution And Donut Components Internacional
+    [Documentation]    Wrapper para validar cards de produtos, evolução, overview e paginação na tela de detalhe da classe.
+    Validate Card Products
+    Validate Class Detail Overview Section Evolution Graphic Internacional
+    Validate Class Detail Evolution Section
+    Validate Class Detail Donut Allocation Section Internacional

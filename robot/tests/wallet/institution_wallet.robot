@@ -8,6 +8,8 @@ Test Teardown    Close Application AppB3
 
 Test Tags    institution_wallet
 
+# 12 cenarios de teste relacionados a tela de instituicoes na carteira
+
 *** Test Cases ***
 Validate Back Button Inside Filter Institutions
     [Documentation]    PFSAPP-252 - Validate the back button functionality inside the institutions screen
