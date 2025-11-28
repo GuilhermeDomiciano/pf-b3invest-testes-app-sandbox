@@ -181,6 +181,7 @@ Validate Full Class Detail Screen
 Open Institution Filter Bottom Sheet
     [Documentation]    Abre bottom sheet do filtro de Instituição (locators definitivos).
     # Pré-condição: já estamos na tela de detalhe da classe.
+    Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
     Click Element    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_TITLE}    timeout=10
@@ -210,8 +211,12 @@ Apply Institution Filters
     # Após aplicar, o bottom sheet deve fechar; aguardar desaparecimento do título
     Sleep    0.5s
     Log To Console    message=[B3] Filtros de Instituição aplicados.\n
+
 Clear Institution Filters
     [Documentation]    Limpa seleções no bottom sheet de Instituição (mantém sheet aberto).
+    Click All Elements In Screen
+    Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
+    Click Element    locator=${SELECT_FILTER_BOTTOM_SHEET}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s

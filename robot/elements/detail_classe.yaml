@@ -93,10 +93,11 @@ CLASS_FILTER_INST_ITEM_6: "id=allocation_filters_checkbox_TESTE_-_PI_DISTRIBUIDO
 CLASS_FILTER_INST_ITEM_7: "id=allocation_filters_checkbox_TESTE_-_PNP1512A"
 CLASS_FILTER_INST_ITEM_8: "xpath=//android.widget.Button[@content-desc='Limpar filtros\nLimpar filtros']"
 CLASS_FILTER_INST_BTN_APLICAR: "xpath=//android.widget.Button[@content-desc='Aplicar filtros']"
-CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros\nLimpar filtros"  # considerar xpath se instável
+CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros"  # considerar xpath se instável
 CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BANCO ALFA DE INVESTIMENTO S/A, não selecionado"
 CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, não selecionado"
 CLASS_FILTER_INST_BTN_SELECT_ALL: "accessibility_id=Selecionar todos\nSelecionar todos"
+SELECT_FILTER_BOTTOM_SHEET: "accessibility_id=Selecione uma ou mais instituições"
 
 CLASS_FILTER_PRODUCT_ITEM_1: "id=allocation_filters_checkbox_CCI_-_Cédula_de_Créditos_Imobiliarios"
 CLASS_FILTER_PRODUCT_ITEM_2: "id=allocation_filters_checkbox_DEB_-_Debêntures"
@@ -115,8 +116,8 @@ CLASS_FILTER_INTERNACIONAL: "id=b3i_navigation_Internacional"
 CLASS_FILTER_RENDA_FIXA: "xpath=//android.view.View[contains(@content-desc,'Renda Fixa')]"
 CLASS_FILTER_RENDA_VARIAVEL: "id=b3i_navigation_Renda Variável"
 CARD_PRODUCT_SCREEN: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+ ativos, item [0-9]+ de [0-9]+$')]"
-TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^[0-9]+,[0-9]+%\\n[A-Za-z0-9À-ÿ\\s\\-\\.]+$')]"
-TIPE_PRODUCT_ALOCATION_OTHER: "xpath=//*[matches(@content-desc,'[0-9]+%\\nOutros')]"
+TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+,[0-9]+%$')]"
+TIPE_PRODUCT_ALOCATION_OTHER: "xpath=//*[matches(@content-desc,'Outros, [0-9]+,[0-9]+%$')]"
 # CHART_LINE_BUTTON: "xpath=///*[matches(@content-desc,'b3_line_chart_button')]"
 # CHART_VOICE_OVER_CLOSE: "xpath=//android.view.View[contains(@content-desc,'close_chart_tag')]"
 CHART_VOICE_OVER_CLOSE: xpath=//*[@resource-id="close_chart_tag"]

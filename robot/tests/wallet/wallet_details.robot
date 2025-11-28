@@ -91,33 +91,33 @@ Validate Card Products, Evolution And Donut
     Validate Card Products, Evolution And Donut Components
     Log    Validação completa da tela de detalhe da classe concluída
 
-# Open Institution Filter Bottom Sheet (Draft)
-#     [Documentation]    PFSAPP-254-CA05
-#     [Tags]    back button, header page and title start list
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Apply Institution Filters Wrapper
-#     Clear Institution Filters Wrapper
-#     Log    Bottom sheet Instituição aberto (placeholder)
+Open Institution Filter Bottom Sheet (Draft)
+    [Documentation]    PFSAPP-254-CA05
+    [Tags]    back button, header page and title start list
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Institution Filter Wrapper
+    Apply Institution Filters Wrapper
+    Clear Institution Filters Wrapper
+    Log    Bottom sheet Instituição aberto (placeholder)
 
-# Open Product Filter Bottom Sheet (Draft)
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    botao_voltar
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Product Filter Wrapper
-#     Log    Bottom sheet Produto aberto (placeholder)
+Open Product Filter Bottom Sheet (Draft)
+    [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
+    [Tags]    botao_voltar
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Product Filter Wrapper
+    Log    Bottom sheet Produto aberto (placeholder)
 
 # Apply Single Institution Filter
 #     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
