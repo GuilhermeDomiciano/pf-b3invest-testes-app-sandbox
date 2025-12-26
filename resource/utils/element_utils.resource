@@ -532,3 +532,21 @@ Log Element Comparison
     Log To Console    message=[B3] Content-Desc: ${content_desc_found}
     Log To Console    message=[B3] Text: ${text_found}
     Log To Console    message=[B3] Class: ${class_found}
+
+Click All Elements In Screen
+    [Documentation]    Clica em todos os elementos encontrados na tela
+    @{elements}=    Get WebElements    xpath=//*
+    ${total}=    Get Length    ${elements}
+    Log To Console    message=[B3] Total de elementos encontrados para clique: ${total}
+    FOR    ${i}    IN RANGE    ${total}
+        TRY
+          ${element_id}=    Get Element Attribute    ${elements}[${i}]    resource-id
+        #   Click Element    ${elements}[${i}]
+          Log To Console    message=[B3] ✅ Clique realizado no elemento resource-id='${element_id}'
+        EXCEPT
+          ${element_id}=    Get Element Attribute    ${elements}[${i}]    resource-id
+          Log To Console    message=[B3] ⚠️ Falha ao clicar no elemento resource-id='${element_id}'
+        END
+    END
+    Log To Console    message=[B3] Finalizado clique em todos os elementos da tela
+

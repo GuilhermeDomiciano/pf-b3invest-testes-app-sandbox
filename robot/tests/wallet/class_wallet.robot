@@ -9,6 +9,8 @@ Test Teardown    Close Application AppB3
 Test Tags    class_wallet
 
 *** Test Cases ***
+
+# 11 cenarios de teste relacionados a tela de classes na carteira
 Validate Back Button Inside Filter Classes
     [Documentation]    PFSAPP-251-CA01 - Validate the back button functionality inside the classes screen
     [Tags]    botao_voltar_classes

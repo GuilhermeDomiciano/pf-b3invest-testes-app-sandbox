@@ -9,6 +9,7 @@ Test Teardown    Close Application AppB3
 Test Tags    product_wallet
 
 *** Test Cases ***
+# 10 cenarios de teste relacionados a tela de produtos na carteira
 Validate Back Button Inside All Products
     [Documentation]    PFSAPP-250-CA01 - Validate the back button functionality inside the all products screen
     [Tags]    botao_voltar

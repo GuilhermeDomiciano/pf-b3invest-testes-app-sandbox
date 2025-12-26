@@ -24,18 +24,21 @@ Validate Products Inside Class Product And Navigate To Classes
     Wait Until Page Contains    text=Classe    timeout=10s
     Element Should Be Visible    ${ALL_CLASSES_QUANTITY}
     Scroll Element Into View In Page    locator=${BTN_RENDA_FIXA}
+    Wait Until Element Is Visible    locator=${QTD_PRODUCTS_RENDA_FIXA}   timeout=10s
     Wait Until Element Is Visible   locator=${BTN_RENDA_FIXA}   timeout=10s
     Click Element    locator=${BTN_RENDA_FIXA}
     Wait Until Element Is Visible   locator=${ALL_PRODUCTS_BALANCE}     timeout=10s
     Click Element    locator=${BTN_WALLET_BACK}
     Scroll Element Into View Top In Page    locator=${PERIOD}
-    Scroll Element Into View In Page    locator=${BTN_INTERNACIONAL}        
+    Scroll Element Into View In Page    locator=${BTN_INTERNACIONAL}  
+    Wait Until Element Is Visible    locator=${QTD_PRODUCTS_INTERNACIONAL}   timeout=10s
     Wait Until Element Is Visible    locator=${BTN_INTERNACIONAL}   timeout=10s
     Click Element    locator=${BTN_INTERNACIONAL}
     Wait Until Element Is Visible   locator=${ALL_PRODUCTS_BALANCE}  timeout=10s
     Click Element    locator=${BTN_WALLET_BACK}
     Scroll Element Into View Top In Page    locator=${PERIOD}
     Scroll Element Into View In Page    locator=${BTN_RENDA_VARIAVEL}
+    Wait Until Element Is Visible    locator=${QTD_PRODUCTS_RENDA_VARIAVEL}   timeout=10s
     Wait Until Element Is Visible     locator=${BTN_RENDA_VARIAVEL}   timeout=10s
     Click Element    locator=${BTN_RENDA_VARIAVEL}
     Click Element    locator=${BTN_WALLET_BACK}

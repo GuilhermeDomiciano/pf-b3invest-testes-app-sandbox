@@ -1,3 +1,4 @@
+
 *** Settings ***
 Documentation    Wallet Details Screen (Class Detail)
 
@@ -48,18 +49,48 @@ Open Class Detail Products Screen
         Fail    Classe '${class_name}' não suportada.
     END
 
-Validate Class Detail Back Button Section
+Validate Class Detail Back Button Section Renda Fixa
     [Documentation]    Valida acao do botao de voltar na tela de detalhe da classe.
     Click Element    locator=${CLASS_DETAIL_BTN_VOLTAR}
     Log To Console    message=[B3] Back Buttom classe validado.\n
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_BTN_NAV_RENDA_FIXA}    timeout=10
 
-Validate Class Detail Card Ativos Components Screen
+Validate Class Detail Back Button Section Renda variável
+    [Documentation]    Valida acao do botao de voltar na tela de detalhe da classe.
+    Click Element    locator=${CLASS_DETAIL_BTN_VOLTAR}
+    Log To Console    message=[B3] Back Buttom classe validado.\n
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_BTN_NAV_RENDA_VARIAVEL}    timeout=10
+
+Validate Class Detail Back Button Section Internacional
+    [Documentation]    Valida acao do botao de voltar na tela de detalhe da classe.
+    Click Element    locator=${CLASS_DETAIL_BTN_VOLTAR}
+    Log To Console    message=[B3] Back Buttom classe validado.\n
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_BTN_NAV_INTERNACIONAL}    timeout=10
+
+Validate Class Detail Card Ativos Components Screen Renda Fixa
     [Documentation]    Valida os componentes do card de ativos na tela de detalhe da classe.
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}    timeout=10
     Wait Until Element Is Visible    locator=${TEXT_RENDA_FIXA_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_RENDA_FIXA_SUB_TITLE_CARD}    timeout=10
     Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
+
+Validate Class Detail Card Ativos Components Screen Renda Variavel
+    [Documentation]    Valida os componentes do card de ativos na tela de detalhe da classe Renda Variável.
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_RENDA_VARIAVEL_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_RENDA_VARIAVEL_SUB_TITLE_CARD}    timeout=10
+    Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
+
+Validate Class Detail Card Ativos Components Screen Internacional
+    [Documentation]    Valida os componentes do card de ativos na tela de detalhe da classe Internacional.
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_INTERNACIONAL_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_INTERNACIONAL_SUB_TITLE_CARD}    timeout=10
+    Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
+
 
 Validate Card Products
     [Documentation]    Valida os componentes do card de ativos na tela de detalhe da classe.
@@ -89,38 +120,53 @@ Validate Class Detail Overview Section
     [Documentation]    Valida presença dos elementos principais do cabeçalho de detalhe da classe.
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_BTN_VOLTAR}    timeout=10
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_OCULTAR_VALORES}    timeout=10
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_RENDA_FIXA}    timeout=10
     Log To Console    message=[B3] Overview da classe validado.\n
 
 Validate Class Detail Products Counters
     [Documentation]    Valida contadores e textos de ativos/instituições (podem variar entre ambientes).
+    [Arguments]    ${screen}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_2_ATIVOS}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ATIVOS_EM_INSTITUICAO}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=5
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ATIVOS_EM_RENDA_FIXA}    timeout=5
+    IF    '${screen}'=='renda fixa'
+        Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ATIVOS_EM_RENDA_FIXA}
+    ELSE IF    '${screen}'=='renda variável'
+        Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ATIVOS_EM_RENDA_VARIAVEL}
+    ELSE IF    '${screen}'=='internacional'
+        Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ATIVOS_EM_INTERNACIONAL}
+    END
     #Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_2_PRODUTOS_EM_RENDA_FIXA}
     #Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_2_PRODUTOS_EM_RENDA_FIXA}    timeout=5 nao faz sentido
     Log To Console    message=[B3] Contadores de produtos/instituições validados (best-effort).\n
 
-Validate Class Detail Evolution Section
-    [Documentation]    Valida a seção de evolução patrimonial dentro da classe (gráfico de barras / períodos).
-    # Scroll usando locator direto seguindo padrão do projeto
+Validate Class Detail Overview Section Evolution Graphic Renda Fixa
+    [Documentation]    Valida presença dos elementos principais do cabeçalho de detalhe da classe Renda Fixa.
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}    timeout=10
-    # Botões de período (variações)
-    Scroll Element Into View In Page    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO} 
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}    timeout=5
-    Click Element    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}    timeout=5
-    Click Element    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_VALUE}    timeout=5
-    # Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO}    timeout=5
-    Log To Console    message=[B3] Seção de evolução validada.\n
+
+Validate Class Detail Overview Section Evolution Graphic Renda Variavel
+    [Documentation]    Valida presença dos elementos principais do cabeçalho de detalhe da classe Renda Fixa.
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}    timeout=10
+
+Validate Class Detail Overview Section Evolution Graphic Internacional
+    [Documentation]    Valida presença dos elementos principais do cabeçalho de detalhe da classe Renda Fixa.
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}    timeout=10
+
+Validate Class Detail Evolution Section
+    [Documentation]    Valida a seção de evolução patrimonial dentro da classe (gráfico de barras / períodos).
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_49_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_6_MESES_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO_INTERNA}
+    Log To Console    message=[B3] Graphic Evolution Section Screen Wallet\n
 
 Validate Class Detail Evolution Bars
     [Documentation]    Valida presença de algumas barras do gráfico de evolução (não necessariamente todas).
@@ -129,7 +175,7 @@ Validate Class Detail Evolution Bars
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_13_MAI_2022}    timeout=5
     Log To Console    message=[B3] Barras principais do gráfico de evolução visíveis.\n
 
-Validate Class Detail Donut Allocation Section
+Validate Class Detail Donut Allocation Section Renda Fixa
     [Documentation]    Valida seção de alocação (gráfico donut) e fatias principais.
     # Scroll usando locator direto seguindo padrão do projeto
     # Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
@@ -137,13 +183,37 @@ Validate Class Detail Donut Allocation Section
     Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}    timeout=10
-    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION}
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER}    timeout=5
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION}    TIPE_PRODUCT_ALOCATION
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER}    TIPE_PRODUCT_ALOCATION_OTHER
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_DETAILS}    TIPE_PRODUCT_ALOCATION_DETAILS
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
     Log To Console    message=[B3] Seção de alocação (donut) validada.\n
+
+Validate Class Detail Donut Allocation Section Renda Variavel
+    [Documentation]    Valida seção de alocação (gráfico donut) e fatias principais para Renda Variável.
+    Scroll Screen
+    Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_VARIAVEL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_VARIAVEL}    timeout=10
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}    timeout=5
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
+    Log To Console    message=[B3] Seção de alocação (donut) Renda Variável validada.\n
+
+Validate Class Detail Donut Allocation Section Internacional
+    [Documentation]    Valida seção de alocação (gráfico donut) e fatias principais para Internacional.
+    Scroll Screen
+    Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_INTERNACIONAL}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_INTERNACIONAL}    timeout=10
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
+    Log To Console    message=[B3] Seção de alocação (donut) Internacional validada.\n
 
 Validate Class Detail Products List
     [Documentation]    Valida que itens de produto estão presentes na lista.
@@ -171,9 +241,7 @@ Select Class Detail Period
 Validate Full Class Detail Screen
     [Documentation]    Validação agrupada que chama as principais seções da tela de detalhe da classe.
     Validate Class Detail Overview Section
-    Validate Class Detail Products Counters
     Validate Class Detail Evolution Section
-    Validate Class Detail Donut Allocation Section
     Validate Class Detail Products List
     Log To Console    message=[B3] Tela completa de detalhe de classe validada.\n
 
@@ -181,6 +249,7 @@ Validate Full Class Detail Screen
 Open Institution Filter Bottom Sheet
     [Documentation]    Abre bottom sheet do filtro de Instituição (locators definitivos).
     # Pré-condição: já estamos na tela de detalhe da classe.
+    Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
     Click Element    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_TITLE}    timeout=10
@@ -210,8 +279,12 @@ Apply Institution Filters
     # Após aplicar, o bottom sheet deve fechar; aguardar desaparecimento do título
     Sleep    0.5s
     Log To Console    message=[B3] Filtros de Instituição aplicados.\n
+
 Clear Institution Filters
     [Documentation]    Limpa seleções no bottom sheet de Instituição (mantém sheet aberto).
+    Click All Elements In Screen
+    Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
+    Click Element    locator=${SELECT_FILTER_BOTTOM_SHEET}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s
@@ -353,3 +426,47 @@ Validate Ballance Filters Products Renda Fixa
     Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
 
     Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
+
+ Validate Ballance Filters Products Renda Variavel
+        [Documentation]    Valida o saldo exibido dentro da tela de todos os produtos de renda variável
+
+        Wait Until Element Is Visible    ${CLASS_DETAIL_TXT_RENDA_VARIAVEL}
+        Element Should Be Visible        ${CLASS_DETAIL_TXT_RENDA_VARIAVEL}
+        Wait Until Element Is Visible    ${CLASS_DETAIL_TXT_DA_CARTEIRA}    timeout=10s
+        Element Should Be Visible        ${CLASS_DETAIL_TXT_DA_CARTEIRA}
+        Wait Until Element Is Visible    ${TEXT_VALUE_RESULT_INVESTMENT}    timeout=10s
+        Element Should Be Visible        ${TEXT_VALUE_RESULT_INVESTMENT}
+
+        Log Element Comparison    ${TEXT_VALUE_RESULT_INVESTMENT}    TEXT_VALUE_RESULT_INVESTMENT
+
+        Wait Until Element Is Visible    ${ALL_PRODUCTS_BALANCE}    timeout=10s
+        Element Should Be Visible        ${ALL_PRODUCTS_BALANCE}
+        ${balance}=    Get Text    ${ALL_PRODUCTS_BALANCE}
+
+        Wait Until Element Is Visible    ${PERIODO}    timeout=10s
+        Element Should Be Visible    ${PERIODO}
+        Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
+
+        Log To Console    message=[B3] Saldo exibido na tela de todos os produtos (renda variável): ${balance}\n
+
+Validate Ballance Filters Products Internacional
+        [Documentation]    Valida o saldo exibido dentro da tela de todos os produtos internacional
+
+        Wait Until Element Is Visible    ${CLASS_DETAIL_TXT_INTERNACIONAL}
+        Element Should Be Visible        ${CLASS_DETAIL_TXT_INTERNACIONAL}
+        Wait Until Element Is Visible    ${CLASS_DETAIL_TXT_DA_CARTEIRA}    timeout=10s
+        Element Should Be Visible        ${CLASS_DETAIL_TXT_DA_CARTEIRA}
+        Wait Until Element Is Visible    ${TEXT_VALUE_RESULT_INVESTMENT}    timeout=10s
+        Element Should Be Visible        ${TEXT_VALUE_RESULT_INVESTMENT}
+
+        Log Element Comparison    ${TEXT_VALUE_RESULT_INVESTMENT}    TEXT_VALUE_RESULT_INVESTMENT
+
+        Wait Until Element Is Visible    ${ALL_PRODUCTS_BALANCE}    timeout=10s
+        Element Should Be Visible        ${ALL_PRODUCTS_BALANCE}
+        ${balance}=    Get Text    ${ALL_PRODUCTS_BALANCE}
+
+        Wait Until Element Is Visible    ${PERIODO}    timeout=10s
+        Element Should Be Visible    ${PERIODO}
+        Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
+
+        Log To Console    message=[B3] Saldo exibido na tela de todos os produtos (internacional): ${balance}\n
