@@ -37,30 +37,32 @@ BOTTOM_NAV_MENU: id=b3_bottom_nav_bar_item_Menu
 CARD_PRODUCT_SCREEN: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+ ativos, item [0-9]+ de [0-9]+$')]"
 WALLET_TEXT_LAST_UPDATE: "xpath=//*[matches(@content-desc,'^Atualizado em [0-9]+ de novembro$')]"
 30_DAYS: accessibility_id=em 30 dias
-DONUT_GRAFIG: accessibility_id=Gráfico tipo donut representando a distribuição da carteira
+DONUT_GRAFIG: "accessibility_id=Gráfico tipo donut representando a distribuição da carteira"
+CLASS_DETAIL_TXT_DA_CARTEIRA: "accessibility_id=da carteira"
+BTN_BACK_INVESTIMENT: "xpath=//*[contains(@content-desc, 'Voltar')]"
 EVENT_1_3: accessibility_id=1 de 3
 EVENT_2_3: accessibility_id=2 de 3
 EVENT_3_3: accessibility_id=3 de 3
 NEWS_MAIN_YOU: accessibility_id=Principais notícias para você
 MY_WALLET_LOCATION: accessibility_id=Alocação
-CLASS_DETAIL_TXT_EM_7_DIAS: "accessibility_id=em 7 dias"
-CLASS_DETAIL_TXT_EM_49_DIAS: "accessibility_id=em 49 dias"
-CLASS_DETAIL_TXT_EM_6_MESES: "accessibility_id=em 6 meses"
-CLASS_DETAIL_TXT_EM_12_MESES: "accessibility_id=em 12 meses"
-CLASS_DETAIL_TXT_EM_YEARS: "accessibility_id=em anos"
+CLASS_DETAIL_TXT_EM_7_DIAS: "accessibility_id=em 7 dias, 1 de 5, não selecionado"
+CLASS_DETAIL_TXT_EM_49_DIAS: "accessibility_id=em 49 dias, 2 de 5, não selecionado"
+CLASS_DETAIL_TXT_EM_6_MESES: "accessibility_id=em 6 meses, 3 de 5, não selecionado"
+CLASS_DETAIL_TXT_EM_12_MESES: "accessibility_id=em 12 meses, 4 de 5, selecionado"
+CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO: "accessibility_id=em 12 meses, 4 de 5, não selecionado"
+CLASS_DETAIL_TXT_EM_YEARS: "accessibility_id=em anos, 5 de 5, não selecionado"
+YEAR: accessibility_id=2024
+MONTH: accessibility_id=Dez
 CLASS_DETAIL_CHART_EM_7_DAYS_CHOSE_PERIOD: "id=b3_period_selector_7 d"
 CLASS_DETAIL_CHART_EM_49_DAYS_CHOSE_PERIOD: "id=b3_period_selector_7 s"
 CLASS_DETAIL_CHART_EM_6_MONTHS_CHOSE_PERIOD: "id=b3_period_selector_6 m"
 CLASS_DETAIL_CHART_EM_12_MONTHS_CHOSE_PERIOD: "id=b3_period_selector_12 m"
 CLASS_DETAIL_CHART_YEAR: "id=b3_period_selector_anos"
-TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+,[0-9]+%$')]"
+TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^Renda Variável, [0-9]+,[0-9]+%$')]"
+TIPE_PRODUCT_ALOCATION_ID: accessibility_id=Renda Variável, 80,32%
+# TIPE_PRODUCT_ALOCATION: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+,[0-9]+%$')]"
 SCREEN_EXTRACT: accessibility_id=Extrato
 SCREEN_PROVENTS: accessibility_id=Proventos
 SCREEN_MENU: accessibility_id=Sair do aplicativo
 NEWS_IS_VISIBLE: "xpath=//*[matches(@content-desc,'.*minutos de leitura$')]"
-
-# //android.widget.ImageView[@content-desc="Bora Investir
-# Investir melhor
-# Quanto investir para receber R$ 2 mil em dividendos por mês
-# 24 de novembro de 2025
-# 4 minutos de leitura"]
+ALL_INVESTIMENT: "xpath=//*[matches(@content-desc,'^Total Investido, [0-9]+ de [0-9]+, selecionado$')]"

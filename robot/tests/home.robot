@@ -96,7 +96,7 @@ Validar ocultação de Notícias na home
     Validate Home Screen After Customization Screen    ${TITLE_NOTICIAS}
 
 Validar Home Navigation, Evolution, Donuts
-    [Documentation]    PFSAPP-220, 213, 212
+    [Documentation]    PFSAPP-220, 213, 212, tem uma validacao aqui de navegar para renda fixa, variavel e internacional
     [Tags]    navegacao_minha_carteira
 
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}

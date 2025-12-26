@@ -55,13 +55,13 @@ BTN_WALLET_LINE_CHART: "xpath=//android.view.View[@resource-id='b3_line_chart_bu
 
 
 TITLE_WALLET_PROVENT: accessibility_id=Proventos
-BTN_WALLET_PROVENT_RECEIVED_SELECTED: "accessibility_id=Recebidos, selecionado"
-BTN_WALLET_PROVENT_RECEIVED_NOT_SELECTED: "accessibility_id=Recebidos, não selecionado"
-BTN_WALLET_PROVENT_TO_RECEIVE_SELECTED: "accessibility_id=A receber, selecionado"
-BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED: "accessibility_id=A receber, não selecionado"
-CHECK_WALLET_PROVENTS_RECEIVED: "accessibility_id=nos últimos 12 meses"
-CHECK_WALLET_PROVENTS_TO_RECEIVE: "accessibility_id=A receber nos próximos 12 meses"
-
+BTN_WALLET_PROVENT_RECEIVED_SELECTED: "accessibility_id=Recebidos, 1 de 2, selecionado"
+BTN_WALLET_PROVENT_RECEIVED_NOT_SELECTED: "accessibility_id=Recebidos, 1 de 2, não selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_SELECTED: "accessibility_id=A receber, 2 de 2,selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED: "accessibility_id=A receber, 2 de 2, não selecionado"
+CHECK_WALLET_PROVENTS_RECEIVED: "accessibility_id=Recebidos nos últimos 12 meses"
+CHECK_WALLET_PROVENTS_TO_RECEIVE: "xpath=//*[matches(@content-desc, '^Pagamentos previstos a partir de [0-9]+/[0-9]+/[0-9]+$')]"
+# //android.view.View[@content-desc="Pagamentos previstos a partir de 22/12/2025"]
 # Disclosure results section
 TITLE_WALLET_DISCLOSURE_RESULTS: "accessibility_id=Divulgação de resultados"
 TITLE_WALLET_NEWS_RESULTS: "accessibility_id=Teleconferência de resultados\n1º quarter de 2025"

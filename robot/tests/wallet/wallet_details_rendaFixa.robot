@@ -64,7 +64,7 @@ Validate Card Products, Evolution And Donut Renda Fixa
     Open Class Detail Renda Fixa Wrapper
     Validate Card Products, Evolution And Donut Components Renda Fixa
     Log    Validação completa da tela de detalhe da classe concluída
-# TODO Parei aqui precisa testar a navegacao para os cards de ativos acima do grafico de evolucao.
+    
 # #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
 # Open Institution Filter Bottom Sheet (Draft) Renda Fixa
 #     [Documentation]    PFSAPP-254-CA05

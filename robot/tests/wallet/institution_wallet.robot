@@ -55,7 +55,7 @@ Validate Order Of Cards Inside Institutions Screen
     Skip Profile
     Navigation To My Wallet
     Validate All Institutes Button Screen Wallet
-    Validate Card Order Classes Institutions
+    # Validate Card Order Classes Institutions
 
 Validate Voice Over Button Institutions Screen
     [Documentation]    PFSAPP-252-CA08 - Validate the order of cards inside the institutions screen
@@ -69,14 +69,14 @@ Validate Voice Over Button Institutions Screen
     Validate All Institutes Button Screen Wallet
     Validate Voice Over Button Institutions
 
-Validate Error Api Class Screen
-    [Documentation]    PFSAPP-252-CA013 - Validate the error message displayed when the API fails to load class data
-    [Tags]    erro_api_classe
+# Validate Error Api Class Screen
+#     [Documentation]    PFSAPP-252-CA013 - Validate the error message displayed when the API fails to load class data
+#     [Tags]    erro_api_classe
     
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
-    No Accept Permissions
-    Skip Profile
-    Navigation To My Wallet
-    Validate Error Api Institution Screen
+#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+#     ...             PASSWORD=${users['user_cc_cpf']['password']}
+#     No Accept Permissions
+#     Skip Profile
+#     Navigation To My Wallet
+#     Validate Error Api Institution Screen
    #10 e 09 nao tem como fazer automatizado

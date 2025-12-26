@@ -72,6 +72,7 @@ Validate Class Detail Card Ativos Components Screen Renda Fixa
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_FIXA}    timeout=10
     Wait Until Element Is Visible    locator=${TEXT_RENDA_FIXA_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_RENDA_FIXA_SUB_TITLE_CARD}    timeout=10
     Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
 
 Validate Class Detail Card Ativos Components Screen Renda Variavel
@@ -79,6 +80,7 @@ Validate Class Detail Card Ativos Components Screen Renda Variavel
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_RENDA_VARIAVEL}    timeout=10
     Wait Until Element Is Visible    locator=${TEXT_RENDA_VARIAVEL_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_RENDA_VARIAVEL_SUB_TITLE_CARD}    timeout=10
     Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
 
 Validate Class Detail Card Ativos Components Screen Internacional
@@ -86,6 +88,7 @@ Validate Class Detail Card Ativos Components Screen Internacional
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EVOLU_O_EM_INTERNACIONAL}    timeout=10
     Wait Until Element Is Visible    locator=${TEXT_INTERNACIONAL_TITLE_CARD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_INTERNACIONAL_SUB_TITLE_CARD}    timeout=10
     Find Elements Until Specific Element Found     ${CLASS_DETAIL_EL_CDB_1_ATIVO_ITEM_2_DE_2}       match_numbers_expected=1
 
 
@@ -154,18 +157,16 @@ Validate Class Detail Overview Section Evolution Graphic Internacional
 
 Validate Class Detail Evolution Section
     [Documentation]    Valida a seção de evolução patrimonial dentro da classe (gráfico de barras / períodos).
-    Scroll Element Into View In Page    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO} 
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}    timeout=5
-    Click Element    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS}    timeout=5
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}    timeout=5
-    Click Element    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_CHART_VALUE}    timeout=5
-    # Wait Until Element Is Visible    locator=${CLASS_DETAIL_EL_12_M_BLOQUEADO_BLOQUEADO}    timeout=5
-    Log To Console    message=[B3] Seção de evolução validada.\n
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_7_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_49_DIAS_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_6_MESES_INTERNA}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO_INTERNA}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO_INTERNA}
+    Log To Console    message=[B3] Graphic Evolution Section Screen Wallet\n
 
 Validate Class Detail Evolution Bars
     [Documentation]    Valida presença de algumas barras do gráfico de evolução (não necessariamente todas).
@@ -182,12 +183,12 @@ Validate Class Detail Donut Allocation Section Renda Fixa
     Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_FIXA}    timeout=10
-    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION}
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER}    timeout=5
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION}    TIPE_PRODUCT_ALOCATION
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER}    TIPE_PRODUCT_ALOCATION_OTHER
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_DETAILS}    TIPE_PRODUCT_ALOCATION_DETAILS
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
     Log To Console    message=[B3] Seção de alocação (donut) validada.\n
 
 Validate Class Detail Donut Allocation Section Renda Variavel
@@ -196,11 +197,11 @@ Validate Class Detail Donut Allocation Section Renda Variavel
     Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_VARIAVEL}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_RENDA_VARIAVEL}    timeout=10
-    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION}
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_GR_FICO_DONNUT_ALOCA_O_TIPO_PRODUTO}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION}    TIPE_PRODUCT_ALOCATION_OTHER
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_OTHER_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
     Log To Console    message=[B3] Seção de alocação (donut) Renda Variável validada.\n
 
 Validate Class Detail Donut Allocation Section Internacional
@@ -209,10 +210,9 @@ Validate Class Detail Donut Allocation Section Internacional
     Run Keyword And Ignore Error     Click Element    locator=${CHART_VOICE_OVER_CLOSE}
     Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_INTERNACIONAL}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_ALOCA_O_EM_INTERNACIONAL}    timeout=10
-    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION}
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=5
-    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION}    TIPE_PRODUCT_ALOCATION_OTHER
+    Scroll Element Into View In Page    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}
+    Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION_DETAILS}    timeout=5
+    Log Element Comparison    ${TIPE_PRODUCT_ALOCATION_DETAILS}    TIPE_PRODUCT_ALOCATION_OTHER_DETAILS
     Log To Console    message=[B3] Seção de alocação (donut) Internacional validada.\n
 
 Validate Class Detail Products List

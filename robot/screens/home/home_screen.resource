@@ -149,26 +149,34 @@ Navigation To My Wallet From Card
 Graphic Donut Section Screen Wallet
     [Documentation]    Graphic Donut Section Screen Wallet
 
-    Scroll Element Into View In Page    locator=${DONUT_GRAFIG}
+    Scroll Element Into View In Page    locator=${ALL_INVESTIMENT}
+    Wait Until Element Is Visible    locator=${ALL_INVESTIMENT}    timeout=10
+    Scroll Element Into View In Page    locator=${30_DAYS}
+    Wait Until Page Contains Element    locator=${30_DAYS}
+    Scroll Element Into View In Page   locator=${DONUT_GRAFIG}
     Wait Until Element Is Visible    locator=${DONUT_GRAFIG}    timeout=10
-    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EM_12_MESES}
-    Scroll Element Into View In Page    locator=${DONUT_GRAFIG}
+    Scroll Element Into View In Page   locator=${TIPE_PRODUCT_ALOCATION}
     Wait Until Element Is Visible    locator=${TIPE_PRODUCT_ALOCATION}    timeout=10
+    Click Element    locator=${TIPE_PRODUCT_ALOCATION}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_DA_CARTEIRA}    timeout=10
+    Click Element    locator=${BTN_BACK_INVESTIMENT}
     Log To Console    message=[B3] Graphic Donut Section Screen Wallet\n
 
 Graphic Evolution Section Screen Wallet
     [Documentation]    Graphic Evolution Section Screen Wallet
 
-    Scroll Element Into View In Page    locator=${CLASS_DETAIL_CHART_EM_12_MONTHS_CHOSE_PERIOD}
-    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_12_MESES}    timeout=10
-    Click Element    locator=${CLASS_DETAIL_CHART_YEAR}
+    Scroll Element Into View In Page    locator=${CLASS_DETAIL_TXT_EM_12_MESES}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_YEARS}    timeout=10
-     Click Element    locator=${CLASS_DETAIL_CHART_EM_7_DIAS_ESCOLHER_PERIODO}
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_YEARS}
+    # Wait Until Element Is Visible    locator=${YEAR}    timeout=10
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_7_DIAS}    timeout=10
-     Click Element    locator=${CLASS_DETAIL_CHART_EM_49_DIAS_ESCOLHER_PERIODO}
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_7_DIAS}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_49_DIAS}    timeout=10
-     Click Element    locator=${CLASS_DETAIL_CHART_EM_6_MESES_ESCOLHER_PERIODO}
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_49_DIAS}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_6_MESES}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_6_MESES}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_EM_12_MESES_NAO_SELECIONADO}
     Log To Console    message=[B3] Graphic Evolution Section Screen Wallet\n
 
 Navigation To My Wallet From Bottom Nav Bar
@@ -190,12 +198,13 @@ Validate Events Section Screen Home
     [Documentation]    Validate Events Section Screen Home
 
     Scroll Element Into View In Page    locator=${TITLE_EVENTOS}
+    Scroll Screen 
     Wait Until Element Is Visible    locator=${TITLE_EVENTOS}    timeout=10
     Click Element    locator=${TITLE_EVENTOS}
     Wait Until Element Is Visible    locator=${BTN_WALLET_BACK}    timeout=10
+    Click Element    locator=${BTN_WALLET_BACK}
     Scroll Element Into View In Page    locator=${EVENT_1_3}
     Scroll Horizontal Long
-
     Wait Until Element Is Visible    locator=${EVENT_2_3}    timeout=10
     Scroll Horizontal Long
     Wait Until Element Is Visible    locator=${EVENT_3_3}    timeout=10
