@@ -96,6 +96,7 @@ CLASS_DETAIL_PERCENTUAL_LIST_ITEMS: "xpath=//android.view.View[contains(@content
 # Chip (reutiliza accessibility_id já existente com quebra de linha)
 CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED: "accessibility_id=Instituição, não selecionado"
 CLASS_FILTER_CHIP_INSTITUICAO_SELECTED: "accessibility_id=Instituição, selecionado"
+CLASS_FILTER_CHIP_PRODUCT_SELECTED: "accessibility_id=Produto, selecionado"
 CLASS_FILTER_INST_TITLE: "accessibility_id=Selecione uma ou mais instituições"  # título sheet
 # CLASS_FILTER_INST_BTN_SELECT_ALL: "id=allocation_filters_select_all_checkbox"  # Selecionar todos
 CLASS_FILTER_INST_ITEM_1: "id=allocation_filters_checkbox_BANCO_ALFA_DE_INVESTIMENTO_S/A"
@@ -111,7 +112,9 @@ CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros"  # considerar xp
 CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BANCO ALFA DE INVESTIMENTO S/A, não selecionado"
 CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, não selecionado"
 CLASS_FILTER_INST_BTN_SELECT_ALL: "accessibility_id=Selecionar todos\nSelecionar todos"
-SELECT_FILTER_BOTTOM_SHEET: "accessibility_id=Selecione uma ou mais instituições"
+SELECT_FILTER_BOTTOM_SHEET: "accessibility_id=Instituição, não selecionado"
+SELECTED_FILTER_BOTTOM_SHEET: "accessibility_id=Instituição, selecionado"
+ATIVA_CORRETORA: "accessibility_id=TESTE - ATIVA S/A CORRETORA DE TITULOS CAMBIO E VALORES, não selecionado"
 
 CLASS_FILTER_PRODUCT_ITEM_1: "id=allocation_filters_checkbox_CCI_-_Cédula_de_Créditos_Imobiliarios"
 CLASS_FILTER_PRODUCT_ITEM_2: "id=allocation_filters_checkbox_DEB_-_Debêntures"
@@ -141,4 +144,25 @@ TIPE_PRODUCT_ALOCATION_OTHER_DETAILS: "xpath=//*[matches(@content-desc,'Outros, 
 # CHART_LINE_BUTTON: "xpath=///*[matches(@content-desc,'b3_line_chart_button')]"
 # CHART_VOICE_OVER_CLOSE: "xpath=//android.view.View[contains(@content-desc,'close_chart_tag')]"
 CHART_VOICE_OVER_CLOSE: xpath=//*[@resource-id="close_chart_tag"]
+CLOSE_FILTER_BOTTOM_SHEET: accessibility_id=Fechar
+SHOW_BOTTOM_SHEET_FILTER: accessibility_id=Selecione uma ou mais instituições
+FILTER_BTG:   "xpath=(//android.widget.CheckBox[@content-desc='BTG')][2]"  
+FILTER_TORO: "xpath=(//android.widget.CheckBox[@content-desc='Toro')][2]"  
+FILTER_C6: "xpath=(//android.widget.CheckBox[@content-desc='C6')][2]" 
+FILTER_ATIVA: "xpath=(//android.widget.CheckBox[@content-desc='ATIVA INVESTIMENTOS S/A CTCV')][2]" 
+FILTER_ANDBANK:  "xpath=(//android.widget.CheckBox[@content-desc='allocation_filters_checkbox_Genial')][2]"
+FILTER_SELECT_ALL: "xpath=//android.view.View[contains(@content-desc,'Selecionar todos')]" 
+FILTER_SINACOR: "xpath=(//android.widget.CheckBox[@content-desc='TESTE - SINACOR 3'])[2]"
+CLASS_DETAIL_CHK_MASTER_SA_CCTVM_2: "xpath=(//android.widget.CheckBox[@content-desc='MASTER S/A CCTVM'])[2]"
+CLASS_DETAIL_CHK_ATIVA_INVESTIMENTOS_SA_CTCV_2: "xpath=(//android.widget.CheckBox[@content-desc='ATIVA INVESTIMENTOS S/A CTCV'])[2]"
+FILTER_BANRISUL: "xpath=(//android.widget.CheckBox[@content-desc='BANRISUL S/A CORRETORA DE VAL IMOB E CAMBIO'])[2]"
+FILTER_PARTICIPANTE_SINACOR: "xpath=(//android.widget.CheckBox[@content-desc='PARTICIPANTE 3013 - SINACOR'])[2]"
+BANCO_MASTER: accessibility_id=MASTER S/A CCTVM, não selecionado
+TESTE_SINACOR: accessibility_id=TESTE - SINACOR 3, não selecionado
+TITLE_BOTTOM_SHEET: accessibility_id=Selecione um ou mais produtos
+ETF_EXCHANGE: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Traded Fund'])[2]"
+ETF_TRADED: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Traded Fund'])[6]"
+ETF_ID_SELECT: "accessibility_id=ETF - Exchange Traded Fund, não selecionado"
 
+BTN_NAV_INSTITUTION: "xpath=//*[matches(@content-desc,'^Ir para página da instituição [A-Za-z0-9À-ÿ\\s\\-\\.]+$')]"
+# (//android.widget.CheckBox[@content-desc="TESTE - BANCO BOCOM BBM S/A"])[2]

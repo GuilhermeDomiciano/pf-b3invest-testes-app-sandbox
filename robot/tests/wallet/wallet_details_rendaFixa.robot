@@ -2,6 +2,7 @@
 Documentation    Wallet Details - Navegação e validação do botão Voltar na tela de detalhe da classe
 
 Resource    ${EXECDIR}/robot/base.resource
+Resource    ../../functions/wallet/wallet_details.resource
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
@@ -50,7 +51,6 @@ Validate Elementes Orders And Pagination In Class Detail Screen Renda Fixa
     Validate Class Detail Pagination Components    screen=renda fixa
     Log    Validação dos componentes da lista de produtos na tela de detalhe concluída
 
-#8, 9, 10 e caso de erro
 
 Validate Card Products, Evolution And Donut Renda Fixa
     [Documentation]    PFSAPP-254-CA08, 09, 10
@@ -65,134 +65,78 @@ Validate Card Products, Evolution And Donut Renda Fixa
     Validate Card Products, Evolution And Donut Components Renda Fixa
     Log    Validação completa da tela de detalhe da classe concluída
     
+#! Filtros teste
 # #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
-# Open Institution Filter Bottom Sheet (Draft) Renda Fixa
-#     [Documentation]    PFSAPP-254-CA05
-#     [Tags]    back button, header page and title start list
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Apply Institution Filters Wrapper
-#     Clear Institution Filters Wrapper
-#     Log    Bottom sheet Instituição aberto (placeholder)
+Open Institution Filter Bottom Sheet One Institution Select And Clear Renda Fixa
+    [Documentation]    PFSAPP-386-CA01, CA04, CA05
+    [Tags]    back button, header page and title start list
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Institution Filter Wrapper
+    Apply Institution Filters Wrapper
+    Clear Institution Filters Wrapper
+    Open Institution Filter Wrapper
+    Apply Institution Filters Wrapper
+    Clear Institution Filters Inside Bottom Sheet Wrapper 
+    Log    Bottom sheet Instituição aberto (placeholder)
 
 # #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
-# Open Product Filter Bottom Sheet (Draft) Renda Fixa
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    botao_voltar
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Product Filter Wrapper
-#     Log    Bottom sheet Produto aberto (placeholder)
+Open Institution Filter Bottom Sheet Two Institution Select And Clear Renda Fixa
+    [Documentation]    PFSAPP-386-CA02, CA06
+    [Tags]    botao_voltar
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Institution Filter Wrapper
+    Select Other Institution Filters Wrapper
+    Apply Institution Filters Wrapper
+    Clear Two Institution Filters Wrapper
+    Log    Bottom sheet Produto aberto (placeholder)
 
-# Apply Single Institution Filter
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    botao_voltar
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Select Institution Item By Index Wrapper    1
-#     Assert Institution Apply Enabled Wrapper
-#     Apply Institution Filters Wrapper
-#     Wait Institution Bottom Sheet Closed Wrapper
-#     Assert Institution Chip Visible Wrapper
-#     Assert Institution One Selected Item Wrapper
-#     Log    Filtro de Instituição aplicado com uma seleção.
+Open Product Filter Bottom Sheet One Product Select And Clear Renda Fixa
+    [Documentation]    PFSAPP-386-CA07, 08, 12
+    [Tags]    back button, header page and title start list
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Product Filter Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Wrapper
+    Open Product Filter Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Inside Bottom Sheet Wrapper 
+    Log    Bottom sheet Produto aberto (placeholder)
 
-# Apply Multiple Institution Filters
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    filter    instituicao    multi
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Select Multiple Institution Items Wrapper     1    2
-#     Assert Institution Apply Enabled Wrapper
-#     Apply Institution Filters Wrapper
-#     Wait Institution Bottom Sheet Closed Wrapper
-#     Assert Institution Chip Visible Wrapper
-#     Assert Institution Two Selected Items Wrapper
-#     Log    Filtro de Instituição aplicado com múltiplas seleções.
-
-# #BOTAO TODOS ESTA SENDO ENCOBERTO PRECISA TESTAR NA PROXIMA VERSAO
-# Select All And Apply Institution Filters
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    filter    instituicao    select_all
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Select All Institution Items Wrapper
-#     Select Multiple Institution Items Wrapper    1    2
-#     Apply Institution Filters Wrapper
-#     Wait Institution Bottom Sheet Closed Wrapper
-#     Assert Institution Chip Visible Wrapper
-#     Log    Filtro de Instituição aplicado com Selecionar Todos.
-
-# Select All Then Clear Institution Filters
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    filter    instituicao    clear
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Open Institution Filter Wrapper
-#     Select Multiple Institution Items Wrapper    1    2
-#     Apply Institution Filters Wrapper
-#     Clear Institution Filter Selection Wrapper
-#     Open Institution Filter Wrapper
-#     Select Multiple Institution Items Wrapper    1    2
-#     Apply Institution Filters Wrapper
-#     Open Filter Two Item Selection Wrapper
-#     Clear Institution Filters Wrapper
-#     Open Institution Filter Wrapper
-#     Select Institution Item By Index Wrapper    1
-#     Apply Institution Filters Wrapper
-#     Wait Institution Bottom Sheet Closed Wrapper
-#     Assert Institution Chip Visible Wrapper
-#     Assert Institution One Selected Item Wrapper
-#     Log    Cenário de limpar e aplicar novamente concluído.
+# #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
+Open Product Filter Bottom Sheet Two Product Select And Clear Renda Fixa
+    [Documentation]    PFSAPP-386-CA09, 10, 11
+    [Tags]    botao_voltar
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Renda Fixa Wrapper
+    Open Product Filter Wrapper
+    Select Other Product Filters Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Wrapper
+    Log    Bottom sheet Produto aberto (placeholder)
 
 
-# Validate Elementes In Class Detail Screen
-#     [Documentation]    PFSAPP-254-CA01 - Validate the back button functionality inside the all products screen
-#     [Tags]    back_button_detail_class    smoke
-#     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-#     ...             PASSWORD=${users['user_cc_cpf']['password']}
-#     No Accept Permissions
-#     Skip Profile
-#     Navigation To My Wallet
-#     Validate All Classes Button Screen Wallet
-#     Open Class Detail Renda Fixa Wrapper
-#     Validate Class Detail Overview
-#     # Validate Class Detail Products Counters Wrapper desnecessário aqui
-#     Validate Class Detail Products List Wrapper
-#     Validate Class Detail Evolution    
-#     Select Class Detail Period Wrapper
-#     Validate Class Detail Donut Allocation
+# TODO: CA03 nao tem como testar.
+

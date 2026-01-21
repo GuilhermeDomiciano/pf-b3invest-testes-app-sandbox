@@ -23,7 +23,7 @@ Send Keys Password
     [Documentation]    Send Keys Password
     [Arguments]    ${PASSWORD}
 
-    Sleep    8
+    # Sleep    4
     Wait Until Element Is Visible    locator=${INPT_PASSWORD}    timeout=15
     Click Element    locator=${INPT_PASSWORD}
     Input Text    locator=${INPT_PASSWORD}    text=${PASSWORD}

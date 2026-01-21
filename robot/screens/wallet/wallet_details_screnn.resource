@@ -250,11 +250,16 @@ Open Institution Filter Bottom Sheet
     [Documentation]    Abre bottom sheet do filtro de Instituição (locators definitivos).
     # Pré-condição: já estamos na tela de detalhe da classe.
     Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
-    Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
-    Click Element    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}
-    Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_TITLE}    timeout=10
-    Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_SELECT_ALL}    timeout=10
-    Log To Console    message=[B3] Bottom sheet Instituição aberto.\n
+    Click Element    locator=${SELECT_FILTER_BOTTOM_SHEET}
+    Wait Until Element Is Visible    locator=${SHOW_BOTTOM_SHEET_FILTER}    timeout=10
+    Scroll Element Into View In Page    locator=${FILTER_SINACOR}
+    Click Element    locator=${FILTER_SINACOR}
+
+Select Other Institution Filters
+    [Documentation]    Aplica outros filtros selecionados de Instituição (fecha bottom sheet).
+    Run Keyword And Ignore Error     Scroll Element Into View In Page    locator=${FILTER_PARTICIPANTE_SINACOR}
+    Run Keyword And Ignore Error     Scroll Element Into View Top In Page    locator=${FILTER_PARTICIPANTE_SINACOR}
+    Click Element    locator=${FILTER_PARTICIPANTE_SINACOR}
 
 Clear Institution Filter Selection
     [Documentation]    Limpa todas seleções no bottom sheet de Instituição.
@@ -263,14 +268,13 @@ Clear Institution Filter Selection
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
 
-
-Open Product Filter Bottom Sheet
-    [Documentation]    Abre bottom sheet do filtro de Produto (aguardando locators definitivos).
+Clear Two Institution Filter Selection
+    [Documentation]    Limpa duas seleções específicas no bottom sheet de Instituição.
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_TWO_SELECTED_ITEMS}    timeout=10
+    Click Element    locator=${CLASS_FILTER_CHIP_INSTITUICAO_SELECTED}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
-    Click Element    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}
-    # TODO: Substituir espera abaixo quando dump de Produto for capturado
-    Sleep    1s
-    Log To Console    message=[B3] Bottom sheet Produto aberto (provisório).\n
+
+
 Apply Institution Filters
     [Documentation]    Aplica filtros selecionados de Instituição (fecha bottom sheet).
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_APLICAR}    timeout=10
@@ -282,13 +286,34 @@ Apply Institution Filters
 
 Clear Institution Filters
     [Documentation]    Limpa seleções no bottom sheet de Instituição (mantém sheet aberto).
-    Click All Elements In Screen
-    Wait Until Element Is Visible    locator=${SELECT_FILTER_BOTTOM_SHEET}    timeout=10
-    Click Element    locator=${SELECT_FILTER_BOTTOM_SHEET}
+    # TODO todos os elementos da tela Click All Elements In Screen
+    Wait Until Element Is Visible    locator=${SELECTED_FILTER_BOTTOM_SHEET}    timeout=10
+    Wait Until Element Is Visible    locator=${TESTE_SINACOR}   timeout=10
+    Click Element    locator=${SELECTED_FILTER_BOTTOM_SHEET}
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
+    Sleep    0.4s
+    Log To Console    message=[B3] Filtros de Instituição limpos.\n
+
+Clear Institution Filters Inside Bottom Sheet
+    [Documentation]    Limpa seleções no bottom sheet de Instituição (mantém sheet aberto).
+    # TODO todos os elementos da tela Click All Elements In Screen
+    
+    Wait Until Element Is Visible    locator=${SELECTED_FILTER_BOTTOM_SHEET}    timeout=10
+    Wait Until Element Is Visible    locator=${TESTE_SINACOR}   timeout=10
+    Click Element    locator=${TESTE_SINACOR}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}
     Log To Console    message=[B3] Filtros de Instituição limpos.\n
+
+Clear Two Institution Filter Selections
+    [Documentation]    Limpa duas seleções específicas no bottom sheet de Instituição.
+    Wait Until Element Is Visible    locator=${SELECTED_FILTER_BOTTOM_SHEET}    timeout=10
+    
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_CLEAR_TWO_SELECTIONS}    timeout=10
+    Click Element    locator=${CLASS_FILTER_INST_BTN_CLEAR_TWO_SELECTIONS}
+
 Select Institution Filter Item By Index
     [Documentation]    Seleciona (toggle) item de Instituição pelo índice (1..8 conforme variáveis atuais).
     [Arguments]    ${index}
@@ -470,3 +495,50 @@ Validate Ballance Filters Products Internacional
         Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
 
         Log To Console    message=[B3] Saldo exibido na tela de todos os produtos (internacional): ${balance}\n
+
+
+Open Product Filter Bottom Sheet
+    [Documentation]    Abre bottom sheet do filtro de Produto (aguardando locators definitivos).
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
+    Click Element    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}
+    Wait Until Element Is Visible    locator=${TITLE_BOTTOM_SHEET}    timeout=10
+    Scroll Element Into View In Page    locator=${ETF_EXCHANGE}
+    Click Element    locator=${ETF_EXCHANGE}
+    Log To Console    message=[B3] Bottom sheet Produto aberto (provisório).\n
+
+
+Apply Product Filters
+    [Documentation]    Aplica filtros selecionados de Produto (fecha bottom sheet).
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_APLICAR}    timeout=10
+    # Opcional: validar se está habilitado (se não houver atributo, tentar clique direto)
+    Click Element    locator=${CLASS_FILTER_INST_BTN_APLICAR}
+    # Após aplicar, o bottom sheet deve fechar; aguardar desaparecimento do título
+    Sleep    0.5s
+    Log To Console    message=[B3] Filtros de Instituição aplicados.\n
+
+Clear Product Filters
+    [Documentation]    Limpa todas seleções no bottom sheet de Produto.
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_PRODUCT_SELECTED}    timeout=10
+    Click Element    locator=${CLASS_FILTER_CHIP_PRODUCT_SELECTED}
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
+
+Clear Product Filters Inside Bottom Sheet
+    [Documentation]    Limpa seleções no bottom sheet de Produto (mantém sheet aberto).
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_PRODUCT_SELECTED}    timeout=10
+    Wait Until Element Is Visible    locator=${ETF_ID_SELECT}   timeout=10
+    Click Element    locator=${ETF_ID_SELECT}
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
+    Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
+    Sleep    0.4s
+    Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}     timeout=10
+    Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED}    timeout=10
+    Log To Console    message=[B3] Filtros de Instituição limpos.\n
+    Sleep    0.4s
+    Log To Console    message=[B3] Filtros de Produto limpos.\n
+
+Clear Other Product Filter Selections
+    [Documentation]    Limpa duas seleções específicas no bottom sheet de Produto.
+    Run Keyword And Ignore Error     Scroll Element Into View In Page    locator=${ETF_TRADED}
+    Run Keyword And Ignore Error     Scroll Element Into View Top In Page    locator=${ETF_TRADED}
+    Click Element    locator=${ETF_TRADED}

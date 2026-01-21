@@ -183,3 +183,31 @@ Validate Card Products, Evolution And Donut Components Internacional
     Validate Class Detail Overview Section Evolution Graphic Internacional
     Validate Class Detail Evolution Section
     Validate Class Detail Donut Allocation Section Internacional
+
+Select Other Institution Filters Wrapper
+    [Documentation]    Wrapper para aplicar outros filtros de Instituição.
+    Select Other Institution Filters
+
+Clear Two Institution Filters Wrapper
+    [Documentation]    Wrapper para limpar dois filtros de Instituição.
+    Clear Two Institution Filter Selection
+
+Clear Institution Filters Inside Bottom Sheet Wrapper 
+    [Documentation]    Wrapper para limpar filtros de Instituição dentro do bottom sheet.
+    Clear Institution Filters Inside Bottom Sheet
+
+Apply Product Filters Wrapper
+    [Documentation]    Wrapper para aplicar filtros de Produto.
+    Apply Product Filters
+
+ Clear Product Filters Wrapper
+    [Documentation]    Wrapper para limpar filtros de Produto.
+    Clear Product Filters
+
+Clear Product Filters Inside Bottom Sheet Wrapper 
+    [Documentation]    Wrapper para limpar filtros de Produto dentro do bottom sheet.
+    Clear Product Filters Inside Bottom Sheet
+
+Select Other Product Filters Wrapper
+    [Documentation]    Wrapper para limpar dois filtros de Produto.
+    Clear Other Product Filter Selections

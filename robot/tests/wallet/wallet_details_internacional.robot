@@ -93,3 +93,75 @@ Open Product Filter Bottom Sheet (Draft) Internacional
     Open Class Detail Internacional Wrapper
     Open Product Filter Wrapper
     Log    Bottom sheet Produto aberto (placeholder)
+
+
+#! Filtros teste
+Open Institution Filter Bottom Sheet One Institution Select And Clear Internacional
+    [Documentation]    PFSAPP-386-CA01, CA04, CA05
+    [Tags]    back button, header page and title start list
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Internacional Wrapper
+    Open Institution Filter Wrapper
+    Apply Institution Filters Wrapper
+    Clear Institution Filters Wrapper
+    Open Institution Filter Wrapper
+    Apply Institution Filters Wrapper
+    Clear Institution Filters Inside Bottom Sheet Wrapper 
+    Log    Bottom sheet Instituição aberto (placeholder)
+
+# #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
+Open Institution Filter Bottom Sheet Two Institution Select And Clear Internacional
+    [Documentation]    PFSAPP-386-CA02, CA06
+    [Tags]    botao_voltar
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Internacional Wrapper
+    Open Institution Filter Wrapper
+    Select Other Institution Filters Wrapper
+    Apply Institution Filters Wrapper
+    Clear Two Institution Filters Wrapper
+    Log    Bottom sheet Produto aberto (placeholder)
+
+Open Product Filter Bottom Sheet One Product Select And Clear Renda Internacional
+    [Documentation]    PFSAPP-386-CA07, 08, 12
+    [Tags]    back button, header page and title start list
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Internacional Wrapper
+    Open Product Filter Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Wrapper
+    Open Product Filter Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Inside Bottom Sheet Wrapper 
+    Log    Bottom sheet Produto aberto (placeholder)
+
+# #TODO: Ajustar numero da tarefa e codigo flutter nao esta visivel para click o filtro
+Open Product Filter Bottom Sheet Two Product Select And Clear Internacional
+    [Documentation]    PFSAPP-386-CA09, 10, 11
+    [Tags]    botao_voltar
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Wallet
+    Validate All Classes Button Screen Wallet
+    Open Class Detail Internacional Wrapper
+    Open Product Filter Wrapper
+    Select Other Product Filters Wrapper
+    Apply Product Filters Wrapper
+    Clear Product Filters Wrapper
+    Log    Bottom sheet Produto aberto (placeholder)
