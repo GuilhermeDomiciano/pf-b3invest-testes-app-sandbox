@@ -94,8 +94,8 @@ CLASS_DETAIL_PERCENTUAL_LIST_ITEMS: "xpath=//android.view.View[contains(@content
 
 # ===== Filtros Instituição (dump atual) =====
 # Chip (reutiliza accessibility_id já existente com quebra de linha)
-CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED: "accessibility_id=Instituição, não selecionado"
-CLASS_FILTER_CHIP_INSTITUICAO_SELECTED: "accessibility_id=Instituição, selecionado"
+
+
 CLASS_FILTER_CHIP_PRODUCT_SELECTED: "accessibility_id=Produto, selecionado"
 CLASS_FILTER_INST_TITLE: "accessibility_id=Selecione uma ou mais instituições"  # título sheet
 # CLASS_FILTER_INST_BTN_SELECT_ALL: "id=allocation_filters_select_all_checkbox"  # Selecionar todos
@@ -112,8 +112,12 @@ CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros"  # considerar xp
 CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BANCO ALFA DE INVESTIMENTO S/A, não selecionado"
 CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, não selecionado"
 CLASS_FILTER_INST_BTN_SELECT_ALL: "accessibility_id=Selecionar todos\nSelecionar todos"
+CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED: "accessibility_id=Instituição, não selecionado"
 SELECT_FILTER_BOTTOM_SHEET: "accessibility_id=Instituição, não selecionado"
+SELECT_FILTER_BOTTOM_SHEET_CLASSE: "accessibility_id=Classe, não selecionado"
 SELECTED_FILTER_BOTTOM_SHEET: "accessibility_id=Instituição, selecionado"
+CLASS_FILTER_CHIP_INSTITUICAO_SELECTED: "accessibility_id=Instituição, selecionado"
+SELECT_FILTER_BOTTOM_SHEET_CLASSE_SELECTED: "accessibility_id=Classe, selecionado"
 ATIVA_CORRETORA: "accessibility_id=TESTE - ATIVA S/A CORRETORA DE TITULOS CAMBIO E VALORES, não selecionado"
 
 CLASS_FILTER_PRODUCT_ITEM_1: "id=allocation_filters_checkbox_CCI_-_Cédula_de_Créditos_Imobiliarios"
@@ -128,11 +132,11 @@ PERIODO: "xpath=//android.view.View[@content-desc='em 30 dias']"
 # ===== Acima gerados por IA =====
 TEXT_VALUE_RESULT_INVESTMENT:  "xpath=//*[matches(@content-desc,'^[A-Za-zÀ-ÿ\\s]+R\\$ [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2}$')]"
 TEXT_RENDA_FIXA_TITLE_CARD:  "xpath=//*[matches(@content-desc,'^Renda Fixa$')]"
-TEXT_RENDA_FIXA_SUB_TITLE_CARD: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos em renda fixa$')]"
+TEXT_RENDA_FIXA_SUB_TITLE_CARD: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos? em renda fixa$')]"
 TEXT_RENDA_VARIAVEL_TITLE_CARD: "xpath=//*[matches(@content-desc,'^Renda Variável$')]"
-TEXT_RENDA_VARIAVEL_SUB_TITLE_CARD:  "xpath=//*[matches(@content-desc,'^[0-9]+ produtos em renda variável$')]"
+TEXT_RENDA_VARIAVEL_SUB_TITLE_CARD:  "xpath=//*[matches(@content-desc,'^[0-9]+ produtos? em renda variável$')]"
 TEXT_INTERNACIONAL_TITLE_CARD:  "xpath=//*[matches(@content-desc,'^Internacional$')]"
-TEXT_INTERNACIONAL_SUB_TITLE_CARD: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos em internacional$')]"
+TEXT_INTERNACIONAL_SUB_TITLE_CARD: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos? em internacional$')]"
 PETEXT_RENDA_FIXA_TITLE_CARD_FIND: "xpath=//android.view.View[@content-desc='Renda fixa']"
 CLASS_FILTER_INTERNACIONAL: "id=b3i_navigation_Internacional"
 CLASS_FILTER_RENDA_FIXA: "xpath=//android.view.View[contains(@content-desc,'Renda Fixa')]"
@@ -164,5 +168,19 @@ ETF_EXCHANGE: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Tr
 ETF_TRADED: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Traded Fund'])[6]"
 ETF_ID_SELECT: "accessibility_id=ETF - Exchange Traded Fund, não selecionado"
 
+#Instition ids
 BTN_NAV_INSTITUTION: "xpath=//*[matches(@content-desc,'^Ir para página da instituição [A-Za-z0-9À-ÿ\\s\\-\\.]+$')]"
-# (//android.widget.CheckBox[@content-desc="TESTE - BANCO BOCOM BBM S/A"])[2]
+CLASS_DETAIL_TXT_EVOLU_O_EM_INSTITUTIONS: "accessibility_id=Evolução nesta instituição"
+TEXT_INSTITUTIONS_TITLE_CARD:  "accessibility_id=Produtos nesta instituição"
+TEXT_INSTITUTIONS_SUB_TITLE_CARD: "xpath=//*[matches(@content-desc,'^[0-9]+ produtos nesta instituição$')]"
+TEXT_INSTITUTIONS_ALOCACAO_NESTA_INSTITUICAO: "accessibility_id=Alocação nesta instituição"
+BTN_FILTER_NOT_SELECT_PRODUT: "accessibility_id=Filtrar alocação por produto, não selecionado"
+BTN_FILTER_SELECT_PRODUT: "accessibility_id=Filtrar alocação por produto, selecionado"
+BTN_FILTER_NOT_SELECT_CLASS: "accessibility_id=Por classe, não selecionado"
+BTN_FILTER_SELECT_CLASS: "accessibility_id=Por classe, selecionado"
+CARD_PRODUCT_INSTITUTION_SCREEN: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+%$')]"
+TITLE_LIST_INSTITUTIONS: "accessibility_id=Ativos nesta instituição"
+SHOW_BOTTOM_SHEET_FILTER_INSTITUTIONS: accessibility_id=Selecione uma ou mais classes
+CLOSE_BOTTOM_SHEET: accessibility_id=Fechar
+CRI_FILTER: "xpath=(//android.widget.CheckBox[@content-desc='CRI - Certificado de Recebíveis Imobiliários'])[2]"
+CRI_SELECT: "accessibility_id=CRI - Certificado de Recebíveis Imobiliários, não selecionado"

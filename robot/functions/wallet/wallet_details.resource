@@ -22,6 +22,11 @@ Validate Class Detail Overview Renda Variável
     Validate Class Detail Overview Section
     Validate Ballance Filters Products Renda Variavel
 
+Validate Class Detail Overview Institutions
+    [Documentation]    Wrapper para validar cabeçalho/overview da classe.
+    Validate Class Detail Overview Section
+    Validate Ballance Filters Products Institutions
+
 Validate Class Detail Products Counters Wrapper
     [Documentation]    Wrapper para validar contadores de produtos/instituições.
     [Arguments]    ${screen}
@@ -54,7 +59,6 @@ Open Class Detail Internacional Wrapper
 Open Class Detail Renda Variável Wrapper
     [Documentation]    Abre a tela de detalhe da classe 'Renda Variável'.
     Open Class Detail Products Screen    renda variável
-
 Validate Complete Class Detail
     [Documentation]    Executa validação completa agrupada da tela de detalhe de classe.
     Validate Full Class Detail Screen
@@ -78,13 +82,23 @@ Back Navigation From Class Detail Renda Variável
     [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.
     Validate Class Detail Back Button Section Renda Variável
     
+Back Navigation From Class Detail Institutions
+    [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.
+    Validate Class Detail Back Button Section Institutions
 Open Institution Filter Wrapper
     [Documentation]    Wrapper para abrir bottom sheet de filtro Instituição (placeholders).
     Open Institution Filter Bottom Sheet
 
+Open Classe Filter Bottom Sheet Institution
+    [Documentation]    Abre bottom sheet de filtro Produto (placeholders).
+    Open Classe Filter Bottom Sheet
 Open Product Filter Wrapper
     [Documentation]    Wrapper para abrir bottom sheet de filtro Produto (placeholders).
     Open Product Filter Bottom Sheet
+
+Filter Institution Screen Products
+    [Documentation]    Wrapper para selecionar/toggle item único de Instituição.
+    Filter Product By Institution
 
 Apply Institution Filters Wrapper
     [Documentation]    Wrapper para aplicar filtros de Instituição.
@@ -158,6 +172,10 @@ Validate Class Detail Card Ativos Components Internacional
     [Documentation]    Wrapper para validar componentes do card de ativos na tela de detalhe da classe.
     Validate Class Detail Card Ativos Components Screen Internacional
 
+Validate Class Detail Card Ativos Components Institutions
+    [Documentation]    Wrapper para validar componentes do card de ativos na tela de detalhe da classe.
+    Validate Class Detail Card Ativos Components Screen Institutions
+
 Validate Class Detail Pagination Components
     [Documentation]    Wrapper para validar componentes de paginação na tela de detalhe da classe.
     [Arguments]    ${screen}
@@ -184,6 +202,14 @@ Validate Card Products, Evolution And Donut Components Internacional
     Validate Class Detail Evolution Section
     Validate Class Detail Donut Allocation Section Internacional
 
+Validate Card Products, Evolution And Donut Components Institutions
+    [Documentation]    Wrapper para validar cards de produtos, evolução, overview e paginação na tela de detalhe da classe.
+    Validate Card Products
+    Validate Class Detail Overview Section Evolution Graphic Institutions
+    Validate Class Detail Evolution Section
+    Validate Class Detail Donut Allocation Section Institutions
+    Validate Class Detail Donut BTN Section Institutions
+
 Select Other Institution Filters Wrapper
     [Documentation]    Wrapper para aplicar outros filtros de Instituição.
     Select Other Institution Filters
@@ -204,9 +230,17 @@ Apply Product Filters Wrapper
     [Documentation]    Wrapper para limpar filtros de Produto.
     Clear Product Filters
 
+Clear Product Filters Institution Wrapper
+    [Documentation]    Wrapper para limpar filtros de Produto (apenas Instituição).
+    Clear Product Filters Institution
+
 Clear Product Filters Inside Bottom Sheet Wrapper 
     [Documentation]    Wrapper para limpar filtros de Produto dentro do bottom sheet.
     Clear Product Filters Inside Bottom Sheet
+
+Clear Institution Product Filters Inside Bottom Sheet Wrapper 
+    [Documentation]    Wrapper para limpar filtros de Produto (apenas Instituição) dentro do bottom sheet.
+    Clear Institution Product Filters Inside Bottom Sheet
 
 Select Other Product Filters Wrapper
     [Documentation]    Wrapper para limpar dois filtros de Produto.

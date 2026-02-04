@@ -75,9 +75,14 @@ Validate Full Statement Screen
 Navigation Screen Home Statement
     [Documentation]    Navega para a tela de extrato após login
     # Exemplo: clicar no botão de navegação ou usar keyword já existente
-    Wait Until Element Is Visible    locator=${STATEMENT_BTN_NAV_STATEMENT}    timeout=10
-    Click Element    locator=${STATEMENT_BTN_NAV_STATEMENT}
-    Wait Until Element Is Visible    locator=${STATEMENT_ACS_STATEMENT}    timeout=10
+    # Wait Until Element Is Visible    locator=${STATEMENT_BTN_NAV_STATEMENT}    timeout=10
+    # Click Element    locator=${STATEMENT_BTN_NAV_STATEMENT}
+    # Wait Until Element Is Visible    locator=${STATEMENT_ACS_STATEMENT}    timeout=10
+    Wait Until Element Is Visible    locator=${STATEMENT_BTN_NAV_WALLET}    timeout=10
+    Click Element    locator=${STATEMENT_BTN_NAV_WALLET}
+    Scroll Element Into View In Page    locator=${BTN_WALLET_EVOLUÇÃO_PATRIMONIAL}
+    Wait Until Element Is Visible    locator=${BTN_WALLET_EXTRATO}    timeout=10
+    Click Element    locator=${BTN_WALLET_EXTRATO}
 
 Validate Card Pagination Statement
     [Documentation]    Valida a paginação dos lançamentos na tela de extrato.

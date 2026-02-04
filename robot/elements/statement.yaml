@@ -9,6 +9,8 @@ STATEMENT_BTN_NAV_WALLET: "id=b3_bottom_nav_bar_item_Carteira"
 STATEMENT_BTN_NAV_EARNINGS: "id=b3_bottom_nav_bar_item_Proventos"
 STATEMENT_BTN_NAV_STATEMENT: "id=b3_bottom_nav_bar_item_Extrato"
 STATEMENT_BTN_NAV_MENU: "id=b3_bottom_nav_bar_item_Menu"
+BTN_WALLET_EXTRATO: accessibility_id=Extrato
+BTN_WALLET_EVOLUÇÃO_PATRIMONIAL: accessibility_id=Evolução patrimonial
 
 STATEMENT_HIDE_STATEMENT: "accessibility_id=Ocultar valores"
 # Accessibility IDs (content-desc)
