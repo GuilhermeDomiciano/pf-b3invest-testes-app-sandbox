@@ -24,17 +24,6 @@ Click On Institution Button Screen Wallet
     Log To Console    message=[B3] Clicked Instituição filter button in wallet allocation section\n
 
 
-Click Other Institution Button Screen Wallet
-    [Documentation]    Click on the Institution filter button in the wallet allocation section
-
-    Wait Until Page Contains Element    locator=${BTN_WALLET_FILTER_INSTITUICAO}    timeout=10
-    Click Element    locator=${BTN_WALLET_FILTER_INSTITUICAO}
-    Scroll Element Into View In Page    locator=${BTN_WALLET_ACCESS_ALL_INSTITUTIONS}
-    Wait Until Page Contains    text=Acessar todas as instituições    timeout=10s
-    Click Element    locator=${NAV_OTHER_INSTITUTIONS}
-
-    Log To Console    message=[B3] Clicked Instituição filter button in wallet allocation section\n
-
 Validate And Navigate To Institutions Products And Button Load More Screen Wallet Institution
   [Documentation]    Valida e navega para as duas primeiras instituições encontradas na tela, voltando pelo botão de voltar do topo
     # Aguarda os cards de instituição aparecerem usando o regex dinâmico

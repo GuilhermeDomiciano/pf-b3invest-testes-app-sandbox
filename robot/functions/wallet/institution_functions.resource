@@ -10,11 +10,6 @@ Validate Back Button Screen Wallet Filter Institutions
     Click On Institution Button Screen Wallet
     Click On Back Button Screen Wallet Filters
 
-Navigation Other Institution Button Screen Wallet
-    [Documentation]    Navega para a tela de outras instituições a partir do filtro de instituições
-
-    Click Other Institution Button Screen Wallet
-    
 Validate Access All Products Institutions Button Section Screen Wallet
     [Documentation]    Validate Access All Products Institutions Button Screen Wallet
 

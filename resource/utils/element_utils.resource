@@ -26,6 +26,24 @@ Scroll Element Into View In Page
         ${counter}=    Set Variable    ${counter}+1
     END
 
+Scroll Element Into View In Page Small
+    [Documentation]    Scroll Element Into View Page (scroll bem pequeno)
+    [Arguments]    ${locator}
+    FOR    ${counter}    IN RANGE    0    15
+        ${el}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${locator}    0.5
+        Run Keyword If     ${el}     Exit For Loop
+
+        IF    '${platformName}'=='android'
+            # Scroll vertical bem pequeno para Android
+            Swipe    ${659}    ${1200}    ${659}    ${1150}
+        ELSE
+            # Scroll vertical bem pequeno para iOS
+            Swipe    ${212}    ${300}    ${216}    ${280}
+        END
+
+        ${counter}=    Set Variable    ${counter}+1
+    END
+
 Scroll Element Into View Top In Page
     [Documentation]            Scroll Element Into View Page
     [Arguments]                ${locator}
@@ -400,8 +418,8 @@ Find Elements Until Specific Element Found
                 IF   ${matches_found} >= ${match_numbers_expected}
                     Log To Console    message=[B3] Valores monetários encontrados antes do elemento alvo: ${matches_found}\n
                 ELSE
-                    Fail    msg=[B3] TESTE FALHOU: Nenhum valor monetário encontrado antes do elemento alvo ${matches_found}!
-                    Log To Console    message=[B3] Nenhum valor monetário encontrado antes do elemento alvo.\n
+                    Fail    msg=[B3] TESTE FALHOU: Valor monetário encontrado antes do elemento alvo ${matches_found} valor minimo esperado ${match_numbers_expected}!\n
+                    Log To Console    message=[B3] Valor monetário encontrado menor que o esperado \n
                 END
                 RETURN
             ELSE 

@@ -499,7 +499,7 @@ Validate Ballance Filters Products Renda Fixa
 
     Wait Until Element Is Visible    ${PERIODO}    timeout=10s
     Element Should Be Visible    ${PERIODO}
-    Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
+       ${PERIODO}     match_numbers_expected=2
 
     Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
 
