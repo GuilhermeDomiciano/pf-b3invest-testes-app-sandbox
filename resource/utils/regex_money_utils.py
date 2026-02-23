@@ -33,3 +33,12 @@ for i, caso in enumerate(casos_teste, 1):
     resultado = is_valor_monetario(caso)
     print(f"Teste {i}: '{caso}' = {resultado}")
 #para rodar chamar no terminarl python3 resource/utils/regex_money_utils.py
+
+def compare_numbers_from_strings(str1, str2):
+    """
+    Recebe duas strings, extrai os números de cada uma e compara.
+    Retorna False se o primeiro número for maior que o segundo, True caso contrário.
+    """
+    num1 = int(''.join(re.findall(r'\d+', str(str1))) or 0)
+    num2 = int(''.join(re.findall(r'\d+', str(str2))) or 0)
+    return 1 if (num1 < num2) else 0

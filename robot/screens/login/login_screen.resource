@@ -23,7 +23,7 @@ Send Keys Password
     [Documentation]    Send Keys Password
     [Arguments]    ${PASSWORD}
 
-    Sleep    8
+    # Sleep    4
     Wait Until Element Is Visible    locator=${INPT_PASSWORD}    timeout=15
     Click Element    locator=${INPT_PASSWORD}
     Input Text    locator=${INPT_PASSWORD}    text=${PASSWORD}
@@ -36,22 +36,25 @@ Click Button Continue Password
 Click Button No Accept Touch Id
     [Documentation]    Click Button No Accept Touch Id
 
-    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_TOUCH_ID}    timeout=10
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_TOUCH_ID}    timeout=5
     Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_TOUCH_ID}
 
 Click Button No Accept Notify
     [Documentation]    Click Button No Accept Notify
 
-    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=10
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=5
     Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_NOTIFY}
 
 Click Button No Accept Discover Profile
     [Documentation]    Click Button No Accept Discover Profile 
-    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=10
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=5
     Run Keyword And Ignore Error  Click Element    locator=${BTN_SKIP_PROFILE}
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${CLOSE_STORIE}    timeout=5
+    Run Keyword And Ignore Error  Click Element    locator=${CLOSE_STORIE}
+    
     Wait Until Element Is Visible    locator=${HIDE_VALUE}    timeout=10
     Click Element    locator=${BTN_SHOW_VALUE}
-
+    
 Validate Contains Text Home Page
     [Documentation]    Validate Contains Text Home Page
 

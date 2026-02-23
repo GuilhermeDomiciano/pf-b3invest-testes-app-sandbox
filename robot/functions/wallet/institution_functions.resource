@@ -40,8 +40,11 @@ Validate Card Order Classes Institutions
     [Documentation]    Valida os cards das classes na tela de todas as instituições.
 
     Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA_RESOURCE_ID}   timeout=10s
+    Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
+    Click Element    locator=${BTN_LOAD_MORE_3}
+    Sleep    2s  
     Log To Console    message=[B3] Validate Card Order Classes Institutions in Wallet Screen\n
-    Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${BTN_LOAD_MORE_3}   True
+    Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${CARD_RENDA_FIXA_RESOURCE_ID}   True
 
 Validate Voice Over Button Institutions
     [Documentation]    Valida o funcionamento do botão de Voice Over dentro da tela de instituições
@@ -70,3 +73,9 @@ Validate Error Api Institution Screen
     Click Element    locator=${BTN_RETRY_API_CLASS}
     Scroll Element Into View In Page    locator=${CARD_RENDA_FIXA}
     Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA}   timeout=10s
+
+Navigation To Wallet Details Institutions
+    [Documentation]    Navega para a tela de detalhes da instituição a partir da tela de todas as instituições
+
+    Click On Institution Element Screen Wallet Institutions
+    

@@ -9,6 +9,7 @@ Variables    ../../elements/wallet.yaml
 Variables    ../../elements/class.yaml
 Variables    ../../elements/institute.yaml
 Variables    ../../elements/product.yaml
+Variables    ../../elements/detail_classe.yaml
 
 *** Keywords ***
 Click On Institution Button Screen Wallet
@@ -21,6 +22,7 @@ Click On Institution Button Screen Wallet
     Click Element    locator=${BTN_WALLET_ACCESS_ALL_INSTITUTIONS}
 
     Log To Console    message=[B3] Clicked Instituição filter button in wallet allocation section\n
+
 
 Validate And Navigate To Institutions Products And Button Load More Screen Wallet Institution
   [Documentation]    Valida e navega para as duas primeiras instituições encontradas na tela, voltando pelo botão de voltar do topo
@@ -48,3 +50,19 @@ Validate And Navigate To Institutions Products And Button Load More Screen Walle
     # Disable TalkBack
     # Sleep    2s
   
+
+Click On Institution Element Screen Wallet Institutions
+  [Documentation]    Navega para a tela de detalhes da instituição a partir da tela de todas as instituições
+  Wait Until Element Is Visible   locator=${INSTITUTION_BUTTON_REGEX}   timeout=20s
+  Click Element    locator=${BTN_NAV_INSTITUTION}
+  Wait Until Element Is Visible   locator=${CLASS_DETAIL_BTN_VOLTAR}   timeout=10s
+  Wait Until Element Is Visible   locator=${TITLE_LIST_INSTITUTIONS}   timeout=20s
+
+Validate Class Detail Donut BTN Section Institutions
+    [Documentation]    Valida os botões de interação do gráfico donut na tela de detalhe da classe Institutions.
+    Scroll Element Into View In Page    locator=${CARD_PRODUCT_INSTITUTION_SCREEN}
+    Wait Until Element Is Visible    locator=${BTN_FILTER_NOT_SELECT_PRODUT}    timeout=10s
+    Click Element    locator=${BTN_FILTER_NOT_SELECT_PRODUT}
+    Wait Until Element Is Visible      locator=${BTN_FILTER_NOT_SELECT_CLASS}    timeout=10s
+    Element Should Be Visible        locator=${BTN_FILTER_NOT_SELECT_CLASS}
+    Sleep    2s
