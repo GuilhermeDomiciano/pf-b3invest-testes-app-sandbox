@@ -10,8 +10,8 @@ Resource    ../../functions/wallet/wallet_functions.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
-Test Tags    wallet_details
-# 15 cenarios de teste relacionados a tela de detalhes da carteira
+Test Tags    other_institution
+# 9 cenarios de teste relacionados a tela outras instituiçoes.
 *** Test Cases ***
 
 Validate Other Institutions Screen Information TopBar And Card
