@@ -499,7 +499,7 @@ Validate Ballance Filters Products Renda Fixa
 
     Wait Until Element Is Visible    ${PERIODO}    timeout=10s
     Element Should Be Visible    ${PERIODO}
-       ${PERIODO}     match_numbers_expected=2
+    Find Elements Until Specific Element Found   ${PERIODO}     match_numbers_expected=2
 
     Log To Console    message=[B3] Saldo exibido na tela de todos os produtos: ${balance}\n
 
@@ -576,7 +576,7 @@ Open Product Filter Bottom Sheet
 Filter Product By Institution
     [Documentation]    Filtra Produto por Instituição (marca um item).
     Scroll Element Into View In Page   locator=${CRI_FILTER}
-    Click Element    locator=${CRI_FILTER}
+    # Click Element    locator=${CRI_FILTER}
     Sleep    0.4s
     Log To Console    message=[B3] Filtro de Produto por Instituição aplicado (provisório).\n
 

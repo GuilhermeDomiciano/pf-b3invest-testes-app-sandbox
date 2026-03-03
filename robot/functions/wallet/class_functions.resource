@@ -41,6 +41,7 @@ Validate Products Inside Class Product And Navigate To Classes
     Wait Until Element Is Visible    locator=${QTD_PRODUCTS_RENDA_VARIAVEL}   timeout=10s
     Wait Until Element Is Visible     locator=${BTN_RENDA_VARIAVEL}   timeout=10s
     Click Element    locator=${BTN_RENDA_VARIAVEL}
+    Scroll Element Into View Top In Page    locator=${BTN_WALLET_BACK}
     Click Element    locator=${BTN_WALLET_BACK}
 
 Validate Card Classes Product
