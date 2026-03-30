@@ -125,7 +125,8 @@ Validate Load More Products In Other Institutions Screen
 
     Click Element    locator=${LOAD_MORE_PRODUCTS}
     Sleep    2s
-    Swipe    ${659}    ${1400}    ${659}    ${900}
+    Swipe    ${659}    ${1300}    ${659}    ${900}
+    Scroll Screen
     # Scroll Element Into View In Page Small  locator=${PRODUCT_INSTITUTION_NUMBER}
     Find Elements Until Specific Element Found    ${PRODUCT_INSTITUTION_NUMBER}    match_numbers_expected=5
     Log To Console    message=[B3] Validated Load More Products in Other Institutions Screen\n
