@@ -100,8 +100,8 @@ Validate Provents Section
     [Documentation]    Validate provents section (received and to receive)
     [Tags]    proventos_carteira
 
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

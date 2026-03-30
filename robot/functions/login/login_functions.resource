@@ -3,6 +3,7 @@ Documentation    Login Functions
 
 Resource    ${EXECDIR}/robot/screens/walkthrough/walkthrough_screen.resource
 Resource    ${EXECDIR}/robot/screens/login/login_screen.resource
+Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
 
 *** Keywords ***
 Simple Login
@@ -48,6 +49,7 @@ No Accept Permissions
 
     Click Button No Accept Touch Id
     Click Button No Accept Notify
+    Click Button No Accept Location
 
 Skip Profile
     [Documentation]    Skip Profile

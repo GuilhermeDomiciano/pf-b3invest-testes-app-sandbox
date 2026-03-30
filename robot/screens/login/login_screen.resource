@@ -45,6 +45,12 @@ Click Button No Accept Notify
     Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_NOTIFY}    timeout=5
     Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_NOTIFY}
 
+Click Button No Accept Location
+    [Documentation]    Click Button No Accept Location
+
+    Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_AGORA_NAO_LOCATION}    timeout=5
+    Run Keyword And Ignore Error  Click Element    locator=${BTN_AGORA_NAO_LOCATION}
+    
 Click Button No Accept Discover Profile
     [Documentation]    Click Button No Accept Discover Profile 
     Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${BTN_SKIP_PROFILE}    timeout=5

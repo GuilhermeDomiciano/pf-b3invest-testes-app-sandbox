@@ -34,6 +34,11 @@ users:
     password: Bvmf@123
     password_error: Bvmf@321
     email: b3-user-cc-cpf@mailsac.com
+  user_cc_cpf_wallet:
+    document: '98765432100'
+    password: Bvmf@123
+    password_error: Bvmf@321
+    email: b3-user-cc-cpf-wallet@mailsac.com
   user_cc_cnpj:
     document: '53790663000113'
     password: Bvmf@123
