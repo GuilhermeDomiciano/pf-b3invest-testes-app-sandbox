@@ -7,6 +7,7 @@ Resource    ../../functions/login/login_functions.resource
 Resource    ../../functions/wallet/other_institution_functions.resource
 Resource    ../../functions/wallet/wallet_functions.resource
 Resource    ../../functions/wallet/other_product_functions.resource
+Resource    ../../screens/wallet/wallet_screen.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 

@@ -1,6 +1,7 @@
 *** Settings ***
 Library    String
 Library    Collections
+Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
 Documentation    Wallet Functions
 
 Resource    ${EXECDIR}/robot/screens/wallet/class_screen.resource
@@ -60,6 +61,10 @@ Validate Card Order Classes Product
 
     Click On Classe Button Screen Wallet
     Sleep    2s
+    Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
+    Click Element    locator=${BTN_LOAD_MORE_3}
+    Sleep    2s
+    Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
     Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${BTN_LOAD_MORE_3}   True
 
 Validate Error Api Class Screen

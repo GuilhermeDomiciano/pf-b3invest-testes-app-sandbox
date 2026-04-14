@@ -42,3 +42,50 @@ def compare_numbers_from_strings(str1, str2):
     num1 = int(''.join(re.findall(r'\d+', str(str1))) or 0)
     num2 = int(''.join(re.findall(r'\d+', str(str2))) or 0)
     return 1 if (num1 < num2) else 0
+
+def compare_dates_from_strings(str1, str2):
+    """
+    Recebe duas strings com datas no formato "X de mês" (ex: "2 de março", "26 de fevereiro")
+    e compara as datas. Assume mesmo ano para ambas as datas.
+    Retorna 1 se a primeira data for anterior à segunda, 0 caso contrário.
+    """
+    meses = {
+        'janeiro': 1, 'fevereiro': 2, 'março': 3, 'abril': 4,
+        'maio': 5, 'junho': 6, 'julho': 7, 'agosto': 8,
+        'setembro': 9, 'outubro': 10, 'novembro': 11, 'dezembro': 12
+    }
+    
+    def extrair_data(texto):
+        """Extrai dia e mês de uma string no formato 'X de mês'"""
+        if not texto or not isinstance(texto, str):
+            return 0, 0
+        
+        # Remove espaços extras e converte para minúsculo
+        texto_limpo = texto.lower().strip()
+        
+        # Padrão para capturar "número de mês"
+        padrao = r'(\d{1,2})\s+de\s+(\w+)'
+        match = re.search(padrao, texto_limpo)
+        
+        if match:
+            dia = int(match.group(1))
+            nome_mes = match.group(2)
+            mes = meses.get(nome_mes, 0)
+            return dia, mes
+        return 0, 0
+    
+    # Extrai datas das duas strings
+    dia1, mes1 = extrair_data(str1)
+    dia2, mes2 = extrair_data(str2)
+    
+    # Se não conseguiu extrair alguma data, retorna 0
+    if not all([dia1, mes1, dia2, mes2]):
+        return 0
+    
+    # Compara primeiro por mês, depois por dia
+    if mes1 < mes2:
+        return 1
+    elif mes1 > mes2:
+        return 0
+    else:  # mesmo mês
+        return 1 if dia1 > dia2 else 0

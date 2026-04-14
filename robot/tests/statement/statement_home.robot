@@ -3,6 +3,8 @@ Documentation    Testes da tela de extrato
 Resource    ${EXECDIR}/robot/base.resource
 Resource    ${EXECDIR}/robot/functions/statement/statement_functions.resource
 Resource    ../../../resource/utils/element_utils.resource
+Resource    ../../functions/statement/statement_functions.resource
+Resource    ../../functions/login/login_functions.resource
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3

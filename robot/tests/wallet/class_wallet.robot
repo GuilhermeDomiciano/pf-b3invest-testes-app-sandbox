@@ -2,6 +2,11 @@
 Documentation    Wallet
 
 Resource    ${EXECDIR}/robot/base.resource
+Resource    ../../functions/wallet/institution_functions.resource
+Resource    ../../functions/login/login_functions.resource
+Resource    ../../functions/wallet/other_institution_functions.resource
+Resource    ../../functions/wallet/wallet_functions.resource
+Resource    ../../functions/wallet/class_functions.resource
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3

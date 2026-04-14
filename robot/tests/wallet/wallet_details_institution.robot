@@ -3,6 +3,11 @@ Documentation    Wallet Details - Navegação e validação do botão Voltar na 
 
 Resource    ${EXECDIR}/robot/base.resource
 Resource    ../../functions/wallet/institution_functions.resource
+Resource    ../../functions/login/login_functions.resource
+Resource    ../../functions/wallet/class_functions.resource
+Resource    ../../functions/wallet/wallet_details.resource
+Resource    ../../functions/wallet/wallet_functions.resource
+
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3

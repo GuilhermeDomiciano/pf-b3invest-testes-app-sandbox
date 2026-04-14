@@ -5,6 +5,8 @@ Documentation    Wallet Details Functions
 Resource    ${EXECDIR}/robot/screens/wallet/wallet_details_screnn.resource
 # Opcional: reutilizar navegação já existente
 Resource    ${EXECDIR}/robot/screens/wallet/wallet_screen.resource
+Resource    ../../screens/wallet/wallet_screen.resource
+Resource    ../../screens/wallet/wallet_details_screnn.resource
 
 *** Keywords ***
 Validate Class Detail Overview Renda Fixa
