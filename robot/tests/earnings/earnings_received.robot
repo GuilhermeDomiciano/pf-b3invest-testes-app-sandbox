@@ -8,11 +8,11 @@ Resource    ../../functions/earnings/earnings_functions.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
-Test Tags    other_product_wallet
-# x cenarios de teste relacionados a tela outros produtos.
+Test Tags    proventos recebido
+# 14 cenarios de teste relacionados a tela proventos recebido.
 *** Test Cases ***
 Validate Header, Graph And Items In My Earnings Screen 
-    [Documentation]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - Valida os elementos do head, gráfico e itens da tela de meus proventos recebidos.
+    [Documentation]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-570 - PFSAPP-571 - Valida os elementos do head, gráfico e itens da tela de meus proventos recebidos.
     [Tags]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-1209
 
     Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
@@ -66,3 +66,18 @@ Validate Empty State My Earnings Screen
     Navigation To My Earnings Screen
     Validate Proventos Available Soon Text Screen
     Log    Validação de proventos vazio concluída
+
+Validate Received Items In My Earnings Screen Graph Hide Data
+    [Documentation]    PFSAPP-763 - PFSAPP-764 - PFSAPP-765 - PFSAPP-766 
+    [Tags]    PFSAPP-763 - PFSAPP-764 - PFSAPP-765 - PFSAPP-766 
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Graph Screen
+    Validate Earnings Hide Graph Item Screen
+    Log    Validação de ocultar dados do gráfico de proventos concluída
+
+# ! - PFSAPP-767 e PFSAPP-768 - Nao sao possiveis de ser automatizados, pois o elemento nao é visivel e alinhamento nao pode ser validado via automação.

@@ -2,7 +2,9 @@
 Documentation    Home
 
 Resource    ${EXECDIR}/robot/base.resource
-
+Resource    ../functions/home/home_functions.resource
+Resource    ../../robot/base.resource
+Resource    ../functions/login/login_functions.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 

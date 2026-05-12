@@ -8,7 +8,7 @@ Resource    ../../functions/login/login_functions.resource
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
-
+# 9 cenarios de teste relacionados a tela de extrato
 *** Test Cases ***
 Validate header do Statement Screen And Dates 
     [Documentation]   PFSAPP-390-CA01, 02, 03, 04, 06, 07  Valida o cabeçalho da tela de extrato

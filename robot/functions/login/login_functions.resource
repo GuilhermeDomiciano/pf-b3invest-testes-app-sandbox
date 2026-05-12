@@ -23,6 +23,21 @@ Simple Login
 
     Log To Console    \n[B3] Simple Login Successful...
 
+Again Login
+    [Documentation]    Simple Login
+    [Arguments]    ${DOCUMENT}    ${PASSWORD}
+
+    Click Button Accessibility
+
+    Log To Console    \n[B3] Login - Document: (${DOCUMENT}) - Password: (${PASSWORD})
+
+    Wait Until Page Contains    text=Agora digite sua senha.   timeout=15s
+    Send Keys Password    PASSWORD=${PASSWORD}
+    Click Button Continue Password
+
+    Log To Console    \n[B3] Simple Login Successful...
+
+
 Document Login
     [Documentation]    Simple Login
     [Arguments]    ${DOCUMENT}
