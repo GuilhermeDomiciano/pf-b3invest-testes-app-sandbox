@@ -48,6 +48,7 @@ Validate Statement Last Transactions Section
 
 Validate Statement Empty Section
     [Documentation]    Valida campo com - quando extrato está vazio.
+    Sleep    2s
     Wait Until Element Is Visible     locator=${STATEMENT_HIDE_STATEMENT}   timeout=10s
     Wait Until Element Is Visible     locator=${STATEMENT_ACS_ENTRY_DATE}   timeout=10
     Scroll Element Into View In Page    locator=${STATEMENT_ACS_LAST_ENTRIES}
@@ -57,8 +58,8 @@ Validate Statement Empty Section
     Scroll Element Into View In Page     locator=${LOAD_MORE}
     Scroll Screen
     Click Element    locator=${LOAD_MORE}
-    Scroll Element Into View In Page    locator=${GO_TO_DETAILS}
-    Click Element    locator=${GO_TO_DETAILS}
+    Scroll Element Into View In Page    locator=${GO_TO_DETAILS_PETR4}
+    Click Element    locator=${GO_TO_DETAILS_PETR4}
     Wait Until Element Is Visible    locator=${NEGOTIATION_CODE}    timeout=10
     Click Element    locator=${BACK_BUTTON}
     

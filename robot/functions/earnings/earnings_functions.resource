@@ -87,3 +87,56 @@ Validate Earnings To Receive Graph Screen
 Validate Earnings To Receive Hide Graph Item Screen
     [Documentation]    Valida os elementos do item de proventos a receber.
     Validate Earnings To Receive Hide Graph Item
+
+Validate Access Details Asset Button Proventos To Receive Item Screen
+    [Documentation]    Valida se é possível acessar os detalhes do ativo ao clicar no botão de acessar detalhes do item de proventos a receber.
+    Validate Access Details Asset Button Proventos To Receive Item
+
+Validate Details Head Page Proventos To Receive Item Screen
+    [Documentation]    Valida se as informações principais do item de proventos a receber estão corretas.
+    Validate Details Head Page Proventos To Receive Item
+
+Validate Details Active Proventos To Receive Item Screen
+    [Documentation]    Valida se as informações detalhadas do item de proventos a receber estão corretas.
+    Validate Details Active Proventos To Receive Item
+
+Validate Details Event Proventos To Receive Item Screen
+    [Documentation]    Valida se as informações do evento do item de proventos a receber estão corretas.
+    Validate Details Event Proventos To Receive Item
+
+Validate Access Details Asset Button Proventos Received Item Screen
+    [Documentation]    Valida se é possível acessar os detalhes do ativo ao clicar no botão de acessar detalhes do item de proventos recebidos.
+    Validate Access Details Asset Button Proventos Received Item
+
+Validate Details Proventos Received Item Screen
+    [Documentation]    Valida se as informações principais do item de proventos recebidos estão corretas.
+    Validate Details Proventos Received Item
+
+Validate Access Details Radar Proventos Screen
+    [Documentation]    Valida se é possível acessar os detalhes do radar de proventos ao clicar no botão de acessar detalhes do item de proventos a receber.
+    Validate Access Details Radar Proventos
+
+Validate Details Radar Proventos Screen
+    [Documentation]    Valida se as informações do radar de proventos estão corretas.
+    Validate Details Radar Proventos
+
+Check Money Value In Screen Details Proventos Received Item Screen
+    [Documentation]    Valida se o valor do provento recebido é exibido corretamente na tela de detalhes do item de proventos recebidos.
+    Check Money Value In Screen Details Proventos Received Item
+
+Back Screen My Earnings Screen
+    [Documentation]    Retorna para a tela de meus proventos.
+    [Arguments]   ${OPTIONS}
+    Back Screen Details Radar Proventos
+    Wait Until Element Is Visible    locator=${B3_BOTTOM_NAV_BAR_ITEM_PROVENTOS}    timeout=20
+    Click Element    locator=${B3_BOTTOM_NAV_BAR_ITEM_PROVENTOS}
+    Click Element    locator=${B3_BOTTOM_NAV_BAR_ITEM_PROVENTOS}
+    IF    '${OPTIONS}'=='A_RECEBER'
+        Validate Proventos To Receive Header Screen
+    ELSE IF    '${OPTIONS}'=='RECEBIDOS'
+        Validate Proventos Header Screen
+    ELSE IF    '${OPTIONS}'=='RADAR'
+        Validate Text Radar Proventos Screen
+    ELSE
+        Log    Opção de tela inválida. Nenhuma ação específica será realizada.
+    END

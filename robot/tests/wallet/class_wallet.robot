@@ -78,8 +78,8 @@ Validate Order Of Class Cards
     [Documentation]    PFSAPP-251-CA11, CA12 - Validate the order of class cards in the wallet and buttons to load more products
     [Tags]    filtro_classe_setas
 
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

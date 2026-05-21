@@ -118,6 +118,6 @@ Validar Navigation Bar, News, Events
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet From Bottom Nav Bar
-    Validate Events Section Screen Home
     Validate News Section Screen Home
+    Validate Events Section Screen Home
     

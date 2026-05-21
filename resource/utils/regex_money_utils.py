@@ -88,4 +88,4 @@ def compare_dates_from_strings(str1, str2):
     elif mes1 > mes2:
         return 0
     else:  # mesmo mês
-        return 1 if dia1 > dia2 else 0
+        return 1 if dia1 < dia2 else 0

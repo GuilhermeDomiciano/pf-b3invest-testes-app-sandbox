@@ -85,4 +85,22 @@ Validate Received Items In My Earnings To Receive Screen Graph Hide Data
     Validate Earnings To Receive Hide Graph Item Screen
     Log    Validação de ocultar dados do gráfico de proventos concluída
 
+Validate Details Screen In My Earnings To Receive
+    [Documentation]    PFSAPP-1621 - PFSAPP-1622 - PFSAPP-1623 - PFSAPP-1624 - PFSAPP-1625 Valida se é possível acessar os detalhes do item de proventos a receber e se as informações são exibidas corretamente.
+    [Tags]    PFSAPP-1621 - PFSAPP-1622 - PFSAPP-1623 - PFSAPP-1624 - PFSAPP-1625
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
+    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Receive Proventos Screen
+    Validate Proventos To Receive Header Screen
+    Validate Access Details Asset Button Proventos To Receive Item Screen
+    Validate Details Head Page Proventos To Receive Item Screen
+    Validate Details Active Proventos To Receive Item Screen
+    Validate Details Event Proventos To Receive Item Screen
+    Back Screen My Earnings Screen    OPTIONS=A_RECEBER
+    Log   Valida se é possível acessar os detalhes do item de proventos a receber e se as informações são exibidas corretamente.
+
 # ! - PFSAPP-773 e PFSAPP-774 - Nao sao possiveis de ser automatizados, pois o elemento nao é visivel e alinhamento nao pode ser validado via automação.

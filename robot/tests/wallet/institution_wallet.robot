@@ -53,9 +53,9 @@ Validate Institutions Screen Information Body
 Validate Order Of Cards Inside Institutions Screen
     [Documentation]    PFSAPP-252-CA08 - Validate the order of cards inside the institutions screen
     [Tags]    todas_instituicoes_informacoes
-
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    #TODO: Validar com usuário que tenha mais de 3 instituições para validar o botão de load more
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

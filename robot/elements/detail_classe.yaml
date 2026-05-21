@@ -110,7 +110,7 @@ CLASS_FILTER_INST_ITEM_8: "xpath=//android.widget.Button[@content-desc='Limpar f
 CLASS_FILTER_INST_BTN_APLICAR: "xpath=//android.widget.Button[@content-desc='Aplicar filtros']"
 CLASS_FILTER_INST_BTN_LIMPAR: "accessibility_id=Limpar filtros"  # considerar xpath se instável
 CLASS_FILTER_ONE_SELECTED_ITEM: "accessibility_id=BANCO ALFA DE INVESTIMENTO S/A, não selecionado"
-CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, não selecionado"
+CLASS_FILTER_TWO_SELECTED_ITEMS: "accessibility_id=2 selecionados, selecionado"
 CLASS_FILTER_INST_BTN_SELECT_ALL: "accessibility_id=Selecionar todos\nSelecionar todos"
 CLASS_FILTER_CHIP_INSTITUICAO_NOT_SELECTED: "accessibility_id=Instituição, não selecionado"
 SELECT_FILTER_BOTTOM_SHEET: "accessibility_id=Instituição, não selecionado"
@@ -163,6 +163,7 @@ FILTER_BANRISUL: "xpath=(//android.widget.CheckBox[@content-desc='BANRISUL S/A C
 FILTER_PARTICIPANTE_SINACOR: "xpath=(//android.widget.CheckBox[@content-desc='PARTICIPANTE 3013 - SINACOR'])[2]"
 BANCO_MASTER: accessibility_id=MASTER S/A CCTVM, não selecionado
 TESTE_SINACOR: accessibility_id=TESTE - SINACOR 3, não selecionado
+TESTE_SINACOR_SELECTED: accessibility_id=TESTE - SINACOR 3, selecionado
 TITLE_BOTTOM_SHEET: accessibility_id=Selecione um ou mais produtos
 ETF_EXCHANGE: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Traded Fund'])[2]"
 ETF_TRADED: "xpath=(//android.widget.CheckBox[@content-desc='ETF - Exchange Traded Fund'])[6]"
@@ -184,3 +185,4 @@ SHOW_BOTTOM_SHEET_FILTER_INSTITUTIONS: accessibility_id=Selecione uma ou mais cl
 CLOSE_BOTTOM_SHEET: accessibility_id=Fechar
 CRI_FILTER: "xpath=(//android.widget.CheckBox[@content-desc='CRI - Certificado de Recebíveis Imobiliários'])[2]"
 CRI_SELECT: "accessibility_id=CRI - Certificado de Recebíveis Imobiliários, não selecionado"
+CRI_UNSELECT: "accessibility_id=CRI - Certificado de Recebíveis Imobiliários, selecionado"

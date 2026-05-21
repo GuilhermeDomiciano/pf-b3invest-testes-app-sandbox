@@ -24,6 +24,11 @@ Validate Proventos Header
     # Wait Until Element Is Visible    locator=${DIVIDEND_YIELD}    timeout=10
     Wait Until Element Is Visible    locator=${ENTENDA_O_QUE_E_DIVIDEND_YIELD}    timeout=10
     Wait Until Element Is Visible    locator=${HIDE_VALUES}    timeout=10
+    Click Element    locator=${ENTENDA_O_QUE_E_DIVIDEND_YIELD}
+    Wait Until Element Is Visible    locator=${TEXT_DIVIDEND_YIELD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_TITLE_DIVIDEND_YIELD}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_DIVIDEND_YIELD}    timeout=10
+    Click Element    locator=${BTN_CLOSE_RADAR_PROVENTOS}
     # Wait Until Element Is Visible    locator=${SUB_TITLE_PROVENTOS_RECEIVED_LAST_12_MONTHS}    timeout=10
 
 Validate Earnings Graph
@@ -127,7 +132,7 @@ Validate Proventos Available Soon Text
 # ? Validações relacionadas a tela de proventos a receber
 Navigate To Receive Proventos
     [Documentation]    Navega para a tela de proventos a receber.
-    Wait Until Element Is Visible    locator=${SUB_TITLE_PROVENTOS_RECEIVED_LAST_12_MONTHS}    timeout=25
+    Sleep    2s
     Wait Until Element Is Visible    locator=${TAB_PROVENTOS_NOT_SELECT_TWO}    timeout=10
     Click Element    locator=${TAB_PROVENTOS_NOT_SELECT_TWO}
 
@@ -248,3 +253,133 @@ Validate Scroll To close Icon Bottom Sheet Radar Proventos
     ${end_y}=    Evaluate    ${start_y} + 700
     Swipe    ${start_x}    ${start_y}    ${end_x}    ${end_y}
     Wait Until Element Is Visible    locator=${TITLE_PROVENTOS_RECEIVE}    timeout=10
+
+# ! Detalhe dos proventos a receber
+Validate Access Details Asset Button Proventos To Receive Item
+    [Documentation]    Valida se o botão de acessar detalhes do ativo na tela de proventos a receber está visível e funcional.
+    Scroll Element Into View In Page    locator=${BTN_ACCESS_DETAILS_ASSET_FIRST}
+    Scroll Screen
+    Click Element    locator=${BTN_ACCESS_DETAILS_ASSET_FIRST}
+
+Validate Details Head Page Proventos To Receive Item
+    [Documentation]    Valida se as informações do cabeçalho nos detalhes do item de proventos a receber estão corretas.
+    Wait Until Element Is Visible    locator=${TITLE_DETAILS_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${SUBTITLE_DETAILS_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_BACK_TO_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_HIDE_VALUES}    timeout=10
+    Wait Until Element Is Visible    locator=${VALUE_NET}    timeout=10
+    Wait Until Element Is Visible    locator=${VALUE_NET_AMOUNT}    timeout=10
+    Wait Until Element Is Visible    locator=${VALUE_DIVIDEND}    timeout=10
+
+Validate Details Active Proventos To Receive Item
+    [Documentation]    Valida se as informações do ativo nos detalhes do item de proventos a receber estão corretas.
+    Scroll Element Into View In Page    locator=${DETAILS_ASSET}
+    Wait Until Element Is Visible    locator=${DETAILS_ASSET}    timeout=10
+    Scroll Element Into View In Page    locator=${COMPANY_DETAILS}
+    Wait Until Element Is Visible    locator=${COMPANY_DETAILS}    timeout=10
+    Scroll Element Into View In Page    locator=${CODE_ISIN_DISTRIBUTION}
+    Wait Until Element Is Visible    locator=${CODE_ISIN_DISTRIBUTION}    timeout=10
+    Scroll Element Into View In Page    locator=${CODE_TRADING}
+    Wait Until Element Is Visible    locator=${CODE_TRADING}    timeout=10
+    Scroll Element Into View In Page    locator=${TYPE_ASSET}
+    Wait Until Element Is Visible    locator=${TYPE_ASSET}    timeout=10
+    Scroll Element Into View In Page    locator=${SCRIBER_DETAILS}
+    Wait Until Element Is Visible    locator=${SCRIBER_DETAILS}    timeout=10
+
+Validate Details Event Proventos To Receive Item
+    [Documentation]    Valida se as informações do evento nos detalhes do item de proventos a receber estão corretas.
+    Scroll Element Into View In Page    locator=${DETAILS_EVENT}
+    Wait Until Element Is Visible    locator=${DETAILS_EVENT}    timeout=10
+    Scroll Element Into View In Page    locator=${PAYMENT_FORECAST}
+    Wait Until Element Is Visible    locator=${PAYMENT_FORECAST}    timeout=10
+    Scroll Element Into View In Page    locator=${APPROVAL_DATE}
+    Wait Until Element Is Visible    locator=${APPROVAL_DATE}    timeout=10
+    Scroll Element Into View In Page    locator=${UPDATE_DATE}
+    Wait Until Element Is Visible    locator=${UPDATE_DATE}    timeout=10
+    Scroll Element Into View In Page    locator=${EX_DATE}
+    Wait Until Element Is Visible    locator=${EX_DATE}    timeout=10
+    Scroll Element Into View In Page    locator=${IR_VALUE}
+    Wait Until Element Is Visible    locator=${IR_VALUE}    timeout=10
+    Scroll Element Into View In Page    locator=${IR_RATE}
+    Wait Until Element Is Visible    locator=${IR_RATE}    timeout=10
+    Scroll Element Into View In Page    locator=${UNIT_VALUE}
+    Wait Until Element Is Visible    locator=${UNIT_VALUE}    timeout=10
+    Scroll Element Into View In Page    locator=${GROSS_VALUE}
+    Wait Until Element Is Visible    locator=${GROSS_VALUE}    timeout=10
+    Scroll Element Into View In Page    locator=${QUANTITY}
+    Wait Until Element Is Visible    locator=${QUANTITY}    timeout=10
+
+#! Detalhe de proventos recebidos 
+Validate Access Details Asset Button Proventos Received Item
+    [Documentation]    Valida se o botão de acessar detalhes do ativo na tela de proventos recebidos está visível e funcional.
+    Scroll Element Into View In Page    locator=${BTN_CARD_EARNINGS_RECEIVED}
+    Scroll Screen
+    Click Element    locator=${BTN_CARD_EARNINGS_RECEIVED}
+
+Validate Details Proventos Received Item
+    [Documentation]    Valida se as informações do cabeçalho nos detalhes do item de proventos recebidos estão corretas.
+    Wait Until Element Is Visible    locator=${BTN_BACK_TO_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_BACK_TO_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_HIDE_VALUES}    timeout=10
+    Wait Until Element Is Visible    locator=${TITLE_CARD_EARNINGS_RECEIVED}    timeout=10
+    Wait Until Element Is Visible    locator=${SUBTITLE_CARD_EARNINGS_RECEIVED}    timeout=10
+    Wait Until Element Is Visible    locator=${VALUE_TYPE_TITLE_EARNINGS_RECEIVED}    timeout=10
+    Wait Until Element Is Visible    locator=${VALUE_TYPE_EARNINGS_RECEIVED}    timeout=10
+    Scroll Element Into View In Page    locator=${DETAILS_EVENT_EARNINGS_RECEIVED}
+    Wait Until Element Is Visible    locator=${DETAILS_EVENT_EARNINGS_RECEIVED}    timeout=10
+    Scroll Element Into View In Page    locator=${DATE_PAYMENT_EARNINGS_RECEIVED}
+    Wait Until Element Is Visible    locator=${DATE_PAYMENT_EARNINGS_RECEIVED}    timeout=10
+    Scroll Element Into View In Page    locator=${QUANTITY_EARNINGS_RECEIVED}
+    Wait Until Element Is Visible    locator=${QUANTITY_EARNINGS_RECEIVED}    timeout=10
+    Scroll Element Into View In Page    locator=${UNIT_VALUE_EARNINGS_RECEIVED}
+    Wait Until Element Is Visible    locator=${UNIT_VALUE_EARNINGS_RECEIVED}    timeout=10
+
+Check Money Value In Screen Details Proventos Received Item
+    [Documentation]    Valida se o valor do provento recebido é exibido corretamente.
+    @{LISTA_VALORES}=    Create List
+    Scroll Element Into View In Page    locator=${VALUE_TYPE_TITLE_EARNINGS_RECEIVED}
+    Wait Until Element Is Visible    locator=${VALUE_TYPE_TITLE_EARNINGS_RECEIVED}    timeout=10
+    ${valor_texto}=    Get Element Attribute    ${UNIT_VALUE_EARNINGS_RECEIVED}    content-desc
+    Log To Console    message=[B3] Valor extraído: ${valor_texto}
+    Append To List    ${LISTA_VALORES}    ${valor_texto}
+    ${qtd_valores}=    Get Length    ${LISTA_VALORES}
+    Should Be Equal As Integers    ${qtd_valores}    1    Quantidade de valores esperada: 1. Quantidade encontrada: ${qtd_valores}.
+    
+    
+
+#! Detalhe de radar de proventos
+Validate Access Details Radar Proventos
+    [Documentation]    Valida se o botão de acessar detalhes do radar de proventos está visível e funcional.
+    Scroll Element Into View In Page    locator=${BUTTON_DATE_RADAR}
+    Scroll Screen
+    Click Element    locator=${BUTTON_DATE_RADAR}
+
+Validate Details Radar Proventos
+    [Documentation]    Valida se as informações do cabeçalho nos detalhes do radar de proventos estão corretas.
+    Wait Until Element Is Visible    locator=${BTN_BACK_TO_EARNINGS}    timeout=10
+    Wait Until Element Is Visible    locator=${TITLE_RADAR_PROVENTOS}    timeout=10
+    Wait Until Element Is Visible    locator=${SUBTITLE_RADAR_PROVENTOS}    timeout=10
+    Wait Until Element Is Visible    locator=${DETAILS_RADAR_PROVENTOS}    timeout=10
+    Scroll Element Into View In Page    locator=${TYPE_RADAR_PROVENTOS}
+    Wait Until Element Is Visible    locator=${TYPE_RADAR_PROVENTOS}    timeout=10
+    Scroll Element Into View In Page    locator=${TYPE_EVENT_RADAR_PROVENTOS}
+    Wait Until Element Is Visible    locator=${TYPE_EVENT_RADAR_PROVENTOS}    timeout=10
+    Scroll Element Into View In Page    locator=${DATE_COM_RADAR_PROVENTOS}
+    Wait Until Element Is Visible    locator=${DATE_COM_RADAR_PROVENTOS}    timeout=10
+    Scroll Element Into View In Page    locator=${DATE_PAYMENT_RADAR_PROVENTOS}
+    Wait Until Element Is Visible    locator=${DATE_PAYMENT_RADAR_PROVENTOS}    timeout=10
+    Scroll Element Into View In Page    locator=${UNIT_PRICE_GROSS}
+    Wait Until Element Is Visible    locator=${UNIT_PRICE_GROSS}    timeout=10
+    Scroll Element Into View In Page    locator=${PRICE_CLOSING}
+    Wait Until Element Is Visible    locator=${PRICE_CLOSING}    timeout=10
+    Scroll Element Into View In Page    locator=${DY}
+    Wait Until Element Is Visible    locator=${DY}    timeout=10
+    Scroll Element Into View In Page    locator=${EXTERNAL_LINK}
+    Wait Until Element Is Visible    locator=${EXTERNAL_LINK}    timeout=10
+
+
+Back Screen Details Radar Proventos
+    [Documentation]    Valida se é possível retornar da tela de detalhes do radar de proventos para a tela de radar de proventos.
+    Wait Until Element Is Visible    locator=${BTN_BACK_TO_EARNINGS}    timeout=10
+    Click Element    locator=${BTN_BACK_TO_EARNINGS}
+    

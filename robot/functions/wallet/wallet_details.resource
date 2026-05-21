@@ -7,6 +7,7 @@ Resource    ${EXECDIR}/robot/screens/wallet/wallet_details_screnn.resource
 Resource    ${EXECDIR}/robot/screens/wallet/wallet_screen.resource
 Resource    ../../screens/wallet/wallet_screen.resource
 Resource    ../../screens/wallet/wallet_details_screnn.resource
+Resource    ../../screens/wallet/institution_screen.resource
 
 *** Keywords ***
 Validate Class Detail Overview Renda Fixa
