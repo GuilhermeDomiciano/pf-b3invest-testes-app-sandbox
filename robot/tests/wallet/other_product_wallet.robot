@@ -7,6 +7,7 @@ Resource    ../../functions/login/login_functions.resource
 Resource    ../../functions/wallet/other_institution_functions.resource
 Resource    ../../functions/wallet/wallet_functions.resource
 Resource    ../../functions/wallet/other_product_functions.resource
+Resource    ../../screens/wallet/wallet_screen.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
@@ -47,8 +48,8 @@ Validate Order of Product Cards And Infinite Scroll and Talk Back Inside Other P
     [Documentation]    PFSAPP-631, PFSAPP-632, PFSAPP-633
     [Tags]    PFSAPP-631, PFSAPP-632, PFSAPP-633
 
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

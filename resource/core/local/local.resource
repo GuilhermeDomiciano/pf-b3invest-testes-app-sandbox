@@ -25,6 +25,12 @@ Open App Local Android
     ...                   app=${PATH_VERSIONS}${ANDROID_APP_LOCAL}
     ...                   deviceName=${DEVICE_NAME_ANDROID_LOCAL}
     ...                   disableIdLocatorAutocompletion=${True}
+    # ...                   adbExecTimeout=60000
+    # ...                   androidInstallTimeout=90000
+    # ...                   appWaitTimeout=60000
+    # ...                   autoGrantPermissions=${True}
+    # ...                   fullReset=${True}
+    # ...                   noReset=${False}
 
 Open App Local Ios
     [Documentation]    Open App Local Ios

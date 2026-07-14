@@ -11,3 +11,9 @@ Click Button Start Using
 
     Wait Until Element Is Visible    locator=${BTN_START_USING}
     Click Element    locator=${BTN_START_USING}
+
+Click Button Accessibility
+    [Documentation]    Click Button Accessbility
+
+    Wait Until Element Is Visible    locator=${BTN_ACCESSIBILITY}
+    Click Element    locator=${BTN_ACCESSIBILITY}

@@ -2,7 +2,9 @@
 Documentation    Home
 
 Resource    ${EXECDIR}/robot/base.resource
-
+Resource    ../functions/home/home_functions.resource
+Resource    ../../robot/base.resource
+Resource    ../functions/login/login_functions.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
@@ -116,6 +118,6 @@ Validar Navigation Bar, News, Events
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet From Bottom Nav Bar
-    Validate Events Section Screen Home
     Validate News Section Screen Home
+    Validate Events Section Screen Home
     

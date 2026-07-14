@@ -2,6 +2,10 @@
 Documentation    Wallet
 
 Resource    ${EXECDIR}/robot/base.resource
+Resource    ../../functions/wallet/institution_functions.resource
+Resource    ../../functions/login/login_functions.resource
+Resource    ../../functions/wallet/other_institution_functions.resource
+Resource    ../../functions/wallet/wallet_functions.resource
 
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
@@ -49,7 +53,7 @@ Validate Institutions Screen Information Body
 Validate Order Of Cards Inside Institutions Screen
     [Documentation]    PFSAPP-252-CA08 - Validate the order of cards inside the institutions screen
     [Tags]    todas_instituicoes_informacoes
-
+    #TODO: Validar com usuário que tenha mais de 3 instituições para validar o botão de load more
     Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
     ...             PASSWORD=${users['user_cc_cpf']['password']}
     No Accept Permissions

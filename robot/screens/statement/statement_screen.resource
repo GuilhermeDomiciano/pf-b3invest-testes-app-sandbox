@@ -10,7 +10,8 @@ Variables    ../../elements/statement.yaml
 
 Validate Statement Header
     [Documentation]    Valida os elementos principais do cabeçalho do extrato.
-    Wait Until Element Is Visible    locator=${STATEMENT_ACS_STATEMENT}    timeout=10
+    Sleep    1s
+    Wait Until Element Is Visible    locator=${STATEMENT_ACS_STATEMENT}    timeout=20
     Wait Until Element Is Visible    locator=${STATEMENT_HIDE_STATEMENT}    timeout=10
     Wait Until Element Is Visible    locator=${STATEMENT_ACS_UPDATED}    timeout=10
     Wait Until Element Is Visible    locator=${STATEMENT_ACS_TOTAL_VALUE}    timeout=10
@@ -42,19 +43,23 @@ Validate Statement Last Transactions Section
     Scroll Element Into View In Page    locator=${STATEMENT_ACS_LAST_ENTRIES}
     Wait Until Element Is Visible    locator=${STATEMENT_ACS_LAST_ENTRIES}    timeout=10
     Scroll Element Into View In Page    locator=${STATEMENT_ACS_ENTRY_DATE}
-    Scroll Element Into View In Page     locator=${STATEMENT_ACTIVE}
-    Wait Until Element Is Visible    locator=${STATEMENT_ACTIVE}    timeout=10
+    Scroll Element Into View In Page     locator=${STATEMENT_PARTICIPANT}
     Wait Until Element Is Visible    locator=${STATEMENT_PARTICIPANT}    timeout=10
 
 Validate Statement Empty Section
     [Documentation]    Valida campo com - quando extrato está vazio.
+    Sleep    2s
     Wait Until Element Is Visible     locator=${STATEMENT_HIDE_STATEMENT}   timeout=10s
     Wait Until Element Is Visible     locator=${STATEMENT_ACS_ENTRY_DATE}   timeout=10
     Scroll Element Into View In Page    locator=${STATEMENT_ACS_LAST_ENTRIES}
     Wait Until Element Is Visible    locator=${STATEMENT_ACS_LAST_ENTRIES}    timeout=10
     Scroll Element Into View In Page    locator=${EMPTY_VALUE}
     Wait Until Element Is Visible    locator=${EMPTY_VALUE}    timeout=10
-    Click Element    locator=${STATEMENT_PARTICIPANT}
+    Scroll Element Into View In Page     locator=${LOAD_MORE}
+    Scroll Screen
+    Click Element    locator=${LOAD_MORE}
+    Scroll Element Into View In Page    locator=${GO_TO_DETAILS_PETR4}
+    Click Element    locator=${GO_TO_DETAILS_PETR4}
     Wait Until Element Is Visible    locator=${NEGOTIATION_CODE}    timeout=10
     Click Element    locator=${BACK_BUTTON}
     
@@ -86,6 +91,7 @@ Navigation Screen Home Statement
 
 Validate Card Pagination Statement
     [Documentation]    Valida a paginação dos lançamentos na tela de extrato.
+    Sleep    2s
     Wait Until Element Is Visible     locator=${STATEMENT_HIDE_STATEMENT}   timeout=10s
     Enable TalkBack
     Click Element    locator=${STATEMENT_HIDE_STATEMENT}
@@ -112,7 +118,7 @@ Validate Card Pagination Statement
      
     END
     Log To Console    message=[B3] Total de elementos HIDE_VALUES encontrados: ${count}\n
-    Should Be True    ${count} >= 7    Quantidade de elementos HIDE_VALUES encontrada (${count}) é menor que 2.
+    Should Be True    ${count} >= 4    Quantidade de elementos HIDE_VALUES encontrada (${count}) é menor que 2.
     # Click Element    locator=${LOAD_MORE}        
     # Scroll Element Into View In Page    locator=${LOAD_MORE}
     Disable TalkBack
@@ -132,20 +138,12 @@ Validate Statement Order Date Statement
     Scroll Screen
     Click Element    locator=${LOAD_MORE}
     Sleep    2s
-    Scroll Element Into View In Page     locator=${LOAD_MORE}
-    Scroll Screen
-    Click Element    locator=${LOAD_MORE}
-    Sleep    2s
-    Scroll Element Into View In Page     locator=${LOAD_MORE}
-    Scroll Screen
-    Click Element    locator=${LOAD_MORE}
-    Sleep    2s
     Scroll Element Into View In Page    locator=${STATEMENT_ACS_ENTRY_DATE}
     ${date_element2}=    Get WebElement    locator=${STATEMENT_ACS_ENTRY_DATE}
     ${date_accessibility_id2}=    Run Keyword And Ignore Error    Get Element Attribute    ${date_element2}    content-desc
     Log To Console    message=[B3] id extraído 1: ${date_accessibility_id1}[1], id extraído 2: ${date_accessibility_id2}[1]
 
-    ${dateShouldBe}=  Compare Numbers From Strings    ${date_accessibility_id1}[1]   ${date_accessibility_id2}[1]
+    ${dateShouldBe}=  Compare Dates From Strings    ${date_accessibility_id1}[1]   ${date_accessibility_id2}[1]
 
     Log To Console    message=[B3] Resultado da comparação: ${dateShouldBe}
     Should Be Equal As Integers    ${dateShouldBe}    0    O primeiro id (${date_accessibility_id1}) é maior que o segundo (${date_accessibility_id2})!

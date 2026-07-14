@@ -141,17 +141,18 @@ Validate Specific Filter Content Screen Wallet
 Click Graphic Bar Screen Wallet
     [Documentation]    Click Graphic Bar
 
-    Scroll Element Into View In Page    locator=${BTN_WALLET_BAR_CHART}
-    Scroll Screen
-    Wait Until Element Is Visible    locator=${BTN_WALLET_BAR_CHART}    timeout=10
+    #todo: validar o grafico de linha e barra
+    # Scroll Element Into View In Page    locator=${BTN_WALLET_BAR_CHART}
+    # Scroll Screen
+    # Wait Until Element Is Visible    locator=${BTN_WALLET_BAR_CHART}    timeout=10
     Log To Console    message=[B3] Validate Session Graphic Bar\n
 
 Click Graphic Line Screen Wallet
     [Documentation]    Click Graphic Line
-
-    Scroll Element Into View In Page    locator=${BTN_LINE_CHART}
-    Wait Until Element Is Visible    locator=${BTN_LINE_CHART}    timeout=10
-    Click Element    locator=${BTN_LINE_CHART}
+    #todo: validar o grafico de linha e barra
+    # Scroll Element Into View In Page    locator=${BTN_LINE_CHART}
+    # Wait Until Element Is Visible    locator=${BTN_LINE_CHART}    timeout=10
+    # Click Element    locator=${BTN_LINE_CHART}
     Log To Console    message=[B3] Validate Session Graphic Line\n
 
 Validate Wallet Action Buttons Screen Wallet

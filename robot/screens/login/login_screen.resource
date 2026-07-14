@@ -3,7 +3,7 @@ Documentation    Login Screen
 
 Library          AppiumLibrary
 
-Variables        ${EXECDIR}/robot/elements/login.yaml
+Variables        ../../../robot/elements/login.yaml
 
 *** Keywords ***
 Send Keys Document
@@ -58,7 +58,7 @@ Click Button No Accept Discover Profile
     Run Keyword And Ignore Error  Wait Until Element Is Visible    locator=${CLOSE_STORIE}    timeout=5
     Run Keyword And Ignore Error  Click Element    locator=${CLOSE_STORIE}
     
-    Wait Until Element Is Visible    locator=${HIDE_VALUE}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_SHOW_VALUE}    timeout=10
     Click Element    locator=${BTN_SHOW_VALUE}
     
 Validate Contains Text Home Page
