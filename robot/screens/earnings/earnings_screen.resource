@@ -211,6 +211,7 @@ Return To Login Keeping Session
     # Tentar "Sair do aplicativo"
     Scroll Element Into View In Page    locator=${SCREEN_MENU}
     Wait Until Element Is Visible    locator=${SCREEN_MENU}    timeout=10
+    Scroll Screen
     Click Element    locator=${SCREEN_MENU}
 
 Validate Text Radar Proventos
@@ -253,6 +254,27 @@ Validate Scroll To close Icon Bottom Sheet Radar Proventos
     ${end_y}=    Evaluate    ${start_y} + 700
     Swipe    ${start_x}    ${start_y}    ${end_x}    ${end_y}
     Wait Until Element Is Visible    locator=${TITLE_PROVENTOS_RECEIVE}    timeout=10
+
+Validate Radar Proventos Filter And Download
+    [Documentation]    Valida os campos de filtro e download do radar de proventos e o bottom sheet de exportação.
+    Wait Until Element Is Visible    locator=${TITLE_FILTER_RADAR}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_DL_RADAR}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_FILTER_RADAR}    timeout=10
+    Click Element    locator=${BTN_FILTER_RADAR}
+    Scroll Element Into View In Page    locator=${DONT_HAVE_PROVENTOS_TO_RECEIVE_SUBTITLE}
+    Wait Until Element Is Visible    locator=${DONT_HAVE_PROVENTOS_TO_RECEIVE_TITLE}    timeout=10
+    Wait Until Element Is Visible    locator=${DONT_HAVE_PROVENTOS_TO_RECEIVE_SUBTITLE}    timeout=10
+    Click Element    locator=${BTN_DL_RADAR}
+    Wait Until Element Is Visible    locator=${TITLE_BOTTOM_SHEET_DL_RADAR}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_BOTTOM_SHEET_DL_RADAR_ACTIVE_FILTER}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_BOTTOM_SHEET_DL_RADAR_ACTIVE_FILTER_EXPLAIN}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_TIPE_DL}    timeout=10
+    Wait Until Element Is Visible    locator=${TEXT_CSV}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_CANCEL_DL_RADAR}    timeout=10
+    Wait Until Element Is Visible    locator=${BTN_CONFIRM_DL_RADAR}    timeout=10
+    Click Element    locator=${BTN_CANCEL_DL_RADAR}
+    Wait Until Element Is Visible    locator=${DONT_HAVE_PROVENTOS_TO_RECEIVE_SUBTITLE}    timeout=10
+    Wait Until Page Does Not Contain Element    locator=${TEXT_BOTTOM_SHEET_DL_RADAR_ACTIVE_FILTER_EXPLAIN}    timeout=10
 
 # ! Detalhe dos proventos a receber
 Validate Access Details Asset Button Proventos To Receive Item

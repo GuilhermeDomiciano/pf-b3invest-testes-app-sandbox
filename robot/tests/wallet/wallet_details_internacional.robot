@@ -139,8 +139,8 @@ Open Institution Filter Bottom Sheet Two Institution Select And Clear Internacio
 Open Product Filter Bottom Sheet One Product Select And Clear Renda Internacional
     [Documentation]    PFSAPP-386-CA07, 08, 12
     [Tags]    back button, header page and title start list
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}    
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}    
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
@@ -158,8 +158,8 @@ Open Product Filter Bottom Sheet One Product Select And Clear Renda Internaciona
 Open Product Filter Bottom Sheet Two Product Select And Clear Internacional
     [Documentation]    PFSAPP-386-CA09, 10, 11
     [Tags]    botao_voltar
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

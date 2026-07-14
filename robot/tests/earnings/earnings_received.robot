@@ -5,11 +5,12 @@ Resource    ${EXECDIR}/robot/base.resource
 Resource    ../../functions/wallet/institution_functions.resource
 Resource    ../../functions/login/login_functions.resource
 Resource    ../../functions/earnings/earnings_functions.resource
+Resource    ../../functions/earnings/earnings_filter_functions.resource
 Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
 Test Tags    proventos recebido
-# 14 cenarios de teste relacionados a tela proventos recebido.
+# 20 cenarios de teste relacionados a tela proventos recebido.
 *** Test Cases ***
 Validate Header, Graph And Items In My Earnings Screen 
     [Documentation]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-570 - PFSAPP-571 - Valida os elementos do head, gráfico e itens da tela de meus proventos recebidos.
@@ -97,3 +98,64 @@ Validate Details Screen In My Earnings Received
     Log   Validação de detalhes do item de proventos recebidos concluída
 
 # ! - PFSAPP-767 e PFSAPP-768 - Nao sao possiveis de ser automatizados, pois o elemento nao é visivel e alinhamento nao pode ser validado via automação.
+
+Validate Filter Options In My Earnings Received
+    [Documentation]    PFSAPP-1616 - PFSAPP-1617 - PFSAPP-1618 - PFSAPP-1619 - PFSAPP-1620 - Valida se é possível acessar os detalhes do item de proventos recebidos e se as informações são exibidas corretamente.
+    [Tags]    PFSAPP-1616 - PFSAPP-1617 - PFSAPP-1618 - PFSAPP-1619 - PFSAPP-1620
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Received Item Screen
+    Validate Earnings Filter Main Options Screen
+    Validate Earnings All Periods Date Filter Bottom Sheet Screen
+
+Validate Date Filter In My Earnings Received
+    [Documentation]    Valida abertura e fechamento do filtro de data na tela de proventos recebidos.
+    [Tags]    filtro_data_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Received Item Screen
+    Validate Earnings Date Filter Bottom Sheet Screen
+
+Validate Event Filter In My Earnings Received
+    [Documentation]    Valida abertura e fechamento do filtro de tipo de evento na tela de proventos recebidos.
+    [Tags]    filtro_evento_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Received Item Screen
+    Validate Earnings Event Filter Bottom Sheet Screen
+
+Validate Institution Filter In My Earnings Received
+    [Documentation]    Valida abertura e fechamento do filtro de instituição na tela de proventos recebidos.
+    [Tags]    filtro_instituicao_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Received Item Screen
+    Validate Earnings Institution Filter Bottom Sheet Screen
+
+Validate Investment Filter In My Earnings Received
+    [Documentation]    Valida abertura e fechamento do filtro de tipo de investimento na tela de proventos recebidos.
+    [Tags]    filtro_investimento_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Validate Proventos Received Item Screen
+    Validate Earnings Investment Filter Bottom Sheet Screen

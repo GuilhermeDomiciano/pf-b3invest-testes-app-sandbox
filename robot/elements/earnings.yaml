@@ -59,7 +59,7 @@ TITLE_BOTTOM_SHEET_DL_RADAR: "accessibility_id=Baixar radar de proventos"
 TEXT_BOTTOM_SHEET_DL_RADAR_ACTIVE_FILTER: "accessibility_id=Você tem filtros aplicados"
 TEXT_BOTTOM_SHEET_DL_RADAR_ACTIVE_FILTER_EXPLAIN: "accessibility_id=Seu radar de proventos será exportado com o filtro aplicado. Para exportar o radar completo, volte e limpe os filtros."
 TEXT_TIPE_DL: "accessibility_id=Formato do arquivo"
-TEXT_CSV: "accessibility_id=XLSX\\nExportado em planilha"
+TEXT_CSV: "accessibility_id=XLSX\nExportado em planilha"
 BTN_CANCEL_DL_RADAR: "accessibility_id=Cancelar"
 BTN_CONFIRM_DL_RADAR: "accessibility_id=Baixar"
 

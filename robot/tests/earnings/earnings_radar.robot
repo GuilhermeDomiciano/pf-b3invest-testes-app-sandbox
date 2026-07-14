@@ -9,7 +9,7 @@ Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
 Test Tags    radar_proventos
-# 15 cenarios de teste relacionados a tela radar de proventos.
+# 20 cenarios de teste relacionados a tela radar de proventos.
 *** Test Cases ***
 Validate Radar Earnings Screen Popup Text Close To Understand
     [Documentation]    PFSAPP-896 - PFSAPP-897 - PFSAPP-900 - PFSAPP-901
@@ -83,3 +83,17 @@ Validate Details Screen In My Radar Earnings
     Validate Details Radar Proventos Screen
     Back Screen My Earnings Screen    OPTIONS=RADAR
     Log    Validação da tela de radar de proventos concluída
+
+Validate Radar Earnings Filter And Download
+    [Documentation]    Valida os campos de filtro e de download do radar de proventos.
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Close Icon Screen
+    Validate Radar Proventos Filter And Download Screen
+    Log    Validação dos campos de filtro e download do radar de proventos concluída

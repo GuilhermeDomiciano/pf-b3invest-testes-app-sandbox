@@ -93,8 +93,8 @@ Open Institution Filter Bottom Sheet Two Institution Select And Clear Institutio
 Open Product Filter Bottom Sheet One Product Select And Clear Institutions
     [Documentation]    PFSAPP-259-CA07, 08, 12
     [Tags]    back button, header page and title start list
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet
@@ -114,8 +114,8 @@ Open Product Filter Bottom Sheet One Product Select And Clear Institutions
 Open Product Filter Bottom Sheet Two Product Select And Clear Institutions
     [Documentation]    PFSAPP-259-CA09, 10, 11
     [Tags]    botao_voltar
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

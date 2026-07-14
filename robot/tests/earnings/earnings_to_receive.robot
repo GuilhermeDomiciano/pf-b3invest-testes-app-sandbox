@@ -9,11 +9,11 @@ Test Setup       Launch Application AppB3
 Test Teardown    Close Application AppB3
 
 Test Tags    proventos a receber
-# 14 cenarios de teste relacionados a tela proventos a receber.
+# 19 cenarios de teste relacionados a tela proventos a receber.
 *** Test Cases ***
 Validate Header, Graph And Items In My Earnings To Receive Screen 
     [Documentation]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-570 - PFSAPP-571 - Valida os elementos do head, gráfico e itens da tela de meus proventos a receber.
-    [Tags]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-1209
+    [Tags]    PFSAPP-566 - PFSAPP-567 - PFSAPP-568 - PFSAPP-569 - PFSAPP-570 - PFSAPP-571
 
     Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
     ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}

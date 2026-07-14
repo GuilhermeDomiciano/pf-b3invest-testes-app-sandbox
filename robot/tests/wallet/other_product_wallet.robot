@@ -48,8 +48,8 @@ Validate Order of Product Cards And Infinite Scroll and Talk Back Inside Other P
     [Documentation]    PFSAPP-631, PFSAPP-632, PFSAPP-633
     [Tags]    PFSAPP-631, PFSAPP-632, PFSAPP-633
 
-    Simple Login    DOCUMENT=${users['user_cc_cpf']['document']}
-    ...             PASSWORD=${users['user_cc_cpf']['password']}
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
     No Accept Permissions
     Skip Profile
     Navigation To My Wallet

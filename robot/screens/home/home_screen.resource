@@ -3,9 +3,11 @@ Documentation    Home Screen
 
 Library          AppiumLibrary
 
-Resource    ${EXECDIR}/resource/utils/element_utils.resource
+Resource    ../../../resource/utils/element_utils.resource
 
-Variables    ${EXECDIR}/robot/elements/home.yaml
+Variables    ../../../robot/elements/home.yaml
+Variables    ../../../robot/elements/wallet.yaml
+Variables    ../../../robot/elements/product.yaml
 
 *** Keywords ***
 Validate Toggle Visibility

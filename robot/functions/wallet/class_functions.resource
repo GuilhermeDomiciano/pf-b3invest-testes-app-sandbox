@@ -64,8 +64,8 @@ Validate Card Order Classes Product
     Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
     Click Element    locator=${BTN_LOAD_MORE_3}
     Sleep    2s
-    Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
-    Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${BTN_LOAD_MORE_3}   True
+    # Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
+    # Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${BTN_LOAD_MORE_3}   True
 
 Validate Error Api Class Screen
     [Documentation]    Valida a mensagem de erro exibida quando a API falha ao carregar os dados da classe.

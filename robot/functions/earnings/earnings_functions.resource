@@ -68,6 +68,10 @@ Validate Scroll To close Icon Bottom Sheet Radar Proventos Screen
     [Documentation]    Valida se é possível rolar o conteúdo do bottom sheet do radar de proventos até o ícone de fechar.
     Validate Scroll To close Icon Bottom Sheet Radar Proventos
 
+Validate Radar Proventos Filter And Download Screen
+    [Documentation]    Valida os campos de filtro e download do radar de proventos.
+    Validate Radar Proventos Filter And Download
+
 Validate Earnings Hide Graph Item Screen
     [Documentation]    Valida se o gráfico de proventos é ocultado ao clicar no botão de ocultar valores.
     Validate Earnings Hide Graph Item
