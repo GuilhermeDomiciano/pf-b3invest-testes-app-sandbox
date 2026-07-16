@@ -1,0 +1,102 @@
+# Localização
+BTN_WALLET_TOGGLE_VISIBILITY: xpath=//android.widget.ScrollView/android.view.View[1]/android.view.View[1]
+TITLE_WALLET_ALLOCATION: accessibility_id=Alocação
+TXT_WALLET_TITLE_MY_WALLET: accessibility_id=Minha carteira
+NAV_MY_WALLET: accessibility_id=Ir para carteira
+
+BTN_WALLET_SETTINGS: id=wallet_settings_button
+BTN_WALLET_FILTER: id=wallet_filter_button
+
+# Resumo da Carteira
+TXT_WALLET_TOTAL_BALANCE: id=wallet_total_balance
+TXT_WALLET_BALANCE_VARIATION: id=wallet_balance_variation
+TXT_WALLET_PERCENTAGE_VARIATION: id=wallet_percentage_variation
+ICN_WALLET_VARIATION_ARROW: id=wallet_variation_arrow
+
+# Seção de Alocação
+BTN_WALLET_ALLOCATION_TOGGLE: id=allocation_toggle_button
+CHART_WALLET_ALLOCATION: id=wallet_allocation_chart
+LIST_WALLET_ALLOCATION_ITEMS: id=allocation_items_list
+
+# Allocation Filter Buttons
+BTN_WALLET_FILTER_PRODUTO_SELECT: "accessibility_id=Produto, 1 de 3, selecionado"
+BTN_WALLET_FILTER_PRODUTO_NOT_SELECTED: "accessibility_id=Produto, 1 de 3, não selecionado"
+BTN_WALLET_FILTER_CLASSE: "accessibility_id=Classe, 2 de 3, não selecionado"
+BTN_WALLET_FILTER_INSTITUICAO: "accessibility_id=Instituição, 3 de 3, não selecionado"
+BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todos os produtos"
+BTN_WALLET_ACCESS_ALL_CLASSES: "accessibility_id=Acessar todas as classes"
+BTN_WALLET_ACCESS_ALL_INSTITUTIONS: "accessibility_id=Acessar todas as instituições"
+NAV_OTHER_INSTITUTIONS: "accessibility_id=Outros"
+
+# Allocation Content Areas
+WALLET_ALLOCATION_CONTENT: id=allocation_content_area
+WALLET_PRODUTO_ALLOCATION_INDICATOR: id=produto_allocation_view
+WALLET_CLASSE_ALLOCATION_INDICATOR: id=classe_allocation_view
+WALLET_INSTITUICAO_ALLOCATION_INDICATOR: id=instituicao_allocation_view
+
+# Access All Products Button
+#BTN_WALLET_ACCESS_ALL_PRODUCTS: xpath=//android.widget.Button[@content-desc="Acessar todos os produtos Acessar todos os produtos"]
+BTN_WALLET_ACCESS_ALL_PRODUCTS: "accessibility_id=Acessar todos os produtos"
+TXT_WALLET_TITLE_ACESSO_RAPIDO: "accessibility_id=Acesso Rápido"
+
+# Wallet Action Buttons
+BTN_WALLET_EVOLUÇAO_PATRIMONIAL: "accessibility_id=Evolução patrimonial"
+BTN_WALLET_ANALISES_IA: "accessibility_id=Análises \ncom IA"
+BTN_WALLET_EXTRATO: accessibility_id=Extrato
+BTN_WALLET_DIVULGACAO_RESULTADOS: "accessibility_id=Divulgação de \nresultados"
+BTN_WALLET_GARANTIAS: "accessibility_id=Garantias"
+BTN_WALLET_OFERTAS_PUBLICAS: "accessibility_id=Ofertas públicas"
+
+# Container for horizontal scroll area
+WALLET_ACTIONS_CONTAINER: id=wallet_actions_horizontal_scroll
+
+
+BTN_WALLET_BAR_CHART: "xpath=//android.view.View[@resource-id='b3_bar_chart_button']"
+BTN_WALLET_LINE_CHART: "xpath=//android.view.View[@resource-id='b3_line_chart_button']"
+
+
+TITLE_WALLET_PROVENT: accessibility_id=Proventos
+BTN_WALLET_PROVENT_RECEIVED_SELECTED: "accessibility_id=Recebidos, 1 de 2, selecionado"
+BTN_WALLET_PROVENT_RECEIVED_NOT_SELECTED: "accessibility_id=Recebidos, 1 de 2, não selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_SELECTED: "accessibility_id=A receber, 2 de 2,selecionado"
+BTN_WALLET_PROVENT_TO_RECEIVE_NOT_SELECTED: "accessibility_id=A receber, 2 de 2, não selecionado"
+CHECK_WALLET_PROVENTS_RECEIVED: "accessibility_id=Recebidos nos últimos 12 meses"
+CHECK_WALLET_PROVENTS_TO_RECEIVE: "xpath=//*[matches(@content-desc, '^Pagamentos previstos a partir de [0-9]+/[0-9]+/[0-9]+$')]"
+# //android.view.View[@content-desc="Pagamentos previstos a partir de 22/12/2025"]
+# Disclosure results section
+TITLE_WALLET_DISCLOSURE_RESULTS: "accessibility_id=Divulgação de resultados"
+TITLE_WALLET_NEWS_RESULTS: "accessibility_id=Teleconferência de resultados\n1º quarter de 2025"
+
+BTN_NAV_INICIO: id=b3_bottom_nav_bar_item_Início
+BTN_NAV_CARTEIRA: id=b3_bottom_nav_bar_item_Carteira  
+BTN_NAV_PROVENTOS: id=b3_bottom_nav_bar_item_Proventos
+BTN_NAV_BOLSA: id=b3_bottom_nav_bar_item_Bolsa
+BTN_NAV_MENU: id=b3_bottom_nav_bar_item_Menu
+
+TXT_MINHA_CARTEIRA_TITLE: accessibility_id=Minha carteira
+TXT_LAST_UPDATE_DATE: accessibility_id=Atualizado em 19 de maio
+TXT_BALANCE_VALUE: accessibility_id=R$ 0,00
+TXT_VARIATION_PERCENTAGE: accessibility_id=(0%)
+TXT_PERIOD_30_DAYS: accessibility_id=em 30 dias
+
+TXT_ALOCACAO_TITLE: accessibility_id=Alocação
+BTN_FILTER_PRODUTO: accessibility_id=Produto Produto
+BTN_FILTER_CLASSE: accessibility_id=Classe Classe  
+BTN_FILTER_INSTITUICAO: accessibility_id=Instituição Instituição
+
+TXT_CATEGORY_ACOES: accessibility_id=Ações
+BTN_GO_TO_ACOES: accessibility_id=Ir para a página de Ações
+TXT_CATEGORY_DEBENTURES: accessibility_id=Debentures
+BTN_GO_TO_DEBENTURES: accessibility_id=Ir para a página de Debentures
+
+
+BTN_NUMBER_INDICATOR: accessibility_id=3
+
+
+TXT_PORTFOLIO_DETAILS: "accessibility_id=39% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 32% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 18% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias 11% da carteira O valor atual é de R$ 1.123.456.789,10 Valorizou R$ 123.456.789,10 Período: em 30 dias"
+
+ANDROID_CONTENT_FRAME: id=android:id/content
+
+
+TXT_RENDA_FIXA_PATH: //android.widget.ImageView[@content-desc="Renda Fixa 3 produtos em renda fixa"]
+TXT_RENDA_FIXA: accessibility_id=Renda Fixa\n3 produtos em renda fixa

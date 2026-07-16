@@ -1,0 +1,71 @@
+TXT_NO_ACCESS:  id=b3_no_access_title
+BTN_EMAIL_SELECT: id=email_selection_tile_2
+# INPT_TOKEN_ONE: xpath=//android.widget.EditText[@resource-id="b3_otp_code_field_0"]/android.widget.EditText
+# INPT_TOKEN_TWO: xpath=//android.widget.EditText[@resource-id="text_field_1"]/android.widget.EditText
+# INPT_TOKEN_THREE: xpath=//android.widget.EditText[@resource-id="text_field_2"]/android.widget.EditText
+# INPT_TOKEN_FOUR: xpath=//android.widget.EditText[@resource-id="text_field_3"]/android.widget.EditText
+# INPT_TOKEN_FIVE: xpath=//android.widget.EditText[@resource-id="text_field_4"]/android.widget.EditText
+# INPT_TOKEN_SIX: xpath=//android.widget.EditText[@resource-id="text_field_5"]/android.widget.EditText
+BTN_LOST_ACCESS: id=b3_continue_button
+BTN_HELP_CENTER: id=login_help_center_options_help_center
+# INPT_CREATE_PASSWORD: |
+#   xpath=//android.view.View[@content-desc="campo de nova senha
+#   Nova senha"]/android.widget.EditText
+INPT_CONFIRM_PASSWORD: |
+  xpath=//android.view.View[@content-desc="campo de confirmação de senha
+  Confirme a nova senha"]/android.widget.EditText
+BTN_CREATE_CONTINUE_PASSWORD: id=b3_continue_button
+BTN_ACESSAR: "accessibility_id=Concluir e acessar"
+TXT_NOVA_SENHA_CRIADA: "accessibility_id=Nova senha criada com sucesso."
+TXT_SENHA_ATUALIZADA: "accessibility_id=Sua senha foi atualizada e está protegida."
+
+
+# ===== TELA DE RECUPERAÇÃO DE SENHA - CÓDIGO OTP =====
+BTN_VOLTAR_OTP: "accessibility_id=Voltar"
+TXT_OTP_INSTRUCTION: "accessibility_id=Digite o código que enviamos para o e-mail:"
+CONTAINER_OTP_CODE_FIELD: "id=b3_otp_code_field"
+INPT_TOKEN_ONE: "xpath=//android.widget.EditText[@hint='Digitar código 1 de 6']"
+INPT_TOKEN_TWO: "xpath=//android.widget.EditText[@hint='Digitar código 2 de 6']"
+INPT_TOKEN_THREE: "xpath=//android.widget.EditText[@hint='Digitar código 3 de 6']"
+INPT_TOKEN_FOUR: "xpath=//android.widget.EditText[@hint='Digitar código 4 de 6']"
+INPT_TOKEN_FIVE: "xpath=//android.widget.EditText[@hint='Digitar código 5 de 6']"
+INPT_TOKEN_SIX: "xpath=//android.widget.EditText[@hint='Digitar código 6 de 6']"
+BTN_RESEND_CODE: "id=b3_resend_code_button"
+BTN_NO_EMAIL_ACCESS: "id=b3_sign_up_email_selection_lost_access"
+BTN_CONTINUE_OTP: "id=b3_continue_button"
+
+# ===== SELETORES ALTERNATIVOS PARA OTP (BACKUP) =====
+# Caso os seletores principais não funcionem, use estes:
+# INPT_OTP_ALL_FIELDS: "xpath=//android.view.View[@resource-id='b3_otp_code_field']//android.widget.EditText"
+# BTN_VOLTAR_OTP_ALT: "xpath=//android.widget.Button[@content-desc='Voltar']"
+# BTN_RESEND_CODE_ALT: "xpath=//android.widget.Button[@content-desc='reenviar código']"
+# BTN_NO_EMAIL_ACCESS_ALT: "xpath=//android.widget.Button[@content-desc='Não consigo acessar o e-mail cadastrado']"
+# BTN_CONTINUE_OTP_ALT: "xpath=//android.widget.Button[@content-desc='Continuar']"
+# TXT_EMAIL_MASKED: "xpath=//android.view.View[contains(@content-desc, '@mailsac.com')]"
+# TXT_EMAIL_SUBJECT_INFO: "xpath=//android.view.View[contains(@content-desc, 'RECUPERAÇÃO DE ACESSO B3')]"
+
+# ===== TELA DE CRIAR NOVA SENHA (RECUPERAÇÃO) =====
+BTN_VOLTAR_CREATE_PASSWORD: "accessibility_id=Voltar"
+TXT_RECOVERY_TITLE: "accessibility_id=Recuperação de senha"
+TXT_CREATE_PASSWORD_INSTRUCTION: "accessibility_id=Crie uma nova senha."
+TXT_PASSWORD_RESTRICTION_INFO: "accessibility_id=A nova senha não pode ser igual a nenhuma das anteriores."
+CONTAINER_NEW_PASSWORD_FIELD: "id=b3_new_password_field"
+INPT_CREATE_PASSWORD: "xpath=//android.widget.EditText[@hint='Senha']"
+BTN_TOGGLE_PASSWORD_VISIBILITY: "xpath=//android.view.View[@resource-id='b3_new_password_field']//android.view.View[@clickable='true'][2]"
+BTN_CONTINUE_CREATE_PASSWORD: "id=b3_continue_button"
+
+# Elementos de validação da senha:
+TXT_PASSWORD_REQUIREMENTS_TITLE: "accessibility_id=Sua senha deve ter:"
+TXT_REQ_MIN_8_CHARS: "accessibility_id=Mínimo de 8 caracteres"
+TXT_REQ_UPPERCASE: "accessibility_id=1 letra maiúscula"
+TXT_REQ_SPECIAL_CHAR: "accessibility_id=1 caractere especial"
+TXT_REQ_LOWERCASE: "accessibility_id=1 letra minúscula"
+TXT_REQ_NUMBER: "accessibility_id=1 número"
+TXT_REQ_NO_SPACES: "accessibility_id=Não conter espaços"
+
+# ===== SELETORES ALTERNATIVOS PARA CRIAR SENHA (BACKUP) =====
+# Caso os seletores principais não funcionem, use estes:
+# INPT_NEW_PASSWORD_ALT: "xpath=//android.view.View[@content-desc='campo de senha']//android.widget.EditText"
+# INPT_NEW_PASSWORD_BY_ID: "xpath=//android.view.View[@resource-id='b3_new_password_field']//android.widget.EditText"
+# BTN_VOLTAR_CREATE_PASSWORD_ALT: "xpath=//android.widget.Button[@content-desc='Voltar']"
+# BTN_CONTINUE_CREATE_PASSWORD_ALT: "xpath=//android.widget.Button[@content-desc='Continuar']"

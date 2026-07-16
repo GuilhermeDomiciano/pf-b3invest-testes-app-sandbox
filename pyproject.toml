@@ -1,0 +1,8 @@
+[tool.robocop]
+configure = [
+    "file-too-long:max_lines:500"
+]
+
+exclude = [
+    "1003", "0328", "0319"
+]

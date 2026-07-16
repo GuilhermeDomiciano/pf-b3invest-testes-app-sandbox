@@ -1,0 +1,14 @@
+Appium-Python-Client==3.2.1
+openpyxl
+pandas
+pyyaml
+Faker
+python-dateutil
+robotframework
+robotframework-appiumlibrary
+robotframework-datadriver
+robotframework-excellib
+robotframework-pabot
+robotframework-requests
+robotframework-robocop
+robotframework-jsonlibrary

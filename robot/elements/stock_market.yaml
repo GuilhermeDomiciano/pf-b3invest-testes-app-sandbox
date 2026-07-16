@@ -1,0 +1,39 @@
+
+BTN_STOCK_MARKET: id=b3_bottom_nav_bar_item_Bolsa
+CLOSE_STOCK: accessibility_id=Mercado fechado
+OPEN_STOCK: accessibility_id=Mercado aberto
+TITLE_STOCK: accessibility_id=Ibovespa B3
+SUB_TITLE_UPDATED: "xpath=//android.view.View[matches(@content-desc,'^Atualizado em [0-9]{1,2} de [a-zA-Z]+ de [0-9]{4} às [0-9]{2}:[0-9]{2}$')]"
+BTN_MORE_INFO: accessibility_id=Informações complementares
+INDEX_POINTS: "xpath=//android.view.View[matches(@content-desc,'^[0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2} pontos$')]"
+MINIMUM_POINTS: "xpath=//android.view.View[matches(@content-desc,'^A mínima do dia é [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2} pontos$')]"
+MAXIMUM_POINTS: "xpath=//android.view.View[matches(@content-desc,'^A máxima do dia é [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2} pontos$')]"
+RESULT_DAY: "xpath=//android.view.View[@content-desc='(Valorizou|Desvalorizou) (-|)[0-9]{0,3}(\\.[0-9]{3})*,[0-9]{2} pontos, (aumentou|diminuiu) [0-9]{1,3},[0-9]{2}+%$']"
+
+BOTTOM_SHEET_TITLE_COMPLEMENTARY_INFO: accessibility_id=Informações complementares
+
+BOTTOM_SHEET_TXT_COMPLEMENTARY_INFO: "xpath=//android.view.View[matches(@content-desc,'^O Ibovespa B3 mostra o desempenho médio das ações mais negociadas da B3\\.\n\nSe o Ibovespa B3 sobe, em geral indica que as principais ações do Brasil tiveram alta naquele dia\\. E se ele cai, significa que essas ações sofreram uma desvalorização média\\.$')]"
+BTN_CLOSE: accessibility_id=Fechar
+
+BTN_1_DAY_SELECTED: accessibility_id=1 dia, 1 de 6, selecionado
+BTN_1_DAY_NOT_SELECTED: accessibility_id=1 dia, 1 de 6, não selecionado
+BTN_7_DAYS_SELECTED: accessibility_id=7 dias, 2 de 6, selecionado
+BTN_7_DAYS_NOT_SELECTED: accessibility_id=7 dias, 2 de 6, não selecionado
+BTN_1_MONTH_SELECTED: accessibility_id=1 mês, 3 de 6, selecionado
+BTN_1_MONTH_NOT_SELECTED: accessibility_id=1 mês, 3 de 6, não selecionado
+BTN_6_MONTHS_SELECTED: accessibility_id=6 meses, 4 de 6, selecionado
+BTN_6_MONTHS_NOT_SELECTED: accessibility_id=6 meses, 4 de 6, não selecionado
+BTN_1_YEAR_SELECTED: accessibility_id=12 meses, 5 de 6, selecionado
+BTN_1_YEAR_NOT_SELECTED: accessibility_id=12 meses, 5 de 6, não selecionado
+BTN_5_YEARS_NOT_SELECTED: accessibility_id=5 anos, 6 de 6, não selecionado
+BTN_5_YEARS_SELECTED: accessibility_id=5 anos, 6 de 6, selecionado
+
+BTN_12_APR_2026_NOT_SELECTED: accessibility_id=12 de abril de 2026, não selecionado
+BTN_12_APR_2026_SELECTED: accessibility_id=12 de abril de 2026, selecionado
+DAY_GRAFIC_SELECTED: accessibility_id=195.733,51 pontos, 12 de abril de 2026
+
+TITLE_MARKET_OVERVIEW: accessibility_id=Acompanhe índices do mercado
+
+MARKET_OVERVIEW_IFIX: "xpath=//android.view.View[matches(@content-desc,'^Índice IFIX, possui [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2} pontos e (valorizou|desvalorizou) [0-9]{1,3},[0-9]{2}+%, 1 de 11$')]"
+MARKET_OVERVIEW_IDIV: "xpath=//android.view.View[matches(@content-desc,'^Índice IDIV, possui [0-9]{1,3}(\\.[0-9]{3})*,[0-9]{2} pontos e (valorizou|desvalorizou) [0-9]{1,3},[0-9]{2}+%, 2 de 11$')]"
+TITLE_RANKING_OF_THE_DAY: accessibility_id=Ranking do dia
