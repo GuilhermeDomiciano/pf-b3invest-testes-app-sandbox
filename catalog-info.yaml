@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "testes-app"
+  annotations:
+    github.com/project-slug: b3sa/pf-b3invest-testes-app
+    sonarqube.org/project-key: pf-b3invest-testes-app
+    backstage.io/techdocs-ref: dir:.
+    template: app-repository
+spec:
+  type: service
+  owner: g_p_apl_alm_squad_0049_github
+  lifecycle: experimental
+  system: b3-investidor
+  domain: pf
