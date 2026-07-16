@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Wallet Functions
-
+Resource    ../../screens/wallet/wallet_screen.resource
 Resource    ${EXECDIR}/robot/screens/wallet/wallet_screen.resource
 
 *** Keywords ***

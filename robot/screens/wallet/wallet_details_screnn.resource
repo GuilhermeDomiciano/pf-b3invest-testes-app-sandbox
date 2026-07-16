@@ -339,7 +339,7 @@ Clear Institution Filters
     [Documentation]    Limpa seleções no bottom sheet de Instituição (mantém sheet aberto).
     # TODO todos os elementos da tela Click All Elements In Screen
     Wait Until Element Is Visible    locator=${SELECTED_FILTER_BOTTOM_SHEET}    timeout=10
-    Wait Until Element Is Visible    locator=${TESTE_SINACOR}   timeout=10
+    Wait Until Element Is Visible    locator=${TESTE_SINACOR_SELECTED}   timeout=10
     Click Element    locator=${SELECTED_FILTER_BOTTOM_SHEET}
     Wait Until Element Is Visible    locator=${CLASS_DETAIL_TXT_PRODUCT_NOT_SELECTED}    timeout=10
     Sleep    0.4s
@@ -350,8 +350,8 @@ Clear Institution Filters Inside Bottom Sheet
     # TODO todos os elementos da tela Click All Elements In Screen
     
     Wait Until Element Is Visible    locator=${SELECTED_FILTER_BOTTOM_SHEET}    timeout=10
-    Wait Until Element Is Visible    locator=${TESTE_SINACOR}   timeout=10
-    Click Element    locator=${TESTE_SINACOR}
+    Wait Until Element Is Visible    locator=${TESTE_SINACOR_SELECTED}   timeout=10
+    Click Element    locator=${TESTE_SINACOR_SELECTED}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s
@@ -606,8 +606,8 @@ Clear Product Filters Institution
 Clear Product Filters Inside Bottom Sheet
     [Documentation]    Limpa seleções no bottom sheet de Produto (mantém sheet aberto).
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_PRODUCT_SELECTED}    timeout=10
-    Wait Until Element Is Visible    locator=${CRI_SELECT}   timeout=10
-    Click Element    locator=${CRI_SELECT}
+    Wait Until Element Is Visible    locator=${CRI_UNSELECT}   timeout=10
+    Click Element    locator=${CRI_UNSELECT}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s
@@ -620,8 +620,8 @@ Clear Product Filters Inside Bottom Sheet
 Clear Institution Product Filters Inside Bottom Sheet
     [Documentation]    Limpa seleções no bottom sheet de Produto (mantém sheet aberto).
     Wait Until Element Is Visible    locator=${CLASS_FILTER_CHIP_PRODUCT_SELECTED}    timeout=10
-    Wait Until Element Is Visible    locator=${CRI_SELECT}   timeout=10
-    Click Element    locator=${CRI_SELECT}
+    Wait Until Element Is Visible    locator=${CRI_UNSELECT}   timeout=10
+    Click Element    locator=${CRI_UNSELECT}
     Wait Until Element Is Visible    locator=${CLASS_FILTER_INST_BTN_LIMPAR}    timeout=10
     Click Element    locator=${CLASS_FILTER_INST_BTN_LIMPAR}
     Sleep    0.4s

@@ -24,16 +24,16 @@ BTN_OPEN_FINANCE: "id=b3_switch_openfinance"
 STW_ASSET_EVOLUTION: "id=b3_switch_assets"
 BTN_EVENTS: "b3_switch_events"
 BTN_NEWS: "b3_switch_news"
-TITLE_WALLET: accessibility_id=Minha carteira
+TITLE_WALLET: "accessibility_id=Minha carteira"
 TITLE_ASSET_EVOLUTION: "accessibility_id=Evolução patrimonial"
-TITLE_OPENFINANCE: accessibility_id=Openfinance
-TITLE_EVENTOS: accessibility_id=Eventos
-TITLE_NOTICIAS: accessibility_id=Notícias
-BOTTOM_NAV_HOME: id=b3_bottom_nav_bar_item_Início
-BOTTOM_NAV_WALLET: id=b3_bottom_nav_bar_item_Carteira
-BOTTOM_NAV_PROVENTS: id=b3_bottom_nav_bar_item_Proventos
-BOTTOM_NAV_EXTRACT: id=b3_bottom_nav_bar_item_Extrato
-BOTTOM_NAV_MENU: id=b3_bottom_nav_bar_item_Menu
+TITLE_OPENFINANCE: "accessibility_id=Openfinance"
+TITLE_EVENTOS: "accessibility_id=Eventos"
+TITLE_NOTICIAS: "accessibility_id=Notícias"
+BOTTOM_NAV_HOME: "id=b3_bottom_nav_bar_item_Início"
+BOTTOM_NAV_WALLET: "id=b3_bottom_nav_bar_item_Carteira"
+BOTTOM_NAV_PROVENTS: "id=b3_bottom_nav_bar_item_Proventos"
+BOTTOM_NAV_EXTRACT: "id=b3_bottom_nav_bar_item_Extrato"
+BOTTOM_NAV_MENU: "id=b3_bottom_nav_bar_item_Menu"
 CARD_PRODUCT_SCREEN: "xpath=//*[matches(@content-desc,'^[A-Za-z0-9À-ÿ\\s\\-\\.]+, [0-9]+ ativos, item [0-9]+ de [0-9]+$')]"
 WALLET_TEXT_LAST_UPDATE: "xpath=//*[matches(@content-desc,'^Atualizado em [0-9]+ de novembro$')]"
 30_DAYS: accessibility_id=em 30 dias

@@ -413,7 +413,39 @@ Find Elements Until Specific Element Found
         ${desc}=    Set Variable    ${desc}
         IF    '${desc}' != '${EMPTY}' and '${desc}' != 'None'
             Log To Console    message=[B3] Elemento diferente de null ${i}!
-            IF    '${desc}' == '${target_desc}'
+            IF    $desc == $target_desc
+                Log To Console    message=[B3] Elemento alvo encontrado no índice ${i}!
+                IF   ${matches_found} >= ${match_numbers_expected}
+                    Log To Console    message=[B3] Valores monetários encontrados antes do elemento alvo: ${matches_found}\n
+                ELSE
+                    Fail    msg=[B3] TESTE FALHOU: Valor monetário encontrado antes do elemento alvo ${matches_found} valor minimo esperado ${match_numbers_expected}!\n
+                    Log To Console    message=[B3] Valor monetário encontrado menor que o esperado \n
+                END
+                RETURN
+            ELSE 
+                ${is_monetary}=    Is Valor Monetario    ${desc}
+                ${matches_found}=    Evaluate    ${matches_found} + ${is_monetary}                
+            END
+        END
+    END
+    Log To Console    message=[B3] Elemento alvo não encontrado na tela!
+
+Find Elements Until Specific Element Found Earnings
+    [Documentation]    Faz log no terminal de todos os elementos (xpath/accessibility_id) encontrados até achar o elemento específico
+    [Arguments]    ${target_element}     ${match_numbers_expected}=1
+    @{elements}=    Get WebElements    xpath=//*
+    ${total}=    Get Length    ${elements}
+    ${target_desc}=    Get Element Attribute    ${target_element}    content-desc
+    ${matches_found}=    Set Variable    0
+    FOR    ${i}    IN RANGE    0    ${total}
+        ${desc}=    Get Element Attribute    ${elements}[${i}]    content-desc
+        ${resource_id}=    Get Element Attribute    ${elements}[${i}]    resource-id
+        Log To Console    message=[B3] Elemento ${i}: content-desc='${desc}' resource-id='${resource_id}'
+        ${desc}=    Replace String    ${desc}    \n    ${SPACE}
+        ${desc}=    Set Variable    ${desc}
+        IF    '${desc}' != '${EMPTY}' and '${desc}' != 'None'
+            Log To Console    message=[B3] Elemento diferente de null ${i}!
+            IF    $desc == $target_desc
                 Log To Console    message=[B3] Elemento alvo encontrado no índice ${i}!
                 IF   ${matches_found} >= ${match_numbers_expected}
                     Log To Console    message=[B3] Valores monetários encontrados antes do elemento alvo: ${matches_found}\n

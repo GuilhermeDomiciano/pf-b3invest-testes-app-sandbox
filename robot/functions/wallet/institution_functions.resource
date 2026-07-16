@@ -2,6 +2,8 @@
 Documentation    Wallet Functions
 
 Resource    ${EXECDIR}/robot/screens/wallet/institution_screen.resource
+Resource    ../../../resource/utils/element_utils.resource
+Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
 
 *** Keywords ***
 Validate Back Button Screen Wallet Filter Institutions
@@ -42,6 +44,8 @@ Validate Card Order Classes Institutions
     Wait Until Element Is Visible     locator=${CARD_RENDA_FIXA_RESOURCE_ID}   timeout=10s
     Scroll Element Into View In Page    locator=${BTN_LOAD_MORE_3}
     Click Element    locator=${BTN_LOAD_MORE_3}
+    Scroll Screen
+    Scroll Screen
     Sleep    2s  
     Log To Console    message=[B3] Validate Card Order Classes Institutions in Wallet Screen\n
     Pick Card To Check Order    ${CARD_RENDA_FIXA_RESOURCE_ID}    ${CARD_RENDA_FIXA_RESOURCE_ID}   True

@@ -1,0 +1,52 @@
+#! Recived Proventos Filter Screen
+TEXT_FILTRAR_PROVENTOS_RECEBIDOS: "accessibility_id=Filtrar proventos recebidos"
+BTN_PERIODO_NAO_SELECIONADO: "accessibility_id=Período, não selecionado"
+BTN_PERIODO_SELECIONADO: "accessibility_id=Período, selecionado"
+BTN_TIPO_DE_EVENTO_NAO_SELECIONADO: "accessibility_id=Tipo de evento, não selecionado"
+BTN_TIPO_DE_EVENTO_SELECIONADO: "accessibility_id=Tipo de evento, selecionado"
+BTN_INSTITUICAO_NAO_SELECIONADO: "accessibility_id=Instituição, não selecionado"
+BTN_INSTITUICAO_SELECIONADO: "accessibility_id=Instituição, selecionado"
+BTN_TIPO_DE_INVESTIMENTO_NAO_SELECIONADO: "accessibility_id=Tipo de investimento, não selecionado"
+BTN_TIPO_DE_INVESTIMENTO_SELECIONADO: "accessibility_id=Tipo de investimento, selecionado"
+BTN_APLICAR_FILTROS: "accessibility_id=Aplicar filtros"
+BTN_LIMPAR_FILTROS: "accessibility_id=Limpar filtros"
+BTN_LIMPAR_FILTROS_SELECIONADO: "xpath=//android.widget.Button[matches(@content-desc,'^[0-9]+ selecionados, selecionado')]"
+BTN_LIMPAR_FILTROS_SELECIONADA: "xpath=//android.widget.Button[matches(@content-desc,'^[0-9]+ selecionadas, selecionado')]"
+
+#!Filtro data
+TILTE_BOTTOM_SHEET_FILTRO_DATA: "accessibility_id=Selecione um período"
+BTN_FECHAR: "accessibility_id=Fechar"
+BTN_ULTIMOS_30_DIAS: "accessibility_id=30 dias, selecionado"
+BTN_ULTIMOS_3_MESES: "accessibility_id=3 meses, não selecionado"
+BTN_ULTIMOS_3_MESES_SELECIONADO: "accessibility_id=3 meses, selecionado"
+BTN_ULTIMOS_6_MESES: "accessibility_id=6 meses, não selecionado"
+BTN_ULTIMOS_12_MESES: "accessibility_id=12 meses, não selecionado"
+BTN_TODOS_OS_PERIODOS: "accessibility_id=Todos os períodos, não selecionado"
+BTN_TODOS_OS_PERIODOS_SELECIONADO: "accessibility_id=Todos os períodos, selecionado"
+APPROVAL_DATE: "xpath=//android.view.View[matches(@content-desc,'^Data de aprovação\\n[0-9]{2}/[0-9]{2}/[0-9]{4}$')]"
+DIA: "xpath=//*[matches(@content-desc,'^[0-9]{1,2} de [a-zA-Z]+ de [0-9]{4}$')]"
+DIA_SELECIONADO: "xpath=//android.widget.Button[matches(@content-desc,'^[0-9]{2}/[0-9]{2}/[0-9]{4} - [0-9]{2}/[0-9]{2}/[0-9]{4}, selecionado')]"
+DIA_UNICO_SELECIONADO: "xpath=//android.view.View[matches(@content-desc,'^[0-9]{2}/[0-9]{2}/[0-9]{4}, selecionado')]"
+
+#!Filtro tipo de evento
+TILTE_BOTTOM_SHEET_FILTRO_TIPO_DE_EVENTO: "accessibility_id=Selecione um ou mais tipos de eventos"
+BTN_SELECIONAR_TODOS: "accessibility_id=Selecionar todos"
+ALL7_SELECIONADOS: "accessibility_id=7 selecionados, selecionado"
+
+BTN_JUROS: "accessibility_id=Juros"
+BTN_JUROS_SELECIONADO: "accessibility_id=Juros, selecionado"
+
+#!Filtro instituição
+BTN_BANCO_DO_BRASIL: "accessibility_id=Banco Do Brasil S/a"
+BTN_BANCO_DO_BRASIL_SELECIONADO: "accessibility_id=BANCO DO BRASIL S/A, selecionado"
+TILTE_BOTTOM_SHEET_FILTRO_INSTITUTIONS: "accessibility_id=Selecione uma ou mais instituições"
+
+#!Filtro tipo de investimento
+TILTE_BOTTOM_SHEET_FILTRO_TIPO_DE_INVESTIMENTO: "accessibility_id=Selecione um ou mais tipos de investimento"
+BTN_CDB: "accessibility_id=CDB - Certificado de Depósito Bancário"
+BTN_CDB_SELECIONADO: "accessibility_id=CDB - Certificado de Depósito Bancário, selecionado"
+BTN19_SELECIONADOS: "accessibility_id=19 selecionados, selecionado"
+
+#! To Recive Proventos Filter Screen
+
+#! Radar Proventos Filter Screen

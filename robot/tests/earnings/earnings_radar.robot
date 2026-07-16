@@ -1,0 +1,99 @@
+*** Settings ***
+Documentation    Wallet
+
+Resource    ../../../robot/base.resource
+Resource    ../../functions/wallet/institution_functions.resource
+Resource    ../../functions/login/login_functions.resource
+Resource    ../../functions/earnings/earnings_functions.resource
+Test Setup       Launch Application AppB3
+Test Teardown    Close Application AppB3
+
+Test Tags    radar_proventos
+# 20 cenarios de teste relacionados a tela radar de proventos.
+*** Test Cases ***
+Validate Radar Earnings Screen Popup Text Close To Understand
+    [Documentation]    PFSAPP-896 - PFSAPP-897 - PFSAPP-900 - PFSAPP-901
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Understand Screen
+    Return To Login Keeping Session Screen
+    Again Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Text Radar Proventos Screen
+    Validate Text Bottom Sheet Radar Proventos Screen
+    Log    Validação da tela de radar de proventos concluída
+
+
+Validate Radar Earnings Screen Popup Text Close To Close Icon
+    [Documentation]    PFSAPP-898 - PFSAPP-899 - PFSAPP-900 - PFSAPP-901
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Close Icon Screen
+    Return To Login Keeping Session Screen
+    Again Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Text Radar Proventos Screen
+    Validate Text Bottom Sheet Radar Proventos Screen
+    Log    Validação da tela de radar de proventos concluída
+
+Validate Close Bottom Sheet Radar Earnings Screen
+    [Documentation]    PFSAPP-911 - PFSAPP-912 - PFSAPP-913 - PFSAPP-914 - PFSAPP-915 - PFSAPP-916 - PFSAPP-917
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Close Icon Screen
+    Validate Text Bottom Sheet Radar Proventos Screen
+    Validate Close Bottom Sheet Radar Proventos Screen
+    Validate Scroll To close Icon Bottom Sheet Radar Proventos
+    Log    Validação da tela de radar de proventos concluída
+
+Validate Details Screen In My Radar Earnings
+    [Documentation]    PFSAPP-918 - PFSAPP-919 - PFSAPP-920 - PFSAPP-921 - PFSAPP-923 - PFSAPP-924 - Valida se é possível acessar os detalhes do item de proventos a receber e se as informações são exibidas corretamente.
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Close Icon Screen
+    Validate Access Details Radar Proventos Screen
+    Validate Details Radar Proventos Screen
+    Back Screen My Earnings Screen    OPTIONS=RADAR
+    Log    Validação da tela de radar de proventos concluída
+
+Validate Radar Earnings Filter And Download
+    [Documentation]    Valida os campos de filtro e de download do radar de proventos.
+    [Tags]    radar_proventos
+
+    Simple Login    DOCUMENT=${users['user_cc_cpf_wallet']['document']}
+    ...             PASSWORD=${users['user_cc_cpf_wallet']['password']}
+    No Accept Permissions
+    Skip Profile
+    Navigation To My Earnings Screen
+    Navigate To Radar Proventos Screen
+    Validate Popup Text Radar Proventos Close To Close Icon Screen
+    Validate Radar Proventos Filter And Download Screen
+    Log    Validação dos campos de filtro e download do radar de proventos concluída

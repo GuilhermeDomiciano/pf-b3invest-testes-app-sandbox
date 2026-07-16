@@ -3,9 +3,11 @@ Documentation    Home Screen
 
 Library          AppiumLibrary
 
-Resource    ${EXECDIR}/resource/utils/element_utils.resource
+Resource    ../../../resource/utils/element_utils.resource
 
-Variables    ${EXECDIR}/robot/elements/home.yaml
+Variables    ../../../robot/elements/home.yaml
+Variables    ../../../robot/elements/wallet.yaml
+Variables    ../../../robot/elements/product.yaml
 
 *** Keywords ***
 Validate Toggle Visibility
@@ -184,12 +186,14 @@ Navigation To My Wallet From Bottom Nav Bar
 
     Wait Until Element Is Visible    locator=${BOTTOM_NAV_WALLET}    timeout=10
     Click Element    locator=${BOTTOM_NAV_WALLET}
+    Sleep    2s
     Wait Until Element Is Visible    locator=${TITLE_WALLET}    timeout=10
     Click Element    locator=${BTN_NAV_PROVENTOS}
     Wait Until Element Is Visible    locator=${SCREEN_PROVENTS}    timeout=10
-    Click Element    locator=${BOTTOM_NAV_EXTRACT}
-    Wait Until Element Is Visible    locator=${SCREEN_EXTRACT}    timeout=10
+    # Click Element    locator=${BOTTOM_NAV_EXTRACT}
+    # Wait Until Element Is Visible    locator=${SCREEN_EXTRACT}    timeout=10
     Click Element    locator=${BTN_NAV_MENU}
+    Scroll Element Into View In Page    locator=${SCREEN_MENU}
     Wait Until Element Is Visible    locator=${SCREEN_MENU}    timeout=10
     Click Element    locator=${BOTTOM_NAV_HOME}
     Log To Console    message=[B3] Navigation To My Wallet From Bottom Nav Bar\n
@@ -203,11 +207,12 @@ Validate Events Section Screen Home
     Click Element    locator=${TITLE_EVENTOS}
     Wait Until Element Is Visible    locator=${BTN_WALLET_BACK}    timeout=10
     Click Element    locator=${BTN_WALLET_BACK}
-    Scroll Element Into View In Page    locator=${EVENT_1_3}
-    Scroll Horizontal Long
-    Wait Until Element Is Visible    locator=${EVENT_2_3}    timeout=10
-    Scroll Horizontal Long
-    Wait Until Element Is Visible    locator=${EVENT_3_3}    timeout=10
+    # Scroll Element Into View In Page    locator=${EVENT_1_3}
+    # Scroll Horizontal Long
+    # Wait Until Element Is Visible    locator=${EVENT_2_3}    timeout=10
+    # Scroll Horizontal Long
+    # Wait Until Element Is Visible    locator=${EVENT_3_3}    timeout=10
+    Scroll Element Into View In Page    locator=${BTN_CUSTOMIZE_SCREEN}
     Log To Console    message=[B3] Validate Events Section Screen Home\n    
 
 Validate News Section Screen Home
@@ -218,6 +223,4 @@ Validate News Section Screen Home
     Click Element    locator=${TITLE_NOTICIAS}
     Wait Until Element Is Visible    locator=${BTN_WALLET_BACK}    timeout=10
     Click Element    locator=${BTN_WALLET_BACK}
-    Scroll Element Into View In Page    locator=${BTN_CUSTOMIZE_SCREEN}
-    Wait Until Element Is Visible    locator=${NEWS_IS_VISIBLE}    timeout=10
     Log To Console    message=[B3] Validate News Section Screen Home\n

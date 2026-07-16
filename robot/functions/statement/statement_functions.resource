@@ -45,14 +45,8 @@ Card Pagination Function
     [Documentation]    Valida a paginação dos lançamentos na tela de extrato
     Validate Card Pagination Statement
     
-Validate Card Order Home Statement Function
-    [Documentation]    Valida a ordem dos cards na tela de extrato
-    # Implementar a validação da ordem dos cards conforme necessário
-    Validate Card Order Home Statement
-    Log To Console    message=[B3] Validação da ordem dos cards na tela de extrato não implementada.\n
-
 Validate Statement Order Date Statement Function
     [Documentation]    Valida a ordem das datas na seção de últimos lançamentos do extrato
     # Implementar a validação da ordem das datas conforme necessário
     Validate Statement Order Date Statement
-    Log To Console    message=[B3] Validação da ordem das datas na seção de últimos lançamentos do extrato não implementada.\n
+    Log To Console    message=[B3] Validação da ordem das datas na seção de últimos lançamentos do extrato implementada.\n
