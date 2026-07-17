@@ -44,6 +44,9 @@ argument with possible command line options before the path
 
 Antes de rodar (local ou BrowserStack), configure o ambiente:
 
+**Guia completo:** [guia-testes.md](guia-testes.md) (criar testes, local, BS, troubleshooting).  
+**Backlog:** [melhorias-futuras.md](melhorias-futuras.md).
+
 ```
 copy .env.example .env
 # edite .env com USERNAME_BS, ACESSKEY_BS, MAILSAC_TOKEN, etc.

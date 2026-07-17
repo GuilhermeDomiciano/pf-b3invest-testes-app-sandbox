@@ -4,7 +4,7 @@ TESTS_DIR = robot/tests/
 TAGS ?= regressivo
 APP_FILE ?=
 
-.PHONY: run-local-android run-local-ios run-bs-android run-bs-ios upload-bs-android upload-bs-ios
+.PHONY: run-local-android run-local-ios run-bs-android run-bs-ios upload-bs-android upload-bs-ios run-parallel-bs run-parallel-local
 
 run-local-android:
 	robot -v PLATFORM_NAME:android \
@@ -33,6 +33,13 @@ run-bs-ios:
 	      -d $(LOGS_DIR) \
 	      -i $(TAGS) \
 	      $(TESTS_DIR)
+
+# Paralelo Android + iOS (Windows: use o python abaixo se não tiver make)
+run-parallel-bs:
+	python scripts/run_parallel_platforms.py --env bs --include $(TAGS) --suite $(TESTS_DIR)
+
+run-parallel-local:
+	python scripts/run_parallel_platforms.py --env local --include $(TAGS) --suite $(TESTS_DIR)
 
 # Ex.: make upload-bs-android APP_FILE=./app/app-cert-release.apk
 # Windows: use python scripts/bs_upload_app.py (nao use python -m ...)

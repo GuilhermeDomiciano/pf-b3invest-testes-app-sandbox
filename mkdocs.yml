@@ -2,6 +2,8 @@ site_name: "testes-app"
 
 nav:
   - Home: index.md
+  - Guia de testes: guia-testes.md
+  - Melhorias futuras: melhorias-futuras.md
 
 plugins:
   - techdocs-core

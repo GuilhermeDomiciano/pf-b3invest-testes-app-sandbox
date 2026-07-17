@@ -1,0 +1,797 @@
+# Mobile regression — BrowserStack App Automate
+# Contrato Robot alinhado ao runtime local (ADR 0005):
+#   PLATFORM_NAME, ENVIRONMENT=bs, USERNAME_BS, ACESSKEY_BS, APP_*_BS
+# GitHub Environment (cer|dev|prd) ≠ ENVIRONMENT do Robot.
+name: Mobile Regression Tests
+run-name: Mobile Regression • ${{ inputs.platform }} • ${{ inputs.environment }}${{ inputs.tag && format(' • {0}', inputs.tag) || '' }}${{ inputs.upload_new_build && ' • novo build' || '' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Plataforma alvo'
+        required: true
+        type: choice
+        options:
+          - android
+          - ios
+          - both
+        default: android
+      upload_new_build:
+        description: 'Upload de novo build para o BrowserStack?'
+        required: true
+        type: boolean
+        default: true
+      delivery_run_id:
+        description: 'Run ID do workflow de Delivery CERT (obrigatório se upload_new_build=true)'
+        required: false
+        type: string
+        default: ''
+      existing_app_url_android:
+        description: 'app_url BrowserStack Android (se upload_new_build=false)'
+        required: false
+        type: string
+        default: ''
+      existing_app_url_ios:
+        description: 'app_url BrowserStack iOS (se upload_new_build=false)'
+        required: false
+        type: string
+        default: ''
+      suite:
+        description: 'Suite sob robot/tests/ (ex: login, wallet). Vazio = robot/tests/'
+        required: false
+        type: string
+        default: ''
+      tag:
+        description: 'Tag Robot (-i). Ex: acesso, regressivo. Vazio = todas'
+        required: false
+        type: string
+        default: ''
+      environment:
+        description: 'GitHub Environment / rótulo de build (cer|dev|prd) — Robot usa sempre ENVIRONMENT=bs'
+        required: true
+        type: choice
+        options:
+          - dev
+          - cer
+          - prd
+        default: cer
+      device_android:
+        description: 'Dispositivo Android no BrowserStack'
+        required: false
+        type: string
+        default: 'Google Pixel 8'
+      os_version_android:
+        description: 'Versão do Android'
+        required: false
+        type: string
+        default: '14.0'
+      device_ios:
+        description: 'Dispositivo iOS no BrowserStack'
+        required: false
+        type: string
+        default: 'iPhone 15 Pro'
+      os_version_ios:
+        description: 'Versão do iOS'
+        required: false
+        type: string
+        default: '17'
+      caller_repo:
+        description: 'Repositório que disparou os testes'
+        required: false
+        type: string
+        default: ''
+
+  workflow_call:
+    inputs:
+      platform:
+        type: string
+        required: false
+        default: 'android'
+      upload_new_build:
+        type: boolean
+        required: false
+        default: true
+      delivery_run_id:
+        type: string
+        required: false
+        default: ''
+      existing_app_url_android:
+        type: string
+        required: false
+        default: ''
+      existing_app_url_ios:
+        type: string
+        required: false
+        default: ''
+      suite:
+        type: string
+        required: false
+        default: ''
+      tag:
+        type: string
+        required: false
+        default: ''
+      environment:
+        type: string
+        required: false
+        default: 'cer'
+      device_android:
+        type: string
+        required: false
+        default: 'Google Pixel 8'
+      os_version_android:
+        type: string
+        required: false
+        default: '14.0'
+      device_ios:
+        type: string
+        required: false
+        default: 'iPhone 15 Pro'
+      os_version_ios:
+        type: string
+        required: false
+        default: '17'
+      caller_repo:
+        type: string
+        required: false
+        default: ''
+    secrets:
+      BROWSERSTACK_USERNAME:
+        required: true
+      BROWSERSTACK_ACCESS_KEY:
+        required: true
+      PIPELINE_COMMIT_PAT:
+        required: true
+      OPENAI_API_KEY:
+        required: false
+
+env:
+  DELIVERY_REPO: 'b3sa/pf-b3invest-app'
+  # Sempre BrowserStack no Robot; inputs.environment é só GitHub Environment / BUILD_BS
+  ROBOT_ENVIRONMENT: bs
+
+jobs:
+  # ================================================================
+  # JOB 1: Download artifacts do workflow de delivery (cross-repo)
+  # ================================================================
+  download-artifacts:
+    name: Download Build Artifacts
+    if: inputs.upload_new_build == true
+    runs-on: [self-hosted, aks]
+    environment: ${{ inputs.environment }}
+    env:
+      https_proxy: ${{ vars.HTTPS_PROXY }}
+      http_proxy: ${{ vars.HTTP_PROXY }}
+      no_proxy: ${{ vars.NO_PROXY }}
+    outputs:
+      has_apk: ${{ steps.check-files.outputs.has_apk }}
+      has_ipa: ${{ steps.check-files.outputs.has_ipa }}
+    steps:
+      - name: Validate delivery run ID
+        shell: bash
+        run: |
+          if [ -z "${{ inputs.delivery_run_id }}" ]; then
+            echo "ERRO: delivery_run_id e obrigatorio quando upload_new_build=true"
+            exit 1
+          fi
+          echo "Delivery Run ID: ${{ inputs.delivery_run_id }}"
+
+      - name: Download APK artifact
+        if: inputs.platform == 'android' || inputs.platform == 'both'
+        uses: actions/download-artifact@v4
+        with:
+          name: android-apk
+          path: ./artifacts/android/
+          github-token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+          repository: ${{ env.DELIVERY_REPO }}
+          run-id: ${{ inputs.delivery_run_id }}
+
+      - name: Download IPA artifact
+        if: inputs.platform == 'ios' || inputs.platform == 'both'
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-ipa
+          path: ./artifacts/ios/
+          github-token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+          repository: ${{ env.DELIVERY_REPO }}
+          run-id: ${{ inputs.delivery_run_id }}
+
+      - name: Check downloaded files
+        id: check-files
+        shell: bash
+        run: |
+          echo "===== Artifacts baixados ====="
+          find ./artifacts/ -type f 2>/dev/null | head -20
+
+          if ls ./artifacts/android/*.apk 1>/dev/null 2>&1; then
+            echo "has_apk=true" >> "$GITHUB_OUTPUT"
+            APK_FILE=$(ls ./artifacts/android/*.apk | head -1)
+            echo "APK: $APK_FILE ($(du -h "$APK_FILE" | cut -f1))"
+          else
+            echo "has_apk=false" >> "$GITHUB_OUTPUT"
+            echo "Nenhum APK encontrado"
+          fi
+
+          if ls ./artifacts/ios/*.ipa 1>/dev/null 2>&1; then
+            echo "has_ipa=true" >> "$GITHUB_OUTPUT"
+            IPA_FILE=$(ls ./artifacts/ios/*.ipa | head -1)
+            echo "IPA: $IPA_FILE ($(du -h "$IPA_FILE" | cut -f1))"
+          else
+            echo "has_ipa=false" >> "$GITHUB_OUTPUT"
+            echo "Nenhum IPA encontrado"
+          fi
+
+      - name: Upload artifacts for next job
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-binaries
+          path: ./artifacts/
+          retention-days: 1
+
+  # ================================================================
+  # JOB 2: Upload para BrowserStack (scripts/bs_upload_app.py)
+  # ================================================================
+  upload-to-browserstack:
+    name: Upload to BrowserStack
+    if: inputs.upload_new_build == true
+    needs: [download-artifacts]
+    runs-on: [self-hosted, aks]
+    environment: ${{ inputs.environment }}
+    env:
+      https_proxy: ${{ vars.HTTPS_PROXY }}
+      http_proxy: ${{ vars.HTTP_PROXY }}
+      no_proxy: ${{ vars.NO_PROXY }}
+      USERNAME_BS: ${{ secrets.BROWSERSTACK_USERNAME }}
+      ACESSKEY_BS: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BS_SSL_VERIFY: 'false'
+      APP_ENV: ${{ inputs.environment }}
+    outputs:
+      app_url_android: ${{ steps.upload-android.outputs.app_url }}
+      app_url_ios: ${{ steps.upload-ios.outputs.app_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+
+      - name: Download binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: mobile-binaries
+          path: ./artifacts/
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install upload deps
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install 'requests>=2.28' 'python-dotenv>=1.0'
+
+      - name: Upload APK to BrowserStack
+        id: upload-android
+        if: |
+          (inputs.platform == 'android' || inputs.platform == 'both') &&
+          needs.download-artifacts.outputs.has_apk == 'true'
+        shell: bash
+        run: |
+          set -e
+          APK_FILE=$(ls ./artifacts/android/*.apk | head -1)
+          echo "Uploading APK: $APK_FILE"
+          CUSTOM_ID="b3invest-${APP_ENV}-android"
+          APP_URL=$(python scripts/bs_upload_app.py \
+            --file "${APK_FILE}" \
+            --platform android \
+            --custom-id "${CUSTOM_ID}" \
+            --insecure)
+          if [ -z "${APP_URL}" ] || [[ "${APP_URL}" != bs://* ]]; then
+            echo "Upload Android falhou. Saida: ${APP_URL}"
+            exit 1
+          fi
+          echo "app_url=${APP_URL}" >> "$GITHUB_OUTPUT"
+          echo "Android app_url: ${APP_URL}"
+
+      - name: Upload IPA to BrowserStack
+        id: upload-ios
+        if: |
+          (inputs.platform == 'ios' || inputs.platform == 'both') &&
+          needs.download-artifacts.outputs.has_ipa == 'true'
+        shell: bash
+        run: |
+          set -e
+          IPA_FILE=$(ls ./artifacts/ios/*.ipa | head -1)
+          echo "Uploading IPA: $IPA_FILE"
+          CUSTOM_ID="b3invest-${APP_ENV}-ios"
+          APP_URL=$(python scripts/bs_upload_app.py \
+            --file "${IPA_FILE}" \
+            --platform ios \
+            --custom-id "${CUSTOM_ID}" \
+            --insecure)
+          if [ -z "${APP_URL}" ] || [[ "${APP_URL}" != bs://* ]]; then
+            echo "Upload iOS falhou. Saida: ${APP_URL}"
+            exit 1
+          fi
+          echo "app_url=${APP_URL}" >> "$GITHUB_OUTPUT"
+          echo "iOS app_url: ${APP_URL}"
+
+      - name: Upload summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## BrowserStack Upload"
+            echo ""
+            echo "| Plataforma | App URL | Custom ID |"
+            echo "|---|---|---|"
+            if [ -n "${{ steps.upload-android.outputs.app_url }}" ]; then
+              echo "| Android | \`${{ steps.upload-android.outputs.app_url }}\` | b3invest-${APP_ENV}-android |"
+            fi
+            if [ -n "${{ steps.upload-ios.outputs.app_url }}" ]; then
+              echo "| iOS | \`${{ steps.upload-ios.outputs.app_url }}\` | b3invest-${APP_ENV}-ios |"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ================================================================
+  # JOB 3: Executar testes Android
+  # ================================================================
+  test-android:
+    name: Execute Tests (Android)
+    if: |
+      always() && !cancelled() &&
+      (inputs.platform == 'android' || inputs.platform == 'both') &&
+      (inputs.upload_new_build == false || needs.upload-to-browserstack.result == 'success')
+    needs: [upload-to-browserstack]
+    runs-on: [self-hosted, aks]
+    environment: ${{ inputs.environment }}
+    env:
+      https_proxy: ${{ vars.HTTPS_PROXY }}
+      http_proxy: ${{ vars.HTTP_PROXY }}
+      no_proxy: ${{ vars.NO_PROXY }}
+      USERNAME_BS: ${{ secrets.BROWSERSTACK_USERNAME }}
+      ACESSKEY_BS: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      PLATFORM_NAME: android
+      DEVICE_NAME_ANDROID_BS: ${{ inputs.device_android }}
+      PLATFORM_VERSION_ANDROID_BS: ${{ inputs.os_version_android }}
+      APP_ENV: ${{ inputs.environment }}
+      APP_ANDROID_BS: ${{ inputs.upload_new_build == true && needs.upload-to-browserstack.outputs.app_url_android || inputs.existing_app_url_android }}
+    steps:
+      - name: Validate APP_ANDROID_BS
+        shell: bash
+        run: |
+          if [ -z "${APP_ANDROID_BS}" ]; then
+            echo "ERRO: Nenhum APP_ANDROID_BS (bs://) disponivel."
+            echo "Use upload (delivery_run_id) ou existing_app_url_android."
+            exit 1
+          fi
+          echo "APP_ANDROID_BS: ${APP_ANDROID_BS}"
+          echo "Device: ${DEVICE_NAME_ANDROID_BS} (Android ${PLATFORM_VERSION_ANDROID_BS})"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: config/requirements.txt
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          set -e
+          python -m pip install --upgrade pip
+          pip install -r config/requirements.txt
+
+      - name: Create .env for execution
+        shell: bash
+        run: |
+          {
+            echo "PLATFORM_NAME=android"
+            echo "ENVIRONMENT=bs"
+            echo "USERNAME_BS=${USERNAME_BS}"
+            echo "ACESSKEY_BS=${ACESSKEY_BS}"
+            echo "APP_ANDROID_BS=${APP_ANDROID_BS}"
+            echo "DEVICE_NAME_ANDROID_BS=${DEVICE_NAME_ANDROID_BS}"
+            echo "PLATFORM_VERSION_ANDROID_BS=${PLATFORM_VERSION_ANDROID_BS}"
+            echo "BUILD_BS=gha-${APP_ENV}-${{ github.run_number }}-android"
+            echo "BUILD_NUMBER=${{ github.run_number }}"
+            echo "PROJECT_NAME_BS=Automacao APP B3i"
+            echo "BS_SSL_VERIFY=false"
+          } > .env
+          echo ".env criado (Android / ENVIRONMENT=bs / APP_ENV=${APP_ENV})"
+
+      - name: Run tests
+        id: run_tests
+        shell: bash
+        env:
+          TAG_INPUT: ${{ inputs.tag }}
+          SUITE_INPUT: ${{ inputs.suite }}
+        run: |
+          set -euo pipefail
+          RESULTS_DIR="logs/ci/android"
+          mkdir -p "${RESULTS_DIR}"
+
+          SUITE_PATH="robot/tests/"
+          if [ -n "${SUITE_INPUT}" ]; then
+            if [ -f "robot/tests/${SUITE_INPUT}.robot" ]; then
+              SUITE_PATH="robot/tests/${SUITE_INPUT}.robot"
+            elif [ -d "robot/tests/${SUITE_INPUT}" ]; then
+              SUITE_PATH="robot/tests/${SUITE_INPUT}"
+            else
+              echo "Suite '${SUITE_INPUT}' nao encontrada sob robot/tests/; usando robot/tests/ + --suite"
+              SUITE_PATH="robot/tests/"
+            fi
+          fi
+
+          ARGS=(-v "PLATFORM_NAME:android" -v "ENVIRONMENT:bs" -d "${RESULTS_DIR}" --name "android-${APP_ENV}")
+          if [ -n "${TAG_INPUT}" ]; then
+            ARGS+=(-i "${TAG_INPUT}")
+          fi
+          if [ -n "${SUITE_INPUT}" ] && [ "${SUITE_PATH}" = "robot/tests/" ] && [ ! -f "robot/tests/${SUITE_INPUT}.robot" ] && [ ! -d "robot/tests/${SUITE_INPUT}" ]; then
+            ARGS+=(--suite "${SUITE_INPUT}")
+          fi
+          ARGS+=("${SUITE_PATH}")
+
+          echo "Executando: robot ${ARGS[*]}"
+          robot "${ARGS[@]}"
+
+      # --- Analise IA (revisitar em change futura; script ainda nao existe) ---
+      # - name: AI log analysis
+      #   if: always()
+      #   continue-on-error: true
+      #   shell: bash
+      #   env:
+      #     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      #     OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+      #     OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+      #   run: |
+      #     if [ -n "${OPENAI_API_KEY}" ] && [ -f "scripts/analyze_robot_results.py" ]; then
+      #       python scripts/analyze_robot_results.py --platform android || echo "Analise IA indisponivel; seguindo."
+      #     else
+      #       echo "Analise IA nao configurada ou script ausente; seguindo."
+      #     fi
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-report-android-${{ inputs.environment }}-${{ github.run_number }}-${{ job.status }}
+          path: |
+            logs/ci/android/
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Generate test summary
+        if: always()
+        shell: bash
+        env:
+          DEVICE_NAME_ANDROID_BS: ${{ inputs.device_android }}
+          PLATFORM_VERSION_ANDROID_BS: ${{ inputs.os_version_android }}
+          APP_ENV: ${{ inputs.environment }}
+        run: |
+          RESULTS_DIR="logs/ci/android"
+          if [ -f "${RESULTS_DIR}/output.xml" ]; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import os
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          output_xml = Path("logs/ci/android/output.xml")
+          if output_xml.exists():
+              root = ET.parse(output_xml).getroot()
+              stats = root.find('.//statistics/total/stat[@name="All Tests"]')
+              if stats is not None:
+                  passed = int(stats.get("pass", 0))
+                  failed = int(stats.get("fail", 0))
+                  skipped = int(stats.get("skip", 0))
+                  total = passed + failed + skipped
+                  emoji = "OK" if failed == 0 else "FAIL"
+                  print(f"## {emoji} Mobile Tests — Android")
+                  print("")
+                  print("| Metrica | Valor |")
+                  print("|---|---|")
+                  print(f"| App env (GHA) | `{os.environ.get('APP_ENV', 'n/d')}` |")
+                  print(f"| Robot ENVIRONMENT | `bs` |")
+                  print(f"| Dispositivo | `{os.environ.get('DEVICE_NAME_ANDROID_BS', 'n/d')}` (Android {os.environ.get('PLATFORM_VERSION_ANDROID_BS', 'n/d')}) |")
+                  print(f"| Total | {total} |")
+                  print(f"| Passed | {passed} |")
+                  print(f"| Failed | {failed} |")
+                  print(f"| Skipped | {skipped} |")
+                  print(f"| Taxa | {(passed/total*100):.1f}% |" if total else "| Taxa | N/A |")
+              else:
+                  print("## WARN Mobile Tests — Android")
+                  print("Nao foi possivel extrair estatisticas do output.xml")
+          else:
+              print("## WARN Mobile Tests — Android")
+              print("output.xml nao encontrado")
+          PY
+          else
+            echo "## WARN Mobile Tests — Android" >> "$GITHUB_STEP_SUMMARY"
+            echo "Nenhum resultado gerado." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  # ================================================================
+  # JOB 4: Executar testes iOS
+  # ================================================================
+  test-ios:
+    name: Execute Tests (iOS)
+    if: |
+      always() && !cancelled() &&
+      (inputs.platform == 'ios' || inputs.platform == 'both') &&
+      (inputs.upload_new_build == false || needs.upload-to-browserstack.result == 'success')
+    needs: [upload-to-browserstack]
+    runs-on: [self-hosted, aks]
+    environment: ${{ inputs.environment }}
+    env:
+      https_proxy: ${{ vars.HTTPS_PROXY }}
+      http_proxy: ${{ vars.HTTP_PROXY }}
+      no_proxy: ${{ vars.NO_PROXY }}
+      USERNAME_BS: ${{ secrets.BROWSERSTACK_USERNAME }}
+      ACESSKEY_BS: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      PLATFORM_NAME: ios
+      DEVICE_NAME_IOS_BS: ${{ inputs.device_ios }}
+      PLATFORM_VERSION_IOS_BS: ${{ inputs.os_version_ios }}
+      APP_ENV: ${{ inputs.environment }}
+      APP_IOS_BS: ${{ inputs.upload_new_build == true && needs.upload-to-browserstack.outputs.app_url_ios || inputs.existing_app_url_ios }}
+    steps:
+      - name: Validate APP_IOS_BS
+        shell: bash
+        run: |
+          if [ -z "${APP_IOS_BS}" ]; then
+            echo "ERRO: Nenhum APP_IOS_BS (bs://) disponivel."
+            echo "Use upload (delivery_run_id) ou existing_app_url_ios."
+            exit 1
+          fi
+          echo "APP_IOS_BS: ${APP_IOS_BS}"
+          echo "Device: ${DEVICE_NAME_IOS_BS} (iOS ${PLATFORM_VERSION_IOS_BS})"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: config/requirements.txt
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          set -e
+          python -m pip install --upgrade pip
+          pip install -r config/requirements.txt
+
+      - name: Create .env for execution
+        shell: bash
+        run: |
+          {
+            echo "PLATFORM_NAME=ios"
+            echo "ENVIRONMENT=bs"
+            echo "USERNAME_BS=${USERNAME_BS}"
+            echo "ACESSKEY_BS=${ACESSKEY_BS}"
+            echo "APP_IOS_BS=${APP_IOS_BS}"
+            echo "DEVICE_NAME_IOS_BS=${DEVICE_NAME_IOS_BS}"
+            echo "PLATFORM_VERSION_IOS_BS=${PLATFORM_VERSION_IOS_BS}"
+            echo "BUILD_BS=gha-${APP_ENV}-${{ github.run_number }}-ios"
+            echo "BUILD_NUMBER=${{ github.run_number }}"
+            echo "PROJECT_NAME_BS=Automacao APP B3i"
+            echo "BS_SSL_VERIFY=false"
+          } > .env
+          echo ".env criado (iOS / ENVIRONMENT=bs / APP_ENV=${APP_ENV})"
+
+      - name: Run tests
+        id: run_tests
+        shell: bash
+        env:
+          TAG_INPUT: ${{ inputs.tag }}
+          SUITE_INPUT: ${{ inputs.suite }}
+        run: |
+          set -euo pipefail
+          RESULTS_DIR="logs/ci/ios"
+          mkdir -p "${RESULTS_DIR}"
+
+          SUITE_PATH="robot/tests/"
+          if [ -n "${SUITE_INPUT}" ]; then
+            if [ -f "robot/tests/${SUITE_INPUT}.robot" ]; then
+              SUITE_PATH="robot/tests/${SUITE_INPUT}.robot"
+            elif [ -d "robot/tests/${SUITE_INPUT}" ]; then
+              SUITE_PATH="robot/tests/${SUITE_INPUT}"
+            else
+              echo "Suite '${SUITE_INPUT}' nao encontrada sob robot/tests/; usando robot/tests/ + --suite"
+              SUITE_PATH="robot/tests/"
+            fi
+          fi
+
+          ARGS=(-v "PLATFORM_NAME:ios" -v "ENVIRONMENT:bs" -d "${RESULTS_DIR}" --name "ios-${APP_ENV}")
+          if [ -n "${TAG_INPUT}" ]; then
+            ARGS+=(-i "${TAG_INPUT}")
+          fi
+          if [ -n "${SUITE_INPUT}" ] && [ "${SUITE_PATH}" = "robot/tests/" ] && [ ! -f "robot/tests/${SUITE_INPUT}.robot" ] && [ ! -d "robot/tests/${SUITE_INPUT}" ]; then
+            ARGS+=(--suite "${SUITE_INPUT}")
+          fi
+          ARGS+=("${SUITE_PATH}")
+
+          echo "Executando: robot ${ARGS[*]}"
+          robot "${ARGS[@]}"
+
+      # --- Analise IA (revisitar em change futura; script ainda nao existe) ---
+      # - name: AI log analysis
+      #   if: always()
+      #   continue-on-error: true
+      #   shell: bash
+      #   env:
+      #     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      #     OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+      #     OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+      #   run: |
+      #     if [ -n "${OPENAI_API_KEY}" ] && [ -f "scripts/analyze_robot_results.py" ]; then
+      #       python scripts/analyze_robot_results.py --platform ios || echo "Analise IA indisponivel; seguindo."
+      #     else
+      #       echo "Analise IA nao configurada ou script ausente; seguindo."
+      #     fi
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-report-ios-${{ inputs.environment }}-${{ github.run_number }}-${{ job.status }}
+          path: |
+            logs/ci/ios/
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Generate test summary
+        if: always()
+        shell: bash
+        env:
+          DEVICE_NAME_IOS_BS: ${{ inputs.device_ios }}
+          PLATFORM_VERSION_IOS_BS: ${{ inputs.os_version_ios }}
+          APP_ENV: ${{ inputs.environment }}
+        run: |
+          RESULTS_DIR="logs/ci/ios"
+          if [ -f "${RESULTS_DIR}/output.xml" ]; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import os
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          output_xml = Path("logs/ci/ios/output.xml")
+          if output_xml.exists():
+              root = ET.parse(output_xml).getroot()
+              stats = root.find('.//statistics/total/stat[@name="All Tests"]')
+              if stats is not None:
+                  passed = int(stats.get("pass", 0))
+                  failed = int(stats.get("fail", 0))
+                  skipped = int(stats.get("skip", 0))
+                  total = passed + failed + skipped
+                  emoji = "OK" if failed == 0 else "FAIL"
+                  print(f"## {emoji} Mobile Tests — iOS")
+                  print("")
+                  print("| Metrica | Valor |")
+                  print("|---|---|")
+                  print(f"| App env (GHA) | `{os.environ.get('APP_ENV', 'n/d')}` |")
+                  print(f"| Robot ENVIRONMENT | `bs` |")
+                  print(f"| Dispositivo | `{os.environ.get('DEVICE_NAME_IOS_BS', 'n/d')}` (iOS {os.environ.get('PLATFORM_VERSION_IOS_BS', 'n/d')}) |")
+                  print(f"| Total | {total} |")
+                  print(f"| Passed | {passed} |")
+                  print(f"| Failed | {failed} |")
+                  print(f"| Skipped | {skipped} |")
+                  print(f"| Taxa | {(passed/total*100):.1f}% |" if total else "| Taxa | N/A |")
+              else:
+                  print("## WARN Mobile Tests — iOS")
+                  print("Nao foi possivel extrair estatisticas do output.xml")
+          else:
+              print("## WARN Mobile Tests — iOS")
+              print("output.xml nao encontrado")
+          PY
+          else
+            echo "## WARN Mobile Tests — iOS" >> "$GITHUB_STEP_SUMMARY"
+            echo "Nenhum resultado gerado." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  # ================================================================
+  # JOB 5: Consolidar relatorios
+  # ================================================================
+  consolidate-report:
+    name: Consolidate Report
+    if: always() && !cancelled()
+    needs: [test-android, test-ios]
+    runs-on: [self-hosted, aks]
+    environment: ${{ inputs.environment }}
+    env:
+      https_proxy: ${{ vars.HTTPS_PROXY }}
+      http_proxy: ${{ vars.HTTP_PROXY }}
+      no_proxy: ${{ vars.NO_PROXY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.PIPELINE_COMMIT_PAT }}
+
+      - name: Download Android results
+        if: needs.test-android.result != 'skipped'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: mobile-report-android-*
+          path: logs/ci/android/
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Download iOS results
+        if: needs.test-ios.result != 'skipped'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: mobile-report-ios-*
+          path: logs/ci/ios/
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Robot Framework
+        shell: bash
+        run: pip install robotframework
+
+      - name: Merge results with rebot
+        shell: bash
+        run: |
+          OUTPUTS=()
+          for f in logs/ci/android/output*.xml logs/ci/ios/output*.xml; do
+            if [ -f "$f" ]; then
+              OUTPUTS+=("$f")
+            fi
+          done
+
+          mkdir -p logs/ci/merged
+          if [ "${#OUTPUTS[@]}" -gt 0 ]; then
+            rebot --name "mobile-consolidated" --outputdir logs/ci/merged "${OUTPUTS[@]}"
+            echo "Relatorio consolidado em logs/ci/merged/"
+          else
+            echo "Nenhum output.xml encontrado para consolidar"
+            echo "Nenhum resultado disponivel" > logs/ci/merged/README.txt
+          fi
+
+      - name: Upload consolidated report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-report-consolidated-${{ inputs.environment }}-${{ github.run_number }}-${{ job.status }}
+          path: logs/ci/merged/
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Generate consolidated summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Mobile Regression — Consolidated"
+            echo ""
+            echo "| Parametro | Valor |"
+            echo "|---|---|"
+            echo "| Plataforma | \`${{ inputs.platform }}\` |"
+            echo "| App env (GHA) | \`${{ inputs.environment }}\` |"
+            echo "| Robot ENVIRONMENT | \`bs\` |"
+            echo "| Suite | \`${{ inputs.suite || 'robot/tests/' }}\` |"
+            echo "| Tag | \`${{ inputs.tag || 'todas' }}\` |"
+            echo "| Novo Upload | ${{ inputs.upload_new_build }} |"
+            echo "| Android | ${{ needs.test-android.result }} |"
+            echo "| iOS | ${{ needs.test-ios.result }} |"
+            echo "| Run | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -26,9 +26,9 @@ when: O agente precisa rodar, depurar ou configurar ENVIRONMENT=bs / make run-bs
 4. (Opcional) `DEVICE_NAME_BS` + `PLATFORM_VERSION_BS` no `.env`. Defaults: S23/13.0 ou iPhone 15/17.
 5. Smoke:
    ```
-   make run-bs-android TAGS=login
+   robot -v PLATFORM_NAME:android -v ENVIRONMENT:bs -i acesso -d ./logs robot/tests/login.robot
    ```
-6. Confirmar logs em `./logs` (`LOGS_DIR` no makefile).
+6. Confirmar logs em `./logs` e **passed/failed** no dashboard App Automate (teardown `Mark Browserstack Session Status`).
 7. Não bifurcar suites para BS; não usar BrowserStack SDK / `browserstack.yml` na execução (só `.example` documental).
 
 ## Anti-patterns
