@@ -114,9 +114,22 @@ def _upload(
             files["file"][1].close()
 
     if response.status_code >= 400:
-        raise SystemExit(
-            f"Upload falhou (HTTP {response.status_code}): {response.text.strip()}"
-        )
+        body = response.text.strip()
+        lower = body.lower()
+        if "zscaler" in lower or "not allowed to access this file type" in lower:
+            raise SystemExit(
+                f"Upload bloqueado pelo proxy corporativo (Zscaler) — HTTP {response.status_code}.\n"
+                "Motivo típico: 'Not allowed to access this file type' (.ipa/.apk no POST).\n"
+                "Workarounds:\n"
+                "  1) Upload pelo dashboard BrowserStack → App Automate → Upload App\n"
+                "     e cole o bs:// em APP_IOS_BS / APP_ANDROID_BS no .env\n"
+                "  2) Abrir chamado Service Desk (servicedesk@b3.com.br / 2565-6100)\n"
+                "     pedindo liberação de upload para api-cloud.browserstack.com\n"
+                "  3) Rodar o upload fora da rede B3 (ou rede sem bloqueio de file type)\n"
+                "  4) Se o binário já estiver em URL pública: "
+                "`python scripts/bs_upload_app.py --url https://... --platform ios --update-env`"
+            )
+        raise SystemExit(f"Upload falhou (HTTP {response.status_code}): {body[:500]}")
 
     payload = response.json()
     app_url = payload.get("app_url")

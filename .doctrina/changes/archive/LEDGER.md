@@ -5,3 +5,6 @@ One line per archived change, newest last. Appended by
 
 - 2026-07-17 — 0001-dotenv-secrets — Dotenv secrets and project env (specs: test-runtime MODIFIED, test-services MODIFIED)
 - 2026-07-17 — 0002-browserstack-app-automate — BrowserStack App Automate suites (specs: test-runtime MODIFIED)
+- 2026-07-17 — 0003-browserstack-session-status — BrowserStack session status and docs (specs: test-runtime MODIFIED)
+- 2026-07-17 — 0004-parallel-android-ios — Parallel android and ios runs (specs: test-runtime MODIFIED)
+- 2026-07-17 — 0005-github-actions-regression — GitHub Actions regression workflow (specs: test-runtime MODIFIED)
