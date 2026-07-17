@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation    Browserstack Capabilities
 
+Library     ${EXECDIR}/resource/tools/env_loader.py
+
 Resource    ${EXECDIR}/config/settings.resource
 
 *** Variables ***
@@ -18,6 +20,8 @@ ${APPIUM_VERSION_BS}             2.12.1
 Open App Browserstack Android
     [Documentation]    Open App Browserstack Android
     [Arguments]    &{DATA}
+
+    Validate Browserstack App Id    ${DATA.PLATFORM_NAME}
 
     ${OPTIONS}=    Create Dictionary
     Set To Dictionary    ${OPTIONS}    userName         ${USERNAME_BS}
@@ -39,6 +43,8 @@ Open App Browserstack Android
 Open App Browserstack Ios
     [Documentation]    Open App Browserstack Ios
     [Arguments]    &{DATA}
+
+    Validate Browserstack App Id    ${DATA.PLATFORM_NAME}
 
     ${OPTIONS}=    Create Dictionary
     Set To Dictionary    ${OPTIONS}    userName         ${USERNAME_BS}

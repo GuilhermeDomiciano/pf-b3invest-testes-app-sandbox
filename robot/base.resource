@@ -35,6 +35,7 @@ Resource     ${EXECDIR}/robot/functions/wallet/wallet_details.resource
 Launch Application AppB3
     [Documentation]    Responsible for initializing the application
 
+    # Segredos/overrides: .env via env_loader (ADR 0004) — chamado em Open AppB3
     Open AppB3    ENVIRONMENT=${ENVIRONMENT}
     ...           PLATFORM_NAME=${PLATFORM_NAME}
 

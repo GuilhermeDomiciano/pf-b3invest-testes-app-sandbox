@@ -17,14 +17,15 @@ when: O agente toca credenciais BrowserStack/Mailsac, settings.resource, variáv
 
 1. Ler a ADR 0004 e a tabela Environment do contrato `mobile-test-runtime`.
 2. Incluir a nova chave em **ambos** `.env.example` (placeholder) e a tabela do contrato na mesma change.
-3. Ligar a chave pelo loader dotenv → variável Robot (manter o nome atual quando possível, ex.: `USERNAME_BS`, `ACESSKEY_BS`, `MAILSAC_TOKEN`).
+3. Ligar a chave em `resource/tools/env_loader.py` (`ENV_KEYS`) → variável Robot (manter o nome atual quando possível, ex.: `USERNAME_BS`, `ACESSKEY_BS`, `MAILSAC_TOKEN`).
 4. Nunca gravar valores reais de segredo em:
    - arquivos commitados `*.resource` / `*.robot` / `*.yaml`
    - `.env.example`
    - textos de proposal/design/spec
 5. Garantir que `.env` continue no `.gitignore`; verificar com `git status` / `git check-ignore -v .env`.
-6. Falhar de forma explícita quando `ENVIRONMENT=bs` (ou fluxos Mailsac) e faltarem chaves obrigatórias.
-7. Rodar `doctrina contract check` após editar o contrato; `doctrina validate` antes de fechar.
+6. Fail-fast: `Validate Browserstack Secrets` / `Validate Browserstack App Id` / `Validate Mailsac Token` (keywords do loader).
+7. Boot: `Load Project Environment` é chamado em `Open AppB3` (`resource/core/core.resource`).
+8. Rodar `doctrina contract check` após editar o contrato; `doctrina validate` antes de fechar.
 
 ## Anti-patterns
 

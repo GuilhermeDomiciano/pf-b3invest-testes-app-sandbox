@@ -42,6 +42,16 @@ This is a project to automate Android and iOS mobile applications using a single
 The basic usage is giving a path to a test (or task) file or directory as an
 argument with possible command line options before the path
 
+Antes de rodar (local ou BrowserStack), configure o ambiente:
+
+```
+copy .env.example .env
+# edite .env com USERNAME_BS, ACESSKEY_BS, APP_*_BS, MAILSAC_TOKEN, etc.
+pip install -r config/requirements.txt
+```
+
+O `.env` é gitignored (ADR 0004). Não coloque secrets em `config/settings.resource`.
+
     robot -v PLATFORM_NAME:android -v ENVIRONMENT:local -i home -d ./logs robot/tests/
 
 "***-v***" refers to the variables. To replace a declared value within the code, you can specify a variable name and value.

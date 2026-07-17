@@ -69,12 +69,15 @@ After a CLI update: `doctrina upgrade --write` brings this project up.
 ## Commands
 
 ```
+copy .env.example .env
 pip install -r config/requirements.txt
 make run-local-android   # or run-local-ios / run-bs-android / run-bs-ios
 robot -v PLATFORM_NAME:android -v ENVIRONMENT:local -i home -d ./logs robot/tests/
 pabot ... -i gmud robot/tests/
 robocop
 ```
+
+Segredos: arquivo `.env` na raiz (nunca commitado). Catálogo: `.env.example`. Loader: `resource/tools/env_loader.py` (ADR 0004).
 
 ## Repository structure
 

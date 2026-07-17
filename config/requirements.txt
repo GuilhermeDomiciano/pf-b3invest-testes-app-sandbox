@@ -4,6 +4,7 @@ pandas
 pyyaml
 Faker
 python-dateutil
+python-dotenv
 robotframework
 robotframework-appiumlibrary
 robotframework-datadriver

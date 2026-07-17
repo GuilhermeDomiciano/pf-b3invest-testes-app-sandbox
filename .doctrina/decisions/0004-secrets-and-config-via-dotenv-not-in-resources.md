@@ -6,7 +6,7 @@
 - **Supersedes:** —
 - **Superseded by:** —
 - **Evidence:** n/a — awaiting change 0001-dotenv-secrets implementation
-- **Landed:** —
+- **Landed:** 2026-07-17 — `.env.example`, `resource/tools/env_loader.py`, `config/settings.resource`, `resource/service/mailsac_service.resource`
 
 ## Context
 

@@ -1,6 +1,7 @@
 # Change 0001-dotenv-secrets — Dotenv secrets and project env
 
-- **Status:** proposed
+- **Status:** applied
+- **Applied:** 2026-07-17
 - **Date:** 2026-07-17
 - **Owner:** QA / automação B3 Invest
 - **Affects specs:** test-services, test-runtime
@@ -30,11 +31,11 @@ Credenciais BrowserStack e Mailsac estão em plain text em `config/settings.reso
 
 ## Verification
 
-- [ ] Automated checks pass (`doctrina verify`).
-- [ ] `doctrina coverage` e `doctrina contract check` verdes após apply.
-- [ ] Nenhum secret real permanece em `config/settings.resource` / `mailsac_service.resource` (grep).
-- [ ] Com `.env` preenchido, variáveis BS/Mailsac resolvem no Robot; sem `.env`, falha clara (não valor vazio silencioso).
-- [ ] `.env.example` commitado; `.env` ausente do git.
+- [x] Automated checks pass (`doctrina verify`).
+- [x] `doctrina coverage` e `doctrina contract check` verdes após apply.
+- [x] Nenhum secret real permanece em `config/settings.resource` / `mailsac_service.resource` (grep).
+- [x] Com `.env` preenchido, variáveis BS/Mailsac resolvem no Robot; sem `.env`, falha clara (não valor vazio silencioso) — keywords `Validate Browserstack Secrets` / `Validate Mailsac Token`.
+- [x] `.env.example` commitado; `.env` ausente do git (`.gitignore`).
 
 ## Open questions
 
