@@ -42,6 +42,9 @@ Launch Application AppB3
 Close Application AppB3
     [Documentation]    Responsible for finalizing the execution of the application
 
-    Capture Page Screenshot
+    # Reporta passed/failed no dashboard App Automate (no-op se não for bs)
+    Run Keyword And Ignore Error    Report Browserstack Session From Test
 
-    Close Application
+    Run Keyword And Ignore Error    Capture Page Screenshot
+
+    Run Keyword And Ignore Error    Close Application

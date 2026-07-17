@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 from datetime import datetime
 from pathlib import Path
@@ -28,6 +29,10 @@ ENV_KEYS = (
     "APP_ANDROID_BS",
     "DEVICE_NAME_BS",
     "PLATFORM_VERSION_BS",
+    "DEVICE_NAME_ANDROID_BS",
+    "PLATFORM_VERSION_ANDROID_BS",
+    "DEVICE_NAME_IOS_BS",
+    "PLATFORM_VERSION_IOS_BS",
     "BS_DEBUG",
     "BS_NETWORK_LOGS",
     "BS_APP_PROFILING",
@@ -131,20 +136,34 @@ def load_project_environment() -> None:
 
 @keyword("Resolve Browserstack Device")
 def resolve_browserstack_device(platform_name: str) -> dict:
-    """Retorna deviceName e platformVersion (env livre ou default por plataforma)."""
+    """Retorna deviceName e platformVersion (env por plataforma, livre ou default)."""
     if not _LOADED:
         load_project_environment()
 
     platform = (platform_name or "").strip().lower()
-    override_device = _robot_var("DEVICE_NAME_BS")
-    override_version = _robot_var("PLATFORM_VERSION_BS")
-
+    # Preferência: DEVICE_NAME_<PLATFORM>_BS > DEVICE_NAME_BS > default
     if platform == "android":
-        device = override_device or DEFAULT_DEVICE_ANDROID
-        version = override_version or DEFAULT_VERSION_ANDROID
+        device = (
+            _robot_var("DEVICE_NAME_ANDROID_BS")
+            or _robot_var("DEVICE_NAME_BS")
+            or DEFAULT_DEVICE_ANDROID
+        )
+        version = (
+            _robot_var("PLATFORM_VERSION_ANDROID_BS")
+            or _robot_var("PLATFORM_VERSION_BS")
+            or DEFAULT_VERSION_ANDROID
+        )
     elif platform == "ios":
-        device = override_device or DEFAULT_DEVICE_IOS
-        version = override_version or DEFAULT_VERSION_IOS
+        device = (
+            _robot_var("DEVICE_NAME_IOS_BS")
+            or _robot_var("DEVICE_NAME_BS")
+            or DEFAULT_DEVICE_IOS
+        )
+        version = (
+            _robot_var("PLATFORM_VERSION_IOS_BS")
+            or _robot_var("PLATFORM_VERSION_BS")
+            or DEFAULT_VERSION_IOS
+        )
     else:
         raise AssertionError(f"Plataforma não configurada para BrowserStack: {platform_name}")
 
@@ -229,8 +248,40 @@ def validate_browserstack_app_id(platform_name: str) -> None:
     if not app_id or app_id in {"bs://", "bs://<app-id>"}:
         raise AssertionError(
             f"{key} ausente ou placeholder. "
-            "Faça upload com `python resource/tools/bs_upload_app.py` "
+            "Faça upload com `python scripts/bs_upload_app.py` "
             "ou defina o id bs:// no .env."
+        )
+
+
+@keyword("Mark Browserstack Session Status")
+def mark_browserstack_session_status(test_status: str = "", test_message: str = "") -> None:
+    """Marca a sessão App Automate como passed/failed (dashboard BrowserStack).
+
+    Deve ser chamado no teardown enquanto a sessão Appium ainda está aberta.
+    Usa o executor oficial: browserstack_executor / setSessionStatus.
+    Falhas de reporte não derrubam o teardown do teste.
+    """
+    builtin = _builtin()
+    env = (_robot_var("ENVIRONMENT") or "").strip().lower()
+    if env != "bs":
+        return
+
+    status = "passed" if str(test_status).strip().upper() == "PASS" else "failed"
+    reason = (test_message or status)[:240]
+    payload = {
+        "action": "setSessionStatus",
+        "arguments": {"status": status, "reason": reason},
+    }
+    script = f"browserstack_executor: {json.dumps(payload, ensure_ascii=True)}"
+
+    try:
+        # AppiumLibrary: Execute Script <script>
+        builtin.run_keyword("Execute Script", script)
+        builtin.log(f"BrowserStack session status → {status}", "INFO")
+    except Exception as exc:  # noqa: BLE001 — teardown não deve mascarar o resultado do teste
+        builtin.log(
+            f"Não foi possível reportar status ao BrowserStack ({status}): {exc}",
+            "WARN",
         )
 
 

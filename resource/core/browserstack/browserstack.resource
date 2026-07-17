@@ -17,6 +17,10 @@ ${PLATFORM_NAME_IOS_BS}          iOS
 # iOS sugeridos: iPhone 15|17, iPhone 14 Pro Max|16, iPhone XR|15
 
 *** Keywords ***
+Report Browserstack Session From Test
+    [Documentation]    Envia pass/fail ao dashboard BS (no-op se ENVIRONMENT != bs)
+    Mark Browserstack Session Status    ${TEST_STATUS}    ${TEST_MESSAGE}
+
 Open App Browserstack Android
     [Documentation]    Open App Browserstack Android
     [Arguments]    &{DATA}
