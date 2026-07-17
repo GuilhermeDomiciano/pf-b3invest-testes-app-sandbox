@@ -3,7 +3,7 @@ Documentation    Login Functions
 
 Resource    ${EXECDIR}/robot/screens/walkthrough/walkthrough_screen.resource
 Resource    ${EXECDIR}/robot/screens/login/login_screen.resource
-Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
+Library    AppiumLibrary
 
 *** Keywords ***
 Simple Login

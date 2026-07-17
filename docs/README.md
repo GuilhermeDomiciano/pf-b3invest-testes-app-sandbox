@@ -42,7 +42,62 @@ This is a project to automate Android and iOS mobile applications using a single
 The basic usage is giving a path to a test (or task) file or directory as an
 argument with possible command line options before the path
 
+Antes de rodar (local ou BrowserStack), configure o ambiente:
+
+```
+copy .env.example .env
+# edite .env com USERNAME_BS, ACESSKEY_BS, MAILSAC_TOKEN, etc.
+pip install -r config/requirements.txt
+```
+
+O `.env` é gitignored (ADR 0004). Não coloque secrets em `config/settings.resource`.
+
+Espelho opcional das caps BS (não usado na execução): `browserstack.yml.example`.
+
+### Execução local
+
     robot -v PLATFORM_NAME:android -v ENVIRONMENT:local -i home -d ./logs robot/tests/
+
+    make run-local-android
+    make run-local-ios TAGS=login
+
+### BrowserStack App Automate
+
+1. Preencha `USERNAME_BS` e `ACESSKEY_BS` no `.env`.
+2. Baixe o APK/IPA do artifact do GitHub Actions (ou use o binário local).
+3. Faça upload no BrowserStack e grave o `bs://` no `.env`:
+
+```
+python scripts/bs_upload_app.py --file ./app/seu-app.apk --platform android --update-env
+# ou
+make upload-bs-android APP_FILE=./app/seu-app.apk
+
+python scripts/bs_upload_app.py --file ./app/seu-app.ipa --platform ios --update-env
+```
+
+No Windows, **não** use `python -m resource/tools/bs_upload_app.py` (gera `ModuleNotFoundError`). Use `python scripts/bs_upload_app.py ...`.
+
+4. (Opcional) Escolha device no `.env`:
+
+```
+DEVICE_NAME_BS=Samsung Galaxy S23
+PLATFORM_VERSION_BS=13.0
+# iOS ex.: DEVICE_NAME_BS=iPhone 15  PLATFORM_VERSION_BS=17
+```
+
+Defaults se vazio: Android `Samsung Galaxy S23` / `13.0` · iOS `iPhone 15` / `17`.
+
+5. Rode smoke (tag estreita) e depois o regressivo:
+
+```
+make run-bs-android TAGS=login
+make run-bs-ios TAGS=login
+
+robot -v PLATFORM_NAME:android -v ENVIRONMENT:bs -i login -d ./logs robot/tests/
+```
+
+`BUILD_NUMBER` (CI) ou `BUILD_BS` definem o build no dashboard; se ambos vazios, o loader usa `local-YYYYMMDD-HHmmss`.
+`PROJECT_NAME_BS` default: `Automacao APP B3i`. Flags `BS_DEBUG`, `BS_NETWORK_LOGS`, `BS_APP_PROFILING` default `true`.
 
 "***-v***" refers to the variables. To replace a declared value within the code, you can specify a variable name and value.
 

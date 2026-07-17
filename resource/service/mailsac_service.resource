@@ -4,12 +4,13 @@ Documentation    Mailsac Service
 Library     RequestsLibrary
 Library     JSONLibrary
 Library     ${EXECDIR}/resource/tools/regex_tools.py
+Library     ${EXECDIR}/resource/tools/env_loader.py
 
 Resource    ${EXECDIR}/resource/utils/json_utils.resource
 
 *** Variables ***
 ${MAILSAC_URL}      https://mailsac.com/api
-${MAILSAC_TOKEN}    k_01a9RfZOPAooSz5f6rnB1cV9LB3Vlhuh7ljw70
+${MAILSAC_TOKEN}    ${EMPTY}
 
 ${MAILSAC_END_ADDRESSES}    /addresses/
 ${MAILSAC_END_MESSAGES}    /messages/
@@ -18,6 +19,9 @@ ${MAILSAC_END_MESSAGES}    /messages/
 Get MessageId Mailsac
     [Documentation]         Get MessageId Mailsac
     [Arguments]             ${EMAIL}
+
+    Load Project Environment
+    Validate Mailsac Token
 
     Sleep    10
 
@@ -47,6 +51,9 @@ Get MessageId Mailsac
 Get Token Mailsac
     [Documentation]    Get Token Mailsac
     [Arguments]        ${EMAIL}
+
+    Load Project Environment
+    Validate Mailsac Token
 
     ${MESSAGE_ID}=    Get MessageId Mailsac    EMAIL=${EMAIL}
 
