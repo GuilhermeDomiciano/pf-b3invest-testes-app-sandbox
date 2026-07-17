@@ -69,15 +69,12 @@ After a CLI update: `doctrina upgrade --write` brings this project up.
 ## Commands
 
 ```
-copy .env.example .env
-pip install -r config/requirements.txt
-make run-local-android   # or run-local-ios / run-bs-android / run-bs-ios
+copy .env.example .env && pip install -r config/requirements.txt
+make run-local-android | run-bs-android | upload-bs-android APP_FILE=./app/app.apk
 robot -v PLATFORM_NAME:android -v ENVIRONMENT:local -i home -d ./logs robot/tests/
-pabot ... -i gmud robot/tests/
-robocop
 ```
 
-Segredos: arquivo `.env` na raiz (nunca commitado). Catálogo: `.env.example`. Loader: `resource/tools/env_loader.py` (ADR 0004).
+Env: `.env` (gitignored) · `.env.example` · `env_loader.py` · `bs_upload_app.py` · `browserstack.yml.example` (doc).
 
 ## Repository structure
 

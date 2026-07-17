@@ -1,7 +1,7 @@
 ---
 name: browserstack-app-automate-run
-description: Executar as suites Robot existentes no BrowserStack App Automate via makefile e credenciais/app ids do dotenv.
-when: O agente precisa rodar, depurar ou configurar ENVIRONMENT=bs / make run-bs-* / sessões App Automate, ou trabalha na change 0002-browserstack-app-automate.
+description: Executar as suites Robot existentes no BrowserStack App Automate via makefile, dotenv e upload de app (bs_upload_app.py).
+when: O agente precisa rodar, depurar ou configurar ENVIRONMENT=bs / make run-bs-* / upload de APK-IPA, ou trabalha na change 0002-browserstack-app-automate.
 ---
 
 # Skill — browserstack-app-automate-run
@@ -9,40 +9,38 @@ when: O agente precisa rodar, depurar ou configurar ENVIRONMENT=bs / make run-bs
 ## When to use this skill
 
 - Ao rodar ou corrigir `make run-bs-android` / `make run-bs-ios`.
-- Ao configurar `APP_ANDROID_BS` / `APP_IOS_BS` (`bs://…`) ou capabilities BS.
-- Ao implementar a change `0002-browserstack-app-automate`.
+- Ao configurar `APP_ANDROID_BS` / `APP_IOS_BS`, devices ou capabilities BS.
+- Ao fazer upload do artifact do GitHub Actions para o App Automate.
 - Quando o usuário pedir para “rodar no BrowserStack” as suites de `robot/tests/`.
 
 ## Procedure
 
-1. Confirmar que a change `0001-dotenv-secrets` está concluída (ou que o loader já existe). Carregar a skill `dotenv-and-secrets` se for mexer em credenciais.
-2. Garantir que o `.env` local tenha pelo menos:
-   - `USERNAME_BS`, `ACESSKEY_BS`
-   - `APP_ANDROID_BS` e/ou `APP_IOS_BS`
-   - opcional: `PROJECT_NAME_BS`, `BUILD_BS`
-3. Fazer upload do binário AppB3 no dashboard/API do BrowserStack App Automate; copiar o id `bs://` para o `.env` (nunca commitiar).
-4. Smoke (tag estreita primeiro):
+1. Confirmar `.env` com `USERNAME_BS` e `ACESSKEY_BS` (skill `dotenv-and-secrets`). Nunca commitar.
+2. Baixar APK/IPA do artifact do GHA (ou path local).
+3. Upload e gravação do `bs://` (**sem** `python -m`):
    ```
-   make run-bs-android
-   # ou
-   robot -v PLATFORM_NAME:android -v ENVIRONMENT:bs -i login -d ./logs robot/tests/
+   python scripts/bs_upload_app.py --file ./app/app.apk --platform android --update-env
+   # ou make upload-bs-android APP_FILE=./app/app.apk
    ```
-5. Confirmar que os logs caem em `./logs` (makefile com `LOGS_DIR` consistente).
-6. **Não** bifurcar suites de domínio para BS — mesmos `.robot` (ADR 0003).
-7. Preferir smoke serial antes de `pabot` no BS (custo de device-minute).
-8. Em falha: checar auth no hub, validade do app id, mismatch de plataforma (apk android vs app ios) e depois capabilities em `resource/core/browserstack/`.
+   Se aparecer `ModuleNotFoundError` com `resource/tools/...`, ver skill `python-run-project-scripts`.
+4. (Opcional) `DEVICE_NAME_BS` + `PLATFORM_VERSION_BS` no `.env`. Defaults: S23/13.0 ou iPhone 15/17.
+5. Smoke:
+   ```
+   make run-bs-android TAGS=login
+   ```
+6. Confirmar logs em `./logs` (`LOGS_DIR` no makefile).
+7. Não bifurcar suites para BS; não usar BrowserStack SDK / `browserstack.yml` na execução (só `.example` documental).
 
 ## Anti-patterns
 
-- Commitar ids `bs://` específicos da conta no git “por conveniência”.
-- Usar BrowserStack SDK / `browserstack.yaml` / caminho Behave do README raiz desatualizado.
+- Commitar `bs://`, userName ou accessKey.
+- Executar via `browserstack.yml` / SDK em vez de Robot + dotenv.
 - Duplicar testes em `*_bs.robot`.
-- Rodar o `regressivo` completo no BS como primeira validação após mudar credenciais.
+- Rodar `regressivo` completo no BS como primeira validação.
 
 ## Related material
 
-- ADR 0003 — Execução dual local e BrowserStack
-- ADR 0004 — Segredos via dotenv
-- Change `.doctrina/changes/0002-browserstack-app-automate/`
-- Spec `test-runtime`
-- `makefile`, `resource/core/browserstack/browserstack.resource`
+- ADR 0003, ADR 0004
+- `resource/tools/bs_upload_app.py`, `resource/core/browserstack/browserstack.resource`
+- `browserstack.yml.example`, `docs/README.md`
+- Contrato `mobile-test-runtime`

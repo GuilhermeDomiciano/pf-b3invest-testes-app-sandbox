@@ -3,7 +3,7 @@ Documentation    Wallet Functions
 
 Resource    ${EXECDIR}/robot/screens/wallet/institution_screen.resource
 Resource    ../../../resource/utils/element_utils.resource
-Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
+Library    AppiumLibrary
 
 *** Keywords ***
 Validate Back Button Screen Wallet Filter Institutions

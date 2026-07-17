@@ -1,0 +1,40 @@
+# Espelho documental das capabilities BrowserStack App Automate.
+# A execução real deste repositório é Robot Framework + dotenv (ADR 0001 / 0004).
+# Não use este arquivo com BrowserStack SDK / Behave — ele não é lido pelo Robot.
+#
+# Preencha secrets apenas no `.env` (gitignored). Veja `.env.example` e docs/README.md.
+
+userName: "<USERNAME_BS do .env>"
+accessKey: "<ACESSKEY_BS do .env>"
+
+# Equivalente a PROJECT_NAME_BS / BUILD_NUMBER|BUILD_BS
+projectName: "Automacao APP B3i"
+buildIdentifier: "${BUILD_NUMBER}"   # local: fallback local-YYYYMMDD-HHmmss via env_loader
+
+# app: definido em APP_ANDROID_BS / APP_IOS_BS após upload (bs_upload_app.py)
+
+appProfiling: true
+debug: true
+networkLogs: true
+
+# Selecione UM device por execução via DEVICE_NAME_BS + PLATFORM_VERSION_BS no .env.
+# Defaults no resource: Android Samsung Galaxy S23 / 13.0 · iOS iPhone 15 / 17
+platforms:
+  - platformName: android
+    platformVersion: "13.0"
+    deviceName: Samsung Galaxy S23
+  - platformName: android
+    platformVersion: "13.0"
+    deviceName: Google Pixel 7
+  - platformName: android
+    platformVersion: "12.0"
+    deviceName: Samsung Galaxy S21
+  - platformName: ios
+    platformVersion: "17"
+    deviceName: iPhone 15
+  - platformName: ios
+    platformVersion: "16"
+    deviceName: iPhone 14 Pro Max
+  - platformName: ios
+    platformVersion: "15"
+    deviceName: iPhone XR

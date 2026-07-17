@@ -2,19 +2,19 @@
 Documentation    Browserstack Capabilities
 
 Library     ${EXECDIR}/resource/tools/env_loader.py
+Library     Collections
 
 Resource    ${EXECDIR}/config/settings.resource
 
 *** Variables ***
 ${AUTOMATION_NAME_ANDROID_BS}    UIAutomator2
 ${PLATFORM_NAME_ANDROID_BS}      android
-${DEVICE_NAME_ANDROID_BS}        Samsung Galaxy S.*
-
 ${AUTOMATION_NAME_IOS_BS}        XCUITest
 ${PLATFORM_NAME_IOS_BS}          iOS
-${DEVICE_NAME_IOS_BS}            iPhone.*
 
-${APPIUM_VERSION_BS}             2.12.1
+# Defaults (override via DEVICE_NAME_BS / PLATFORM_VERSION_BS no .env)
+# Android sugeridos: Samsung Galaxy S23|13.0, Google Pixel 7|13.0, Samsung Galaxy S21|12.0
+# iOS sugeridos: iPhone 15|17, iPhone 14 Pro Max|16, iPhone XR|15
 
 *** Keywords ***
 Open App Browserstack Android
@@ -22,19 +22,16 @@ Open App Browserstack Android
     [Arguments]    &{DATA}
 
     Validate Browserstack App Id    ${DATA.PLATFORM_NAME}
-
-    ${OPTIONS}=    Create Dictionary
-    Set To Dictionary    ${OPTIONS}    userName         ${USERNAME_BS}
-    Set To Dictionary    ${OPTIONS}    accessKey        ${ACESSKEY_BS}
-    Set To Dictionary    ${OPTIONS}    appiumVersion    ${APPIUM_VERSION_BS}
-    Set To Dictionary    ${OPTIONS}    projectName      ${PROJECT_NAME_BS}
-    Set To Dictionary    ${OPTIONS}    buildName        ${BUILD_BS}
-    Set To Dictionary    ${OPTIONS}    sessionName      ${TEST_NAME}
+    ${DEVICE}=    Resolve Browserstack Device    ${DATA.PLATFORM_NAME}
+    ${DEVICE_NAME}=    Get From Dictionary    ${DEVICE}    deviceName
+    ${PLATFORM_VERSION}=    Get From Dictionary    ${DEVICE}    platformVersion
+    ${OPTIONS}=    Build Browserstack Options    ${TEST_NAME}
 
     Open Application     remote_url=${APPIUM_SERVER_BS}
     ...                  automationName=${AUTOMATION_NAME_ANDROID_BS}
     ...                  platformName=${PLATFORM_NAME_ANDROID_BS}
-    ...                  deviceName=${DEVICE_NAME_ANDROID_BS}
+    ...                  deviceName=${DEVICE_NAME}
+    ...                  platformVersion=${PLATFORM_VERSION}
     ...                  app=${APP_ANDROID_BS}
     ...                  disabledLocatorAutocompletion=${True}
     ...                  autoGrantPermissions=${True}
@@ -45,19 +42,16 @@ Open App Browserstack Ios
     [Arguments]    &{DATA}
 
     Validate Browserstack App Id    ${DATA.PLATFORM_NAME}
-
-    ${OPTIONS}=    Create Dictionary
-    Set To Dictionary    ${OPTIONS}    userName         ${USERNAME_BS}
-    Set To Dictionary    ${OPTIONS}    accessKey        ${ACESSKEY_BS}
-    Set To Dictionary    ${OPTIONS}    appiumVersion    ${APPIUM_VERSION_BS}
-    Set To Dictionary    ${OPTIONS}    projectName      ${PROJECT_NAME_BS}
-    Set To Dictionary    ${OPTIONS}    buildName        ${BUILD_BS}
-    Set To Dictionary    ${OPTIONS}    sessionName      ${TEST_NAME}
+    ${DEVICE}=    Resolve Browserstack Device    ${DATA.PLATFORM_NAME}
+    ${DEVICE_NAME}=    Get From Dictionary    ${DEVICE}    deviceName
+    ${PLATFORM_VERSION}=    Get From Dictionary    ${DEVICE}    platformVersion
+    ${OPTIONS}=    Build Browserstack Options    ${TEST_NAME}
 
     Open Application     remote_url=${APPIUM_SERVER_BS}
     ...                  automationName=${AUTOMATION_NAME_IOS_BS}
     ...                  platformName=${PLATFORM_NAME_IOS_BS}
-    ...                  deviceName=${DEVICE_NAME_IOS_BS}
+    ...                  deviceName=${DEVICE_NAME}
+    ...                  platformVersion=${PLATFORM_VERSION}
     ...                  app=${APP_IOS_BS}
     ...                  disabledLocatorAutocompletion=${True}
     ...                  autoAcceptAlerts=${True}

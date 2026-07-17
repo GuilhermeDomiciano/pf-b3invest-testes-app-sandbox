@@ -1,7 +1,7 @@
 *** Settings ***
 Library    String
 Library    Collections
-Library    ../../../.venv/lib/python3.9/site-packages/AppiumLibrary/__init__.py
+Library    AppiumLibrary
 Documentation    Wallet Functions
 
 Resource    ${EXECDIR}/robot/screens/wallet/class_screen.resource

@@ -20,12 +20,19 @@ ${IOS_APP_LOCAL}          Runner.app
 
 # Browserstack Appium (credenciais e app ids: .env)
 ${APPIUM_SERVER_BS}       https://hub-cloud.browserstack.com/wd/hub
-${PROJECT_NAME_BS}        B3_APP
-${BUILD_BS}               REGRESSION_ANDROID
+${PROJECT_NAME_BS}        Automacao APP B3i
+${BUILD_BS}               ${EMPTY}
+${BUILD_NUMBER}           ${EMPTY}
 ${USERNAME_BS}            ${EMPTY}
 ${ACESSKEY_BS}            ${EMPTY}
 ${APP_IOS_BS}             ${EMPTY}
 ${APP_ANDROID_BS}         ${EMPTY}
+${DEVICE_NAME_BS}         ${EMPTY}
+${PLATFORM_VERSION_BS}    ${EMPTY}
+${BS_DEBUG}               ${EMPTY}
+${BS_NETWORK_LOGS}        ${EMPTY}
+${BS_APP_PROFILING}       ${EMPTY}
+${APPIUM_VERSION_BS}      2.12.1
 
 # Browserstack Services (URL montada após Load Project Environment)
 ${BROWSERSTACK_URL}       ${EMPTY}

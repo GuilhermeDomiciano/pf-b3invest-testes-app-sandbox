@@ -5,6 +5,7 @@ pyyaml
 Faker
 python-dateutil
 python-dotenv
+requests
 robotframework
 robotframework-appiumlibrary
 robotframework-datadriver
