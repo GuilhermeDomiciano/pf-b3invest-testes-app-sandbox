@@ -1,6 +1,6 @@
 # Intake — pf-b3invest-testes-app
 
-- **Status:** pending
+- **Status:** converted
 - **Date:** 2026-07-16
 - **Source:** DOCTRINA_INTAKE_DRAFT.md
 

@@ -60,25 +60,29 @@ After a CLI update: `doctrina upgrade --write` brings this project up.
 
 ## Stack and tooling
 
-<!-- Replace with the project's actual stack. Keep this section short. -->
-- Runtime:
-- Package manager:
-- Test runner:
-- Linter / formatter:
+- Runtime: Python + Appium (UiAutomator2 / XCUITest); Node.js for Appium CLI
+- Package manager: pip (`config/requirements.txt`)
+- Test runner: Robot Framework + Pabot; makefile targets local/BS
+- Linter / formatter: Robocop (`pyproject.toml`)
+- Docs: MkDocs / TechDocs (`mkdocs.yml`, `docs/`)
 
 ## Commands
 
-<!-- Use exact, copy-pasteable commands. Avoid prose. -->
 ```
-# install
-# build
-# test
-# lint
+pip install -r config/requirements.txt
+make run-local-android   # or run-local-ios / run-bs-android / run-bs-ios
+robot -v PLATFORM_NAME:android -v ENVIRONMENT:local -i home -d ./logs robot/tests/
+pabot ... -i gmud robot/tests/
+robocop
 ```
 
 ## Repository structure
 
-<!-- Outline the top-level directories an agent needs to know about. -->
+- `robot/` — tests, screens, functions, elements (YAML), `base.resource`
+- `resource/` — core local/BS, services, utils, tools, data
+- `config/` — settings.resource, requirements.txt
+- `docs/` — TechDocs
+- `.doctrina/` — product, specs, decisions, contracts
 
 ## Conventions and boundaries
 
