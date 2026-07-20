@@ -23,7 +23,7 @@ on:
         type: boolean
         default: true
       delivery_run_id:
-        description: 'Run ID do workflow de Delivery CERT (obrigatório se upload_new_build=true)'
+        description: 'Run ID numérico do workflow de Delivery em b3sa/pf-b3invest-app (ex: 1234567890). Obrigatório se upload_new_build=true. NÃO use true/false.'
         required: false
         type: string
         default: ''
@@ -170,12 +170,22 @@ jobs:
     steps:
       - name: Validate delivery run ID
         shell: bash
+        env:
+          DELIVERY_RUN_ID: ${{ inputs.delivery_run_id }}
         run: |
-          if [ -z "${{ inputs.delivery_run_id }}" ]; then
+          if [ -z "${DELIVERY_RUN_ID}" ]; then
             echo "ERRO: delivery_run_id e obrigatorio quando upload_new_build=true"
+            echo "Informe o Run ID numerico do workflow de Delivery em ${DELIVERY_REPO}"
+            echo "Exemplo: 1234567890 (Actions → run concluido → URL .../actions/runs/1234567890)"
             exit 1
           fi
-          echo "Delivery Run ID: ${{ inputs.delivery_run_id }}"
+          if ! [[ "${DELIVERY_RUN_ID}" =~ ^[0-9]+$ ]]; then
+            echo "ERRO: delivery_run_id deve ser o Run ID numerico do Delivery, nao '${DELIVERY_RUN_ID}'"
+            echo "Valores como 'true'/'false' indicam confusao com o input upload_new_build."
+            echo "Obtenha o ID em ${DELIVERY_REPO} → Actions → run que gerou android-apk / ios-ipa."
+            exit 1
+          fi
+          echo "Delivery Run ID: ${DELIVERY_RUN_ID}"
 
       - name: Download APK artifact
         if: inputs.platform == 'android' || inputs.platform == 'both'

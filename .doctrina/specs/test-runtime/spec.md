@@ -2,11 +2,11 @@
 
 **Capability:** test-runtime
 **Status:** active
-**Implementation:** partial — GHA regression workflow (change 0005); smoke live ainda manual
+**Implementation:** partial — GHA regression; delivery_run_id numeric fail-fast (change 0006)
 **Realizes:** SC1, SC2, SC4
 **Depends on:** —
-**Last updated:** 2026-07-17
-**Version:** 0.7.0
+**Last updated:** 2026-07-20
+**Version:** 0.8.0
 
 ## Purpose
 
@@ -33,6 +33,7 @@ Orquestra a execução dos testes Robot da AppB3 em Android/iOS, escolhendo ambi
 - When `BUILD_NUMBER` and `BUILD_BS` are empty, the system shall assign build name `local-YYYYMMDD-HHmmss`.
 - When the operator requests parallel multi-platform execution, the system shall run Android and iOS suites concurrently as separate Robot processes with distinct log directories.
 - When GitHub Actions regression runs, the system shall invoke Robot with the same variable contract as local (`PLATFORM_NAME`, `ENVIRONMENT=bs`, `APP_*_BS`, `USERNAME_BS` / `ACESSKEY_BS`).
+- When `upload_new_build` is true in GitHub Actions regression, the system shall require `delivery_run_id` to be a numeric Actions run id from the delivery repository before downloading APK/IPA artifacts, and shall fail with an explicit error if the value is empty or non-numeric (e.g. true/false confused with `upload_new_build`).
 
 ### State-driven
 
@@ -64,6 +65,7 @@ Orquestra a execução dos testes Robot da AppB3 em Android/iOS, escolhendo ambi
 9. [unverified] Teardown reports Robot pass/fail to BrowserStack App Automate — verified by `resource/tools/env_loader.py`, `robot/base.resource`
 10. [unverified] Parallel Android+iOS runner exists and writes per-platform logs — verified by `scripts/run_parallel_platforms.py`
 11. [unverified] GitHub Actions regression workflow uses local Robot variable contract and `robot/tests/` — verified by `.github/workflows/regression-tests.yml`
+12. [unverified] GHA regression rejects non-numeric `delivery_run_id` before download-artifact — verified by `.github/workflows/regression-tests.yml`
 
 ## Maturity
 
