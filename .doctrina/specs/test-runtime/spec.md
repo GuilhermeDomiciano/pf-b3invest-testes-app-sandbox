@@ -2,11 +2,11 @@
 
 **Capability:** test-runtime
 **Status:** active
-**Implementation:** partial — GHA regression; auto-resolve delivery_run_id (change 0008)
+**Implementation:** partial — GHA regression; delivery_repo=pf-b3invest-app-base (change 0010)
 **Realizes:** SC1, SC2, SC4
 **Depends on:** —
 **Last updated:** 2026-07-20
-**Version:** 0.9.0
+**Version:** 0.9.2
 
 ## Purpose
 
@@ -33,7 +33,7 @@ Orquestra a execução dos testes Robot da AppB3 em Android/iOS, escolhendo ambi
 - When `BUILD_NUMBER` and `BUILD_BS` are empty, the system shall assign build name `local-YYYYMMDD-HHmmss`.
 - When the operator requests parallel multi-platform execution, the system shall run Android and iOS suites concurrently as separate Robot processes with distinct log directories.
 - When GitHub Actions regression runs, the system shall invoke Robot with the same variable contract as local (`PLATFORM_NAME`, `ENVIRONMENT=bs`, `APP_*_BS`, `USERNAME_BS` / `ACESSKEY_BS`).
-- When `upload_new_build` is true in GitHub Actions regression, the system shall resolve `delivery_run_id` to a numeric Actions run id from the delivery repository before downloading APK/IPA artifacts: use the provided numeric id when set; when empty (or `latest`/`auto`/`true`), select the latest non-expired matching artifact (`android-apk` / `ios-ipa`) via the GitHub API; reject other non-numeric values with an explicit error.
+- When `upload_new_build` is true in GitHub Actions regression, the system shall resolve `delivery_run_id` to a numeric Actions run id from the delivery repository (default `b3sa/pf-b3invest-app-base`, the Flutter Deploy CERT caller) before downloading APK/IPA artifacts: use the provided numeric id when set; when empty (or `latest`/`auto`/`true`), select the latest non-expired matching artifact (`android-apk` / `ios-ipa`) via the GitHub API; reject other non-numeric values with an explicit error.
 
 ### State-driven
 

@@ -23,10 +23,15 @@ on:
         type: boolean
         default: true
       delivery_run_id:
-        description: 'Opcional. Run ID do Delivery (só números). Vazio/latest = último artifact em b3sa/pf-b3invest-app. NÃO use true/false (true também auto-resolve).'
+        description: 'Opcional. Run ID (só números). Vazio/latest/auto/true = último artifact no delivery_repo.'
         required: false
         type: string
         default: ''
+      delivery_repo:
+        description: 'owner/repo do Pipeline Deploy CERT que publica android-apk/ios-ipa (default: pf-b3invest-app-base)'
+        required: false
+        type: string
+        default: 'b3sa/pf-b3invest-app-base'
       existing_app_url_android:
         description: 'app_url BrowserStack Android (se upload_new_build=false)'
         required: false
@@ -96,6 +101,10 @@ on:
         type: string
         required: false
         default: ''
+      delivery_repo:
+        type: string
+        required: false
+        default: 'b3sa/pf-b3invest-app-base'
       existing_app_url_android:
         type: string
         required: false
@@ -147,7 +156,9 @@ on:
         required: false
 
 env:
-  DELIVERY_REPO: 'b3sa/pf-b3invest-app'
+  # Caller do Flutter Deploy CERT (artifacts ficam no run do caller, nao no reusable-workflows).
+  # Pipeline: pf-b3invest-app-base → workflow-flutter-delivery-cert.yml
+  DELIVERY_REPO: ${{ inputs.delivery_repo }}
   # Sempre BrowserStack no Robot; inputs.environment é só GitHub Environment / BUILD_BS
   ROBOT_ENVIRONMENT: bs
 
@@ -229,6 +240,18 @@ jobs:
               except urllib.error.HTTPError as exc:
                   body = exc.read().decode("utf-8", errors="replace")
                   print(f"ERRO API artifacts name={artifact_name}: HTTP {exc.code}\n{body}", file=sys.stderr)
+                  if exc.code == 404:
+                      print(
+                          "HTTP 404 em list-artifacts geralmente significa:\n"
+                          f"  1) PIPELINE_COMMIT_PAT sem acesso a {repo} (GitHub mascara 403 como 404)\n"
+                          "  2) owner/repo incorreto (input delivery_repo)\n"
+                          "  3) Actions/artifacts inexistentes nesse repo\n"
+                          "Fonte esperada: b3sa/pf-b3invest-app-base → Pipeline Deploy CERT\n"
+                          "  (usa reusable workflow-flutter-delivery-cert.yml; artifacts no run do caller).\n"
+                          "Ex.: delivery_repo=b3sa/pf-b3invest-app-base delivery_run_id=29493179598\n"
+                          "Ou use upload_new_build=false + existing_app_url_* (bs://).",
+                          file=sys.stderr,
+                      )
                   sys.exit(1)
 
               ids: list[int] = []

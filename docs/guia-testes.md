@@ -243,11 +243,13 @@ Workflow: `.github/workflows/regression-tests.yml` (ADR 0005).
 
 - **Robot** sempre com `ENVIRONMENT=bs` e o mesmo contrato local (`PLATFORM_NAME`, `APP_*_BS`, `USERNAME_BS` / `ACESSKEY_BS`).
 - Input **`environment`** (`cer`|`dev`|`prd`) = GitHub Environment + rótulo de build (`BUILD_BS`), **não** o target Appium.
-- **Upload novo build:** `delivery_run_id` é **opcional**.
-  - **Vazio / `latest` / `auto`:** o job Resolve busca automaticamente o último artifact não expirado em `b3sa/pf-b3invest-app` (`android-apk` / `ios-ipa`). O valor `true` (erro comum na UI) também dispara o auto-resolve.
-  - **Número** (`1234567890`): fixa o run de Delivery da URL `.../actions/runs/<número>`.
-  - `false` é inválido nesse campo — use `upload_new_build=false` + `existing_app_url_*`.
-  - Em `workflow_call` a partir do delivery, o ideal continua sendo `delivery_run_id: ${{ github.run_id }}` (pin no run atual).
+- **Upload novo build:** baixa artifacts GHA `android-apk` / `ios-ipa` de `delivery_repo` (default **`b3sa/pf-b3invest-app-base`**).
+  - Fonte: *Pipeline - Deploy CERT* em `pf-b3invest-app-base` → reusable `workflow-flutter-delivery-cert.yml` (artifacts ficam no **run do caller**, ex. `.../pf-b3invest-app-base/actions/runs/29493179598`).
+  - Layout: após unzip de `android-apk` → `app-cert-release.apk` (o job procura `./artifacts/android/*.apk`).
+  - **Vazio / `latest` / `auto` / `true`:** Resolve busca o último artifact não expirado nesse repo.
+  - **Número:** pin no Run ID do Deploy CERT.
+  - **HTTP 404:** PAT sem acesso a `pf-b3invest-app-base` (ou repo errado). Garanta `actions:read` no PAT para esse repo.
+  - Workaround: `upload_new_build=false` + `existing_app_url_*` (`bs://...`).
 - **Sem upload:** informe `existing_app_url_android` / `existing_app_url_ios` (`bs://...`).
 - Secrets: `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY`, `PIPELINE_COMMIT_PAT` (mapeados no job para `*_BS`).
 - Suite: caminho sob `robot/tests/` (ex. `login`). Tag: ex. `acesso`, `regressivo`.
