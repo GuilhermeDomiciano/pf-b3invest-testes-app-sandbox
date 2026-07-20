@@ -9,3 +9,5 @@ One line per archived change, newest last. Appended by
 - 2026-07-17 — 0004-parallel-android-ios — Parallel android and ios runs (specs: test-runtime MODIFIED)
 - 2026-07-17 — 0005-github-actions-regression — GitHub Actions regression workflow (specs: test-runtime MODIFIED)
 - 2026-07-20 — 0006-verificar-erro-no-workflow-regression-tests-yml — Fail-fast on invalid delivery_run_id (specs: test-runtime MODIFIED)
+- 2026-07-20 — 0007-delivery-run-id-ainda-chega-como-true-no-caller — delivery_run_id ainda true
+- 2026-07-20 — 0008-auto-resolver-delivery-run-id-quando-vazio-ultim — Auto-resolve delivery_run_id (specs: test-runtime MODIFIED)

@@ -23,7 +23,7 @@ on:
         type: boolean
         default: true
       delivery_run_id:
-        description: 'Run ID numérico do workflow de Delivery em b3sa/pf-b3invest-app (ex: 1234567890). Obrigatório se upload_new_build=true. NÃO use true/false.'
+        description: 'Opcional. Run ID do Delivery (só números). Vazio/latest = último artifact em b3sa/pf-b3invest-app. NÃO use true/false (true também auto-resolve).'
         required: false
         type: string
         default: ''
@@ -167,25 +167,112 @@ jobs:
     outputs:
       has_apk: ${{ steps.check-files.outputs.has_apk }}
       has_ipa: ${{ steps.check-files.outputs.has_ipa }}
+      delivery_run_id: ${{ steps.resolve.outputs.run_id }}
     steps:
-      - name: Validate delivery run ID
+      - name: Resolve delivery run ID
+        id: resolve
         shell: bash
         env:
           DELIVERY_RUN_ID: ${{ inputs.delivery_run_id }}
+          PLATFORM: ${{ inputs.platform }}
+          GH_TOKEN: ${{ secrets.PIPELINE_COMMIT_PAT }}
         run: |
-          if [ -z "${DELIVERY_RUN_ID}" ]; then
-            echo "ERRO: delivery_run_id e obrigatorio quando upload_new_build=true"
-            echo "Informe o Run ID numerico do workflow de Delivery em ${DELIVERY_REPO}"
-            echo "Exemplo: 1234567890 (Actions → run concluido → URL .../actions/runs/1234567890)"
+          set -euo pipefail
+          RAW="${DELIVERY_RUN_ID:-}"
+          RAW_LC="$(echo "$RAW" | tr '[:upper:]' '[:lower:]')"
+
+          if [[ "$RAW_LC" == "false" ]]; then
+            echo "ERRO: delivery_run_id='false' e invalido."
+            echo "Para pular download, use upload_new_build=false + existing_app_url_*."
             exit 1
           fi
-          if ! [[ "${DELIVERY_RUN_ID}" =~ ^[0-9]+$ ]]; then
-            echo "ERRO: delivery_run_id deve ser o Run ID numerico do Delivery, nao '${DELIVERY_RUN_ID}'"
-            echo "Valores como 'true'/'false' indicam confusao com o input upload_new_build."
-            echo "Obtenha o ID em ${DELIVERY_REPO} → Actions → run que gerou android-apk / ios-ipa."
+
+          # Explicit numeric pin
+          if [[ -n "$RAW" && "$RAW" =~ ^[0-9]+$ ]]; then
+            echo "Usando delivery_run_id informado: $RAW"
+            echo "run_id=${RAW}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Auto: empty, latest, auto, or the common mistake "true"
+          if [[ -z "$RAW" || "$RAW_LC" == "latest" || "$RAW_LC" == "auto" || "$RAW_LC" == "true" ]]; then
+            echo "delivery_run_id vazio/auto ('${RAW:-<empty>}') — buscando ultimo artifact em ${DELIVERY_REPO}"
+          else
+            echo "ERRO: delivery_run_id deve ser numerico, vazio, latest ou auto — recebido '${RAW}'"
             exit 1
           fi
-          echo "Delivery Run ID: ${DELIVERY_RUN_ID}"
+
+          python3 - <<'PY'
+          import json, os, sys, urllib.error, urllib.request
+
+          repo = os.environ["DELIVERY_REPO"]
+          token = os.environ["GH_TOKEN"]
+          platform = os.environ.get("PLATFORM", "android").lower()
+
+          def list_run_ids(artifact_name: str) -> list[int]:
+              url = (
+                  f"https://api.github.com/repos/{repo}/actions/artifacts"
+                  f"?name={artifact_name}&per_page=30"
+              )
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Accept": "application/vnd.github+json",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                      "User-Agent": "pf-b3invest-testes-app-regression",
+                  },
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as resp:
+                      payload = json.load(resp)
+              except urllib.error.HTTPError as exc:
+                  body = exc.read().decode("utf-8", errors="replace")
+                  print(f"ERRO API artifacts name={artifact_name}: HTTP {exc.code}\n{body}", file=sys.stderr)
+                  sys.exit(1)
+
+              ids: list[int] = []
+              for art in payload.get("artifacts") or []:
+                  if art.get("expired"):
+                      continue
+                  run = art.get("workflow_run") or {}
+                  rid = run.get("id")
+                  if rid is not None:
+                      ids.append(int(rid))
+              return ids
+
+          need_apk = platform in ("android", "both")
+          need_ipa = platform in ("ios", "both")
+
+          apk_ids = list_run_ids("android-apk") if need_apk else []
+          ipa_ids = list_run_ids("ios-ipa") if need_ipa else []
+
+          if need_apk and not apk_ids:
+              print("ERRO: nenhum artifact nao expirado 'android-apk' em " + repo, file=sys.stderr)
+              sys.exit(1)
+          if need_ipa and not ipa_ids:
+              print("ERRO: nenhum artifact nao expirado 'ios-ipa' em " + repo, file=sys.stderr)
+              sys.exit(1)
+
+          if need_apk and need_ipa:
+              ipa_set = set(ipa_ids)
+              resolved = next((rid for rid in apk_ids if rid in ipa_set), None)
+              if resolved is None:
+                  print(
+                      "ERRO: nao ha run recente com android-apk E ios-ipa. "
+                      "Informe delivery_run_id manualmente ou rode platform=android|ios.",
+                      file=sys.stderr,
+                  )
+                  sys.exit(1)
+          elif need_apk:
+              resolved = apk_ids[0]
+          else:
+              resolved = ipa_ids[0]
+
+          print(f"Resolvido automaticamente: delivery_run_id={resolved}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"run_id={resolved}\n")
+          PY
 
       - name: Download APK artifact
         if: inputs.platform == 'android' || inputs.platform == 'both'
@@ -195,7 +282,7 @@ jobs:
           path: ./artifacts/android/
           github-token: ${{ secrets.PIPELINE_COMMIT_PAT }}
           repository: ${{ env.DELIVERY_REPO }}
-          run-id: ${{ inputs.delivery_run_id }}
+          run-id: ${{ steps.resolve.outputs.run_id }}
 
       - name: Download IPA artifact
         if: inputs.platform == 'ios' || inputs.platform == 'both'
@@ -205,7 +292,7 @@ jobs:
           path: ./artifacts/ios/
           github-token: ${{ secrets.PIPELINE_COMMIT_PAT }}
           repository: ${{ env.DELIVERY_REPO }}
-          run-id: ${{ inputs.delivery_run_id }}
+          run-id: ${{ steps.resolve.outputs.run_id }}
 
       - name: Check downloaded files
         id: check-files
