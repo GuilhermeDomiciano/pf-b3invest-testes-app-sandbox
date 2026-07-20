@@ -62,15 +62,14 @@ Open Class Detail Internacional Wrapper
 Open Class Detail Renda Variável Wrapper
     [Documentation]    Abre a tela de detalhe da classe 'Renda Variável'.
     Open Class Detail Products Screen    renda variável
-Validate Complete Class Detail
-    [Documentation]    Executa validação completa agrupada da tela de detalhe de classe.
-    Validate Full Class Detail Screen
 
 Validate Complete Class Detail
-    [Documentation]    Executa validação completa e depois seleciona um período específico.
-    [Arguments]    ${period}=7_d
+    [Documentation]    Validação completa da tela de detalhe de classe; opcionalmente seleciona um período.
+    [Arguments]    ${period}=${EMPTY}
     Validate Full Class Detail Screen
-    Select Class Detail Period    ${period}
+    IF    '${period}' != '${EMPTY}'
+        Select Class Detail Period    ${period}
+    END
 
 Back Navigation From Class Detail Renda Fixa
     [Documentation]    Realiza navegação de volta (back) a partir da tela de detalhe da classe.

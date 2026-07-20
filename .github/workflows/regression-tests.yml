@@ -322,24 +322,31 @@ jobs:
         shell: bash
         run: |
           echo "===== Artifacts baixados ====="
-          find ./artifacts/ -type f 2>/dev/null | head -20
+          find ./artifacts/ -type f 2>/dev/null | head -40
 
-          if ls ./artifacts/android/*.apk 1>/dev/null 2>&1; then
+          APK_FILE="$(find ./artifacts -type f -name 'app-cert-release.apk' | head -1 || true)"
+          if [ -z "${APK_FILE}" ]; then
+            APK_FILE="$(find ./artifacts -type f -name '*.apk' | head -1 || true)"
+          fi
+          IPA_FILE="$(find ./artifacts -type f -name 'b3i_app_base.ipa' | head -1 || true)"
+          if [ -z "${IPA_FILE}" ]; then
+            IPA_FILE="$(find ./artifacts -type f -name '*.ipa' | head -1 || true)"
+          fi
+
+          if [ -n "${APK_FILE}" ]; then
             echo "has_apk=true" >> "$GITHUB_OUTPUT"
-            APK_FILE=$(ls ./artifacts/android/*.apk | head -1)
-            echo "APK: $APK_FILE ($(du -h "$APK_FILE" | cut -f1))"
+            echo "APK: ${APK_FILE} ($(du -h "${APK_FILE}" | cut -f1))"
           else
             echo "has_apk=false" >> "$GITHUB_OUTPUT"
             echo "Nenhum APK encontrado"
           fi
 
-          if ls ./artifacts/ios/*.ipa 1>/dev/null 2>&1; then
+          if [ -n "${IPA_FILE}" ]; then
             echo "has_ipa=true" >> "$GITHUB_OUTPUT"
-            IPA_FILE=$(ls ./artifacts/ios/*.ipa | head -1)
-            echo "IPA: $IPA_FILE ($(du -h "$IPA_FILE" | cut -f1))"
+            echo "IPA: ${IPA_FILE} ($(du -h "${IPA_FILE}" | cut -f1))"
           else
             echo "has_ipa=false" >> "$GITHUB_OUTPUT"
-            echo "Nenhum IPA encontrado"
+            echo "Nenhum IPA encontrado (esperado: b3i_app_base.ipa dentro do artifact ios-ipa)"
           fi
 
       - name: Upload artifacts for next job
@@ -400,8 +407,11 @@ jobs:
         shell: bash
         run: |
           set -e
-          APK_FILE=$(ls ./artifacts/android/*.apk | head -1)
-          echo "Uploading APK: $APK_FILE"
+          APK_FILE="$(find ./artifacts -type f -name 'app-cert-release.apk' | head -1 || true)"
+          if [ -z "${APK_FILE}" ]; then
+            APK_FILE="$(find ./artifacts -type f -name '*.apk' | head -1)"
+          fi
+          echo "Uploading APK: ${APK_FILE} ($(du -h "${APK_FILE}" | cut -f1))"
           CUSTOM_ID="b3invest-${APP_ENV}-android"
           APP_URL=$(python scripts/bs_upload_app.py \
             --file "${APK_FILE}" \
@@ -423,8 +433,17 @@ jobs:
         shell: bash
         run: |
           set -e
-          IPA_FILE=$(ls ./artifacts/ios/*.ipa | head -1)
-          echo "Uploading IPA: $IPA_FILE"
+          # Preferir o IPA do Deploy CERT (ex.: b3i_app_base.ipa); nao exige path Windows local.
+          IPA_FILE="$(find ./artifacts -type f -name 'b3i_app_base.ipa' | head -1 || true)"
+          if [ -z "${IPA_FILE}" ]; then
+            IPA_FILE="$(find ./artifacts -type f -name '*.ipa' | head -1)"
+          fi
+          if [ -z "${IPA_FILE}" ]; then
+            echo "ERRO: nenhum .ipa sob ./artifacts (esperado b3i_app_base.ipa no artifact ios-ipa)"
+            find ./artifacts -type f | head -40
+            exit 1
+          fi
+          echo "Uploading IPA: ${IPA_FILE} ($(du -h "${IPA_FILE}" | cut -f1))"
           CUSTOM_ID="b3invest-${APP_ENV}-ios"
           APP_URL=$(python scripts/bs_upload_app.py \
             --file "${IPA_FILE}" \
@@ -466,6 +485,7 @@ jobs:
       (inputs.upload_new_build == false || needs.upload-to-browserstack.result == 'success')
     needs: [upload-to-browserstack]
     runs-on: [self-hosted, aks]
+    timeout-minutes: 60
     environment: ${{ inputs.environment }}
     env:
       https_proxy: ${{ vars.HTTPS_PROXY }}
@@ -649,6 +669,7 @@ jobs:
       (inputs.upload_new_build == false || needs.upload-to-browserstack.result == 'success')
     needs: [upload-to-browserstack]
     runs-on: [self-hosted, aks]
+    timeout-minutes: 60
     environment: ${{ inputs.environment }}
     env:
       https_proxy: ${{ vars.HTTPS_PROXY }}

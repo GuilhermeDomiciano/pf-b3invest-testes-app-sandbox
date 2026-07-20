@@ -59,6 +59,7 @@ Open App Browserstack Ios
     ...                  app=${APP_IOS_BS}
     ...                  disabledLocatorAutocompletion=${True}
     ...                  autoAcceptAlerts=${True}
+    ...                  fullReset=${True}
     ...                  bstack:options=${OPTIONS}
 
 Open App Browserstack

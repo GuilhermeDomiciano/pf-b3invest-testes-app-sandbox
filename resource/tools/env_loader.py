@@ -275,6 +275,16 @@ def mark_browserstack_session_status(test_status: str = "", test_message: str = 
     script = f"browserstack_executor: {json.dumps(payload, ensure_ascii=True)}"
 
     try:
+        # Sem sessão aberta (setup falhou), Execute Script quebra — só reporta se houver driver.
+        try:
+            builtin.run_keyword("Get Source")
+        except Exception:
+            builtin.log(
+                "Sem sessao Appium aberta; skip report BrowserStack.",
+                "WARN",
+            )
+            return
+
         # AppiumLibrary: Execute Script <script>
         builtin.run_keyword("Execute Script", script)
         builtin.log(f"BrowserStack session status → {status}", "INFO")

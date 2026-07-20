@@ -13,3 +13,4 @@ One line per archived change, newest last. Appended by
 - 2026-07-20 — 0008-auto-resolver-delivery-run-id-quando-vazio-ultim — Auto-resolve delivery_run_id (specs: test-runtime MODIFIED)
 - 2026-07-20 — 0009-corrigir-auto-resolve-delivery-404-em-pf-b3inves — Diagnóstico 404 + delivery_repo + layout APK confirmado (specs: test-runtime MODIFIED)
 - 2026-07-20 — 0010-apontar-delivery-repo-default-para-b3sa-pf-b3inv — delivery_repo = pf-b3invest-app-base (specs: test-runtime MODIFIED)
+- 2026-07-20 — 0011-corrigir-regressao-ios-bs-ipa-b3i-app-base-ipa-l — iOS CI: IPA discovery + keyword duplicado + timeout (specs: test-runtime MODIFIED)

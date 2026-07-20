@@ -2,11 +2,11 @@
 
 **Capability:** test-runtime
 **Status:** active
-**Implementation:** partial — GHA regression; delivery_repo=pf-b3invest-app-base (change 0010)
+**Implementation:** partial — GHA regression; iOS IPA find + keyword fix (change 0011)
 **Realizes:** SC1, SC2, SC4
 **Depends on:** —
 **Last updated:** 2026-07-20
-**Version:** 0.9.2
+**Version:** 0.9.3
 
 ## Purpose
 

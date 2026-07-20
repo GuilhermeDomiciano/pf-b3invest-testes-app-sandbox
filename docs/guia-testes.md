@@ -245,7 +245,7 @@ Workflow: `.github/workflows/regression-tests.yml` (ADR 0005).
 - Input **`environment`** (`cer`|`dev`|`prd`) = GitHub Environment + rótulo de build (`BUILD_BS`), **não** o target Appium.
 - **Upload novo build:** baixa artifacts GHA `android-apk` / `ios-ipa` de `delivery_repo` (default **`b3sa/pf-b3invest-app-base`**).
   - Fonte: *Pipeline - Deploy CERT* em `pf-b3invest-app-base` → reusable `workflow-flutter-delivery-cert.yml` (artifacts ficam no **run do caller**, ex. `.../pf-b3invest-app-base/actions/runs/29493179598`).
-  - Layout: após unzip de `android-apk` → `app-cert-release.apk` (o job procura `./artifacts/android/*.apk`).
+  - Layout: `android-apk` → `app-cert-release.apk`; `ios-ipa` → `b3i_app_base.ipa` (CI localiza por `find`, sem path Windows).
   - **Vazio / `latest` / `auto` / `true`:** Resolve busca o último artifact não expirado nesse repo.
   - **Número:** pin no Run ID do Deploy CERT.
   - **HTTP 404:** PAT sem acesso a `pf-b3invest-app-base` (ou repo errado). Garanta `actions:read` no PAT para esse repo.
