@@ -22,11 +22,13 @@ prompt and approves; do not make them run the CLI or hand-author artifacts.
   spec each, `doctrina clarify --all` + `doctrina validate`, then flip the
   intake to `Status: converted`). After conversion the specs are the only
   source of truth — never edit `intake.md` to change requirements.
-- **Day-to-day.** Turn any request into a change with `doctrina work
-  "<prompt>"` and follow the printed playbook (spec delta → tasks →
-  implement → analyze → apply → archive → validate). Unsure what to do
-  next? Run `doctrina next`. Need to read? Run `doctrina context`. Ask the
-  human only on genuine ambiguity.
+- **Day-to-day.** Start every session with `doctrina prime` (gates, rules,
+  open work in one read). Turn any request into a change with `doctrina
+  work "<prompt>"` and follow the printed playbook (spec delta → tasks →
+  implement → close). Preview a close with `doctrina change check <id>`;
+  close with `doctrina close <id>`. Unsure what's next? `doctrina next`.
+  Before compaction or handover: `doctrina handoff`. Ask the human only on
+  genuine ambiguity.
 
 <!-- doctrina:surface:begin — CLI-owned block, generated from the installed command catalog. Refreshed by `doctrina upgrade --write`; edits inside are overwritten. -->
 ## Doctrina command surface (generated — reach for these, don't hand-author)
