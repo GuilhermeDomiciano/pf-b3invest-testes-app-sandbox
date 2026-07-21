@@ -9,8 +9,8 @@ Variables        ${EXECDIR}/robot/elements/walkthrough.yaml
 Click Button Start Using
     [Documentation]    Click Button Start Using
 
-    Wait Until Element Is Visible    locator=${BTN_START_USING}
-    Click Element    locator=${BTN_START_USING}
+    Wait Until Element Is Visible    locator=${BTN_START_USING_ACCESSIBILITY}    timeout=20
+    Click Element    locator=${BTN_START_USING_ACCESSIBILITY}
 
 Click Button Accessibility
     [Documentation]    Click Button Accessbility
