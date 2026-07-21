@@ -70,7 +70,7 @@ TITLE_WALLET_NEWS_RESULTS: "accessibility_id=Teleconferência de resultados\n1º
 BTN_NAV_INICIO: id=b3_bottom_nav_bar_item_Início
 BTN_NAV_CARTEIRA: id=b3_bottom_nav_bar_item_Carteira  
 BTN_NAV_PROVENTOS: id=b3_bottom_nav_bar_item_Proventos
-BTN_NAV_BOLSA: id=b3_bottom_nav_bar_item_Bolsa
+BTN_NAV_BOLSA: "xpath=//android.view.View[@content-desc='Navegar para bolsa\\nGuia 4 de 5']"
 BTN_NAV_MENU: id=b3_bottom_nav_bar_item_Menu
 
 TXT_MINHA_CARTEIRA_TITLE: accessibility_id=Minha carteira
